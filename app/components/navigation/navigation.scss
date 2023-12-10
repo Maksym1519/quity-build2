@@ -1,0 +1,16 @@
+@media (min-width: 1025px) { 
+    .siteNavigation {
+        display: flex;
+        column-gap: 20px;
+        }
+      .active {
+        color: #1A1C23;
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .nonActive {
+        color: #A9A9A9;
+        font-weight: 500;
+        font-size: 14px;
+      }
+}

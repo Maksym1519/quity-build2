@@ -1,0 +1,49 @@
+@media (min-width: 1025px) { 
+    .headerProfile__wrapper {
+        width: 100%;
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .navigation {
+        display: flex;
+        align-items: center;
+    }
+    .logo__wrapper {
+        margin-right: 44px;
+    }
+    .miningEquipment {
+        max-width: 50%;
+        white-space: wrap;
+        margin-right: 52px;
+        color: #A9A9A9;
+    }
+    .navigation__item {
+        margin-right: 24px;
+    }
+    .socialMedia__wrapper {
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+        & .text {
+            display: block;
+            margin-right: 20px;
+        }
+    }
+    .profileNavigation__wrapper {
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+  }
+  .profileActive {
+     font-size: 15px;
+     font-weight: 700;   
+     color: #1A56FF;
+  } 
+  .profileNonactive {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1C23;
+  }
+}

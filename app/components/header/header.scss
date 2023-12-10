@@ -1,0 +1,34 @@
+@media (min-width: 1025px) {
+  .wrapper {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .navigation__wrapper {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #F4F5F6;
+    padding: 17px 0;
+    }
+    
+  .contacts {
+    display: flex;
+    column-gap: 25px;
+    align-items: center;
+    & .profile__wrapper {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+    }
+   }
+   .phoneNumber__wrapper {
+    display: flex;
+   }
+   .headerFunctions__wrapper {
+    width: 100%;
+    max-width: 100%;
+   }
+}
