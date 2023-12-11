@@ -1,29 +1,35 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 import pp from "./profilePageNavigation.module.scss";
 import Link from "next/link";
+import profileStateSlice from "@/lib/features/profileStateSlice";
 
-const ProfilePageNavigation = () => {
-  const pathName = usePathname();
+const ProfilePageNavigation = (props) => {
+  const [activeIndex, setActiveIndex] = useState(true);
+  useEffect(() => {
+    setActiveIndex(0);
+  }, []);
+  const handleSwitcher = (index) => {
+    setActiveIndex(index);
+  };
+ 
   return (
     <div className={pp.wrapper}>
-      <Link href="/personalData">
         <div
-          className={pathName === "/" ? pp.active : pp.nonActive}
+          className={activeIndex === 0 ? pp.active : pp.nonActive}
+          onClick={() => {handleSwitcher(0),props.showProfile()}}
         >
          Личные данные
         </div>
-      </Link>
-      <Link href="/personalData">
-        <div className={pathName === "/myAdress" ? pp.active : pp.nonActive}>
+       
+        <div className={activeIndex === 1 ? pp.active : pp.nonActive} onClick={() => {handleSwitcher(1);props.showAdresses()}}>
         Мои адреса
         </div>
-      </Link>
-      <Link href="/personalData">
-        <div className={pathName === "/mySecurity" ? pp.active : pp.nonActive}>
+      
+       <div className={activeIndex === 2 ? pp.active : pp.nonActive} onClick={() => {handleSwitcher(2),props.showSecurity()}}>
         Настройки безопасности
         </div>
-      </Link>
+      
     </div>
   );
 };

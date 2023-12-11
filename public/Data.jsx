@@ -10,7 +10,21 @@ const Icones = {
     footerWhatsUp: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702053387/whatsapp_1_ea73657507.svg",
     footerViber: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702053407/viber_1_c28766c8e5.svg",
     footerTelegram: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702053433/telegram_1_0ea90cc9f1.svg",
-    location: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702055600/Location_4ff86686c2.svg"
+    location: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702055600/Location_4ff86686c2.svg",
+    LTC: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702230428/litecoin_ltc_logo_1_063e00a7dc.svg",
+    BCH: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231029/bitcoin_cash_circle_1_89ac0af2a2.svg",
+    XRP: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231063/XRP_7f686942dd.svg",
+    ETH: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231087/Ethereum_logo_2014_1_a4ec23c0e2.svg",
+    BTC: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702230952/BTC_Logo_1_536dfd5352.svg",
+    edit: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702320832/Edit_f5b98bf264.svg",
+    bucket: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702320853/Delete_5d8d8496e2.svg"
 }
+
+export const currencyLogos = ["https://res.cloudinary.com/duk3bewdr/image/upload/v1702230428/litecoin_ltc_logo_1_063e00a7dc.svg",
+"https://res.cloudinary.com/duk3bewdr/image/upload/v1702231029/bitcoin_cash_circle_1_89ac0af2a2.svg",
+"https://res.cloudinary.com/duk3bewdr/image/upload/v1702231063/XRP_7f686942dd.svg",
+"https://res.cloudinary.com/duk3bewdr/image/upload/v1702231087/Ethereum_logo_2014_1_a4ec23c0e2.svg",
+"https://res.cloudinary.com/duk3bewdr/image/upload/v1702230952/BTC_Logo_1_536dfd5352.svg"
+]
 
 export default Icones;

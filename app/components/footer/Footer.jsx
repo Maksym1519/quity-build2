@@ -1,23 +1,36 @@
 "use client";
 import f from "./footer.module.scss";
-import Image from "next/image";
-import Icones from "@/public/Data";
 import Link from "next/link";
-import { Currency } from "@/lib/features/currencySlice";
-//import Currency from "./Currency";
-//import StoreProvider from "@/app/StoreProvider";
+import { useEffect } from "react";
 import { useAppSelector } from "@/lib/hooks";
 import { infoCurrency } from "@/lib/features/currencySlice";
-
+import { useState } from "react";
+//components------------------------------------------------
+import Image from "next/image";
+import Icones from "@/public/Data";
+import { Currency } from "@/lib/features/currencySlice";
+import { currencyLogos } from "@/public/Data";
 
 const Footer = () => {
   const date = new Date();
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
-  const selected = useAppSelector(infoCurrency)
- console.log(selected)
-   return (
+  const selected = useAppSelector(infoCurrency);
+
+  //  select-currencies---------------------------------------
+  const [selectedFromApi, setSelectedFromApi] = useState();
+  useEffect(() => {
+    setSelectedFromApi(selected);
+  }, [selected]);
+
+  const selectedCurrency = selectedFromApi
+    ? selectedFromApi.filter((crypto) => {
+        const targetNames = ["BTC", "XRP", "LTC", "BCH", "ETH"];
+        return targetNames.includes(crypto.symbol);
+      })
+    : [];
+  return (
     <div className={f.wrapper}>
       <div className="container">
         <div className={f.body}>
@@ -86,29 +99,57 @@ const Footer = () => {
             <div className={f.headerCurrency}>
               <span className={f.title}>Курсы криптовалют</span>
               <span className={f.date}>(на {`${day}-${month}-${year}`})</span>
-              </div>
-             <div className={f.courses}>
-                 <div className={f.column}>
-                   <div className={f.itemCurrency__wrapper}>
+            </div>
+            <div className={f.courses}>
+              {/* //column1------------------------------------------------------------- */}
+              <div className={f.column}>
+                {selectedCurrency.map((crypto, index) => (
+                  <div className={f.itemCurrency__wrapper} key={index}>
                     <div className={f.currency__description}>
-                    <Image />
-                    <span className={f.currency__abbr}></span>
-                    <span className={f.currency__fullName}></span>
+                      <Image
+                        src={currencyLogos[index]}
+                        width={24}
+                        height={24}
+                      />
+                      <span className={f.currency__abbr}>{crypto.symbol}</span>
+                      <span className={f.currency__fullName}>
+                        {crypto.name}
+                      </span>
                     </div>
-                     <div className={f.currency__info}>
-                       <span className={f.currency__ratio}></span>
-                       <span className={f.currency__course}></span>
-                     </div>
-                   </div>
-                 </div>
-             </div>
+                    <div className={f.currency__info}>
+                      {crypto.percent_change_24h.includes("-") ? (
+                        <span className={f.red}>
+                          {crypto.percent_change_24h}
+                        </span>
+                      ) : (
+                        <span className={f.currency__ratio}>
+                          {crypto.percent_change_24h}
+                        </span>
+                      )}
+                      <span className={f.currency__course}>
+                        {crypto.price_usd}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+          <div className={f.footer}>
+            <div className={f.company}>©2021 ООО «Boring Company»»</div>
+            <div className={f.politics}>
+              <span className={f.text}>Реквизиты</span>
+              <span className={f.text}>Политика конфиденциальности</span>
+            </div>
+            <div className={f.development}>
+              Разработка сайта – Funny Company
+            </div>
           </div>
+        </div>
       </div>
       <Currency />
     </div>
-    
-    );
+  );
 };
 
 export default Footer;
