@@ -11,7 +11,7 @@ const ProfileNavigation = () => {
         <div className={pathname === "/myOrders" ? "profileActive" : "profileNonactive"}>Мои заявки</div>
       </Link>
       <Link href="#">
-        <div className={pathname === "/" ? "profileActive" : "profileNonactive"}>Мои профиль</div>
+        <div className={pathname === "/profile" ? "profileActive" : "profileNonactive"}>Мои профиль</div>
       </Link>
     </div>
   );

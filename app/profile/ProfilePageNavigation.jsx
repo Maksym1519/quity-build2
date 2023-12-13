@@ -1,8 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import pp from "./profilePageNavigation.module.scss";
-import Link from "next/link";
-import profileStateSlice from "@/lib/features/profileStateSlice";
 
 const ProfilePageNavigation = (props) => {
   const [activeIndex, setActiveIndex] = useState(true);

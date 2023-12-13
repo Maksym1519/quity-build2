@@ -9,7 +9,7 @@ const Navigation = () => {
 return (
     <div className="siteNavigation">
     <Link href="#">
-      <span className={pathname === '/' ? 'active' : 'nonActive'}>Магазин</span>
+      <span className={pathname === '/profile' ? 'active' : 'nonActive'}>Магазин</span>
     </Link>
     <Link href="/hosting">
       <span className={pathname === '/hosting' ? 'active' : 'nonActive'}>Хостинг</span>
