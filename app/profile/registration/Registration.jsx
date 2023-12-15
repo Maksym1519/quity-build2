@@ -103,12 +103,15 @@ const Registration = () => {
   };
 
   //check-enter---------------------------------------------------------------
+  const [clients, setClients] = useState([]);
+
   async function getDataClients() {
     try {
       const response = await axios.get(
         "https://quitystrapi.onrender.com/api/clients?populate=*"
       );
       const dataResponse = response.data.data;
+      setClients(dataResponse);
       const user = dataResponse.find(
         (u) =>
           (u.attributes.email === formData.email ||
@@ -138,19 +141,20 @@ const Registration = () => {
     return password;
   };
   //--------------------------------------------------------------------
-  const [newPasswordToSever,setNewPasswordToServer] = useState()
-  console.log(newPasswordToSever)
+  const [newPasswordToSever, setNewPasswordToServer] = useState();
   useEffect(() => {
-    const newPassword = generateRandomPassword()
-    setNewPasswordToServer(newPassword)
-  },[])
+    const newPassword = generateRandomPassword();
+    setNewPasswordToServer(newPassword);
+  }, []);
   //----------------------------------------------------------------------
   const [email, setEmail] = useState(null);
-  console.log(email)
+  const [matchedClient, setMatchedClient] = useState();
+  console.log(email);
   const sendEmail = async (e) => {
     e.preventDefault();
+    handleChangePassword(e)
     const newEmail = e.target.elements.user_email.value;
-    setEmail(newEmail)
+    setEmail(newEmail);
     const templateParams = {
       to: newEmail,
       to_email: email,
@@ -158,7 +162,6 @@ const Registration = () => {
       to_name: "Guest",
       message: `Ваш новый пароль: ${newPasswordToSever}`,
     };
-
     try {
       await emailjs.send(
         "service_npekptm",
@@ -166,14 +169,48 @@ const Registration = () => {
         templateParams,
         "MC7BRzxDCdfYOwX2U"
       );
-      console.log("Email отправлен");
-      // После успешной отправки email вызываем props.click
-      props.click();
     } catch (error) {
       console.error("Ошибка при отправке письма:", error.text);
     }
-   // handleChangePassword()
-  };
+     };
+  //change-password-------------------------------------------------------------
+  async function handleChangePassword(e) {
+    try {
+        const requestData = {
+        data: {
+          password: newPasswordToSever,
+        },
+      };
+       const response = await axios.get(
+        "https://quitystrapi.onrender.com/api/clients?populate=*"
+      );
+      const dataResponse = response.data.data;
+      const filteredClients = dataResponse.find(
+        (item) => item.attributes.email === e.target.elements.user_email.value
+      );
+      const clientId = filteredClients.id;
+      console.log(clientId)
+      const responsePut = await axios.put(
+        `https://quitystrapi.onrender.com/api/clients/${clientId}`,
+        requestData
+      );
+      if (responsePut.status === 200) {
+        setFormData({
+          user_email: "",
+         });
+         alert("Ваш пароль успешно изменен")
+      }
+    } catch (error) {
+      console.error("change password failed", error);
+    }
+  }
+//handleSwitcher-setTimeout-----------------------------------
+const delayHandleSwitcher = () => {
+  setTimeout(() => {
+    handleSwitcher(0)
+  },1000)
+}
+
   return (
     <div className={r.registration__wrapper}>
       <div className={r.registration}>
@@ -305,27 +342,33 @@ const Registration = () => {
               </div>
             )}
           </form>
-<form onSubmit={sendEmail}>
-          {activeComponent === 2 && (
-            <div className={r.enter__body}>
-              <h3 className={r.active}>
-                Новый пароль будет отправлен на Ваш почтовый ящик
-              </h3>
-              <div className={r.inputs__wrapper}>
-                <div className={r.input__wrapper}>
-                  <label htmlFor="email"> Введите Email</label>
-                  <input type="email" name="user_email" onChange={handleChange} />
+          <form onSubmit={sendEmail}>
+            {activeComponent === 2 && (
+              <div className={r.enter__body}>
+                <h3 className={r.active}>
+                  Новый пароль будет отправлен на Ваш почтовый ящик
+                </h3>
+                <div className={r.inputs__wrapper}>
+                  <div className={r.input__wrapper}>
+                    <label htmlFor="email"> Введите Email</label>
+                    <input
+                      type="email"
+                      name="user_email"
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <div className={r.reminder} onClick={() => handleSwitcher(0)}>
+                  {`< назад`}
+                </div>
+                <div className={r.button__wrapper}>
+                  <button className={r.registrationButton} type="submit" onClick={() => delayHandleSwitcher()}>
+                    Отправить
+                  </button>
                 </div>
               </div>
-              <div className={r.reminder} onClick={() => handleSwitcher(0)}>
-                {`< назад`}
-              </div>
-              <div className={r.button__wrapper}>
-                <button className={r.registrationButton} type="submit">Отправить</button>
-              </div>
-            </div>
-          )}
-</form>
+            )}
+          </form>
         </div>
       </div>
     </div>
