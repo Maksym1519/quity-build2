@@ -19,7 +19,8 @@ const Icones = {
     edit: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702320832/Edit_f5b98bf264.svg",
     bucket: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702320853/Delete_5d8d8496e2.svg",
     show: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702473044/Show_278b35cd57.svg",
-    hide: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702473066/Hide_c5ab615396.svg"
+    hide: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702473066/Hide_c5ab615396.svg",
+    calendar: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702727998/Calendar_f79dad866b.svg"
 }
 
 export const currencyLogos = ["https://res.cloudinary.com/duk3bewdr/image/upload/v1702230428/litecoin_ltc_logo_1_063e00a7dc.svg",

@@ -9,6 +9,8 @@ import getIdSlice from "@/lib/features/getIdSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { getId } from "@/lib/features/getIdSlice";
 import { selectData } from "@/lib/features/getIdSlice";
+import Icones from "@/public/Data";
+import Image from "next/image";
 
 const Registration = () => {
   //localStorage-----------------------------------------------------
@@ -101,7 +103,22 @@ const Registration = () => {
       console.error("fetchdata failed");
     }
   };
-
+  useEffect(() => {
+    axios
+      .get("https://quitystrapi.onrender.com/api/clients?populate=*")
+      .then((response) => {
+        const responseData = response.data.data;
+        const findEmail = responseData.find(
+          (item) => item.attributes.email === formData.email
+        );
+        if (findEmail) {
+          alert("Пользователь с таким email уже существует !");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [formData.email]);
   //check-enter---------------------------------------------------------------
   const [clients, setClients] = useState([]);
 
@@ -152,7 +169,7 @@ const Registration = () => {
   console.log(email);
   const sendEmail = async (e) => {
     e.preventDefault();
-    handleChangePassword(e)
+    handleChangePassword(e);
     const newEmail = e.target.elements.user_email.value;
     setEmail(newEmail);
     const templateParams = {
@@ -172,16 +189,16 @@ const Registration = () => {
     } catch (error) {
       console.error("Ошибка при отправке письма:", error.text);
     }
-     };
+  };
   //change-password-------------------------------------------------------------
   async function handleChangePassword(e) {
     try {
-        const requestData = {
+      const requestData = {
         data: {
           password: newPasswordToSever,
         },
       };
-       const response = await axios.get(
+      const response = await axios.get(
         "https://quitystrapi.onrender.com/api/clients?populate=*"
       );
       const dataResponse = response.data.data;
@@ -189,7 +206,7 @@ const Registration = () => {
         (item) => item.attributes.email === e.target.elements.user_email.value
       );
       const clientId = filteredClients.id;
-      console.log(clientId)
+      console.log(clientId);
       const responsePut = await axios.put(
         `https://quitystrapi.onrender.com/api/clients/${clientId}`,
         requestData
@@ -197,20 +214,24 @@ const Registration = () => {
       if (responsePut.status === 200) {
         setFormData({
           user_email: "",
-         });
-         alert("Ваш пароль успешно изменен")
+        });
+        alert("Ваш пароль успешно изменен");
       }
     } catch (error) {
       console.error("change password failed", error);
     }
   }
-//handleSwitcher-setTimeout-----------------------------------
-const delayHandleSwitcher = () => {
-  setTimeout(() => {
-    handleSwitcher(0)
-  },1000)
-}
-
+  //handleSwitcher-setTimeout-----------------------------------
+  const delayHandleSwitcher = () => {
+    setTimeout(() => {
+      handleSwitcher(0);
+    }, 1000);
+  };
+  //show/hide-password-------------------------------------------------
+  const [showPassword, setShowPassword] = useState(true);
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <div className={r.registration__wrapper}>
       <div className={r.registration}>
@@ -297,30 +318,84 @@ const delayHandleSwitcher = () => {
                   />
                 </div>
                 {/* //input4-------------------------------------------------------------------- */}
-                <div className={r.input__wrapper}>
-                  <label htmlFor="password">Придумайте пароль *</label>
-                  <input
-                    type="text"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                  />
-                </div>
+                {showPassword ? (
+                  <div className={r.input__wrapper}>
+                    <label htmlFor="password">Придумайте пароль *</label>
+                    <input
+                      type="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                    />
+                    <Image
+                      src={Icones.show}
+                      width={16}
+                      height={13}
+                      className={r.eyeIcon}
+                      onClick={() => handleShowPassword()}
+                    />
+                  </div>
+                ) : (
+                  <div className={r.input__wrapper}>
+                    <label htmlFor="password">Придумайте пароль *</label>
+                    <input
+                      type="text"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                    />
+                    <Image
+                      src={Icones.hide}
+                      width={16}
+                      height={13}
+                      className={r.eyeIcon}
+                      onClick={() => handleShowPassword()}
+                    />
+                  </div>
+                )}
                 <div className={r.passwordHint}>
                   Минимум 6 символов (букв, цифр и спец. знаков)
                 </div>
                 {/* //input5-------------------------------------------------------------------- */}
-                <div className={r.input__wrapper}>
-                  <label htmlFor="passwordConfirmation">
-                    Подтвердите пароль *
-                  </label>
-                  <input
-                    type="text"
-                    name="passwordConfirmation"
-                    value={formData.passwordConfirmation}
-                    onChange={handleChange}
-                  />
-                </div>
+                {showPassword ? (
+                  <div className={r.input__wrapper}>
+                    <label htmlFor="passwordConfirmation">
+                      Подтвердите пароль *
+                    </label>
+                    <input
+                      type="password"
+                      name="passwordConfirmation"
+                      value={formData.passwordConfirmation}
+                      onChange={handleChange}
+                    />
+                    <Image
+                      src={Icones.show}
+                      width={16}
+                      height={13}
+                      className={r.eyeIcon}
+                      onClick={() => handleShowPassword()}
+                    />
+                  </div>
+                ) : (
+                  <div className={r.input__wrapper}>
+                    <label htmlFor="passwordConfirmation">
+                      Подтвердите пароль *
+                    </label>
+                    <input
+                      type="text"
+                      name="passwordConfirmation"
+                      value={formData.passwordConfirmation}
+                      onChange={handleChange}
+                    />
+                    <Image
+                      src={Icones.hide}
+                      width={16}
+                      height={13}
+                      className={r.eyeIcon}
+                      onClick={() => handleShowPassword()}
+                    />
+                  </div>
+                )}
                 {/* //-------------------------------------------------------------------------- */}
                 <div className={r.approvement}>
                   Я принимаю условия{" "}
@@ -362,7 +437,11 @@ const delayHandleSwitcher = () => {
                   {`< назад`}
                 </div>
                 <div className={r.button__wrapper}>
-                  <button className={r.registrationButton} type="submit" onClick={() => delayHandleSwitcher()}>
+                  <button
+                    className={r.registrationButton}
+                    type="submit"
+                    onClick={() => delayHandleSwitcher()}
+                  >
                     Отправить
                   </button>
                 </div>
