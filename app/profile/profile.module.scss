@@ -34,3 +34,39 @@
     z-index: 30000;
   }
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .wrapper {
+    max-width: 100%;
+    padding: 39px 0 121px 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    }
+  .main__wrapper {
+    display: flex;
+    flex-direction: column;
+    & .title {
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 48px;
+      margin-bottom: 9px;
+    }
+  }
+  //first-page-------------------------------------------
+  .firstPage__wrapper {
+    min-width: 100vw;
+    min-height: 100vh;
+    filter: blur(5px);
+    background: rgba(20, 28, 64, 0.20);
+  }
+  .registrationForm__wrapper {
+    position: relative;
+  }
+  .registrationForm__body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 30000;
+  }
+}

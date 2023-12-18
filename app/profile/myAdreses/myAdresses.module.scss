@@ -89,3 +89,94 @@
     color: #222
   }
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .wrapper {
+    max-width: 100%;
+    padding-top: 32px;
+  }
+  .blockHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    & .title {
+      color: var(--1-a-1-c-23, #1a1c23);
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 28px;
+    }
+    & .addressButton {
+      width: 194px;
+      height: 42px;
+      border-radius: 80px;
+      background: var(--1-a-56-ff, #1a56ff);
+      color: #fff;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+    }
+  }
+  .inputAddress {
+    width: 100%;
+    height: 78px;
+    background: #f4f5f6;
+    border-radius: 32px;
+    position: relative;
+    z-index: 5;
+    margin-bottom: 16px;
+    & .input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 32px;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      padding: 0 32px;
+      //margin-top: 8px;
+      color: var(--1-a-1-c-23, #1a1c23);
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+    }
+    & .inputLabel {
+      position: absolute;
+      top: 24px;
+      left: 32px;
+      color: var(--a-9-a-9-a-9, #a9a9a9);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 16px;
+    }
+    & .correct {
+        position: absolute;
+        top: 50%;
+        right: 32px;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        column-gap: 16px;
+    }
+  }
+  .addressItem__button {
+    width: 194px;
+    height: 42px;
+    border-radius: 80px;
+    border: 1px solid #F4F5F6;
+    color: #A9A9A9;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    margin-bottom: 16px;
+  }
+  .addressItem__button:hover {
+    border: 1px solid #222;
+    color: #222
+  }
+}

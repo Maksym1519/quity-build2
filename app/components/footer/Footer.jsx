@@ -127,7 +127,7 @@ const Footer = () => {
                         </span>
                       )}
                       <span className={f.currency__course}>
-                        {crypto.price_usd}
+                        {crypto.price_usd} {"$"}
                       </span>
                     </div>
                   </div>

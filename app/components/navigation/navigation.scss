@@ -26,3 +26,31 @@
         border-right: 1px solid #1A1C23;
       }
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .siteNavigation {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+    }
+  .active {
+    color: #1A1C23;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .nonActive {
+    color: #A9A9A9;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .borderRight {
+    position: relative;
+  }
+  .borderRight::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    right: 0;
+    border-right: 1px solid #1A1C23;
+  }
+}

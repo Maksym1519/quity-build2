@@ -53,3 +53,58 @@
     }
   }
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .security__wrapper {
+    max-width: 624px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 0 120px 0;
+    & .title {
+      color: var(--1-a-1-c-23, #1a1c23);
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 28px;
+      margin-bottom: 24px;
+    }
+    & .input__wrapper {
+      width: 100%;
+      height: 42px;
+      margin-bottom: 16px;
+      background: #f4f5f6;
+      border-radius: 80px;
+      text-align: left;
+      padding-left: 20px;
+      & .input__wrapper::placeholder {
+        color: var(--a-9-a-9-a-9, #a9a9a9);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+      }
+      & input {
+        background: transparent;
+        width: 100%;
+        height: 100%;
+        color: #222;
+      }
+    }
+    .securityButton {
+      width: 296px;
+      height: 42px;
+      border-radius: 80px;
+      border: 1px solid var(--f-4-f-5-f-6, #f4f5f6);
+      color: var(--a-9-a-9-a-9, #a9a9a9);
+      text-align: center;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+    }
+    .securityButton:hover {
+        border: 1px solid #222;
+        color: #222
+    }
+  }
+}
