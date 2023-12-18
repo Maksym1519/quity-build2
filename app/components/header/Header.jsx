@@ -25,7 +25,7 @@ const Header = () => {
       <div className="profile__wrapper">
         <span className="userName">User</span>
         <div className="avatar__wrapper">
-          <Image src={Icones.emptyAvatar} width={26} height={22} alt="avatar"/>
+          <Image src={Icones.emptyAvatar} width={30} height={30} alt="avatar"/>
         </div>
       </div>
     </div>

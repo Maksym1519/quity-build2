@@ -11,12 +11,15 @@ import { getId } from "@/lib/features/getIdSlice";
 import { selectData } from "@/lib/features/getIdSlice";
 import Icones from "@/public/Data";
 import Image from "next/image";
+import { setRegistrationInfo } from "@/lib/features/registrationSlice";
+import { getClientsInfo } from "@/lib/features/getClientsInfoSlice";
+import { selectClientsInfo } from "@/lib/features/getClientsInfoSlice";
 
 const Registration = () => {
   //localStorage-----------------------------------------------------
   const [id, setId] = useState("");
   useEffect(() => {
-    localStorage.getItem("id", id);
+    localStorage.setItem("id", id);
   }, [id]);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -33,6 +36,7 @@ const Registration = () => {
     setActiveComponent(index);
   };
   //registration-----------------------------------------------
+  const [clientsInformation, setClientsInformation] = useState();
   const [formData, setFormData] = useState({
     fullName: null,
     email: null,
@@ -44,6 +48,25 @@ const Registration = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+  const handleBlur = async () => {
+    try {
+      const response = await axios.get("https://quitystrapi.onrender.com/api/clients?populate=*");
+      const responseData = response.data.data;
+      const findEmail = responseData.find(
+        (item) => item.attributes.email === formData.email
+      );
+  
+      if (findEmail) {
+        const email = findEmail.attributes.email;
+        alert("Пользователь с таким email уже существует !");
+      } else {
+        alert("Пользователя с таким email нет в системе !")
+      }
+    } catch (error) {
+      console.error("Error in handleBlur:", error);
+    }
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -108,17 +131,12 @@ const Registration = () => {
       .get("https://quitystrapi.onrender.com/api/clients?populate=*")
       .then((response) => {
         const responseData = response.data.data;
-        const findEmail = responseData.find(
-          (item) => item.attributes.email === formData.email
-        );
-        if (findEmail) {
-          alert("Пользователь с таким email уже существует !");
-        }
+        setClientsInformation(responseData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [formData.email]);
+  }, []);
   //check-enter---------------------------------------------------------------
   const [clients, setClients] = useState([]);
 
@@ -232,6 +250,19 @@ const Registration = () => {
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+  //set-client-info-to-redux----------------------------
+  const clientsDispatch = useAppDispatch();
+
+  useEffect(() => {
+    const setClientsToRedux = () => {
+      if (clientsInformation) {
+        clientsDispatch(getClientsInfo(clientsInformation));
+      }
+    };
+
+    setClientsToRedux();
+  }, [clientsInformation, clientsDispatch]);
+
   return (
     <div className={r.registration__wrapper}>
       <div className={r.registration}>
@@ -305,6 +336,7 @@ const Registration = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                   />
                 </div>
                 {/* //input3-------------------------------------------------------------------- */}
@@ -329,6 +361,7 @@ const Registration = () => {
                     />
                     <Image
                       src={Icones.show}
+                      alt="show"
                       width={16}
                       height={13}
                       className={r.eyeIcon}
@@ -346,6 +379,7 @@ const Registration = () => {
                     />
                     <Image
                       src={Icones.hide}
+                      alt="hide"
                       width={16}
                       height={13}
                       className={r.eyeIcon}
@@ -370,6 +404,7 @@ const Registration = () => {
                     />
                     <Image
                       src={Icones.show}
+                      alt="show"
                       width={16}
                       height={13}
                       className={r.eyeIcon}
@@ -389,6 +424,7 @@ const Registration = () => {
                     />
                     <Image
                       src={Icones.hide}
+                      alt="hide"
                       width={16}
                       height={13}
                       className={r.eyeIcon}

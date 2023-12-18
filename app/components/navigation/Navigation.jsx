@@ -15,7 +15,9 @@ return (
       <span className={pathname === '/hosting' ? 'active' : 'nonActive'}>Хостинг</span>
     </Link>
     <Link href="/repair">
-      <span className={pathname === '/repair' ? 'active' : 'nonActive'}>Ремонт</span>
+<div className="borderRight">
+      <span className={pathname === '/repair' ? 'active' : 'nonActive'} style={{paddingRight: "20px"}}>Ремонт</span>
+</div>
     </Link>
     <Link href="/about">
       <span className={pathname === '/about' ? 'active' : 'nonActive'}>О компании</span>
