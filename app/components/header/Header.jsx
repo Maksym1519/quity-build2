@@ -6,20 +6,15 @@ import Image from "next/image";
 import HeaderProfile from "../headerProfile/HeaderProfile";
 import Navigation from "../navigation/Navigation";
 import Icones from "../../../public/Data";
-import { useAppSelector } from "@/lib/hooks";
-import { useSelector } from "react-redux";
 
 const Header = () => {
-  const screenWidth = useSelector((state) => state.screenWidth.screenWidth);
-  const isMobile = screenWidth <= 1024;
-  return (
+ return (
     <header className="wrapper">
       <div className="container">
         <div className="navigation__wrapper">
           <Navigation />
-          {isMobile ? (<div className="burgerMenu">-vfvfv</div>) : ("")}
-
-          <div className="contacts">
+          <div className="burgerMenu"></div>
+            <div className="contacts">
             <div className="phoneNumber__wrapper">
               <span>+38 (097) 123 45 67</span>
               <Image

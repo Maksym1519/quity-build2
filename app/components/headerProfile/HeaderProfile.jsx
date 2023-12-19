@@ -14,7 +14,7 @@ const HeaderProfile = () => {
     <div className="headerProfile__wrapper">
       <div className="navigation">
         <div className="image__wrapper logo__wrapper">
-          <Image src={Icones.logo} width={101} height={31} />
+          <Image src={Icones.logo} width={101} height={31} className="logo"/>
         </div>
         <div className="miningEquipment">
          <Link href="#">Оборудование<br/> для майнинга</Link>
