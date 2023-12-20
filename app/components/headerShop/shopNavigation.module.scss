@@ -1,0 +1,23 @@
+@media (min-width: 1025px) {
+  .shopNavigation__wrapper {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .shopNavigation__linkContainer {
+    display: flex;
+    align-items: center;
+    column-gap: 23px;
+  }
+  .profileActive {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a56ff;
+  }
+  .profileNonactive {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1c23;
+  }
+  
+}

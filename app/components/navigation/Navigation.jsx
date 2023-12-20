@@ -8,53 +8,74 @@ import { useState } from "react";
 
 const Navigation = () => {
   const pathname = usePathname();
+  const isActive = pathname === "/profile" || pathname === "/shop"
   const [mobileMenu, setMobileMenu] = useState(false);
   const toggleMobileMenu = () => {
     setMobileMenu(!mobileMenu);
   };
   return (
     <>
-{mobileMenu &&
-      <div className="mobileNavigation">
-        <Link href="#">
-          <span className={pathname === "/profile" ? "active" : "nonActive"}>
-            Магазин
-          </span>
-        </Link>
-        <Link href="/hosting">
-          <span className={pathname === "/hosting" ? "active" : "nonActive"}>
-            Хостинг
-          </span>
-        </Link>
-        <Link href="/repair">
-          <div className="borderRight">
-            <span
-              className={pathname === "/repair" ? "active" : "nonActive"}
-              style={{ paddingRight: "20px" }}
-            >
-              Ремонт
+      {mobileMenu && (
+        <div className="mobileNavigation">
+          <Link href="#">
+            <span className={isActive ? "active" : "nonActive"}>
+              Магазин
             </span>
+          </Link>
+          <Link href="/hosting">
+            <span className={pathname === "/hosting" ? "active" : "nonActive"}>
+              Хостинг
+            </span>
+          </Link>
+          <Link href="/repair">
+            <div className="borderRight">
+              <span
+                className={pathname === "/repair" ? "active" : "nonActive"}
+                style={{ paddingRight: "20px" }}
+              >
+                Ремонт
+              </span>
+            </div>
+          </Link>
+          <Link href="/about">
+            <span className={pathname === "/about" ? "active" : "nonActive"}>
+              О компании
+            </span>
+          </Link>
+          <Link href="/blog">
+            <span className={pathname === "/blog" ? "active" : "nonActive"}>
+              Quity-блог
+            </span>
+          </Link>
+          <div className="socialMedia__wrapperMobile">
+            <span className="text">
+              Получите консультацию <br />в мессенджерах
+            </span>
+            <br />
+            <div className="images__container">
+              <div className="image__wrapper">
+                <Image src={Icones.whatsUp} width={32} height={32} />
+              </div>
+              <div className="image__wrapper">
+                <Image src={Icones.viber} width={32} height={32} />
+              </div>
+              <div className="image__wrapper">
+                <Image src={Icones.telegram} width={32} height={32} />
+              </div>
+            </div>
           </div>
-        </Link>
-        <Link href="/about">
-          <span className={pathname === "/about" ? "active" : "nonActive"}>
-            О компании
-          </span>
-        </Link>
-        <Link href="/blog">
-          <span className={pathname === "/blog" ? "active" : "nonActive"}>
-            Quity-блог
-          </span>
-        </Link>
-      </div>
-}
-      <div className={mobileMenu ? ("burgerClose"):("burger")} onClick={toggleMobileMenu}>
+        </div>
+      )}
+      <div
+        className={mobileMenu ? "burgerClose" : "burger"}
+        onClick={toggleMobileMenu}
+      >
         <span className="burger__line"></span>
       </div>
       <Image src={Icones.logo} width={101} height={31} className="mobileLogo" />
       <div className="siteNavigation">
         <Link href="#">
-          <span className={pathname === "/profile" ? "active" : "nonActive"}>
+          <span className={isActive ? "active" : "nonActive"}>
             Магазин
           </span>
         </Link>

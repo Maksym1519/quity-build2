@@ -1,5 +1,14 @@
 
-
+export const ShopImagesBG = {
+   minerAsic: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703091556/Frame_111326_ef0a4af615.svg"
+}
+export const ShopSmallMiners = {
+    blackBg: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703094136/smal_Asic_Bg_eef84ad293.svg",
+    blueUpperBg: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703094288/blue_Upper_d082e8cfc7.svg",
+    blueDownBg: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703094354/blue_Down_d035e55e65.svg",
+    upperMiner: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703094402/Bitmain_Antminer_S19_95_Th_Bitcoin_Miner_1_1_6a0f5e6da1.svg",
+    downMiner: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703094457/miner_Down_5c06e52055.svg"
+}
 const Icones = {
     logo: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702043343/main_logo_70800f94b6.svg",
     warning: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702043315/sr_warning_ab0ded202a.svg",
@@ -20,9 +29,12 @@ const Icones = {
     bucket: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702320853/Delete_5d8d8496e2.svg",
     show: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702473044/Show_278b35cd57.svg",
     hide: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702473066/Hide_c5ab615396.svg",
-    calendar: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702727998/Calendar_f79dad866b.svg"
+    calendar: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702727998/Calendar_f79dad866b.svg",
+    search: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703075975/Search_f1f1636114.svg",
+    flag: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703076000/flag_42949736d1.svg",
+    menu: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703076027/menu_9f3c8ab9cd.svg",
+    trolley: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703076051/trolley_9de9d0ff01.svg"
 }
-
 export const currencyLogos = ["https://res.cloudinary.com/duk3bewdr/image/upload/v1702230428/litecoin_ltc_logo_1_063e00a7dc.svg",
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231029/bitcoin_cash_circle_1_89ac0af2a2.svg",
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231063/XRP_7f686942dd.svg",

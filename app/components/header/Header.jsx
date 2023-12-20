@@ -2,12 +2,15 @@
 import Link from "next/link";
 import "./header.scss";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 //components--------------------------------------------------------------
 import HeaderProfile from "../headerProfile/HeaderProfile";
+import HeaderShop from "../headerShop/headerShop";
 import Navigation from "../navigation/Navigation";
 import Icones from "../../../public/Data";
 
 const Header = () => {
+  const pathname = usePathname()
  return (
     <header className="wrapper">
       <div className="container">
@@ -39,7 +42,8 @@ const Header = () => {
           </div>
         </div>
         <div className="headerFunctions__wrapper">
-          <HeaderProfile />
+          {pathname === "/profile" && <HeaderProfile />}
+          {pathname === "/shop" && <HeaderShop />}
         </div>
       </div>
     </header>
