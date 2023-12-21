@@ -52,16 +52,101 @@
       }
     }
     & .goods__wrapper {
+      width: 100%;
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      column-gap: 32px;
+      & .item {
         width: 100%;
-        max-width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        column-gap: 32px;
-        & .item {
+        height: auto;
+        padding: 40px 24px 32px 24px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        & .image__wrapper {
+          margin-bottom: 16px;
+          & .minerImage {
             width: 100%;
-            height: auto;
-            padding: 24px;
+            height: 100%;
+            object-fit: cover;
+            z-index: 10000;
+          }
         }
+        & .description {
+          display: flex;
+          flex-direction: column;
+          & .presence {
+            color: var(--a-9-a-9-a-9, #a9a9a9);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+            margin-bottom: 4px;
+          }
+          & .title {
+            color: var(--1-a-1-c-23, #1a1c23);
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            margin-bottom: 12px;
+          }
+          & .parameters {
+            display: flex;
+            align-items: center;
+            column-gap: 16px;
+            margin-bottom: 32px;
+            & .parameters__item {
+              display: flex;
+              align-items: center;
+              column-gap: 3px;
+              & .numbers {
+                color: var(--1-a-1-c-23, #1a1c23);
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 16px;
+              }
+              & .text {
+                color: var(--a-9-a-9-a-9, #a9a9a9);
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 16px;
+              }
+            }
+          }
+          & .price__wrapper {
+            display: flex;
+            align-items: center;
+            column-gap: 4px;
+            & .price {
+              color: var(--1-a-1-c-23, #1a1c23);
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 32px;
+            }
+            & .priceIcon {
+              color: var(--a-9-a-9-a-9, #a9a9a9);
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 32px;
+            }
+          }
+        }
+        & .label {
+          width: 75px;
+          height: 22px;
+          border-radius: 50px;
+          background: #45b26b;
+          position: absolute;
+          left: 24px;
+          top: 40px
+        }
+      }
     }
   }
 }
