@@ -3,58 +3,36 @@
     max-width: 100%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 88px;
   }
   .miners__body {
     display: flex;
     column-gap: 32px;
+    position: relative;
+    min-height: 480px;
+    margin-bottom: 30px;
     & .items__wrapper {
-       display: flex;
+      display: flex;
       flex-direction: column;
       row-gap: 32px;
+      position: relative;
       & .item__wrapper {
-        flex: 1;
-        width: 100%;
-        max-width: 328px;
-        height: 224px;
-        position: relative;
-        border-radius: 32px;
-        background: #1a1c23;
-        z-index: 1;
-        & .darkBg {
-         position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-        z-index: -1;
-        }
-        & .blueUpper {
-          position: absolute;
-          top: 0;
-          right: 0;
-          border-radius: 0 32px 32px 0;
-          object-fit: cover;
+        width: fit-content;
+        height: fit-content;
+        & .promoMiner {
+          border-radius: 32px;
+          max-width: 100%;
           max-height: 100%;
+          object-fit: contain;
         }
-        & .upperMiner {
+        & .promoMiner__button {
+          width: 104px;
+          height: 44px;
           position: absolute;
-          top: 20%;
-          right: 0;
-          object-fit: cover;
-          max-height: 100%;
-        }
-        & .description {
-          display: flex;
-          flex-direction: column;
-          z-index: 2;
-          & .title {
-            color: #fff;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 36px;
-            z-index: 2;
-          }
+          left: 30px;
+          bottom: 30px;
+          background: transparent;
+          z-index: 3;
         }
       }
     }
@@ -62,11 +40,12 @@
   .main_item__wrapper {
     width: 100%;
     max-width: 870px;
-    height: 480px;
+    height: 100%;
     position: relative;
     padding: 58px 50px 50px 50px;
     border-radius: 32px;
     z-index: 1;
+    display: flex;
     & .minerAsicImage {
       position: absolute;
       top: 0;
@@ -75,6 +54,9 @@
       z-index: 1;
     }
     & .description {
+      position: absolute;
+      top: 58px;
+      left: 50px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -92,7 +74,7 @@
         flex-direction: column;
         z-index: 2;
         row-gap: 8px;
-        margin-bottom: 96px;
+        margin-bottom: 8%;
         & .descriptionList__item {
           color: rgba(255, 255, 255, 0.8);
           font-size: 16px;
@@ -117,8 +99,165 @@
       }
     }
   }
+  .miners__terms {
+    max-width: 100%;
+    height: 104px;
+    border-radius: 32px;
+    background: #f4f5f6;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    & .miners__terms__body {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      & .item {
+        display: flex;
+        align-items: center;
+        column-gap: 24px;
+        & .text {
+          color: var(--1-a-1-c-23, #1a1c23);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+        }
+      }
+    }
+  }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
+  .wrapper {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 88px;
+  }
+  .miners__body {
+    display: flex;
+    flex-direction: column;
+    column-gap: 0px;
+    row-gap: 16px;
+    margin-bottom: 20px;
+    & .items__wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      row-gap: 0px;
+      column-gap: 15px;
+      position: relative;
+      & .item__wrapper {
+        width: auto;
+        height: auto;
+        & .promoMiner {
+          border-radius: 32px;
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+        }
+        & .promoMiner__button {
+          width: 104px;
+          height: 44px;
+          position: absolute;
+          left: 30px;
+          bottom: 30px;
+          background: transparent;
+          z-index: 3;
+        }
+      }
+    }
+  }
+  .main_item__wrapper {
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    border-radius: 32px;
+    z-index: 1;
+    display: flex;
+    & .minerAsicImage {
+      width: 100%;
+      height: 100%;
+      max-height: 480px;
+      z-index: 1;
+    }
+    & .description {
+      position: absolute;
+      top: 58px;
+      left: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      & .title {
+        color: #fff;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 48px;
+        margin-bottom: 16px;
+        z-index: 2;
+      }
+      & .descriptionList {
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+        row-gap: 8px;
+        margin-bottom: 8%;
+        & .descriptionList__item {
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+          list-style: disc;
+          margin-left: 15px;
+        }
+      }
+      & .minersButton {
+        width: 138px;
+        height: 56px;
+        border-radius: 80px;
+        background: #fedc5a;
+        color: var(--1-a-1-c-23, #1a1c23);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px;
+        z-index: 2;
+      }
+    }
+  }
+  .miners__terms {
+    max-width: 100%;
+    height: 104px;
+    border-radius: 32px;
+    background: #f4f5f6;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    & .miners__terms__body {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      column-gap: 5px;
+      & .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        column-gap: 8px;
+        & .text {
+          color: var(--1-a-1-c-23, #1a1c23);
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+          text-align: center;
+        }
+      }
+    }
+  }
 }
 @media (max-width: 768px) {
 }

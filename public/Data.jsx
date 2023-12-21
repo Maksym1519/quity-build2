@@ -1,6 +1,8 @@
 
 export const ShopImagesBG = {
-   minerAsic: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703091556/Frame_111326_ef0a4af615.svg"
+   minerAsic: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703091556/Frame_111326_ef0a4af615.svg",
+   promoMiner1: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703143410/Promo_Small_1_e846614e83.svg",
+   promoMiner2: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703143466/Promo_Small_2_8ff6c52110.svg"
 }
 export const ShopSmallMiners = {
     blackBg: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703094136/smal_Asic_Bg_eef84ad293.svg",
@@ -8,6 +10,12 @@ export const ShopSmallMiners = {
     blueDownBg: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703094354/blue_Down_d035e55e65.svg",
     upperMiner: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703094402/Bitmain_Antminer_S19_95_Th_Bitcoin_Miner_1_1_6a0f5e6da1.svg",
     downMiner: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703094457/miner_Down_5c06e52055.svg"
+}
+export const ShopMinersIcones = {
+    sertificate: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703148972/sertificate_f4761d96ae.svg",
+    custom: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703148997/custom_d814db8465.svg",
+    coins: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703149012/coins_76170285fe.svg",
+    checkingLike: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703149030/checking_Like_d2ad6446e1.svg"
 }
 const Icones = {
     logo: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702043343/main_logo_70800f94b6.svg",
