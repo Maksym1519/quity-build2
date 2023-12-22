@@ -91,6 +91,7 @@
             font-weight: 400;
             line-height: 24px;
             margin-bottom: 12px;
+            padding-right: 60px;
           }
           & .parameters {
             display: flex;
@@ -144,8 +145,40 @@
           background: #45b26b;
           position: absolute;
           left: 24px;
-          top: 40px
+          top: 50px;
+          color: #fff;
+          font-size: 10px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 14px;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
+        & .labelHit {
+          width: 45px;
+          height: 22px;
+          border-radius: 50px;
+          background: #FEDC5A;
+          position: absolute;
+          left: 24px;
+          top: 50px;
+          color: #1A1C23;
+          font-size: 10px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 14px;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      & .item:hover {
+        background: rgba(169, 169, 169, 0.3);
       }
     }
   }
