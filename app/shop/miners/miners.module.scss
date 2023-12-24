@@ -260,4 +260,137 @@
   }
 }
 @media (max-width: 768px) {
+  .wrapper {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 120px;
+  }
+  .miners__body {
+    display: flex;
+    flex-direction: column;
+    column-gap: 0px;
+    row-gap: 16px;
+    margin-bottom: 40px;
+    & .items__wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      row-gap: 0px;
+      column-gap: 15px;
+      position: relative;
+      & .item__wrapper {
+        width: auto;
+        height: auto;
+        & .promoMiner {
+          border-radius: 32px;
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+        }
+        & .promoMiner__button {
+          width: 104px;
+          height: 44px;
+          position: absolute;
+          left: 30px;
+          bottom: 30px;
+          background: transparent;
+          z-index: 3;
+        }
+      }
+    }
+  }
+  .main_item__wrapper {
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    border-radius: 32px;
+    z-index: 1;
+    display: flex;
+    & .minerAsicImage {
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      z-index: 1;
+      object-fit: cover;
+      border-radius: 32px;
+    }
+    & .description {
+      position: absolute;
+      top: 24px;
+      left: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      & .title {
+        color: #fff;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 48px;
+        margin-bottom: 16px;
+        z-index: 2;
+      }
+      & .descriptionList {
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+        row-gap: 8px;
+        margin-bottom: 8%;
+        & .descriptionList__item {
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+          list-style: disc;
+          margin-left: 15px;
+        }
+      }
+      & .minersButton {
+        width: 138px;
+        height: 56px;
+        border-radius: 80px;
+        background: #fedc5a;
+        color: var(--1-a-1-c-23, #1a1c23);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px;
+        z-index: 2;
+        margin-top: 90px;
+      }
+    }
+  }
+  .miners__terms {
+    max-width: 100%;
+    height: auto;
+    border-radius: 32px;
+    background: #f4f5f6;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    & .miners__terms__body {
+      width: 100%;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 5px;
+      & .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        column-gap: 8px;
+        & .text {
+          color: var(--1-a-1-c-23, #1a1c23);
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+          text-align: center;
+        }
+      }
+    }
+  }
 }

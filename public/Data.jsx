@@ -2,7 +2,9 @@
 export const ShopImagesBG = {
    minerAsic: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703091556/Frame_111326_ef0a4af615.svg",
    promoMiner1: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703143410/Promo_Small_1_e846614e83.svg",
-   promoMiner2: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703143466/Promo_Small_2_8ff6c52110.svg"
+   promoMiner2: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703143466/Promo_Small_2_8ff6c52110.svg",
+   advertismentBgMining: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703415944/shop_Advertisment_Bg1_4af0a793a4.webp",
+   advertismentBgRepair: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703415969/shop_Advertisment_Bg2_037ced2f2c.webp"
 }
 export const ShopSmallMiners = {
     blackBg: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703094136/smal_Asic_Bg_eef84ad293.svg",
@@ -16,6 +18,9 @@ export const ShopMinersIcones = {
     custom: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703148997/custom_d814db8465.svg",
     coins: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703149012/coins_76170285fe.svg",
     checkingLike: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703149030/checking_Like_d2ad6446e1.svg"
+}
+export const ShopCatalogIcones = {
+    arrow: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703403536/Arrow_Right_06a0b9bef4.svg"
 }
 const Icones = {
     logo: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702043343/main_logo_70800f94b6.svg",
@@ -41,7 +46,8 @@ const Icones = {
     search: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703075975/Search_f1f1636114.svg",
     flag: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703076000/flag_42949736d1.svg",
     menu: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703076027/menu_9f3c8ab9cd.svg",
-    trolley: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703076051/trolley_9de9d0ff01.svg"
+    trolley: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703076051/trolley_9de9d0ff01.svg",
+    play: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703415663/shop_Play_9095db57dc.svg"
 }
 export const currencyLogos = ["https://res.cloudinary.com/duk3bewdr/image/upload/v1702230428/litecoin_ltc_logo_1_063e00a7dc.svg",
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231029/bitcoin_cash_circle_1_89ac0af2a2.svg",
