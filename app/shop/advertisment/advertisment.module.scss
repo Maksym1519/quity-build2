@@ -1,7 +1,7 @@
 @media (min-width: 1025px) {
   .wrapper {
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     margin: 0 auto;
   }
   .advertisment__body {
@@ -131,7 +131,7 @@
 @media (min-width: 769px) and (max-width: 1024px) {
   .wrapper {
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     margin: 0 auto;
   }
   .advertisment__body {
@@ -141,7 +141,7 @@
     grid-template-columns: 1fr;
     column-gap: 0px;
     row-gap: 32px;
-    margin-bottom: 60px;
+    margin-bottom: 120px;
     & .item {
       position: relative;
       width: 100%;
@@ -264,7 +264,7 @@
 @media (max-width: 768px) {
   .wrapper {
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     margin: 0 auto;
   }
   .advertisment__body {
@@ -274,7 +274,7 @@
     grid-template-columns: 1fr;
     column-gap: 0px;
     row-gap: 24px;
-    margin-bottom: 40px;
+    margin-bottom: 120px;
     & .item {
       position: relative;
       width: 100%;

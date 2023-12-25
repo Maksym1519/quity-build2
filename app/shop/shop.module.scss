@@ -1,24 +1,20 @@
 @media (min-width: 1025px) {
     .wrapper {
         width: 100%;
-        min-height: 100vh;
         padding: 24px 80px 120px 80px;
-        margin: 0 auto;
-    }
+        }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
     .wrapper {
         width: 100%;
-        min-height: 100vh;
+        height: 100%;
         padding: 24px 0px 80px 0px;
-        margin: 0 auto;
-    }
+        }
 }
 @media (max-width: 768px) {
     .wrapper {
         width: 100%;
-        min-height: 100vh;
+        height: 100%;
         padding: 24px 0px 40px 0px;
-        margin: 0 auto;
-    }
+       }
 }
