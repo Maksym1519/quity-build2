@@ -5,6 +5,7 @@ import Catalog from "./catalog/catalog";
 import Advertisment from "./advertisment/advertisment";
 import WorkingConditions from "./workingConditions/workingConditions";
 import PickupMiner from "./pickupMiner/pickupMiner";
+import RemoteScheme from "./remoteScheme/remoteScheme";
 
 export default function Shop() {
   return (
@@ -15,6 +16,7 @@ export default function Shop() {
         <Advertisment />
         <WorkingConditions />
         <PickupMiner />
+        <RemoteScheme />
       </div>
     </div>
   );

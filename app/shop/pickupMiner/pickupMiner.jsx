@@ -1,6 +1,7 @@
 import p from './pickupMiner.module.scss';
 import { ShopImagesBG } from '@/public/Data';
 import Image from 'next/image';
+import InvestingForm from './investingForm/investingForm';
 
 const PickupMiner = () => {
     return (
@@ -21,6 +22,7 @@ const PickupMiner = () => {
                    <p className={p.text}>Подборка ASIC-майнеров <br/>в 3х вариантов с расчетом<br/> прибыльности </p>
                  </div>
               </div>
+              <InvestingForm />
             </div>
         </div>
     )
