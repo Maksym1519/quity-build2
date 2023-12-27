@@ -23,6 +23,28 @@ export const ShopMinersIcones = {
 export const ShopCatalogIcones = {
     arrow: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703403536/Arrow_Right_06a0b9bef4.svg"
 }
+export const shopServicesIcones = {
+    catalog: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703686684/catalog_9b44efbd42.svg",
+    garantee: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703686712/garantee_d3f751f896.svg",
+    check: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703686712/check_01c7aa392b.svg",
+    payment: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703686712/payment_a3b2eb3103.svg",
+    delivery: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703686712/delivery_11fbe83bdb.svg"
+}
+export const ShopSheme = {
+    ellipse: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703664730/Ellipse_227_c162a03c89.svg",
+    leftLine: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703664927/left_Line_56cd7b5c45.svg",
+    rightLine: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703665035/right_Line_bd89ae20dd.svg",
+    rightLineEmpty: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703667141/Vector_15_564e0b4d0d.svg",
+    leftLineEmpty: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703669090/left_Line_Empty_bbd0ba81ea.svg",
+    bottomLine: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703665057/bottom_Line_6434872a28.svg",
+    bottomLineEmpty: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703669385/botom_Line_Empty_d27c540467.svg",
+    attention: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703667421/attention_b291f793c8.svg",
+    title: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703670093/Union_b101ff26d8.svg",
+    shop: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703670425/shop_9b8094052e.svg",
+    hosting: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703670506/hosting_0c62952ece.svg",
+    serviceCenter: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703670545/service_Center_2f4e7c1db1.svg",
+    mobileMockup: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703675715/Mobile_mockup_1_830975f58e.svg"
+}
 const Icones = {
     logo: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702043343/main_logo_70800f94b6.svg",
     warning: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702043315/sr_warning_ab0ded202a.svg",

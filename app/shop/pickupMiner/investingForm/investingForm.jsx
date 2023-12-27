@@ -26,7 +26,7 @@ const InvestingForm = () => {
                     <div className={i.input__wrapper}>
                         <div className={i.inputs__body}>
                             <span className={i.phoneCode}>+3</span>
-                           <input type="number" placeholder='(     )' />
+                           <input placeholder='(     )' />
                            <input type="number" />
                            <input type="number" />
                            <input type="number" />

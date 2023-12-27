@@ -6,6 +6,7 @@ import Advertisment from "./advertisment/advertisment";
 import WorkingConditions from "./workingConditions/workingConditions";
 import PickupMiner from "./pickupMiner/pickupMiner";
 import RemoteScheme from "./remoteScheme/remoteScheme";
+import Services from "./services/services";
 
 export default function Shop() {
   return (
@@ -17,6 +18,7 @@ export default function Shop() {
         <WorkingConditions />
         <PickupMiner />
         <RemoteScheme />
+        <Services />
       </div>
     </div>
   );
