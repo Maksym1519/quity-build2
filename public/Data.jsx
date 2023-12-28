@@ -45,6 +45,18 @@ export const ShopSheme = {
     serviceCenter: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703670545/service_Center_2f4e7c1db1.svg",
     mobileMockup: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703675715/Mobile_mockup_1_830975f58e.svg"
 }
+export const CouponImages = {
+    yellowBg: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703695433/coupon_Yellow_Bg_244677c69c.webp",
+    blueBg: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703695432/coupon_Blue_Bg_e489f77689.webp",
+    discount: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703695433/coupon_Discount_be0dd1e8a5.svg",
+    arrow: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703695432/coupon_Arrow_01ee04a3cd.svg"
+}
+export const SliderImages = {
+    bg999: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703751521/999_904433fa5b.svg",
+    chatImg: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703763750/Screenshot_2_e60919fd07.webp",
+    prev: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703768494/prev_c6ceab480b.svg",
+    next: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703768494/next_29aeec0a18.svg"
+}
 const Icones = {
     logo: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702043343/main_logo_70800f94b6.svg",
     warning: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702043315/sr_warning_ab0ded202a.svg",
