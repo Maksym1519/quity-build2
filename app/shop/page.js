@@ -9,6 +9,7 @@ import RemoteScheme from "./remoteScheme/remoteScheme";
 import Services from "./services/services";
 import Coupon from "./coupon/coupon";
 import Slider from "./slider/slider";
+import PriceList from "./priceList/priceList";
 
 export default function Shop() {
   return (
@@ -23,6 +24,7 @@ export default function Shop() {
         <Services />
         <Coupon />
         <Slider />
+        <PriceList />
       </div>
     </div>
   );

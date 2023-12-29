@@ -23,6 +23,7 @@
     "react-dom": "^18",
     "react-redux": "^9.0.2",
     "react-simple-calendar": "^0.3.0",
+    "react-slider": "^2.0.6",
     "sass": "^1.69.5",
     "swiper": "^11.0.5"
   },

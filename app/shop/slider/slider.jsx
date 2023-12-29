@@ -8,16 +8,15 @@ import { Navigation, Pagination } from "swiper/modules";
 import { SliderImages } from "@/public/Data";
 import Image from "next/image";
 
-
 const Slider = () => {
   const [showText, setShowText] = useState(false);
   const [showText2, setShowText2] = useState(false);
   const toggleText = () => {
-    setShowText(!showText)
-  }
+    setShowText(!showText);
+  };
   const toggleText2 = () => {
-    setShowText2(!showText2)
-  }
+    setShowText2(!showText2);
+  };
   const swiperElRef = useRef(null);
   useEffect(() => {
     swiperElRef.current.addEventListener("swiperprogress", (e) => {
@@ -45,12 +44,12 @@ const Slider = () => {
       <div className={s.slider__body}>
         <swiper-container
           ref={swiperElRef}
-          slides-per-view="1.6"
+          slides-per-view="1"
           speed="500"
           loop="true"
           pagination="true"
           navigation="true"
-          >
+        >
           <swiper-slide>
             <div className={s.item}>
               <div className={s.information__body}>
@@ -75,27 +74,25 @@ const Slider = () => {
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Cum libero molestias quisquam quis itaque omnis amet
-                    aliquid, deleniti veniam repellendus perspiciatis ullam
-                    architecto laudantium eum? Repellat ab iure est vel.
                   </p>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Cum libero molestias quisquam quis itaque omnis amet
-                    aliquid, deleniti veniam repellendus perspiciatis ullam
-                    architecto laudantium eum? Repellat ab iure est vel.
                   </p>
                   {showText && (
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Assumenda dolorem, earum libero consequuntur vero minima
-                      nemo pariatur maxime maiores iusto illum aliquid accusamus
-                      in atque deserunt ad eius quaerat? Suscipit!
                     </p>
                   )}
                   {!showText ? (
-                    <span className={s.readFull} onClick={() => toggleText()}>Читать полностью</span>
+                    <span className={s.readFull} onClick={() => toggleText()}>
+                      Читать полностью
+                    </span>
                   ) : (
-                    <span className={s.readFull} onClick={() => toggleText()}>Показать меньше</span>
+                    <span className={s.readFull} onClick={() => toggleText()}>
+                      Показать меньше
+                    </span>
                   )}
                 </div>
               </div>
@@ -131,30 +128,29 @@ const Slider = () => {
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Cum libero molestias quisquam quis itaque omnis amet
-                    aliquid, deleniti veniam repellendus perspiciatis ullam
-                    architecto laudantium eum? Repellat ab iure est vel.
                   </p>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Cum libero molestias quisquam quis itaque omnis amet
-                    aliquid, deleniti veniam repellendus perspiciatis ullam
-                    architecto laudantium eum? Repellat ab iure est vel.
                   </p>
                   {showText2 && (
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Assumenda dolorem, earum libero consequuntur vero minima
-                      nemo pariatur maxime maiores iusto illum aliquid accusamus
-                      in atque deserunt ad eius quaerat? Suscipit!
                     </p>
                   )}
                   {!showText2 ? (
-                    <span className={s.readFull} onClick={() => toggleText2()}>Читать полностью</span>
+                    <span className={s.readFull} onClick={() => toggleText2()}>
+                      Читать полностью
+                    </span>
                   ) : (
-                    <span className={s.readFull} onClick={() => toggleText2()}>Показать меньше</span>
+                    <span className={s.readFull} onClick={() => toggleText2()}>
+                      Показать меньше
+                    </span>
                   )}
                 </div>
               </div>
+
               <Image
                 src={SliderImages.chatImg}
                 width={264}
@@ -163,9 +159,19 @@ const Slider = () => {
               />
             </div>
           </swiper-slide>
-         </swiper-container>
-         <Image src={SliderImages.next} width={24} height={24} className={s.next}/>
-         <Image src={SliderImages.prev} width={24} height={24} className={s.prev}/>
+        </swiper-container>
+        <Image
+          src={SliderImages.next}
+          width={36}
+          height={36}
+          className={s.next}
+        />
+        <Image
+          src={SliderImages.prev}
+          width={36}
+          height={36}
+          className={s.prev}
+        />
       </div>
     </div>
   );

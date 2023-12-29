@@ -92,7 +92,8 @@ const Icones = {
     workingHint: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703489334/delivery_Hint_3feec057c5.svg",
     blackWhatsup: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703611701/whatsapp_1_3d872520ba.svg",
     blackViber: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703611726/viber_1_7c05c5ca20.svg",
-    blackTelegram: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703611743/telegram_1_3ef334ef5f.svg"
+    blackTelegram: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703611743/telegram_1_3ef334ef5f.svg",
+    bonusesArrow: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703841513/bonuses_Arrow_9327a1ae47.svg"
 }
 export const currencyLogos = ["https://res.cloudinary.com/duk3bewdr/image/upload/v1702230428/litecoin_ltc_logo_1_063e00a7dc.svg",
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231029/bitcoin_cash_circle_1_89ac0af2a2.svg",
