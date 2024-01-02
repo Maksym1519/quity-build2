@@ -71,7 +71,6 @@ const Catalog = () => {
   const [gpuCatalogItems, setGpuCatalogItems] = useState([]);
   //variables---------------------------------------------------------------
   const catalogGpuLength = gpuCatalogItems.length;
-  console.log(gpuCatalogItems);
   async function getCatalogGpu() {
     try {
       const response = await axios.get(

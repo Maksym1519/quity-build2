@@ -5,7 +5,8 @@ export const ShopImagesBG = {
    promoMiner2: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703143466/Promo_Small_2_8ff6c52110.svg",
    advertismentBgMining: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703415944/shop_Advertisment_Bg1_4af0a793a4.webp",
    advertismentBgRepair: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703415969/shop_Advertisment_Bg2_037ced2f2c.webp",
-   payback: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703505732/payback_f0a875f252.svg"
+   payback: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703505732/payback_f0a875f252.svg",
+   managerAvatar: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704187496/manager_Avatar_455f6a580e.webp"
 }
 export const ShopSmallMiners = {
     blackBg: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703094136/smal_Asic_Bg_eef84ad293.svg",
@@ -93,7 +94,10 @@ const Icones = {
     blackWhatsup: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703611701/whatsapp_1_3d872520ba.svg",
     blackViber: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703611726/viber_1_7c05c5ca20.svg",
     blackTelegram: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703611743/telegram_1_3ef334ef5f.svg",
-    bonusesArrow: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703841513/bonuses_Arrow_9327a1ae47.svg"
+    bonusesArrow: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703841513/bonuses_Arrow_9327a1ae47.svg",
+    questionPlus: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703924530/question_Plus_f4ba5b79c0.svg",
+    questionMinus: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703924553/question_Minus_dea0f2c79c.webp",
+    prevQuestion: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703941086/Arrow_Left_Circle_952937d844.svg"
 }
 export const currencyLogos = ["https://res.cloudinary.com/duk3bewdr/image/upload/v1702230428/litecoin_ltc_logo_1_063e00a7dc.svg",
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231029/bitcoin_cash_circle_1_89ac0af2a2.svg",

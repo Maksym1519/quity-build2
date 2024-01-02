@@ -10,9 +10,12 @@ import Services from "./services/services";
 import Coupon from "./coupon/coupon";
 import Slider from "./slider/slider";
 import PriceList from "./priceList/priceList";
+import Questions from "./questions/questions";
+import Test from "./test/test";
 
 export default function Shop() {
   return (
+<>
     <div className={s.wrapper}>
       <div className="container">
         <Miners />
@@ -25,7 +28,10 @@ export default function Shop() {
         <Coupon />
         <Slider />
         <PriceList />
-      </div>
-    </div>
+        <Questions />
+         </div>
+        </div>
+    <Test />
+</>
   );
 }

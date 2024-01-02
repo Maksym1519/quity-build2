@@ -69,6 +69,15 @@ const PriceList = () => {
                         </div>
                     </div>
                  </div>
+                 <button className={p.priceListbutton}>Получить прайс-лист + бонусы</button>
+                 <div className={p.icones__wrapper}>
+                    <p className={p.text}>Или пишите - подберем Вам оборудование в мессенджере</p>
+                    <div className={p.icones__body}>
+                        <Image src={Icones.blackWhatsup} width={32} height={32} className={p.icon}/>
+                        <Image src={Icones.blackViber} width={32} height={32} className={p.icon}/>
+                        <Image src={Icones.blackTelegram} width={32} height={32} className={p.icon}/>
+                    </div>
+                </div>
           </div>
         </div>
       </div>
