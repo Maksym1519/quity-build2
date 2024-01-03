@@ -8,14 +8,17 @@ import { useEffect, useState } from "react";
 import { asicCatalog } from "@/lib/features/shopCatalogSlice";
 import { gpuCatalog } from "@/lib/features/shopCatalogSlice";
 import { hardCatalog } from "@/lib/features/shopCatalogSlice";
+import { findingCatalog } from "@/lib/features/shopCatalogSlice";
 import { useAppDispatch } from "@/lib/hooks";
 import { useAppSelector } from "@/lib/hooks";
+import { selectFindingGoods } from "@/lib/features/searchGoodsSlice";
 
 const Catalog = () => {
   //show-all-cards-------------------------------------------------------------
   const [allMiners, setAllMiners] = useState(true);
   const [allGpus, setAllGpus] = useState(true);
   const [allHards, setAllHards] = useState(true);
+  const [allFinded, setAllFinded] = useState(true);
   const handleShowMiners = () => {
     setAllMiners(false);
   };
@@ -24,6 +27,9 @@ const Catalog = () => {
   };
   const handleShowHards = () => {
     setAllHards(false);
+  };
+  const handleShowFinded = () => {
+    setAllFinded(false);
   };
   //get-catalog-items----------------------------------------------------------
   const [catalogItems, setCatalogItems] = useState([]);
@@ -44,6 +50,9 @@ const Catalog = () => {
   };
   const handleHardCatalog = () => {
     dispath(hardCatalog());
+  };
+  const handleFindingCatalog = () => {
+    dispath(findingCatalog());
   };
 
   async function getCatalogItems() {
@@ -70,7 +79,7 @@ const Catalog = () => {
   const [gpuImages, setGpuImages] = useState([]);
   const [gpuCatalogItems, setGpuCatalogItems] = useState([]);
   //variables---------------------------------------------------------------
-  const catalogGpuLength = gpuCatalogItems.length;
+  const gpuCatalogItemsLength = gpuCatalogItems.length;
   async function getCatalogGpu() {
     try {
       const response = await axios.get(
@@ -95,7 +104,7 @@ const Catalog = () => {
   const [hardImages, setHardImages] = useState([]);
   const [hardCatalogItems, setHardCatalogItems] = useState([]);
   //variables---------------------------------------------------------------
-  const catalogHardLength = hardCatalogItems.length;
+  const hardCatalogItemsLength = hardCatalogItems.length;
   async function getCatalogHard() {
     try {
       const response = await axios.get(
@@ -116,14 +125,161 @@ const Catalog = () => {
   useEffect(() => {
     getCatalogHard();
   }, []);
+  //set-finding-goods---asic-----------------------------------------
+  const [displayAmount, setDisplayAmount] = useState(0);
+  useEffect(() => {
+    setDisplayAmount(7);
+  }, []);
+  const [findedMiners, setFindedMiners] = useState();
+  const selectedMiners = useAppSelector(selectFindingGoods);
+  useEffect(() => {
+    if (selectedMiners) {
+      setFindedMiners(selectedMiners);
+      window.scrollTo({
+        top: 800,
+        behavior: "smooth", // добавляет плавный скроллинг
+      });
+    }
+  }, [selectedMiners]);
+  const filteredMiners = catalogItems.filter((item) =>
+    item.attributes.title.toLowerCase().includes(selectedMiners)
+  );
+  useEffect(() => {
+    if (filteredMiners.length === 0 && selectedMiners !== null) {
+      alert("Товар не найден");
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // добавляет плавный скроллинг
+      });
+    }
+  }, [selectedMiners]);
+  const displayMiners =
+    findedMiners && currentComponent === "asicCatalog"
+      ? filteredMiners
+      : catalogItems;
+  const displayMinersLength = displayMiners.length - displayAmount;
+
+  //-GPU----------------------------------------------------------------------
+  const [findedGpu, setFindedGpu] = useState();
+  const selectedGpu = useAppSelector(selectFindingGoods);
+  const filteredGpu = gpuCatalogItems.filter((item) =>
+    item.attributes.title.toLowerCase().includes(selectedGpu)
+  );
+  useEffect(() => {
+    if (selectedGpu) {
+      setFindedGpu(selectedGpu);
+    }
+  }, [selectedGpu]);
+  const displayGpu =
+    findedGpu && currentComponent === "gpuCatalog"
+      ? filteredGpu
+      : gpuCatalogItems;
+  const displayGpuLength = displayGpu.length - displayAmount;
+  //Hard---------------------------------------------------------------------------------
+  const [findedHard, setFindedHard] = useState();
+  const selectedHard = useAppSelector(selectFindingGoods);
+  const filteredHard = hardCatalogItems.filter((item) =>
+    item.attributes.title.toLowerCase().includes(selectedHard)
+  );
+  useEffect(() => {
+    if (selectedHard) {
+      setFindedHard(selectedHard);
+    }
+  }, [selectedHard]);
+  const displayHard =
+    findedHard && currentComponent === "hardCatalog"
+      ? filteredHard
+      : hardCatalogItems;
+  const displayHardLength = displayHard.length - displayAmount;
+  //searching-goods---------------------------------------------------------------------
+  const [showFindedGoods, setShowFindedGoods] = useState(false);
+  const [allFindedItems,setAllFindedItems] = useState([])
+  const selectedData = useAppSelector(selectFindingGoods);
+  useEffect(() => {
+    if (selectedData !== null) {
+      setShowFindedGoods(selectedData);
+    }
+  }, [selectedData]);
+  const allFindedGoods =
+  catalogItems
+    .filter((item) =>
+      item.attributes.title.toLowerCase().includes(selectedData)
+    )
+    .concat(
+      gpuCatalogItems.filter((item) =>
+        item.attributes.title.toLowerCase().includes(selectedData)
+      )
+    )
+    .concat(
+      hardCatalogItems.filter((item) =>
+        item.attributes.title.toLowerCase().includes(selectedData)
+      )
+    );
+  //come-to-0----------------------------------------------------------------------------
+  useEffect(() => {
+    setFindedMiners(null);
+    setFindedGpu(null);
+    setFindedHard(null);
+  }, [currentComponent]);
+
   return (
     <div className={c.wrapper}>
       <div className={c.catalog__body}>
+        {currentComponent === "findingCatalog" && (
+          <div className={c.goods__wrapper}>
+            {showFindedGoods &&
+              catalogItems.map((item, index) => (
+                <div className={c.item} key={index}>
+                  <div className={c.image__wrapper}>
+                    <Image
+                      src={itemsImages[index]}
+                      width={182}
+                      height={168}
+                      className={c.minerImage}
+                    />
+                  </div>
+                  <div className={c.description}>
+                    <span className={c.presence}>
+                      {item.attributes.presence}
+                    </span>
+                    <span className={c.title}>{item.attributes.title}</span>
+                    <div className={c.parameters}>
+                      <div className={c.parameters__item}>
+                        <span className={c.numbers}>{item.attributes.ths}</span>
+                        <span className={c.text}>TH/s</span>
+                      </div>
+                      <div className={c.parameters__item}>
+                        <span className={c.numbers}>{item.attributes.w}</span>
+                        <span className={c.text}>W</span>
+                      </div>
+                      <div className={c.parameters__item}>
+                        <span className={c.numbers}>{item.attributes.jth}</span>
+                        <span className={c.text}>J/TH</span>
+                      </div>
+                    </div>
+                    <div className={c.price__wrapper}>
+                      <span className={c.price}>{item.attributes.price}</span>
+                      <span className={c.priceIcon}>$</span>
+                    </div>
+                  </div>
+                  <span
+                    className={
+                      item.attributes.popularity === "Новинка"
+                        ? c.label
+                        : c.labelHit
+                    }
+                  >
+                    {item.attributes.popularity}
+                  </span>
+                </div>
+              ))}
+          </div>
+        )}
         <h4 className={c.title}>
           Более {currentComponent === "asicCatalog" && catalogItemsLength}{" "}
-          {currentComponent === "gpuCatalog" && catalogGpuLength}{" "}
-          {currentComponent === "hardCatalog" && catalogHardLength} моделей в
-          наличии и под заказ
+          {currentComponent === "gpuCatalog" && gpuCatalogItemsLength}{" "}
+          {currentComponent === "hardCatalog" && hardCatalogItemsLength} моделей
+          в наличии и под заказ
         </h4>
         <CatalogNavigation
           clickAsic={handleAsicCatalog}
@@ -133,7 +289,7 @@ const Catalog = () => {
         {currentComponent === "asicCatalog" && (
           <div className={c.goods__wrapper}>
             {allMiners
-              ? catalogItems.slice(0, 7).map((item, index) => (
+              ? displayMiners.slice(0, 7).map((item, index) => (
                   <div className={c.item} key={index}>
                     <div className={c.image__wrapper}>
                       <Image
@@ -233,11 +389,7 @@ const Catalog = () => {
                 ))}
             {allMiners && (
               <div className={c.showMore__wrapper} onClick={handleShowMiners}>
-                <h4 className={c.title}>
-                  Еще{" "}
-                  {currentComponent === "asicCatalog" && catalogItemsLength - 7}{" "}
-                  модели в наличии и под заказ
-                </h4>
+                <h4 className={c.title}>Смотреть еще ...</h4>
                 <Image
                   src={ShopCatalogIcones.arrow}
                   width={48}
@@ -253,7 +405,7 @@ const Catalog = () => {
         {currentComponent === "gpuCatalog" && (
           <div className={c.goods__wrapper}>
             {allGpus
-              ? gpuCatalogItems.slice(0, 7).map((item, index) => (
+              ? displayGpu.slice(0, 7).map((item, index) => (
                   <div className={c.item} key={index}>
                     <div className={c.image__wrapper}>
                       <Image
@@ -353,11 +505,7 @@ const Catalog = () => {
                 ))}
             {allGpus && (
               <div className={c.showMore__wrapper} onClick={handleShowGpus}>
-                <h4 className={c.title}>
-                  Еще{" "}
-                  {currentComponent === "gpuCatalog" && catalogGpuLength - 7}{" "}
-                  модели в наличии и под заказ
-                </h4>
+                <h4 className={c.title}>Смотреть еще ...</h4>
                 <Image
                   src={ShopCatalogIcones.arrow}
                   width={48}
@@ -369,12 +517,11 @@ const Catalog = () => {
             )}
           </div>
         )}
-
         {/* //hard-catalog------------------------------------------------------------------------------------- */}
         {currentComponent === "hardCatalog" && (
           <div className={c.goods__wrapper}>
             {allHards
-              ? hardCatalogItems.slice(0, 7).map((item, index) => (
+              ? displayHard.slice(0, 7).map((item, index) => (
                   <div className={c.item} key={index}>
                     <div className={c.image__wrapper}>
                       <Image
@@ -474,11 +621,7 @@ const Catalog = () => {
                 ))}
             {allHards && (
               <div className={c.showMore__wrapper} onClick={handleShowHards}>
-                <h4 className={c.title}>
-                  Еще{" "}
-                  {currentComponent === "hardCatalog" && catalogHardLength - 7}{" "}
-                  модели в наличии и под заказ
-                </h4>
+                <h4 className={c.title}>Смотреть еще ...</h4>
                 <Image
                   src={ShopCatalogIcones.arrow}
                   width={48}

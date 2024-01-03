@@ -204,6 +204,8 @@
         padding: 32px 24px;
         position: relative;
         cursor: pointer;
+        display: flex;
+        align-items: center;
         & .title {
           color: #fff;
           font-size: 24px;
@@ -421,6 +423,8 @@
         padding: 32px 24px;
         position: relative;
         cursor: pointer;
+        display: flex;
+        align-items: center;
         & .title {
           color: #fff;
           font-size: 24px;
@@ -647,6 +651,8 @@
         border-radius: 32px;
         padding: 32px 24px;
         position: relative;
+        display: flex;
+        align-items: center;
         cursor: pointer;
         & .title {
           color: #fff;
