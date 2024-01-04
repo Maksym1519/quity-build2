@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const Navigation = () => {
   const pathname = usePathname();
-  const isActive = pathname === "/profile" || pathname === "/shop"
+  const isActive = pathname === "/profile" || pathname === "/shop";
   const [mobileMenu, setMobileMenu] = useState(false);
   const toggleMobileMenu = () => {
     setMobileMenu(!mobileMenu);
@@ -18,9 +18,7 @@ const Navigation = () => {
       {mobileMenu && (
         <div className="mobileNavigation">
           <Link href="#">
-            <span className={isActive ? "active" : "nonActive"}>
-              Магазин
-            </span>
+            <span className={isActive ? "active" : "nonActive"}>Магазин</span>
           </Link>
           <Link href="/hosting">
             <span className={pathname === "/hosting" ? "active" : "nonActive"}>
@@ -75,9 +73,7 @@ const Navigation = () => {
       <Image src={Icones.logo} width={101} height={31} className="mobileLogo" />
       <div className="siteNavigation">
         <Link href="#">
-          <span className={isActive ? "active" : "nonActive"}>
-            Магазин
-          </span>
+          <span className={isActive ? "active" : "nonActive"}>Магазин</span>
         </Link>
         <Link href="/hosting">
           <span className={pathname === "/hosting" ? "active" : "nonActive"}>

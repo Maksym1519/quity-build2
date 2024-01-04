@@ -3,6 +3,7 @@ import c from "./catalog.module.scss";
 import axios from "axios";
 import CatalogNavigation from "./navigation/catalogNavigation";
 import { ShopCatalogIcones } from "@/public/Data";
+import { SliderImages } from "@/public/Data";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { asicCatalog } from "@/lib/features/shopCatalogSlice";
@@ -127,11 +128,11 @@ const Catalog = () => {
   }, []);
   //set-finding-goods---asic-----------------------------------------
   const [displayAmount, setDisplayAmount] = useState(0);
+  const [findedMiners, setFindedMiners] = useState();
+  const selectedMiners = useAppSelector(selectFindingGoods);
   useEffect(() => {
     setDisplayAmount(7);
   }, []);
-  const [findedMiners, setFindedMiners] = useState();
-  const selectedMiners = useAppSelector(selectFindingGoods);
   useEffect(() => {
     if (selectedMiners) {
       setFindedMiners(selectedMiners);
@@ -193,15 +194,15 @@ const Catalog = () => {
   const displayHardLength = displayHard.length - displayAmount;
   //searching-goods---------------------------------------------------------------------
   const [showFindedGoods, setShowFindedGoods] = useState(false);
-  const [allFindedItems,setAllFindedItems] = useState([])
+  const [allFindedItems, setAllFindedItems] = useState([]);
   const selectedData = useAppSelector(selectFindingGoods);
+  const setAllFindedItemsLength = allFindedItems.length;
   useEffect(() => {
     if (selectedData !== null) {
       setShowFindedGoods(selectedData);
     }
   }, [selectedData]);
-  const allFindedGoods =
-  catalogItems
+  const allFindedGoods = catalogItems
     .filter((item) =>
       item.attributes.title.toLowerCase().includes(selectedData)
     )
@@ -215,6 +216,15 @@ const Catalog = () => {
         item.attributes.title.toLowerCase().includes(selectedData)
       )
     );
+  useEffect(() => {
+    setAllFindedItems(allFindedGoods);
+  }, [selectedData]);
+  useEffect(() => {
+    if (showFindedGoods) {
+      handleFindingCatalog();
+    }
+  }, [showFindedGoods]);
+
   //come-to-0----------------------------------------------------------------------------
   useEffect(() => {
     setFindedMiners(null);
@@ -226,9 +236,23 @@ const Catalog = () => {
     <div className={c.wrapper}>
       <div className={c.catalog__body}>
         {currentComponent === "findingCatalog" && (
+           <div className={c.outcome__wrapper}>
+            <div className={c.back__wrapper} onClick={handleAsicCatalog}>
+           <Image src={SliderImages.prev} width={40} height={40}/>
+              <span>назад</span>
+            </div>
+            <h3 className={c.serchResultTitle}>
+              Результаты поиска по запросу "<span>{selectedData}"</span>
+            </h3>
+            <div className={c.outcomeAmount__wrapper}>
+              Всего результатов: <span>{setAllFindedItemsLength}</span>
+            </div>
+          </div>
+        )}
+        {currentComponent === "findingCatalog" && (
           <div className={c.goods__wrapper}>
             {showFindedGoods &&
-              catalogItems.map((item, index) => (
+              allFindedItems.map((item, index) => (
                 <div className={c.item} key={index}>
                   <div className={c.image__wrapper}>
                     <Image
@@ -275,17 +299,21 @@ const Catalog = () => {
               ))}
           </div>
         )}
-        <h4 className={c.title}>
-          Более {currentComponent === "asicCatalog" && catalogItemsLength}{" "}
-          {currentComponent === "gpuCatalog" && gpuCatalogItemsLength}{" "}
-          {currentComponent === "hardCatalog" && hardCatalogItemsLength} моделей
-          в наличии и под заказ
-        </h4>
-        <CatalogNavigation
-          clickAsic={handleAsicCatalog}
-          clickGpu={handleGpuCatalog}
-          clickHard={handleHardCatalog}
-        />
+        {currentComponent !== "findingCatalog" && (
+          <h4 className={c.title}>
+            Более {currentComponent === "asicCatalog" && catalogItemsLength}{" "}
+            {currentComponent === "gpuCatalog" && gpuCatalogItemsLength}{" "}
+            {currentComponent === "hardCatalog" && hardCatalogItemsLength}{" "}
+            моделей в наличии и под заказ
+          </h4>
+        )}
+        {currentComponent !== "findingCatalog" && (
+          <CatalogNavigation
+            clickAsic={handleAsicCatalog}
+            clickGpu={handleGpuCatalog}
+            clickHard={handleHardCatalog}
+          />
+        )}
         {currentComponent === "asicCatalog" && (
           <div className={c.goods__wrapper}>
             {allMiners

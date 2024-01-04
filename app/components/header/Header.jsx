@@ -16,7 +16,7 @@ const Header = () => {
       <div className="container">
         <div className="navigation__wrapper">
           <Navigation />
-          <div className="burgerMenu"></div>
+          {/* <div className="burgerMenu"></div> */}
             <div className="contacts">
             <div className="phoneNumber__wrapper">
               <span>+38 (097) 123 45 67</span>

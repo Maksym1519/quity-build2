@@ -22,7 +22,8 @@ export const ShopMinersIcones = {
     checkingLike: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703149030/checking_Like_d2ad6446e1.svg"
 }
 export const ShopCatalogIcones = {
-    arrow: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703403536/Arrow_Right_06a0b9bef4.svg"
+    arrow: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703403536/Arrow_Right_06a0b9bef4.svg",
+    arrowLeft: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704372035/grey_arrow_left_7bf636585d.png"
 }
 export const shopServicesIcones = {
     catalog: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703686684/catalog_9b44efbd42.svg",
@@ -97,7 +98,8 @@ const Icones = {
     bonusesArrow: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703841513/bonuses_Arrow_9327a1ae47.svg",
     questionPlus: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703924530/question_Plus_f4ba5b79c0.svg",
     questionMinus: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703924553/question_Minus_dea0f2c79c.webp",
-    prevQuestion: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703941086/Arrow_Left_Circle_952937d844.svg"
+    prevQuestion: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703941086/Arrow_Left_Circle_952937d844.svg",
+    avaEmpty: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704387686/ava_empty_ef33bbaecc.svg"
 }
 export const currencyLogos = ["https://res.cloudinary.com/duk3bewdr/image/upload/v1702230428/litecoin_ltc_logo_1_063e00a7dc.svg",
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231029/bitcoin_cash_circle_1_89ac0af2a2.svg",
