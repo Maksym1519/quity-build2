@@ -62,7 +62,7 @@ const Registration = () => {
       } else {
         alert("Пользователя с таким email нет в системе !")
       }
-    } catch (error) {
+     } catch (error) {
       console.error("Error in handleBlur:", error);
     }
   };
@@ -250,20 +250,7 @@ const Registration = () => {
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
-  //set-client-info-to-redux----------------------------
-  const clientsDispatch = useAppDispatch();
-
-  useEffect(() => {
-    const setClientsToRedux = () => {
-      if (clientsInformation) {
-        clientsDispatch(getClientsInfo(clientsInformation));
-      }
-    };
-
-    setClientsToRedux();
-  }, [clientsInformation, clientsDispatch]);
-
-  return (
+   return (
     <div className={r.registration__wrapper}>
       <div className={r.registration}>
         <div className={r.registration__container}>
