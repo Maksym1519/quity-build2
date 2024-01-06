@@ -12,13 +12,18 @@ import { useEffect, useState } from "react";
 import { ClientsInformation } from "@/lib/features/getClientsInfoSlice";
 //redux--------------------------------------------------------------
 import { selectClientsInfo } from "@/lib/features/getClientsInfoSlice";
+import { selectClientsName } from "@/lib/features/getClientsInfoSlice";
 import { useAppSelector } from "@/lib/hooks";
 
 const Header = () => {
   const [avatarImage,setAvatarImage] = useState()
+  const [clientName, setClientName] = useState()
+  console.log(clientName)
   const clientAvatar = useAppSelector(selectClientsInfo)
+  const clientUserName = useAppSelector(selectClientsName)
    useEffect(() => {
     setAvatarImage(clientAvatar)
+    setClientName(clientUserName)
   },[clientAvatar])
  
   //-----------------------------------------------------------------------
@@ -43,7 +48,7 @@ const Header = () => {
             </div>
             <div className="backCall">Обратный звонок</div>
             <div className="profile__wrapper">
-              <span className="userName">User</span>
+              <span className="userName">{clientName}</span>
               <div className="avatar__wrapper">
                 <Image
                   src={avatarImage ? avatarImage : Icones.emptyAvatar}
