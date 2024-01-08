@@ -63,6 +63,7 @@ const Header = () => {
         <div className="headerFunctions__wrapper">
           {pathname === "/profile" && <HeaderProfile />}
           {pathname === "/shop" && <HeaderShop />}
+          {pathname === "/blog" && <HeaderShop />}
         </div>
       </div>
     </header>

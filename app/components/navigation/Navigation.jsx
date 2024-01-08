@@ -17,15 +17,15 @@ const Navigation = () => {
     <>
       {mobileMenu && (
         <div className="mobileNavigation">
-          <Link href="#">
+          <Link href="#" style={{ textDecoration: 'none' }}>
             <span className={isActive ? "active" : "nonActive"}>Магазин</span>
           </Link>
-          <Link href="/hosting">
+          <Link href="/hosting" style={{ textDecoration: 'none' }}>
             <span className={pathname === "/hosting" ? "active" : "nonActive"}>
               Хостинг
             </span>
           </Link>
-          <Link href="/repair">
+          <Link href="/repair" style={{ textDecoration: 'none' }}>
             <div className="borderRight">
               <span
                 className={pathname === "/repair" ? "active" : "nonActive"}
@@ -35,12 +35,12 @@ const Navigation = () => {
               </span>
             </div>
           </Link>
-          <Link href="/about">
+          <Link href="/about" style={{ textDecoration: 'none' }}>
             <span className={pathname === "/about" ? "active" : "nonActive"}>
               О компании
             </span>
           </Link>
-          <Link href="/blog">
+          <Link href="/blog" style={{ textDecoration: 'none' }}>
             <span className={pathname === "/blog" ? "active" : "nonActive"}>
               Quity-блог
             </span>
@@ -72,15 +72,15 @@ const Navigation = () => {
       </div>
       <Image src={Icones.logo} width={101} height={31} className="mobileLogo" />
       <div className="siteNavigation">
-        <Link href="#">
+        <Link href="#" style={{ textDecoration: 'none' }}>
           <span className={isActive ? "active" : "nonActive"}>Магазин</span>
         </Link>
-        <Link href="/hosting">
+        <Link href="/hosting" style={{ textDecoration: 'none' }}>
           <span className={pathname === "/hosting" ? "active" : "nonActive"}>
             Хостинг
           </span>
         </Link>
-        <Link href="/repair">
+        <Link href="/repair" style={{ textDecoration: 'none' }}>
           <div className="borderRight">
             <span
               className={pathname === "/repair" ? "active" : "nonActive"}
@@ -90,12 +90,12 @@ const Navigation = () => {
             </span>
           </div>
         </Link>
-        <Link href="/about">
+        <Link href="/about" style={{ textDecoration: 'none' }}>
           <span className={pathname === "/about" ? "active" : "nonActive"}>
             О компании
           </span>
         </Link>
-        <Link href="/blog">
+        <Link href="/blog" style={{ textDecoration: 'none' }}>
           <span className={pathname === "/blog" ? "active" : "nonActive"}>
             Quity-блог
           </span>

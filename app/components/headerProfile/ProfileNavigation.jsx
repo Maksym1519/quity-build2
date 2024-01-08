@@ -7,10 +7,10 @@ const ProfileNavigation = () => {
     const pathname = usePathname()
   return (
     <div className="profileNavigation__wrapper">
-      <Link href="#">
+      <Link href="#" className="link" style={{ textDecoration: 'none' }}>
         <div className={pathname === "/myOrders" ? "profileActive" : "profileNonactive"}>Мои заявки</div>
       </Link>
-      <Link href="#">
+      <Link href="#" className="link" style={{ textDecoration: 'none' }}>
         <div className={pathname === "/profile" ? "profileActive" : "profileNonactive"}>Мои профиль</div>
       </Link>
     </div>

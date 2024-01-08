@@ -7,7 +7,7 @@ import StoreProvider from "./StoreProvider";
 
 const roboto = Roboto({
   weight: ["400"],
-  subsets: ["latin"],
+  subsets: ["latin","cyrillic"],
 });
 
 export const metadata = {

@@ -52,7 +52,7 @@ const handleSetFindingGoods = () => {
             />
           </div>
           <div className={hs.miningEquipment}>
-            <Link href="#">
+            <Link href="#"  style={{ textDecoration: 'none' }}>
               Оборудование
               <br /> для майнинга
             </Link>
@@ -90,6 +90,7 @@ const handleSetFindingGoods = () => {
             placeholder="Поиск по товарам или категориям...."
             className={hs.searchInput}
             onChange={(e) => setInputValue(e.target.value)}
+            style={{ border: 'none' }}
           />
           <Image
             src={Icones.search}

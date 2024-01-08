@@ -9,15 +9,18 @@ import Link from "next/link";
 import ProfileNavigation from "./ProfileNavigation";
 import Icones from "@/public/Data";
 
-const HeaderProfile = () => {
+const HeaderProfile = (props) => {
+  const styled = {
+    fontFamily: props.fontFamily
+  }
   return (
-    <div className="headerProfile__wrapper">
+    <div className="headerProfile__wrapper" style={styled}>
       <div className="navigation">
         <div className="image__wrapper logo__wrapper">
           <Image src={Icones.logo} width={101} height={31} className="logo"/>
         </div>
         <div className="miningEquipment">
-         <Link href="#">Оборудование<br/> для майнинга</Link>
+         <Link href="#" style={{ textDecoration: 'none' }}>Оборудование<br/> для майнинга</Link>
         </div>
       <ProfileNavigation />
       </div>

@@ -54,31 +54,31 @@ const Footer = () => {
           <div className={f.adresses}>
             <div className={f.column}>
               <h4 className={f.title}>Магазин</h4>
-              <Link href={"#"}>
+              <Link href={"#"} className={f.link}>
                 <span className={f.text}>Доставка</span>
               </Link>
-              <Link href={"#"}>
+              <Link href={"#"} className={f.link}>
                 <span className={f.text}>Оплата</span>
               </Link>
-              <Link href={"#"}>
+              <Link href={"#"} className={f.link}>
                 <span className={f.text}>Обмен и возврат</span>
               </Link>
             </div>
             <div className={f.column}>
               <h4 className={f.title}>Сервисный центр</h4>
-              <Link href={"#"}>
+              <Link href={"#"} className={f.link}>
                 <span className={f.text}>Условия ремонта</span>
               </Link>
-              <Link href={"#"}>
+              <Link href={"#"} className={f.link}>
                 <span className={f.text}>Условия гарантии</span>
               </Link>
             </div>
             <div className={f.column}>
               <h4 className={f.title}>Хостинг</h4>
-              <Link href={"#"}>
+              <Link href={"#"} className={f.link}>
                 <span className={f.text}>Панель управления</span>
               </Link>
-              <Link href={"#"}>
+              <Link href={"#"} className={f.link}>
                 <span className={f.text}>Мои устройства</span>
               </Link>
             </div>

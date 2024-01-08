@@ -9,7 +9,7 @@ const ShopNavigation = () => {
   return (
     <div className={sn.shopNavigation__wrapper}>
       <div className={sn.shopNavigation__linkContainer}>
-        <Link href="#">
+        <Link href="#"  style={{ textDecoration: 'none' }}>
           <div
             className={
               pathname === "/myOrders" ? sn.profileActive : sn.profileNonactive
@@ -18,7 +18,7 @@ const ShopNavigation = () => {
             Доставка
           </div>
         </Link>
-        <Link href="#">
+        <Link href="#"  style={{ textDecoration: 'none' }}>
           <div
             className={
               pathname === "/profile" ? sn.profileActive : sn.profileNonactive
@@ -27,7 +27,7 @@ const ShopNavigation = () => {
             Оплата
           </div>
         </Link>
-        <Link href="#">
+        <Link href="#" style={{ textDecoration: 'none' }}>
           <div
             className={
               pathname === "/profile" ? sn.profileActive : sn.profileNonactive
@@ -36,7 +36,7 @@ const ShopNavigation = () => {
             Возврат
           </div>
         </Link>
-        <Link href="#">
+        <Link href="#" style={{ textDecoration: 'none' }}>
           <div
             className={
               pathname === "/profile" ? sn.profileActive : sn.profileNonactive
