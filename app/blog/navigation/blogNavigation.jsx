@@ -23,13 +23,13 @@ const BlogNavigation = () => {
   const handleEquipmentBlogItems = () => {
     dispatch(setEquipment());
   };
-  const handleInvestitionBlogItems = () => {
-    dispatch(setInvestition());
-  };
   const handleBlockChainBlogItems = () => {
     dispatch(setBlockChain());
   };
-  const handleCloudMiningBlogItems = () => {
+  const handleInvestitionBlogItems = () => {
+    dispatch(setInvestition());
+  };
+   const handleCloudMiningBlogItems = () => {
     dispatch(setCloudMining());
   };
   return (
@@ -61,7 +61,7 @@ const BlogNavigation = () => {
             className={activeIndex === 2 ? b.itemActive : b.item}
             onClick={() => {
               clickActiveIndex(2);
-              handleInvestitionBlogItems();
+              handleBlockChainBlogItems();
             }}
           >
             Блокчейн
@@ -70,7 +70,7 @@ const BlogNavigation = () => {
             className={activeIndex === 3 ? b.itemActive : b.item}
             onClick={() => {
               clickActiveIndex(3);
-              handleBlockChainBlogItems();
+              handleInvestitionBlogItems();
             }}
           >
             Инвестиции

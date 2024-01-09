@@ -59,6 +59,11 @@ export const SliderImages = {
     prev: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703768494/prev_c6ceab480b.svg",
     next: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703768494/next_29aeec0a18.svg"
 }
+export const BlogImages = {
+    telegramLogo: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704823265/telegram_2_1_2_44fa3bf612.svg",
+    telegramButtonBG: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704820468/Vector_895ffef68d.png",
+    telegramButtonBGblue: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704822605/Vector_b80bb0b3b2.svg"
+}
 const Icones = {
     logo: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702043343/main_logo_70800f94b6.svg",
     warning: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702043315/sr_warning_ab0ded202a.svg",
