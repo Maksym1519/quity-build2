@@ -5,11 +5,13 @@ import Image from "next/image";
 import Icones from "@/public/Data";
 import { useState, useEffect } from "react";
 import { BlogNews } from "@/lib/features/blog/blogStateSlice";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppSelector, useAppDispatch } from "@/lib/hooks";
+import { setAll } from "@/lib/features/blog/blogStateSlice";
+import { setPageNavigation } from "@/lib/features/blog/header/pageNavigationSlice";
 import { blogInfoFromServer } from "@/lib/features/blog/blogStateSlice";
 import { blogInfoEquipmentFromServer } from "@/lib/features/blog/blogStateSlice";
 
-const BlogItemAll = () => {
+const BlogItemAll = (props) => {
   const currentDate = new Date();
   const options = {
     day: "numeric",
@@ -39,15 +41,29 @@ const BlogItemAll = () => {
       setShortBlogArray(false);
     }
   }, [blogArray]);
+//set-info-to-page-navigation-----------------------------------------
+const [titleFromArray, setTitleFromArray] = useState(null)
+const [postInfo, setPostInfo] = useState()
+const clickTitleFromArray = (blogTitle) => {
+  setTitleFromArray(blogTitle) 
+  }
+  const clickDataToPostInfo = (itemInfo) => {
+    setPostInfo(itemInfo)
+  }
+if (titleFromArray !== null) {
+  const dispatch = useAppDispatch()
+  dispatch(setPageNavigation(postInfo))
+  props.clickPostDetail()
+}
 
   return (
-    <div className={b.wrapper}>
+    <div className={b.wrapper} >
       <BlogNews />
       <div className={b.blogItem__body}>
         {!shortBlogArray
           ? blogArray !== null &&
             blogArray.slice(0, 6).map((item, index) => (
-              <div className={b.item} key={index}>
+              <div className={b.item} key={index} onClick={() => {clickTitleFromArray(item.attributes.blogTitle); clickDataToPostInfo(item)}}>
                 <Image
                   src={item.attributes.blogImage.data.attributes.url}
                   width={296}

@@ -9,7 +9,7 @@
     max-width: 1280px;
     display: flex;
     flex-direction: column;
-  }
+    }
   .track.track-0 {
     will-change: left, right;
     background: rgba(116, 129, 255, 1);

@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import HeaderProfile from "../headerProfile/HeaderProfile";
 import HeaderShop from "../headerShop/headerShop";
 import Navigation from "../navigation/Navigation";
+import PageNavigation from "./pageNavigation/pageNavigation";
 import Icones from "../../../public/Data";
 import { useEffect, useState } from "react";
 import { ClientsInformation } from "@/lib/features/getClientsInfoSlice";
@@ -65,6 +66,7 @@ const Header = () => {
           {pathname === "/shop" && <HeaderShop />}
           {pathname === "/blog" && <HeaderShop />}
         </div>
+        <PageNavigation />
       </div>
     </header>
   );
