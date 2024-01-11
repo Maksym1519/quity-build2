@@ -91,7 +91,7 @@ if (titleFromArray !== null) {
             ))
           : blogArray !== null &&
             blogArray.map((item, index) => (
-              <div className={b.item} key={index}>
+              <div className={b.item} key={index} onClick={() => {clickTitleFromArray(item.attributes.blogTitle); clickDataToPostInfo(item)}}>
                 <Image
                   src={item.attributes.blogImage.data.attributes.url}
                   width={296}
