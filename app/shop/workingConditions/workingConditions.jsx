@@ -14,7 +14,7 @@ const WorkingConditions = () => {
               оплачиваете любым удобным способом
             </p>
             <div className={w.step__wrapper}>
-              <Image src={Icones.step1} width={62} height={62} />
+              <Image src={Icones.step1} width={62} height={62} alt="icon"/>
             </div>
           </div>
           <div className={w.column}>
@@ -24,7 +24,7 @@ const WorkingConditions = () => {
               оплаты. По предзаказу – <br /> до 10 дней доставка из Китая
             </p>
             <div className={w.step__wrapper}>
-              <Image src={Icones.step2} width={62} height={62} />
+              <Image src={Icones.step2} width={62} height={62} alt="icon"/>
             </div>
           </div>
           <div className={w.column + " " + w.columnRadius}>
@@ -34,7 +34,7 @@ const WorkingConditions = () => {
               или онлайн по видеосвязи
             </p>
             <div className={w.step__wrapper}>
-              <Image src={Icones.step3} width={62} height={62} />
+              <Image src={Icones.step3} width={62} height={62} alt="icon"/>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@ const WorkingConditions = () => {
               оплачиваете любым удобным способом
             </p>
             <div className={w.step__wrapper}>
-              <Image src={Icones.step4} width={62} height={62} />
+              <Image src={Icones.step4} width={62} height={62} alt="icon"/>
             </div>
           </div>
           <div className={w.column}>
@@ -59,8 +59,8 @@ const WorkingConditions = () => {
               оплаты. По предзаказу – <br /> до 10 дней доставка из Китая
             </p>
             <div className={w.step__wrapper}>
-              <Image src={Icones.step5} width={62} height={62} />
-              <Image src={Icones.workingHint} width={216} height={30} className={w.workingHint}/>
+              <Image src={Icones.step5} width={62} height={62} alt="icon"/>
+              <Image src={Icones.workingHint} width={216} height={30} className={w.workingHint} alt="icon"/>
              </div>
           </div>
           <div className={w.column + " " + w.columnRadius}>
@@ -70,7 +70,7 @@ const WorkingConditions = () => {
               или онлайн по видеосвязи
             </p>
             <div className={w.step__wrapper}>
-              <Image src={Icones.step6} width={62} height={62} />
+              <Image src={Icones.step6} width={62} height={62} alt="icon"/>
             </div>
           </div>
         </div>

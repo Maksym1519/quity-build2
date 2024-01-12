@@ -126,6 +126,7 @@ const Test = () => {
                   handlePrevButtonClick();
                   handleStateButtonFalse();
                 }}
+                alt="icon"
               />
               <div
                 className={t.button__wrapper}
@@ -155,6 +156,7 @@ const Test = () => {
               width={56}
               height={56}
               className={t.avatarManager__image}
+              alt="icon"
             />
             <div className={t.avatar__info}>
               <span className={t.avatarName}>Максим Поляков</span>

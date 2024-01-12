@@ -17,19 +17,17 @@ const HeaderShop = () => {
   //search-goods------------------------------------------------------------------
   const [findGoods, setFindGoods] = useState([]);
   const [inputValue, setInputValue] = useState(null);
-  console.log(inputValue);
   async function searchingGoods() {
     try {
       const response = await axios.get(
         "https://quitystrapi.onrender.com/api/catalog-items?populate=*"
       );
       const dataResponse = response.data.data;
-      console.log(dataResponse.map((item) => item.attributes.title));
+      // console.log(dataResponse.map((item) => item.attributes.title));
       const arrayMatchingGoods = dataResponse.filter((item) =>
         item.attributes.title.toLowerCase().includes(inputValue.toLowerCase())
       );
-      console.log(arrayMatchingGoods);
-    } catch (error) {
+      } catch (error) {
       console.error("fetching data is failed");
     }
   }
@@ -49,6 +47,7 @@ const handleSetFindingGoods = () => {
               width={101}
               height={31}
               className={hs.logo}
+              alt="logo"
             />
           </div>
           <div className={hs.miningEquipment}>
@@ -64,13 +63,13 @@ const handleSetFindingGoods = () => {
             Получите консультацию <br />в мессенджерах
           </span>
           <div className={hs.image__wrapper}>
-            <Image src={Icones.whatsUp} width={32} height={32} />
+            <Image src={Icones.whatsUp} width={32} height={32} alt="icon"/>
           </div>
           <div className={hs.image__wrapper}>
-            <Image src={Icones.viber} width={32} height={32} />
+            <Image src={Icones.viber} width={32} height={32} alt="icon"/>
           </div>
           <div className={hs.image__wrapper}>
-            <Image src={Icones.telegram} width={32} height={32} />
+            <Image src={Icones.telegram} width={32} height={32} alt="icon"/>
           </div>
         </div>
       </div>
@@ -98,16 +97,17 @@ const handleSetFindingGoods = () => {
             height={24}
             className={hs.searhIcon}
             onClick={() => {searchingGoods(); handleSetFindingGoods()}}
+            alt="icon"
           />
         </div>
         <div className={hs.flag}>
-          <Image src={Icones.flag} width={24} height={24} />
+          <Image src={Icones.flag} width={24} height={24} alt="icon"/>
         </div>
         <div className={hs.menu}>
-          <Image src={Icones.menu} width={24} height={24} />
+          <Image src={Icones.menu} width={24} height={24} alt="icon"/>
         </div>
         <div className={hs.bucket}>
-          <Image src={Icones.trolley} width={24} height={24} />
+          <Image src={Icones.trolley} width={24} height={24} alt="icon"/>
           <span className={hs.text}>
             В корзине
             <br /> нет товаров

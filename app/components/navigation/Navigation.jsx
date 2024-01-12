@@ -52,13 +52,13 @@ const Navigation = () => {
             <br />
             <div className="images__container">
               <div className="image__wrapper">
-                <Image src={Icones.whatsUp} width={32} height={32} />
+                <Image src={Icones.whatsUp} width={32} height={32} alt="icon"/>
               </div>
               <div className="image__wrapper">
-                <Image src={Icones.viber} width={32} height={32} />
+                <Image src={Icones.viber} width={32} height={32} alt="icon"/>
               </div>
               <div className="image__wrapper">
-                <Image src={Icones.telegram} width={32} height={32} />
+                <Image src={Icones.telegram} width={32} height={32} alt="icon"/>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@ const Navigation = () => {
       >
         <span className="burger__line"></span>
       </div>
-      <Image src={Icones.logo} width={101} height={31} className="mobileLogo" />
+      <Image src={Icones.logo} width={101} height={31} className="mobileLogo" alt="icon"/>
       <div className="siteNavigation">
         <Link href="#" style={{ textDecoration: 'none' }}>
           <span className={isActive ? "active" : "nonActive"}>Магазин</span>

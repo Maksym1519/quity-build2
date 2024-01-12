@@ -30,7 +30,7 @@ const LastBlockchainPosts = () => {
           {cryptoNewsArray.slice(0, 4).map((item, index) => (
             <div className={l.item} key={index}>
               <div className={l.category__wrapper}>
-                <Image src={Icones.dotIconBlog} width={4} height={4} />
+                <Image src={Icones.dotIconBlog} width={4} height={4} alt="dot"/>
                 <p className={l.category}>{item.attributes.blogBlockChainCategory}</p>
               </div>
               <h3 className={l.title}>{item.attributes.blogBlockChainTitle}</h3>

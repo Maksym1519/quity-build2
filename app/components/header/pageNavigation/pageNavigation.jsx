@@ -15,10 +15,13 @@ const PageNavigation = (props) => {
   const dataFromRedux = useAppSelector(pageNavigationInfo);
   useEffect(() => {
     if (dataFromServer && dataFromServer !== null) {
-        setTitle(dataFromServer.attributes.blogTitle);
-        }
-  },[dataFromServer])
-   
+      setTitle(
+        dataFromServer.attributes.blogTitle ||
+          dataFromServer.attributes.blogBlockChainTitle
+      );
+    }
+  }, [dataFromServer]);
+
   useEffect(() => {
     if (pageNavigationInfo) {
       setDataFromServer(dataFromRedux);
@@ -33,6 +36,9 @@ const PageNavigation = (props) => {
     case "/shop":
       pathname = "Главная";
       break;
+    case "/about":
+      pathname = "О компании";
+      break;
     default:
       break;
   }
@@ -46,14 +52,14 @@ const PageNavigation = (props) => {
     <div className={p.wrapper}>
       <div className={pathname === "Главная" ? p.pageItemActive : p.pageItem}>
         <Link href={"/shop"}>Главная</Link>
-        <Image src={Icones.arrowNavigation} width={12} height={12} />
+        <Image src={Icones.arrowNavigation} width={12} height={12} alt="arrow"/>
       </div>
       <div
         className={pathname === "Блог" ? p.pageItemActive : p.pageItem}
         onClick={clickAllBlogNews}
       >
         <Link href={"/blog"}>Quity-блог</Link>
-        <Image src={Icones.arrowNavigation} width={12} height={12} />
+        <Image src={Icones.arrowNavigation} width={12} height={12} alt="arrow"/>
       </div>
       <div className={pageNavigationInfo ? p.pageItemActive : p.pageItem}>
         {pathname === "Блог" && title}

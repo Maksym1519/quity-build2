@@ -19,7 +19,6 @@ import { useAppSelector } from "@/lib/hooks";
 const Header = () => {
   const [avatarImage,setAvatarImage] = useState()
   const [clientName, setClientName] = useState()
-  console.log(clientName)
   const clientAvatar = useAppSelector(selectClientsInfo)
   const clientUserName = useAppSelector(selectClientsName)
    useEffect(() => {
@@ -65,6 +64,7 @@ const Header = () => {
           {pathname === "/profile" && <HeaderProfile />}
           {pathname === "/shop" && <HeaderShop />}
           {pathname === "/blog" && <HeaderShop />}
+          {pathname === "/about" && <HeaderShop />}
         </div>
         <PageNavigation />
       </div>

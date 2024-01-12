@@ -238,7 +238,7 @@ const Catalog = () => {
         {currentComponent === "findingCatalog" && (
            <div className={c.outcome__wrapper}>
             <div className={c.back__wrapper} onClick={handleAsicCatalog}>
-           <Image src={SliderImages.prev} width={40} height={40}/>
+           <Image src={SliderImages.prev} width={40} height={40} alt="icon"/>
               <span>назад</span>
             </div>
             <h3 className={c.serchResultTitle}>
@@ -260,6 +260,7 @@ const Catalog = () => {
                       width={182}
                       height={168}
                       className={c.minerImage}
+                      alt="icon"
                     />
                   </div>
                   <div className={c.description}>
@@ -325,6 +326,7 @@ const Catalog = () => {
                         width={182}
                         height={168}
                         className={c.minerImage}
+                        alt="icon"
                       />
                     </div>
                     <div className={c.description}>
@@ -374,6 +376,7 @@ const Catalog = () => {
                         width={182}
                         height={168}
                         className={c.minerImage}
+                        alt="icon"
                       />
                     </div>
                     <div className={c.description}>
@@ -441,6 +444,7 @@ const Catalog = () => {
                         width={182}
                         height={168}
                         className={c.minerImage}
+                        alt="icon"
                       />
                     </div>
                     <div className={c.description}>
@@ -490,6 +494,7 @@ const Catalog = () => {
                         width={182}
                         height={168}
                         className={c.minerImage}
+                        alt="icon"
                       />
                     </div>
                     <div className={c.description}>
@@ -557,6 +562,7 @@ const Catalog = () => {
                         width={182}
                         height={168}
                         className={c.minerImage}
+                        alt="icon"
                       />
                     </div>
                     <div className={c.description}>
@@ -606,6 +612,7 @@ const Catalog = () => {
                         width={182}
                         height={168}
                         className={c.minerImage}
+                        alt="icon"
                       />
                     </div>
                     <div className={c.description}>

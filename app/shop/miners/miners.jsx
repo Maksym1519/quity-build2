@@ -13,6 +13,7 @@ const Miners = () => {
             className={m.minerAsicImage}
             width={870}
             height={480}
+            alt="icon"
           />
           <div className={m.description}>
             <h3 className={m.title}>
@@ -39,6 +40,7 @@ const Miners = () => {
               width={378}
               height={100}
               className={m.promoMiner + " " + m.c}
+              alt="icon"
             />
             <button className={m.promoMiner__button}></button>
           </div>
@@ -48,6 +50,7 @@ const Miners = () => {
               width={378}
               height={100}
               className={m.promoMiner + " " + m.promoMiner2}
+              alt="icon"
             />
             <button className={m.promoMiner__button}></button>
           </div>
@@ -56,19 +59,19 @@ const Miners = () => {
       <div className={m.miners__terms}>
         <div className={m.miners__terms__body}>
           <div className={m.item}>
-            <Image src={ShopMinersIcones.sertificate} width={48} height={48}/>
+            <Image src={ShopMinersIcones.sertificate} width={48} height={48} alt="icon"/>
             <span className={m.text}>Сертификаты <br/>от производителя</span>
           </div>
           <div className={m.item}>
-            <Image src={ShopMinersIcones.custom} width={48} height={48}/>
+            <Image src={ShopMinersIcones.custom} width={48} height={48} alt="icon"/>
             <span className={m.text}>Легальный ввоз <br/>через таможню</span>
           </div>
           <div className={m.item}>
-            <Image src={ShopMinersIcones.coins} width={48} height={48}/>
+            <Image src={ShopMinersIcones.coins} width={48} height={48} alt="icon"/>
             <span className={m.text}>5 способов оплаты.<br/>Даже криптовалютой</span>
           </div>
           <div className={m.item}>
-            <Image src={ShopMinersIcones.checkingLike} width={48} height={48}/>
+            <Image src={ShopMinersIcones.checkingLike} width={48} height={48} alt="icon"/>
             <span className={m.text}>Предпродажная проверка <br/>перед отправкой и в офисе</span>
           </div>
         </div>

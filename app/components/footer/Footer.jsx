@@ -46,9 +46,9 @@ const Footer = () => {
               <span className={f.text}>order@gmail.com</span>
             </div>
             <div className={f.socialMedia}>
-              <Image src={Icones.footerWhatsUp} width={40} height={40} />
-              <Image src={Icones.footerViber} width={40} height={40} />
-              <Image src={Icones.footerTelegram} width={40} height={40} />
+              <Image src={Icones.footerWhatsUp} width={40} height={40} alt="icon"/>
+              <Image src={Icones.footerViber} width={40} height={40} alt="icon"/>
+              <Image src={Icones.footerTelegram} width={40} height={40} alt="icon"/>
             </div>
           </div>
           <div className={f.adresses}>
@@ -85,12 +85,12 @@ const Footer = () => {
             <div className={f.column}>
               <span className={f.text}>Офис в Киеве:</span>
               <div className={f.line}>
-                <Image src={Icones.location} width={16} height={16} />
+                <Image src={Icones.location} width={16} height={16} alt="icon"/>
                 <span className={f.text}>ул. Вивальди, д. 307</span>
               </div>
               <span className={f.text}>Офис в Виннице:</span>
               <div className={f.line}>
-                <Image src={Icones.location} width={16} height={16} />
+                <Image src={Icones.location} width={16} height={16} alt="icon"/>
                 <span className={f.text}>ул. Вивальди, д. 307</span>
               </div>
             </div>
@@ -110,6 +110,7 @@ const Footer = () => {
                         src={currencyLogos[index]}
                         width={24}
                         height={24}
+                        alt="icon"
                       />
                       <span className={f.currency__abbr}>{crypto.symbol}</span>
                       <span className={f.currency__fullName}>

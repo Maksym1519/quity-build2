@@ -101,6 +101,7 @@ const Slider = () => {
                 width={264}
                 height={380}
                 className={s.chatImg}
+                alt="icon"
               />
             </div>
           </swiper-slide>
@@ -156,6 +157,7 @@ const Slider = () => {
                 width={264}
                 height={380}
                 className={s.chatImg}
+                alt="icon"
               />
             </div>
           </swiper-slide>
@@ -165,12 +167,14 @@ const Slider = () => {
           width={36}
           height={36}
           className={s.next}
+          alt="icon"
         />
         <Image
           src={SliderImages.prev}
           width={36}
           height={36}
           className={s.prev}
+          alt="icon"
         />
       </div>
     </div>

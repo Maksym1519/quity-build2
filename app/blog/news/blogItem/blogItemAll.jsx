@@ -69,9 +69,10 @@ if (titleFromArray !== null) {
                   width={296}
                   height={220}
                   className={b.blogItemImage}
+                  alt="image"
                 />
                 <div className={b.category__wrapper}>
-                  <Image src={Icones.dotIconBlog} width={4} height={4} />
+                  <Image src={Icones.dotIconBlog} width={4} height={4} alt="dot"/>
                   <p className={b.category}>{item.attributes.blogCategory}</p>
                 </div>
                 <h3 className={b.title}>{item.attributes.blogTitle}</h3>

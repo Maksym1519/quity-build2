@@ -12,7 +12,7 @@ export default function Home() {
         <div className={p.registrationForm__body}>
           <Registration />
         </div>
-      </div>
+       </div>
     </>
   );
 }

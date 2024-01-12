@@ -17,7 +17,7 @@ const Services = () => {
         <div className={s.items__wrapper}>
           {/* //item1--------------------------------------------------------------------------- */}
           <div className={s.item}>
-            <Image src={shopServicesIcones.catalog} width={88} height={88} />
+            <Image src={shopServicesIcones.catalog} width={88} height={88} alt="icon"/>
             <div className={s.text__wrapper}>
               <h4 className={s.itemTitle}>Более 120 моделей в каталоге</h4>
               <p className={s.text}>
@@ -28,7 +28,7 @@ const Services = () => {
           </div>
           {/* //item2--------------------------------------------------------------------------- */}
           <div className={s.item}>
-            <Image src={shopServicesIcones.payment} width={88} height={88} />
+            <Image src={shopServicesIcones.payment} width={88} height={88} alt="icon"/>
             <div className={s.text__wrapper}>
               <h4 className={s.itemTitle}>5 удобных способов оплаты </h4>
               <p className={s.text}>
@@ -39,7 +39,7 @@ const Services = () => {
           </div>
           {/* //item3--------------------------------------------------------------------------- */}
           <div className={s.item}>
-            <Image src={shopServicesIcones.garantee} width={88} height={88} />
+            <Image src={shopServicesIcones.garantee} width={88} height={88} alt="icon"/>
             <div className={s.text__wrapper}>
               <h4 className={s.itemTitle}>
                 Гарантия 6 месяцев и полная документация
@@ -52,7 +52,7 @@ const Services = () => {
           </div>
           {/* //item4--------------------------------------------------------------------------- */}
           <div className={s.item}>
-            <Image src={shopServicesIcones.delivery} width={88} height={88} />
+            <Image src={shopServicesIcones.delivery} width={88} height={88} alt="icon"/>
             <div className={s.text__wrapper}>
               <h4 className={s.itemTitle}>Доставка по всей УКРАИНЕ до 10 дней</h4>
               <p className={s.text}>
@@ -62,7 +62,7 @@ const Services = () => {
           </div>
           {/* //item5--------------------------------------------------------------------------- */}
           <div className={s.item}>
-            <Image src={shopServicesIcones.delivery} width={88} height={88} />
+            <Image src={shopServicesIcones.delivery} width={88} height={88} alt="icon"/>
             <div className={s.text__wrapper}>
               <h4 className={s.itemTitle}>Проверка оборудования</h4>
               <p className={s.text}>
@@ -73,7 +73,7 @@ const Services = () => {
           {/* //item6--------------------------------------------------------------------------- */}
           <div className={s.catalogButton}>
           Перейти в каталог
-          <Image src={ShopCatalogIcones.arrow} width={48} height={48}/>
+          <Image src={ShopCatalogIcones.arrow} width={48} height={48} alt="icon"/>
           </div>
         </div>
       </div>

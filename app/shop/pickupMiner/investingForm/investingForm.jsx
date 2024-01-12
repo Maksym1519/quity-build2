@@ -36,9 +36,9 @@ const InvestingForm = () => {
                  <div className={i.socialMedia__wrapper}>
                  <h4 className={i.title__contacts}>Куда Вам выслать расчет?</h4>
                  <div className={i.socialMedia__body}>
-                   <Image src={Icones.whatsUp} width={40} height={40} className={i.icon}/>
-                   <Image src={Icones.viber} width={40} height={40} className={i.icon}/>
-                   <Image src={Icones.telegram} width={40} height={40} className={i.icon}/>
+                   <Image src={Icones.whatsUp} width={40} height={40} className={i.icon} alt="icon"/>
+                   <Image src={Icones.viber} width={40} height={40} className={i.icon} alt="icon"/>
+                   <Image src={Icones.telegram} width={40} height={40} className={i.icon} alt="icon"/>
                  </div>
                  </div>
                 </div>
@@ -46,9 +46,9 @@ const InvestingForm = () => {
                 <div className={i.messengers__wrapper}>
                     <p className={i.text}>Или пишите - подберем Вам оборудование в мессенджере</p>
                     <div className={i.icones__wrapper}>
-                        <Image src={Icones.blackWhatsup} width={32} height={32} className={i.icon}/>
-                        <Image src={Icones.blackViber} width={32} height={32} className={i.icon}/>
-                        <Image src={Icones.blackTelegram} width={32} height={32} className={i.icon}/>
+                        <Image src={Icones.blackWhatsup} width={32} height={32} className={i.icon} alt="icon"/>
+                        <Image src={Icones.blackViber} width={32} height={32} className={i.icon} alt="icon"/>
+                        <Image src={Icones.blackTelegram} width={32} height={32} className={i.icon} alt="icon"/>
                     </div>
                 </div>
            </div>

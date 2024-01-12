@@ -4,12 +4,15 @@
     max-width: 100%;
     min-height: 100%;
     margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
     }
     .news__body {
         width: 100%;
         display: grid;
         grid-template-columns: auto auto;
         column-gap: 32px;
+        margin-bottom: 120px;
     }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -23,6 +26,7 @@
             display: grid;
             grid-template-columns: auto auto;
             column-gap: 32px;
+            margin-bottom: 80px;
         }
 }
 @media (max-width: 768px) {
@@ -36,5 +40,6 @@
             display: grid;
             grid-template-columns: auto;
             column-gap: 0px;
+            margin-bottom: 60px;
         }
 }

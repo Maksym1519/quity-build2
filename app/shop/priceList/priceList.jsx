@@ -21,14 +21,14 @@ const PriceList = () => {
           <div className={p.bonuses}>
             <h3 className={p.bonuses__title}>+ получите бонусы</h3>
             <div className={p.line__wrapper}>
-              <Image src={ShopImagesBG.payback} width={64} height={64} />
+              <Image src={ShopImagesBG.payback} width={64} height={64} alt="icon"/>
               <p className={p.counter__text}>
                 Чек-лист «5 способов заработка на майнинге кроме добычи
                 криптовалюты»
               </p>
             </div>
             <div className={p.line__wrapper}>
-              <Image src={ShopImagesBG.payback} width={64} height={64} />
+              <Image src={ShopImagesBG.payback} width={64} height={64} alt="icon"/>
               <p className={p.counter__text}>
                 Расчет стоимости и окупаемости ASIC-майнеров{" "}
               </p>
@@ -38,6 +38,7 @@ const PriceList = () => {
               width={41}
               height={64}
               className={p.bonusArrow}
+              alt="icon"
             />
           </div>
         </div>
@@ -52,9 +53,9 @@ const PriceList = () => {
               <div className={p.socialMedia__wrapper}>
                  <h4 className={p.title__contacts}>Куда Вам выслать расчет?</h4>
                  <div className={p.socialMedia__body}>
-                   <Image src={Icones.whatsUp} width={40} height={40} className={p.icon}/>
-                   <Image src={Icones.viber} width={40} height={40} className={p.icon}/>
-                   <Image src={Icones.telegram} width={40} height={40} className={p.icon}/>
+                   <Image src={Icones.whatsUp} width={40} height={40} className={p.icon} alt="icon"/>
+                   <Image src={Icones.viber} width={40} height={40} className={p.icon} alt="icon"/>
+                   <Image src={Icones.telegram} width={40} height={40} className={p.icon} alt="icon"/>
                  </div>
                  </div>
                  <div className={p.phones__wrapper}>
@@ -73,9 +74,9 @@ const PriceList = () => {
                  <div className={p.icones__wrapper}>
                     <p className={p.text}>Или пишите - подберем Вам оборудование в мессенджере</p>
                     <div className={p.icones__body}>
-                        <Image src={Icones.blackWhatsup} width={32} height={32} className={p.icon}/>
-                        <Image src={Icones.blackViber} width={32} height={32} className={p.icon}/>
-                        <Image src={Icones.blackTelegram} width={32} height={32} className={p.icon}/>
+                        <Image src={Icones.blackWhatsup} width={32} height={32} className={p.icon} alt="icon"/>
+                        <Image src={Icones.blackViber} width={32} height={32} className={p.icon} alt="icon"/>
+                        <Image src={Icones.blackTelegram} width={32} height={32} className={p.icon} alt="icon"/>
                     </div>
                 </div>
           </div>

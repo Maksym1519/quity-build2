@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Icones from "@/public/Data";
 import Image from "next/image";
 
-const PostDetail = () => {
+const PostBlockChainDetail = () => {
   const currentDate = new Date();
   const options = {
     day: "numeric",
@@ -38,7 +38,7 @@ const PostDetail = () => {
       setCategory(dataFromServer.attributes.blogCategory);
       setTimeToRead(dataFromServer.attributes.timeToRead);
       setTitle(dataFromServer.attributes.blogTitle);
-      setImage(dataFromServer.attributes.blogImage.data.attributes.url);
+      setImage(dataFromServer.attributes.blogBlockChainImage.data.attributes.url);
       setTextTitleH2(dataFromServer.attributes.h2);
       setTextTitleH3(dataFromServer.attributes.h3);
       setMainText(dataFromServer.attributes.text1);
@@ -61,7 +61,7 @@ const PostDetail = () => {
               <span className={p.category}>{category}</span>
             </div>
             <div className={p.item}>
-              <Image src={Icones.timeIconBlog} width={16} height={16} alt="dot"/>
+              <Image src={Icones.timeIconBlog} width={16} height={16} alt="time"/>
               <span className={p.timeToRead}>{timeToRead}</span>
             </div>
           </div>
@@ -95,4 +95,4 @@ const PostDetail = () => {
     </div>
   );
 };
-export default PostDetail;
+export default PostBlockChainDetail;
