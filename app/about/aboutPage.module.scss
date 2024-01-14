@@ -1,30 +1,96 @@
 @media (min-width: 1025px) {
-    .wrapper {
-        width: 100%;
-        max-width: 100%;
-        margin-top: 48px;
-        padding-bottom: 120px;
+  .wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 48px;
+    padding: 0px 80px 120px 80px;
+  }
+  .about__body {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    & .fixedNavigationContainer {
+      width: 100%;
+      max-width: 296px;
+      position: fixed;
+      top: 272px;
+      left: auto;
     }
-    .about__body {
-        width: 100%;
-        display: grid;
-        grid-template-columns: minmax(auto,295px) auto;
-        column-gap: 114px;
+    & .content {
+      max-width: 870px;
+      flex-grow: 1;
     }
+    .fixed {
+      position: fixed;
+      top: 272px;
+      left: auto;
+    }
+
+    .absolute {
+      position: absolute;
+      top: 100%; 
+    }
+  }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-    .wrapper {
-        width: 100%;
-        max-width: 100%;
-        margin-top: 48px;
-        padding-bottom: 80px;
+  .wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 32px;
+    padding: 0px 0px 80px 0px;
+  }
+  .about__body {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    & .fixedNavigationContainer {
+      width: 100%;
+      max-width: 200px;
+      position: fixed;
+      top: 312px;
+      left: auto;
     }
+    .fixed {
+        position: fixed;
+        top: 312px;
+        left: auto;
+      }
+  
+      .absolute {
+        position: absolute;
+        top: 100%; 
+      }
+    & .content {
+      max-width: 870px;
+      flex-grow: 1;
+    }
+  }
 }
 @media (max-width: 768px) {
-    .wrapper {
+  .wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 32px;
+    padding: 0px 0px 60px 0px;
+  }
+  .about__body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 48px;
+    & .fixedNavigationContainer {
         width: 100%;
         max-width: 100%;
-        margin-top: 48px;
-        padding-bottom: 80px;
-    }
+        position: relative;
+        top: 0;
+        }
+    .fixed {
+        position: relative;
+        top: 0;
+      }
+  
+      .absolute {
+        position: relative;
+        }
+  }
 }

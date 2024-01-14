@@ -31,22 +31,22 @@ const PersonalData = () => {
     }));
   };
   //change-avatar------------------------------------------------
-  const [avatarPreview, setAvatarPreview] = useState(null)
+  const [avatarPreview, setAvatarPreview] = useState(null);
   const handleChangeAvatar = (e) => {
-      if (e.target.files) {
-        const file = e.target.files[0]
-        setAvatarPreview(URL.createObjectURL(file))
-      }
-  }
+    if (e.target.files) {
+      const file = e.target.files[0];
+      setAvatarPreview(URL.createObjectURL(file));
+    }
+  };
   //post-profile-data--------------------------------------------
-  const [avatar,setAvatar] = useState()
+  const [avatar, setAvatar] = useState();
   const [formData, setFormData] = useState({
     fullName: null,
     birthday: null,
     email: null,
     phone: null,
     address: null,
-    avatar: null
+    avatar: null,
   });
   console.log(formData);
   const handleChange = (e) => {
@@ -55,11 +55,14 @@ const PersonalData = () => {
   };
   async function postProfileData(e) {
     e.preventDefault();
-      try {
+    try {
       const avatarDataServer = new FormData();
-      avatarDataServer.append("files",avatar[0]);
-      const responseAvatar = await axios.post("https://quitystrapi.onrender.com/api/upload",avatarDataServer);
-      const imageAvatar = responseAvatar.data[0].id
+      avatarDataServer.append("files", avatar[0]);
+      const responseAvatar = await axios.post(
+        "https://quitystrapi.onrender.com/api/upload",
+        avatarDataServer
+      );
+      const imageAvatar = responseAvatar.data[0].id;
       const requestData = {
         data: {
           fullName: formData.fullName,
@@ -67,7 +70,7 @@ const PersonalData = () => {
           email: formData.email,
           phone: formData.phone,
           address: formData.address,
-          avatar: imageAvatar
+          avatar: imageAvatar,
         },
       };
       const response = await axios.post(
@@ -75,7 +78,7 @@ const PersonalData = () => {
         requestData
       );
       if (response.status === 200) {
-        alert("Данные успешно сохранены !")
+        alert("Данные успешно сохранены !");
       }
     } catch (error) {
       console.error("post-profile-data is failed");
@@ -106,26 +109,42 @@ const PersonalData = () => {
   const getRegistrationInfo = () => {
     dispatchRegistration(setRegistrationInfo(matchingId));
   };
-  getRegistrationInfo();
+  useEffect(() => {
+    if (matchingId && matchingId !== null) getRegistrationInfo();
+  }, [matchingId]);
+
   return (
     <div className={pd.wrapper}>
       <form className={pd.form} onSubmit={postProfileData}>
         <div className={pd.personalData}>
           <h3 className={pd.title}>Персональные данные</h3>
-            {/* //avatar-------------------------------------------------------------------- */}
-            <div className={pd.avatar__wrapper}>
+          {/* //avatar-------------------------------------------------------------------- */}
+          <div className={pd.avatar__wrapper}>
             <div className={pd.avatarInputWrapper}>
               <input
                 type="file"
                 name="avatar"
                 value={formData.avatar}
-                onChange={(e) => {setAvatar(e.target.files);handleChangeAvatar(e)}}
+                onChange={(e) => {
+                  setAvatar(e.target.files);
+                  handleChangeAvatar(e);
+                }}
                 placeholder="Фото"
               />
-              <Image src={Icones.avaEmpty} width={40} height={40} className={pd.avaImage}/>
-              {avatarPreview && 
-              <Image src={avatarPreview} width={50} height={50} className={pd.avaPreview}/>
-              }
+              <Image
+                src={Icones.avaEmpty}
+                width={40}
+                height={40}
+                className={pd.avaImage}
+              />
+              {avatarPreview && (
+                <Image
+                  src={avatarPreview}
+                  width={50}
+                  height={50}
+                  className={pd.avaPreview}
+                />
+              )}
             </div>
             <div className={pd.choosePhotoText}>Выбрать фото</div>
           </div>
@@ -189,7 +208,7 @@ const PersonalData = () => {
               placeholder="Телефон"
             />
           </div>
-        
+
           <button type="submit" className={pd.saveButton}>
             Сохранить изменения
           </button>

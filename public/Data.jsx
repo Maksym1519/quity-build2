@@ -62,7 +62,9 @@ export const SliderImages = {
 export const BlogImages = {
     telegramLogo: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704823265/telegram_2_1_2_44fa3bf612.svg",
     telegramButtonBG: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704820468/Vector_895ffef68d.png",
-    telegramButtonBGblue: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704822605/Vector_b80bb0b3b2.svg"
+    telegramButtonBGblue: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704822605/Vector_b80bb0b3b2.svg",
+    telegramLogoAbout: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705151056/telegram_Logo_About_b340aec55c.svg",
+    telegramBlueAbout: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705151081/telegram_Blue_7eb456a96e.svg"
 }
 const Icones = {
     logo: "https://res.cloudinary.com/duk3bewdr/image/upload/v1702043343/main_logo_70800f94b6.svg",
@@ -114,6 +116,14 @@ export const currencyLogos = ["https://res.cloudinary.com/duk3bewdr/image/upload
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231063/XRP_7f686942dd.svg",
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231087/Ethereum_logo_2014_1_a4ec23c0e2.svg",
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702230952/BTC_Logo_1_536dfd5352.svg"
+]
+export const reasonesIcones = [
+    "https://res.cloudinary.com/duk3bewdr/image/upload/v1705082217/catalog_a1193d1dd3.svg",
+    "https://res.cloudinary.com/duk3bewdr/image/upload/v1705082238/hosting_8bc69bdb55.svg",
+    "https://res.cloudinary.com/duk3bewdr/image/upload/v1705082268/hosting_58f7fa164f.svg",
+    "https://res.cloudinary.com/duk3bewdr/image/upload/v1705082293/garantee_06f9bcacf0.svg",
+    "https://res.cloudinary.com/duk3bewdr/image/upload/v1705082312/power_67215d4ad4.svg",
+    "https://res.cloudinary.com/duk3bewdr/image/upload/v1705082328/power_d61c0d81bd.svg"
 ]
 
 export default Icones;

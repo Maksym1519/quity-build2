@@ -3,6 +3,9 @@ import a from "./about.module.scss";
 import { AboutData } from "@/lib/features/about/aboutSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { aboutInfo } from "@/lib/features/about/aboutSlice";
+import Reasones from "./reasons";
+import AboutManager from "./aboutManager";
+import SignInTelegram from "./signInTelegram";
 
 const About = () => {
   //get-data-from-redux---------------------------------
@@ -12,18 +15,21 @@ const About = () => {
   const [mainText2, setMainText2] = useState();
   const [mainText3, setMainText3] = useState();
   const [mainText4, setMainText4] = useState();
+  const [quoteText, setQuoteText] = useState();
+  const [author, setAuthor] =useState()
   const dataFromRedux = useAppSelector(aboutInfo);
   useEffect(() => {
     setDataFromServer(dataFromRedux);
   }, [dataFromRedux]);
-  console.log(dataFromServer);
-  useEffect(() => {
+   useEffect(() => {
     if (dataFromServer && dataFromServer !== null) {
       setMainTitle(dataFromServer[0].attributes.mainTitle);
       setMainText1(dataFromServer[0].attributes.mainText1);
       setMainText2(dataFromServer[0].attributes.mainText2);
       setMainText3(dataFromServer[0].attributes.mainText3);
       setMainText4(dataFromServer[0].attributes.mainText4);
+      setQuoteText(dataFromServer[0].attributes.quoteText);
+      setAuthor(dataFromServer[0].attributes.author)
     }
   }, dataFromServer);
 
@@ -39,8 +45,12 @@ const About = () => {
           <p className={a.mainText}>{mainText4}</p>
          </div>
          <div className={a.quote__wrapper}>
-         <span className={a.authorName}></span>
+          <p className={a.quoteText}>{quoteText}</p>
+         <span className={a.authorName}>{author}</span>
          </div>
+         <Reasones />
+         <AboutManager />
+         <SignInTelegram />
       </div>
     </div>
   );
