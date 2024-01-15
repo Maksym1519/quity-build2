@@ -6,6 +6,8 @@ import {
   setAbout,
   setRequisite,
   setContacts,
+  setPublicOffer,
+  setAgreement
 } from "@/lib/features/about/aboutSlice";
 import { aboutInfo } from "@/lib/features/about/aboutSlice";
 
@@ -27,6 +29,12 @@ const AboutNavigation = () => {
   const clickContactsState = () => {
     dispatch(setContacts());
   };
+  const clickPublicOfferState = () => {
+    dispatch(setPublicOffer());
+  };
+  const clickAgreementState = () => {
+    dispatch(setAgreement());
+  };
   //set-check-data-from-redux-----------------------------
   //устанавливаем проверку есть ли данные для отображения контента
   const [dataFromServer, setDataFromServer] = useState(false);
@@ -38,8 +46,7 @@ const AboutNavigation = () => {
   
   return (
     <div className={a.wrapper}>
-      {dataFromServer && (
-        <div className={a.aboutNavigation__body}>
+         <div className={a.aboutNavigation__body}>
           <div
             className={activeIndex === 0 ? a.itemActive : a.item}
             onClick={() => {
@@ -62,26 +69,25 @@ const AboutNavigation = () => {
             className={activeIndex === 2 ? a.itemActive : a.item}
             onClick={() => {
               clickActiveIndex(2);
-              setContacts();
+              clickContactsState();
             }}
           >
             Контакты
           </div>
           <div
             className={activeIndex === 3 ? a.itemActive : a.item}
-            onClick={() => clickActiveIndex(3)}
+            onClick={() => {clickActiveIndex(3);clickPublicOfferState()}}
           >
             Публичная оферта
           </div>
           <div
             className={activeIndex === 4 ? a.itemActive : a.item}
-            onClick={() => clickActiveIndex(4)}
+            onClick={() => {clickActiveIndex(4);clickAgreementState()}}
           >
             Пользовательское соглашение
           </div>
         </div>
-      )}
-    </div>
+      </div>
   );
 };
 export default AboutNavigation;

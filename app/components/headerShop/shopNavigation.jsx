@@ -27,10 +27,10 @@ const ShopNavigation = () => {
             Оплата
           </div>
         </Link>
-        <Link href="#" style={{ textDecoration: 'none' }}>
+        <Link href="/return" style={{ textDecoration: 'none' }}>
           <div
             className={
-              pathname === "/profile" ? sn.profileActive : sn.profileNonactive
+              pathname === "/return" ? sn.profileActive : sn.profileNonactive
             }
           >
             Возврат

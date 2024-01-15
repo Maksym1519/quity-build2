@@ -65,6 +65,7 @@ const Header = () => {
           {pathname === "/shop" && <HeaderShop />}
           {pathname === "/blog" && <HeaderShop />}
           {pathname === "/about" && <HeaderShop />}
+          {pathname === "/return" && <HeaderShop />}
         </div>
         <PageNavigation />
       </div>
