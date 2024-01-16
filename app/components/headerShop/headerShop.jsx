@@ -3,11 +3,13 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Pathname } from "react-router-dom";
 //components----------------------------------------------------------------
 import ShopNavigation from "./shopNavigation";
 import Icones from "@/public/Data";
 import { useAppDispatch } from "@/lib/hooks";
 import { setFindingGoods } from "@/lib/features/searchGoodsSlice";
+import { usePathname } from "next/navigation";
 
 const HeaderShop = () => {
   const [catalogMenu, setCatalogMenu] = useState(false);
@@ -27,16 +29,17 @@ const HeaderShop = () => {
       const arrayMatchingGoods = dataResponse.filter((item) =>
         item.attributes.title.toLowerCase().includes(inputValue.toLowerCase())
       );
-      } catch (error) {
+    } catch (error) {
       console.error("fetching data is failed");
     }
   }
-//set-redux-data--------------------------------------------------------------
-const dispatch = useAppDispatch()
-const handleSetFindingGoods = () => {
-  dispatch(setFindingGoods(inputValue))
-}
-
+  //set-redux-data--------------------------------------------------------------
+  const dispatch = useAppDispatch();
+  const handleSetFindingGoods = () => {
+    dispatch(setFindingGoods(inputValue));
+  };
+  //pathname-change-catalog-button----------------------------
+  const pathname = usePathname();
   return (
     <div className={hs.headerShop__column}>
       <div className={hs.headerShop__wrapper}>
@@ -51,7 +54,7 @@ const handleSetFindingGoods = () => {
             />
           </div>
           <div className={hs.miningEquipment}>
-            <Link href="#"  style={{ textDecoration: 'none' }}>
+            <Link href="#" style={{ textDecoration: "none" }}>
               Оборудование
               <br /> для майнинга
             </Link>
@@ -63,51 +66,67 @@ const handleSetFindingGoods = () => {
             Получите консультацию <br />в мессенджерах
           </span>
           <div className={hs.image__wrapper}>
-            <Image src={Icones.whatsUp} width={32} height={32} alt="icon"/>
+            <Image src={Icones.whatsUp} width={32} height={32} alt="icon" />
           </div>
           <div className={hs.image__wrapper}>
-            <Image src={Icones.viber} width={32} height={32} alt="icon"/>
+            <Image src={Icones.viber} width={32} height={32} alt="icon" />
           </div>
           <div className={hs.image__wrapper}>
-            <Image src={Icones.telegram} width={32} height={32} alt="icon"/>
+            <Image src={Icones.telegram} width={32} height={32} alt="icon" />
           </div>
         </div>
       </div>
       <div className={hs.sorting__wrapper}>
-        <div className={hs.catalog}>
-          <div
-            className={catalogMenu ? hs.burgerClose : hs.burger}
-            onClick={toggleCatalogMenu}
-          >
-            <span className={hs.burger__line}></span>
+        {pathname === "/catalog" ? (
+          <div className={hs.catalogActive}>
+            <div
+              className={catalogMenu ? hs.burgerClose : hs.burger}
+              onClick={toggleCatalogMenu}
+            >
+              <span className={hs.burger__line}></span>
+            </div>
+            <span className={hs.text}>Каталог оборудования</span>
           </div>
-          <span className={hs.text}>Каталог оборудования</span>
-        </div>
+        ) : (
+          <div className={hs.catalog}>
+            <div
+              className={catalogMenu ? hs.burgerClose : hs.burger}
+              onClick={toggleCatalogMenu}
+            >
+              <span className={hs.burger__line}></span>
+            </div>
+            <span className={hs.text}>Каталог оборудования</span>
+          </div>
+        )}
+
         <div className={hs.search__wrapper}>
           <input
             type="text"
             placeholder="Поиск по товарам или категориям...."
             className={hs.searchInput}
             onChange={(e) => setInputValue(e.target.value)}
-            style={{ border: 'none' }}
+            style={{ border: "none" }}
           />
           <Image
             src={Icones.search}
             width={24}
             height={24}
             className={hs.searhIcon}
-            onClick={() => {searchingGoods(); handleSetFindingGoods()}}
+            onClick={() => {
+              searchingGoods();
+              handleSetFindingGoods();
+            }}
             alt="icon"
           />
         </div>
         <div className={hs.flag}>
-          <Image src={Icones.flag} width={24} height={24} alt="icon"/>
+          <Image src={Icones.flag} width={24} height={24} alt="icon" />
         </div>
         <div className={hs.menu}>
-          <Image src={Icones.menu} width={24} height={24} alt="icon"/>
+          <Image src={Icones.menu} width={24} height={24} alt="icon" />
         </div>
         <div className={hs.bucket}>
-          <Image src={Icones.trolley} width={24} height={24} alt="icon"/>
+          <Image src={Icones.trolley} width={24} height={24} alt="icon" />
           <span className={hs.text}>
             В корзине
             <br /> нет товаров
