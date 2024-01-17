@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useAppSelector } from "@/lib/hooks";
 import { spareInfo } from "@/lib/features/shopCatalogSlice";
 import { SpareData } from "@/lib/features/shopCatalogSlice";
+import ProfitLink from '../profitLink/profitLink';
 
 
 const Spare = () => {
@@ -152,6 +153,7 @@ const commonArray = [popularitySpareArray,cheapSpareArray,costSpareArray,spareIn
                 </span>
               </div>
             ))}
+            {spareInfoServer && <ProfitLink />}
         </div>
       </div>
     )

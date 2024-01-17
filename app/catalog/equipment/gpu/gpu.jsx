@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useAppSelector } from "@/lib/hooks";
 import { gpuInfo } from "@/lib/features/shopCatalogSlice";
 import { GpuData } from "@/lib/features/shopCatalogSlice";
-
+import ProfitLink from '../profitLink/profitLink';
 
 const Gpu = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -152,6 +152,7 @@ const commonArray = [popularityGpuArray,cheapGpuArray,costGpuArray,gpuInfoServer
                 </span>
               </div>
             ))}
+           {gpuInfoServer && <ProfitLink />} 
         </div>
       </div>
     )

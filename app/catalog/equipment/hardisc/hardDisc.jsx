@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useAppSelector } from "@/lib/hooks";
 import { hardDiscInfo } from "@/lib/features/shopCatalogSlice";
 import { HardDiscData } from "@/lib/features/shopCatalogSlice";
+import ProfitLink from "../profitLink/profitLink";
 
 const HardDisc = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -157,6 +158,7 @@ const HardDisc = () => {
               </span>
             </div>
           ))}
+          {hardDiscInfoServer && <ProfitLink />}
       </div>
     </div>
   );

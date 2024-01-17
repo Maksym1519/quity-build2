@@ -1,0 +1,116 @@
+@media (min-width: 1025px) {
+  .filters__wrapper {
+    width: 100%;
+    max-width: 296px;
+    border-radius: 24px;
+    background: var(--f-4-f-5-f-6, #f4f5f6);
+    padding: 16px 24px;
+    & .filters__body {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  //-----------------------------------------------------------
+  .presence__wrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    column-gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(169, 169, 169, 0.3);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    & .presenceInput {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      border: 1px solid #dbdbdb;
+    }
+    & .inputLabel {
+      color: var(--1-a-1-c-23, #1a1c23);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+    }
+  }
+  //----------------------------------------------------------------
+  .conditions__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    padding-top: 24px;
+    margin-bottom: 32px;
+    & .conditionsTitle {
+      color: var(--1-a-1-c-23, #1a1c23);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 20px;
+    }
+    & .conditionsItem {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+      & .conditionsnput {
+        width: 24px;
+        height: 24px;
+        border-radius: 100%;
+        border: 1px solid #dbdbdb;
+      }
+      & .conditionsLabel {
+        color: var(--1-a-1-c-23, #1a1c23);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+      }
+    }
+  }
+  //--------------------------------------------------
+  .price__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    margin-bottom: 32px;
+    & .priceTitle {
+      color: var(--1-a-1-c-23, #1a1c23);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 20px;
+    }
+    & .priceValue__wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
+      margin-bottom: 16px;
+      & .priceValue {
+        width: 100%;
+        max-width: 112px;
+        height: 40px;
+        max-height: auto;
+        background: #fff;
+        border-radius: 8px;
+      }
+      & .priceValueLine {
+        color: var(--1-a-1-c-23, #1a1c23);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+      }
+    }
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+}

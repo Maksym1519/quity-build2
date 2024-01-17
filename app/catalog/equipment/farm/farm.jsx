@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useAppSelector } from "@/lib/hooks";
 import { farmInfo } from "@/lib/features/shopCatalogSlice";
 import { FarmData } from "@/lib/features/shopCatalogSlice";
+import ProfitLink from '../profitLink/profitLink';
 
 
 const Farm = () => {
@@ -151,6 +152,7 @@ const commonArray = [popularityFarmArray,cheapFarmArray,costFarmArray,farmInfoSe
                 </span>
               </div>
             ))}
+            {farmInfoServer && <ProfitLink />}
         </div>
       </div>
     )

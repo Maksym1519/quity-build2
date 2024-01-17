@@ -6,6 +6,7 @@ import { useAppSelector } from "@/lib/hooks";
 import { asicInfo } from "@/lib/features/shopCatalogSlice";
 import { AsicData } from "@/lib/features/shopCatalogSlice";
 import Loading from "@/app/components/loading/loading";
+import ProfitLink from "../profitLink/profitLink";
 
 const Asic = () => {
   //is-loading-?----------------------------------------------------
@@ -51,30 +52,35 @@ const Asic = () => {
       });
     }
   }, [asicInfoServer]);
-//sorting-by-price-from-cheap-to-cost----------------------------
-const [cheapAsicArray, setCheapAsicArray] = useState();
+  //sorting-by-price-from-cheap-to-cost----------------------------
+  const [cheapAsicArray, setCheapAsicArray] = useState();
   useEffect(() => {
     if (asicInfoServer && asicInfoServer !== null) {
       const sortedArray = [...asicInfoServer];
       setCheapAsicArray(sortedArray);
       sortedArray.sort((a, b) => {
-      return parseFloat(a.attributes.price) - parseFloat(b.attributes.price);
+        return parseFloat(a.attributes.price) - parseFloat(b.attributes.price);
       });
     }
   }, [asicInfoServer]);
-//sorting-by-price-from-cost-to-cheap----------------------------
-const [costAsicArray, setCostAsicArray] = useState();
+  //sorting-by-price-from-cost-to-cheap----------------------------
+  const [costAsicArray, setCostAsicArray] = useState();
   useEffect(() => {
     if (asicInfoServer && asicInfoServer !== null) {
       const sortedArray = [...asicInfoServer];
       setCostAsicArray(sortedArray);
       sortedArray.sort((a, b) => {
-      return parseFloat(b.attributes.price) - parseFloat(a.attributes.price);
+        return parseFloat(b.attributes.price) - parseFloat(a.attributes.price);
       });
     }
   }, [asicInfoServer]);
- //commonArray--------------------------------------------------
-const commonArray = [popularityAsicArray,cheapAsicArray,costAsicArray,asicInfoServer]
+  //commonArray--------------------------------------------------
+  const commonArray = [
+    popularityAsicArray,
+    cheapAsicArray,
+    costAsicArray,
+    asicInfoServer,
+  ];
 
   return (
     <div className={e.equipment__wrapper}>
@@ -176,6 +182,7 @@ const commonArray = [popularityAsicArray,cheapAsicArray,costAsicArray,asicInfoSe
                   </span>
                 </div>
               ))}
+            {asicInfoServer && <ProfitLink />}
           </div>
         </>
       )}
