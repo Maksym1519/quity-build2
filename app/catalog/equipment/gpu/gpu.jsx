@@ -21,7 +21,54 @@ const Gpu = () => {
        console.log(gpuInfoServer);
      }
    }, [gpuInfoRedux]);
- 
+  //sorting-by-popularity---------------------------------------------------
+  const [popularityGpuArray, setPopularityGpuArray] = useState();
+  useEffect(() => {
+    if (gpuInfoServer && gpuInfoServer !== null) {
+      const sortedArray = [...gpuInfoServer];
+      setPopularityGpuArray(sortedArray);
+      sortedArray.sort((a, b) => {
+        if (
+          a.attributes.popularity === "Хит" &&
+          b.attributes.popularity === "Новинка"
+        ) {
+          return -1;
+        } else if (
+          a.attributes.popularity === "Новинка" &&
+          b.attributes.popularity === "Хит"
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+    }
+  }, [gpuInfoServer]);
+//sorting-by-price-from-cheap-to-cost----------------------------
+const [cheapGpuArray, setCheapGpuArray] = useState();
+  useEffect(() => {
+    if (gpuInfoServer && gpuInfoServer !== null) {
+      const sortedArray = [...gpuInfoServer];
+      setCheapGpuArray(sortedArray);
+      sortedArray.sort((a, b) => {
+      return parseFloat(a.attributes.price) - parseFloat(b.attributes.price);
+      });
+    }
+  }, [gpuInfoServer]);
+//sorting-by-price-from-cost-to-cheap----------------------------
+const [costGpuArray, setCostGpuArray] = useState();
+  useEffect(() => {
+    if (gpuInfoServer && gpuInfoServer !== null) {
+      const sortedArray = [...gpuInfoServer];
+      setCostGpuArray(sortedArray);
+      sortedArray.sort((a, b) => {
+      return parseFloat(b.attributes.price) - parseFloat(a.attributes.price);
+      });
+    }
+  }, [gpuInfoServer]);
+ //commonArray--------------------------------------------------
+const commonArray = [popularityGpuArray,cheapGpuArray,costGpuArray,gpuInfoServer]
+
     return (
         <div className={e.equipment__wrapper}>
         <GpuData />
@@ -61,7 +108,7 @@ const Gpu = () => {
         </div>
         <div className={e.catalogEquipment}>
           {gpuInfoServer &&
-            gpuInfoServer.map((item, index) => (
+            commonArray[activeIndex]?.map((item, index) => (
               <div className={e.item} key={index}>
                 <div className={e.image__wrapper}>
                   <Image

@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import StoreProvider from "./StoreProvider";
 
+
 const roboto = Roboto({
   weight: ["400"],
   subsets: ["latin","cyrillic"],
@@ -17,7 +18,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <StoreProvider>
+   <StoreProvider>
       <html lang="en">
         <body className={roboto.className}>
           {/* <Header /> */}

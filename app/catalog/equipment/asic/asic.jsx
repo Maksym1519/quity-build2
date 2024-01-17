@@ -29,30 +29,52 @@ const Asic = () => {
     }
   }, [asicInfoServer]);
   //sorting-by-popularity---------------------------------------------------
-  const [sortedPopularity, setSortedPopularity] = useState();
-  async function comparePopularity(a, b) {
-    if (
-      a.popularity === "Хит" &&
-      b.popularity === "Новинка"
-    ) {
-      return -1;
-    } else if (
-      a.popularity === "Новинка" &&
-      b.popularity === "Хит"
-    ) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
+  const [popularityAsicArray, setPopularityAsicArray] = useState();
   useEffect(() => {
     if (asicInfoServer && asicInfoServer !== null) {
-      const sortedArray = [...asicInfoServer]; // Create a new array
-      sortedArray.sort(comparePopularity);
-      setSortedPopularity(sortedArray);
+      const sortedArray = [...asicInfoServer];
+      setPopularityAsicArray(sortedArray);
+      sortedArray.sort((a, b) => {
+        if (
+          a.attributes.popularity === "Хит" &&
+          b.attributes.popularity === "Новинка"
+        ) {
+          return -1;
+        } else if (
+          a.attributes.popularity === "Новинка" &&
+          b.attributes.popularity === "Хит"
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
     }
   }, [asicInfoServer]);
-  console.log(sortedPopularity)
+//sorting-by-price-from-cheap-to-cost----------------------------
+const [cheapAsicArray, setCheapAsicArray] = useState();
+  useEffect(() => {
+    if (asicInfoServer && asicInfoServer !== null) {
+      const sortedArray = [...asicInfoServer];
+      setCheapAsicArray(sortedArray);
+      sortedArray.sort((a, b) => {
+      return parseFloat(a.attributes.price) - parseFloat(b.attributes.price);
+      });
+    }
+  }, [asicInfoServer]);
+//sorting-by-price-from-cost-to-cheap----------------------------
+const [costAsicArray, setCostAsicArray] = useState();
+  useEffect(() => {
+    if (asicInfoServer && asicInfoServer !== null) {
+      const sortedArray = [...asicInfoServer];
+      setCostAsicArray(sortedArray);
+      sortedArray.sort((a, b) => {
+      return parseFloat(b.attributes.price) - parseFloat(a.attributes.price);
+      });
+    }
+  }, [asicInfoServer]);
+ //commonArray--------------------------------------------------
+const commonArray = [popularityAsicArray,cheapAsicArray,costAsicArray,asicInfoServer]
 
   return (
     <div className={e.equipment__wrapper}>
@@ -108,11 +130,11 @@ const Asic = () => {
           </div>
           <div className={e.catalogEquipment}>
             {asicInfoServer &&
-              sortedPopularity.map((item, index) => (
+              commonArray[activeIndex].map((item, index) => (
                 <div className={e.item} key={index}>
                   <div className={e.image__wrapper}>
                     <Image
-                      src={item.attributes.goodImage.data.attributes.url}
+                      src={item.attributes.itemImage.data.attributes.url}
                       width={182}
                       height={168}
                       className={e.minerImage}
