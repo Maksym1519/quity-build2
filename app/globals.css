@@ -11,6 +11,7 @@
     flex-direction: column;
     }
   .track.track-0 {
+    width: 100%;
     will-change: left, right;
     background: rgba(116, 129, 255, 1);
     height: 8px;
