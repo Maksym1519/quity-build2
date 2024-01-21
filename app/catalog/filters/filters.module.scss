@@ -30,6 +30,12 @@
       height: 24px;
       border-radius: 6px;
       border: 1px solid #dbdbdb;
+      position: relative;
+      & .filterBird {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
     }
     & .inputLabel {
       color: var(--1-a-1-c-23, #1a1c23);
@@ -64,6 +70,12 @@
         height: 24px;
         border-radius: 100%;
         border: 1px solid #dbdbdb;
+        position: relative;
+        & .conditionsIcon {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
       }
       & .conditionsLabel {
         color: var(--1-a-1-c-23, #1a1c23);

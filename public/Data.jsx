@@ -111,7 +111,9 @@ const Icones = {
     dotIconBlog: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704723824/dot_cb9c093cf3.svg",
     arrowNavigation: "https://res.cloudinary.com/duk3bewdr/image/upload/v1704879311/arrow_Navigation_255d011698.svg",
     geotag: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705305319/geotag_fcf721cc11.jpg",
-    filterAttention: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705656266/filter_Atention_7a8ab19787.svg"
+    filterAttention: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705656266/filter_Atention_7a8ab19787.svg",
+    filterBird: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705822603/bird_433e6f8824.svg",
+    filterConditionIcon: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705825794/filter_Condition_a49b956f8c.svg"
 }
 export const currencyLogos = ["https://res.cloudinary.com/duk3bewdr/image/upload/v1702230428/litecoin_ltc_logo_1_063e00a7dc.svg",
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231029/bitcoin_cash_circle_1_89ac0af2a2.svg",

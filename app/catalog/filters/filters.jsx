@@ -8,13 +8,14 @@ import PowerSlider from "./powerSlider/powerSlider";
 import Icones from "@/public/Data";
 import Image from "next/image";
 import Consultation from "./consultation/consultation";
-import { useState,useEffect } from "react";
-import { useAppSelector,useAppDispatch } from "@/lib/hooks";
+import { useState, useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { setPresence } from "@/lib/features/catalog/filtrationSlice";
-import { FiltrationData } from "@/lib/features/catalog/filtrationSlice";
+import { FiltrationPresenceData } from "@/lib/features/catalog/filtrationSlice";
+import { setNew } from "@/lib/features/catalog/filtrationSlice";
 
 const Filters = () => {
-//filtration----------------------------------------------------------
+  //filtration----------------------------------------------------------
   const [selectedFilters, setSelectedFilters] = useState({
     presence: false,
     conditions: {
@@ -33,30 +34,85 @@ const Filters = () => {
       sha256: false,
       equihash: false,
     },
-   });
-//set-data-for-filtration--------------------------------------------
-const dispatch = useAppDispatch();
-const clickPresence = () => {
-  dispatch(setPresence(true))
-}
+  });
+  //set-data-for-filtration--------------------------------------------
+  const dispatch = useAppDispatch();
+  const clickPresence = () => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      presence: !prevFilters.presence,
+    }));
+    dispatch(setPresence(!selectedFilters.presence));
+  };
+  const clickNew = () => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      conditions: {
+        new: !prevFilters.conditions.new,
+      },
+    }));
+    dispatch(setNew(!selectedFilters.conditions.new))
+  };
+  const clickUsed = () => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      conditions: {
+        used: !prevFilters.conditions.used,
+      },
+    }));
+  };
   return (
     <div className={f.filters__wrapper}>
-      <FiltrationData />
+      <FiltrationPresenceData />
       <div className={f.filters__body}>
         {/* //presence--------------------------------------------------------------- */}
         <div className={f.presence__wrapper}>
-          <div className={f.presenceInput} onClick={() => {clickPresence()}}></div>
+          <div
+            className={f.presenceInput}
+            onClick={() => {
+              clickPresence();
+            }}
+          >
+            {selectedFilters.presence && (
+              <Image
+                src={Icones.filterBird}
+                width={24}
+                height={24}
+                className={f.filterBird}
+              />
+            )}
+          </div>
           <span className={f.inputLabel}>Товары в наличии</span>
         </div>
         {/* //conditions--------------------------------------------------------------- */}
         <div className={f.conditions__wrapper}>
           <h4 className={f.conditionsTitle}>Состояние</h4>
           <div className={f.conditionsItem}>
-            <div className={f.conditionsnput}></div>
+            <div className={f.conditionsnput} onClick={() => clickNew()}>
+              {selectedFilters.conditions.new && (
+                <Image
+                  src={Icones.filterConditionIcon}
+                  width={24}
+                  height={24}
+                  alt="icon"
+                  className={f.conditionsIcon}
+                />
+              )}
+            </div>
             <span className={f.conditionsLabel}>Новое</span>
           </div>
           <div className={f.conditionsItem}>
-            <div className={f.conditionsnput}></div>
+            <div className={f.conditionsnput} onClick={() => clickUsed()}>
+            {selectedFilters.conditions.used && (
+                <Image
+                  src={Icones.filterConditionIcon}
+                  width={24}
+                  height={24}
+                  alt="icon"
+                  className={f.conditionsIcon}
+                />
+              )}
+            </div>
             <span className={f.conditionsLabel}>Б/у</span>
           </div>
         </div>
@@ -110,8 +166,8 @@ const clickPresence = () => {
             <Image src={Icones.filterAttention} width={20} height={20} />
           </div>
         </div>
-       </div>
-       <Consultation />
+      </div>
+      <Consultation />
     </div>
   );
 };

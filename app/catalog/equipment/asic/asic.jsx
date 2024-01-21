@@ -7,6 +7,11 @@ import { asicInfo } from "@/lib/features/shopCatalogSlice";
 import { AsicData } from "@/lib/features/shopCatalogSlice";
 import Loading from "@/app/components/loading/loading";
 import ProfitLink from "../profitLink/profitLink";
+import { presenceArrayInfo } from "@/lib/features/catalog/filtrationSlice";
+import { FiltrationPresenceData } from "@/lib/features/catalog/filtrationSlice";
+import { presenceInfo } from "@/lib/features/catalog/filtrationSlice";
+import { newInfo } from "@/lib/features/catalog/filtrationSlice";
+//import { FiltrationNewData } from "@/lib/features/catalog/filtrationSlice";
 
 const Asic = () => {
   //is-loading-?----------------------------------------------------
@@ -74,13 +79,26 @@ const Asic = () => {
       });
     }
   }, [asicInfoServer]);
-  //commonArray--------------------------------------------------
-  const commonArray = [
-    popularityAsicArray,
-    cheapAsicArray,
-    costAsicArray,
-    asicInfoServer,
-  ];
+ //get-data-from-filterSlice------------------------------------------
+const [filteredArray, setPresenceArray] = useState();
+const presenceFromRedux = useAppSelector(presenceArrayInfo)
+const presenceStateRedux = useAppSelector(presenceInfo)
+const newStateRedux = useAppSelector(newInfo)
+useEffect(() => {
+if (presenceStateRedux && presenceStateRedux !== null || newStateRedux && newStateRedux !== null) {
+  setPresenceArray(presenceFromRedux)
+ }
+},[presenceFromRedux,newStateRedux])
+const currentArray = filteredArray  ? filteredArray : popularityAsicArray;
+
+ //commonArray--------------------------------------------------
+ const commonArray = [
+  currentArray,
+  cheapAsicArray,
+  costAsicArray,
+  asicInfoServer,
+];
+
 
   return (
     <div className={e.equipment__wrapper}>
@@ -92,7 +110,8 @@ const Asic = () => {
       ) : (
         <>
           <AsicData />
-          <div className={e.equipment__sorting}>
+          <FiltrationPresenceData />
+            <div className={e.equipment__sorting}>
             <div
               className={
                 activeIndex === 0 ? e.sortingItem__active : e.sortingItem
@@ -136,7 +155,7 @@ const Asic = () => {
           </div>
           <div className={e.catalogEquipment}>
             {asicInfoServer &&
-              commonArray[activeIndex].map((item, index) => (
+              commonArray[activeIndex]?.map((item, index) => (
                 <div className={e.item} key={index}>
                   <div className={e.image__wrapper}>
                     <Image
