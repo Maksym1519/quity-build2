@@ -13,15 +13,14 @@ import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { setPresence } from "@/lib/features/catalog/filtrationSlice";
 import { FiltrationPresenceData } from "@/lib/features/catalog/filtrationSlice";
 import { setNew } from "@/lib/features/catalog/filtrationSlice";
+import { setUsed } from "@/lib/features/catalog/filtrationSlice";
 
 const Filters = () => {
   //filtration----------------------------------------------------------
   const [selectedFilters, setSelectedFilters] = useState({
-    presence: false,
-    conditions: {
-      new: false,
-      used: false,
-    },
+    presence: null,
+    new: null,
+    used: null,
     maker: {
       canaan: false,
       bitmain: false,
@@ -38,29 +37,42 @@ const Filters = () => {
   //set-data-for-filtration--------------------------------------------
   const dispatch = useAppDispatch();
   const clickPresence = () => {
-    setSelectedFilters((prevFilters) => ({
-      ...prevFilters,
-      presence: !prevFilters.presence,
-    }));
-    dispatch(setPresence(!selectedFilters.presence));
+    setSelectedFilters((prevFilters) => {
+      const newPresence = prevFilters.presence === "В наличии" ? null : "В наличии";
+      dispatch(setPresence(newPresence));
+      return {
+        ...prevFilters,
+        presence: newPresence,
+      };
+    });
   };
+  
   const clickNew = () => {
-    setSelectedFilters((prevFilters) => ({
-      ...prevFilters,
-      conditions: {
-        new: !prevFilters.conditions.new,
-      },
-    }));
-    dispatch(setNew(!selectedFilters.conditions.new))
+    setSelectedFilters((prevFilters) => {
+      const newNew = prevFilters.new === "new" ? null : "new";
+      dispatch(setNew(newNew));
+      return {
+        ...prevFilters,
+        new: newNew
+      };
+    });
   };
   const clickUsed = () => {
-    setSelectedFilters((prevFilters) => ({
-      ...prevFilters,
-      conditions: {
-        used: !prevFilters.conditions.used,
-      },
-    }));
+    setSelectedFilters((prevFilters) => {
+      const newClicked = prevFilters.used === "used" ? null : "used";
+      dispatch(setUsed(newClicked));
+      return {
+        ...prevFilters,
+        used: newClicked
+      };
+    });
   };
+  
+  
+ 
+  
+  
+  
   return (
     <div className={f.filters__wrapper}>
       <FiltrationPresenceData />
@@ -89,7 +101,7 @@ const Filters = () => {
           <h4 className={f.conditionsTitle}>Состояние</h4>
           <div className={f.conditionsItem}>
             <div className={f.conditionsnput} onClick={() => clickNew()}>
-              {selectedFilters.conditions.new && (
+              {selectedFilters.new && (
                 <Image
                   src={Icones.filterConditionIcon}
                   width={24}
@@ -103,7 +115,7 @@ const Filters = () => {
           </div>
           <div className={f.conditionsItem}>
             <div className={f.conditionsnput} onClick={() => clickUsed()}>
-            {selectedFilters.conditions.used && (
+            {selectedFilters.used && (
                 <Image
                   src={Icones.filterConditionIcon}
                   width={24}
@@ -148,22 +160,22 @@ const Filters = () => {
           <div className={f.algorithmItem}>
             <div className={f.algorithmInput}></div>
             <span className={f.inputLabel}>Blake2B+SHA3</span>
-            <Image src={Icones.filterAttention} width={20} height={20} />
+            <Image src={Icones.filterAttention} width={20} height={20} alt="icon"/>
           </div>
           <div className={f.algorithmItem}>
             <div className={f.algorithmInput}></div>
             <span className={f.inputLabel}>DaggerHashimoto</span>
-            <Image src={Icones.filterAttention} width={20} height={20} />
+            <Image src={Icones.filterAttention} width={20} height={20} alt="icon"/>
           </div>
           <div className={f.algorithmItem}>
             <div className={f.algorithmInput}></div>
             <span className={f.inputLabel}>SHA256</span>
-            <Image src={Icones.filterAttention} width={20} height={20} />
+            <Image src={Icones.filterAttention} width={20} height={20} alt="icon"/>
           </div>
           <div className={f.algorithmItem}>
             <div className={f.algorithmInput}></div>
             <span className={f.inputLabel}>Equihash</span>
-            <Image src={Icones.filterAttention} width={20} height={20} />
+            <Image src={Icones.filterAttention} width={20} height={20} alt="icon"/>
           </div>
         </div>
       </div>

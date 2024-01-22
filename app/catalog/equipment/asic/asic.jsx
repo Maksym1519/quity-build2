@@ -11,7 +11,8 @@ import { presenceArrayInfo } from "@/lib/features/catalog/filtrationSlice";
 import { FiltrationPresenceData } from "@/lib/features/catalog/filtrationSlice";
 import { presenceInfo } from "@/lib/features/catalog/filtrationSlice";
 import { newInfo } from "@/lib/features/catalog/filtrationSlice";
-//import { FiltrationNewData } from "@/lib/features/catalog/filtrationSlice";
+import { usedInfo } from "@/lib/features/catalog/filtrationSlice";
+
 
 const Asic = () => {
   //is-loading-?----------------------------------------------------
@@ -79,26 +80,24 @@ const Asic = () => {
       });
     }
   }, [asicInfoServer]);
- //get-data-from-filterSlice------------------------------------------
-const [filteredArray, setPresenceArray] = useState();
-const presenceFromRedux = useAppSelector(presenceArrayInfo)
-const presenceStateRedux = useAppSelector(presenceInfo)
-const newStateRedux = useAppSelector(newInfo)
-useEffect(() => {
-if (presenceStateRedux && presenceStateRedux !== null || newStateRedux && newStateRedux !== null) {
-  setPresenceArray(presenceFromRedux)
- }
-},[presenceFromRedux,newStateRedux])
-const currentArray = filteredArray  ? filteredArray : popularityAsicArray;
+  //get-data-from-filterSlice------------------------------------------
+  const presenceFromRedux = useAppSelector(presenceArrayInfo);
+  const presenceStateRedux = useAppSelector(presenceInfo);
+  const newStateRedux = useAppSelector(newInfo);
+  const usedStateRedux = useAppSelector(usedInfo)
+ 
+  console.log(presenceFromRedux)
+  
+  
+  const currentArray = presenceStateRedux || newStateRedux || usedStateRedux ? presenceFromRedux : popularityAsicArray;
 
- //commonArray--------------------------------------------------
- const commonArray = [
-  currentArray,
-  cheapAsicArray,
-  costAsicArray,
-  asicInfoServer,
-];
-
+  //commonArray--------------------------------------------------
+  const commonArray = [
+    currentArray,
+    cheapAsicArray,
+    costAsicArray,
+    asicInfoServer,
+  ];
 
   return (
     <div className={e.equipment__wrapper}>
@@ -111,7 +110,7 @@ const currentArray = filteredArray  ? filteredArray : popularityAsicArray;
         <>
           <AsicData />
           <FiltrationPresenceData />
-            <div className={e.equipment__sorting}>
+          <div className={e.equipment__sorting}>
             <div
               className={
                 activeIndex === 0 ? e.sortingItem__active : e.sortingItem
