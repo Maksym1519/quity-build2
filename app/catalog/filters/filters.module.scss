@@ -178,6 +178,12 @@
         height: 24px;
         border-radius: 6px;
         border: 1px solid #dbdbdb;
+        position: relative;
+        & .makerIcon {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
       }
       & .inputLabel {
         color: var(--1-a-1-c-23, #1a1c23);

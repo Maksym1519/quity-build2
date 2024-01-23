@@ -13,6 +13,10 @@ import { presenceInfo } from "@/lib/features/catalog/filtrationSlice";
 import { newInfo } from "@/lib/features/catalog/filtrationSlice";
 import { usedInfo } from "@/lib/features/catalog/filtrationSlice";
 import { priceInfo } from "@/lib/features/catalog/filtrationSlice";
+import { hashRateInfo } from "@/lib/features/catalog/filtrationSlice";
+import { profitInfo } from "@/lib/features/catalog/filtrationSlice";
+import { powerInfo } from "@/lib/features/catalog/filtrationSlice";
+import { makerInfo } from "@/lib/features/catalog/filtrationSlice";
 
 
 const Asic = () => {
@@ -86,12 +90,17 @@ const Asic = () => {
   const presenceStateRedux = useAppSelector(presenceInfo);
   const newStateRedux = useAppSelector(newInfo);
   const usedStateRedux = useAppSelector(usedInfo);
-  const priceStateRedux = useAppSelector(priceInfo)
+  const priceStateRedux = useAppSelector(priceInfo);
+  const hashRateStateRedux = useAppSelector(hashRateInfo);
+  const profitStateRedux = useAppSelector(profitInfo);
+  const powerStateRedux = useAppSelector(powerInfo);
+  const makerStateRedux = useAppSelector(makerInfo);
+
  
   console.log(popularityAsicArray)
   
   
-  const currentArray = presenceStateRedux || newStateRedux || usedStateRedux || priceStateRedux ? presenceFromRedux : popularityAsicArray;
+  const currentArray = presenceStateRedux || newStateRedux || usedStateRedux || priceStateRedux || hashRateStateRedux || profitStateRedux || powerStateRedux  ? presenceFromRedux : popularityAsicArray;
 
   //commonArray--------------------------------------------------
   const commonArray = [

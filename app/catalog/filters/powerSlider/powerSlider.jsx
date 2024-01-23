@@ -1,13 +1,20 @@
 "use client";
 import f from "../filters.module.scss";
 import ReactSlider from "react-slider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAppDispatch } from "@/lib/hooks";
+import { setPower } from "@/lib/features/catalog/filtrationSlice";
 
 const PowerSlider = () => {
   const [value, setValue] = useState([0, 3600]);
   const handleSliderChange = (newValue) => {
     setValue(newValue)
   }
+  //set-data-to-redux-------------------------------
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(setPower(value))
+  },[value])
   return (
     <>
       <div className={f.price__wrapper}>
