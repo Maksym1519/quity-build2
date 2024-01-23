@@ -1,13 +1,21 @@
 "use client";
 import f from "../filters.module.scss";
 import ReactSlider from "react-slider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAppDispatch } from "@/lib/hooks";
+import { setHashRate } from "@/lib/features/catalog/filtrationSlice";
+import { hashRateInfo } from "@/lib/features/catalog/filtrationSlice";
 
 const HashrateSlider = () => {
   const [value, setValue] = useState([2, 110]);
   const handleSliderChange = (newValue) => {
-    setValue(newValue)
-  }
+    setValue(newValue);
+  };
+  //set-hashRate-to-redux--------------------------------------
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(setHashRate(value));
+  }, [value]);
   return (
     <>
       <div className={f.price__wrapper}>

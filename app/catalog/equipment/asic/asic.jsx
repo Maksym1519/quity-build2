@@ -12,6 +12,7 @@ import { FiltrationPresenceData } from "@/lib/features/catalog/filtrationSlice";
 import { presenceInfo } from "@/lib/features/catalog/filtrationSlice";
 import { newInfo } from "@/lib/features/catalog/filtrationSlice";
 import { usedInfo } from "@/lib/features/catalog/filtrationSlice";
+import { priceInfo } from "@/lib/features/catalog/filtrationSlice";
 
 
 const Asic = () => {
@@ -84,12 +85,13 @@ const Asic = () => {
   const presenceFromRedux = useAppSelector(presenceArrayInfo);
   const presenceStateRedux = useAppSelector(presenceInfo);
   const newStateRedux = useAppSelector(newInfo);
-  const usedStateRedux = useAppSelector(usedInfo)
+  const usedStateRedux = useAppSelector(usedInfo);
+  const priceStateRedux = useAppSelector(priceInfo)
  
-  console.log(presenceFromRedux)
+  console.log(popularityAsicArray)
   
   
-  const currentArray = presenceStateRedux || newStateRedux || usedStateRedux ? presenceFromRedux : popularityAsicArray;
+  const currentArray = presenceStateRedux || newStateRedux || usedStateRedux || priceStateRedux ? presenceFromRedux : popularityAsicArray;
 
   //commonArray--------------------------------------------------
   const commonArray = [
