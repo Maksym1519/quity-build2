@@ -1,0 +1,132 @@
+@media (min-width: 1025px) {
+  .cardPresentation__wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+  .cardPresentation__body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 152px;
+    & .cardImageWrapper {
+      width: 100%;
+      max-width: 412px;
+      height: auto;
+      max-height: 100%;
+      padding: 32px;
+      position: relative;
+      & .cardImage {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;
+        object-fit: cover;
+      }
+      & .cardLabel {
+        position: absolute;
+        top: 48px;
+        left: 32px;
+        width: 75px;
+        height: 22px;
+        border-radius: 50px;
+        background: #45b26b;
+        color: #fff;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 14px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    & .cardImageWrapper:hover {
+      background: rgba(169, 169, 169, 0.3);
+    }
+  }
+  //slider----------------------------------------
+  .slider__wrapper {
+    width: 100%;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 8px;
+    padding: 0 22px;
+    position: relative;
+      & .slideWrapper {
+      width: 100%;
+      max-width: 56px;
+      height: 100%;
+      max-height: 56px;
+      cursor: pointer;
+        & .sliderImg {
+        width: 56px;
+        height: 56px;
+      }
+    }
+     & .slideWrapper:hover {
+      transform: scale(120%);
+      margin-top: -15px;
+     } 
+    swiper-container {
+      width: 100%;
+      max-width: 374px;
+      height: 92px;
+      display: flex;
+      align-items: center !important;
+      justify-content: center;
+      column-gap: 5px;
+        & swiper-slide {
+        max-width: 56px;
+        display: flex !important;
+        align-items: center !important;
+      }
+    }
+    swiper-container::part(wrapper) {
+      width: 100%;
+      max-width: 248px;
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+       }
+    swiper-container::part(container) {
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+       margin: 0 auto;
+      }
+    swiper-container::part(button-prev) {
+      width: 52px;
+      height: 52px;
+      margin-right: 32px;
+      opacity: 0;
+      }
+    swiper-container::part(button-next) {
+      width: 52px;
+      height: 52px;
+      margin-left: 32px;
+      opacity: 0;
+      }
+      & .sliderPrev {
+        position: absolute;
+        bottom: 50%;
+        left: 32px;
+        transform: translateY(50%);
+      }
+      & .sliderNext {
+        position: absolute;
+        bottom: 50%;
+        right: 32px;
+        transform: translateY(50%);
+      }
+  }
+ }
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+}

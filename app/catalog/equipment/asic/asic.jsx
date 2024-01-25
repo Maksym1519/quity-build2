@@ -1,8 +1,9 @@
 "use client";
 import e from "../equipment.module.scss";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { asicInfo } from "@/lib/features/shopCatalogSlice";
 import { AsicData } from "@/lib/features/shopCatalogSlice";
 import Loading from "@/app/components/loading/loading";
@@ -17,6 +18,8 @@ import { hashRateInfo } from "@/lib/features/catalog/filtrationSlice";
 import { profitInfo } from "@/lib/features/catalog/filtrationSlice";
 import { powerInfo } from "@/lib/features/catalog/filtrationSlice";
 import { makerInfo } from "@/lib/features/catalog/filtrationSlice";
+import { setInfo } from "@/lib/features/card/cardSlice";
+import { setCard } from "@/lib/features/card/cardSlice";
 
 
 const Asic = () => {
@@ -86,7 +89,7 @@ const Asic = () => {
     }
   }, [asicInfoServer]);
   //get-data-from-filterSlice------------------------------------------
-  const presenceFromRedux = useAppSelector(presenceArrayInfo);
+  const arrayFromRedux = useAppSelector(presenceArrayInfo);
   const presenceStateRedux = useAppSelector(presenceInfo);
   const newStateRedux = useAppSelector(newInfo);
   const usedStateRedux = useAppSelector(usedInfo);
@@ -95,12 +98,31 @@ const Asic = () => {
   const profitStateRedux = useAppSelector(profitInfo);
   const powerStateRedux = useAppSelector(powerInfo);
   const makerStateRedux = useAppSelector(makerInfo);
-
- 
-  console.log(popularityAsicArray)
+  //---------------------------------------------------------
+  const [sortedArrayRedux, setSortedArrayRedux] = useState()
+  useEffect(() => {
+    if (arrayFromRedux && arrayFromRedux !== null) {
+      const sortedArray = [...arrayFromRedux];
+      setSortedArrayRedux(sortedArray)
+      sortedArray.sort((a, b) => {
+        if (
+          a.attributes.popularity === "Хит" &&
+          b.attributes.popularity === "Новинка"
+        ) {
+          return -1;
+        } else if (
+          a.attributes.popularity === "Новинка" &&
+          b.attributes.popularity === "Хит"
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+    }
+  }, [arrayFromRedux]);
   
-  
-  const currentArray = presenceStateRedux || newStateRedux || usedStateRedux || priceStateRedux || hashRateStateRedux || profitStateRedux || powerStateRedux  ? presenceFromRedux : popularityAsicArray;
+  const currentArray = arrayFromRedux ? sortedArrayRedux : popularityAsicArray;
 
   //commonArray--------------------------------------------------
   const commonArray = [
@@ -109,6 +131,12 @@ const Asic = () => {
     costAsicArray,
     asicInfoServer,
   ];
+//-get-card-info-----------------------------------------------------
+const dispatch = useAppDispatch()
+const clickCardInfo = (info) => {
+  dispatch(setInfo(info))
+  dispatch(setCard())
+}
 
   return (
     <div className={e.equipment__wrapper}>
@@ -164,9 +192,10 @@ const Asic = () => {
             </div>
           </div>
           <div className={e.catalogEquipment}>
+
             {asicInfoServer &&
               commonArray[activeIndex]?.map((item, index) => (
-                <div className={e.item} key={index}>
+                <div className={e.item} key={index} onClick={() => clickCardInfo(item)}>
                   <div className={e.image__wrapper}>
                     <Image
                       src={item.attributes.itemImage.data.attributes.url}
@@ -210,7 +239,8 @@ const Asic = () => {
                     {item.attributes.popularity}
                   </span>
                 </div>
-              ))}
+                 ))}
+
             {asicInfoServer && <ProfitLink />}
           </div>
         </>

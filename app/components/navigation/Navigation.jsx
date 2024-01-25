@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const Navigation = () => {
   const pathname = usePathname();
-  const isActive = pathname === "/profile" || pathname === "/shop";
+  const isActive = pathname === "/profile" || pathname === "/shop" || "/card";
   const [mobileMenu, setMobileMenu] = useState(false);
   const toggleMobileMenu = () => {
     setMobileMenu(!mobileMenu);

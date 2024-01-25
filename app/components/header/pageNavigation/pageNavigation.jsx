@@ -41,6 +41,9 @@ const PageNavigation = (props) => {
       break;
     case "/catalog":
       pathname = "Каталог оборудования";
+      break;
+      case "/card":
+        pathname = "Каталог оборудования / ASIC-майнеры"
     default:
       break;
   }
@@ -61,6 +64,7 @@ const PageNavigation = (props) => {
           alt="arrow"
         />
       </div>
+{pathname === "Блог" && (
       <div
         className={pathname === "Блог" ? p.pageItemActive : p.pageItem}
         onClick={clickAllBlogNews}
@@ -73,6 +77,7 @@ const PageNavigation = (props) => {
           alt="arrow"
         />
       </div>
+)}
       {pathname === "Каталог оборудования" && (
         <div
           className={
@@ -81,6 +86,22 @@ const PageNavigation = (props) => {
           onClick={clickAllBlogNews}
         >
           <Link href={"/catalog"}>Каталог товаров</Link>
+          <Image
+            src={Icones.arrowNavigation}
+            width={12}
+            height={12}
+            alt="arrow"
+          />
+        </div>
+      )}
+      {pathname === "Каталог оборудования / ASIC-майнеры" && (
+        <div
+          className={
+            pathname === "Каталог оборудования / ASIC-майнеры" ? p.pageItemActive : p.pageItem
+          }
+          onClick={clickAllBlogNews}
+        >
+          <Link href={"/card"}> Каталог оборудования / ASIC-майнеры</Link>
           <Image
             src={Icones.arrowNavigation}
             width={12}

@@ -15,6 +15,7 @@ import { FiltrationPresenceData } from "@/lib/features/catalog/filtrationSlice";
 import { setNew } from "@/lib/features/catalog/filtrationSlice";
 import { setUsed } from "@/lib/features/catalog/filtrationSlice";
 import { setMaker } from "@/lib/features/catalog/filtrationSlice";
+import { setAlgorithm } from "@/lib/features/catalog/filtrationSlice";
 
 const Filters = () => {
   //filtration----------------------------------------------------------
@@ -84,9 +85,27 @@ const Filters = () => {
       };
     });
   };
-  
-
+const clickAlgorithm = (item) => {
+  setSelectedFilters((prevFilters) => {
+    const newAlgorithmState = {...prevFilters.algorithm}
+    newAlgorithmState[item] = !prevFilters.algorithm[item]
+    const selectedAlgorithms = Object.keys(newAlgorithmState).filter(
+      (item) => newAlgorithmState[item]
+    );
+    dispatch(setAlgorithm(selectedAlgorithms))
+    return {
+      ...prevFilters,
+      algorithm: newAlgorithmState
+    }
+  })
+}
   const equipmentMaker = ["Canaan", "Bitmain", "Whatsminer", "Innosilicon"];
+  const algorithmMaker = [
+    "Blake2B+SHA3",
+    "DaggerHashimoto",
+    "SHA256",
+    "Equihash",
+  ];
 
   return (
     <div className={f.filters__wrapper}>
@@ -175,46 +194,23 @@ const Filters = () => {
         {/* //algorithm----------------------------------------------------------------------- */}
         <div className={f.algorithm__wrapper}>
           <h4 className={f.algorithmTitle}>Алгоритм</h4>
-          <div className={f.algorithmItem}>
-            <div className={f.algorithmInput}></div>
-            <span className={f.inputLabel}>Blake2B+SHA3</span>
-            <Image
-              src={Icones.filterAttention}
-              width={20}
-              height={20}
-              alt="icon"
-            />
-          </div>
-          <div className={f.algorithmItem}>
-            <div className={f.algorithmInput}></div>
-            <span className={f.inputLabel}>DaggerHashimoto</span>
-            <Image
-              src={Icones.filterAttention}
-              width={20}
-              height={20}
-              alt="icon"
-            />
-          </div>
-          <div className={f.algorithmItem}>
-            <div className={f.algorithmInput}></div>
-            <span className={f.inputLabel}>SHA256</span>
-            <Image
-              src={Icones.filterAttention}
-              width={20}
-              height={20}
-              alt="icon"
-            />
-          </div>
-          <div className={f.algorithmItem}>
-            <div className={f.algorithmInput}></div>
-            <span className={f.inputLabel}>Equihash</span>
-            <Image
-              src={Icones.filterAttention}
-              width={20}
-              height={20}
-              alt="icon"
-            />
-          </div>
+          {algorithmMaker.map((item, index) => (
+            <div className={f.algorithmItem} key={index}>
+              <div className={f.algorithmInput} onClick={() => clickAlgorithm(item)}>
+                {selectedFilters.algorithm &&
+                  selectedFilters.algorithm[item] && (
+                    <Image src={Icones.filterBird} width={24} height={24} />
+                  )}
+              </div>
+              <span className={f.inputLabel}>{algorithmMaker[index]}</span>
+              <Image
+                src={Icones.filterAttention}
+                width={20}
+                height={20}
+                alt="icon"
+              />
+            </div>
+          ))}
         </div>
       </div>
       <Consultation />

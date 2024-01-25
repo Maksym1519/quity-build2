@@ -113,7 +113,13 @@ const Icones = {
     geotag: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705305319/geotag_fcf721cc11.jpg",
     filterAttention: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705656266/filter_Atention_7a8ab19787.svg",
     filterBird: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705822603/bird_433e6f8824.svg",
-    filterConditionIcon: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705825794/filter_Condition_a49b956f8c.svg"
+    filterConditionIcon: "https://res.cloudinary.com/duk3bewdr/image/upload/v1705825794/filter_Condition_a49b956f8c.svg",
+    sliderPrev: "https://res.cloudinary.com/duk3bewdr/image/upload/v1706181461/Arrow_Left_Circle_daa9e8c013.svg",
+    sliderNext: "https://res.cloudinary.com/duk3bewdr/image/upload/v1706181485/Arrow_Left_Circle_1_39ccec388b.svg",
+    star: "https://res.cloudinary.com/duk3bewdr/image/upload/v1706187292/Star_ad4ad2da2f.svg",
+    chat: "https://res.cloudinary.com/duk3bewdr/image/upload/v1706188465/Chat_bfb1d11e66.svg",
+    whiteBucket: "https://res.cloudinary.com/duk3bewdr/image/upload/v1706206954/white_Bucket_9bc433618f.svg",
+    location: "https://res.cloudinary.com/duk3bewdr/image/upload/v1706209352/Location_0dd40080c2.svg"
 }
 export const currencyLogos = ["https://res.cloudinary.com/duk3bewdr/image/upload/v1702230428/litecoin_ltc_logo_1_063e00a7dc.svg",
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231029/bitcoin_cash_circle_1_89ac0af2a2.svg",

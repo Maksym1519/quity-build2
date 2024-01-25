@@ -1,0 +1,30 @@
+@media (min-width: 1025px) {
+    .wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 48px;
+    padding: 40px 80px 120px 80px;
+    animation: none;
+    opacity: 1;
+    animation-duration: 1s;
+    animation-name: fadeIn;
+    }
+    @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .cardPage__body {
+        width: 100%;
+        display: grid;
+        grid-template-columns: minmax(auto,412px) auto;
+        column-gap: 56px;
+      }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+}
