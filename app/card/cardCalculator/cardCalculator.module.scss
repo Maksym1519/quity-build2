@@ -1,0 +1,74 @@
+@media (min-width: 1025px) {
+  .cardCalculator__wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    & .mainTitle {
+      color: var(--1-a-1-c-23, #1a1c23);
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 48px;
+      margin-bottom: 24px;
+    }
+  }
+  .cardCalculator__body {
+    width: 100%;
+    display: flex;
+  }
+  .calculator {
+    width: 100%;
+    max-width: 574px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0px 40px 48px;
+    & .calculatorTitle {
+      color: var(--1-a-1-c-23, #1a1c23);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 28px;
+      margin-bottom: 16px;
+    }
+    & .inputWrapper {
+      width: 100%;
+      max-width: 411px;
+      height: 56px;
+      max-height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 100px;
+      background: var(--f-4-f-5-f-6, #f4f5f6);
+      position: relative;
+      & .calculationInput {
+        width: 100%;
+        height: 100%;
+        border-radius: 100px;
+        background: var(--f-4-f-5-f-6, #f4f5f6);
+        color: var(--1-a-1-c-23, #1a1c23);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        padding: 0 16px 0 24px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      & .inputPlaceholder {
+        color: var(--a-9-a-9-a-9, #a9a9a9);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        white-space: nowrap;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+}
