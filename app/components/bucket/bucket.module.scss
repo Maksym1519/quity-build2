@@ -1,0 +1,247 @@
+@media (min-width: 1025px) {
+  .bucket__wrapper {
+    position: absolute;
+    right: 0;
+    top: 120%;
+    width: 100%;
+    max-width: 378px;
+    padding: 32px;
+    background: #fff;
+    fill: #fff;
+    filter: drop-shadow(0px 16px 64px rgba(31, 47, 70, 0.16));
+    border-radius: 24px;
+    z-index: 1003;
+  }
+  .bucket__body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    & .mainTitle {
+      color: var(--1-a-1-c-23, #1a1c23);
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 48px;
+      margin-bottom: 32px;
+    }
+    & .orderItem {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      row-gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(26, 28, 35, 0.6);
+      & .orderItemInfo {
+        width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      }
+      & .orderItemPrice {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        & .orderButtonDelete {
+        min-width: 120px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: red;
+        border-radius: 16px;
+        color: #1a1c23;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        }
+      }
+        & .goodTitle {
+        color: var(--1-a-1-c-23, #1a1c23);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+      & .orderButton {
+        min-width: 120px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: #1a56ff;
+        border-radius: 16px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+    }
+    & .close {
+      position: absolute;
+      top: -16px;
+      right: 0;
+    }
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .bucket__wrapper {
+        width: 100%;
+        max-width: 378px;
+        padding: 32px;
+        background: #fff;
+        fill: #fff;
+        filter: drop-shadow(0px 16px 64px rgba(31, 47, 70, 0.16));
+        border-radius: 24px;
+      }
+      .bucket__body {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        & .mainTitle {
+          color: var(--1-a-1-c-23, #1a1c23);
+          font-size: 40px;
+          font-weight: 600;
+          line-height: 48px;
+          margin-bottom: 32px;
+        }
+        & .orderItem {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          row-gap: 12px;
+          margin-bottom: 24px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid rgba(26, 28, 35, 0.6);
+          & .orderItemInfo {
+            width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          }
+          & .orderItemPrice {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            & .orderButtonDelete {
+            min-width: 120px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: red;
+            border-radius: 16px;
+            color: #1a1c23;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            }
+          }
+            & .goodTitle {
+            color: var(--1-a-1-c-23, #1a1c23);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+          }
+          & .orderButton {
+            min-width: 120px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #1a56ff;
+            border-radius: 16px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+          }
+        }
+      }
+}
+@media (max-width: 768px) {
+    .bucket__wrapper {
+        width: 100%;
+        max-width: 378px;
+        padding: 32px;
+        background: #fff;
+        fill: #fff;
+        filter: drop-shadow(0px 16px 64px rgba(31, 47, 70, 0.16));
+        border-radius: 24px;
+      }
+      .bucket__body {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        & .mainTitle {
+          color: var(--1-a-1-c-23, #1a1c23);
+          font-size: 40px;
+          font-weight: 600;
+          line-height: 48px;
+          margin-bottom: 32px;
+        }
+        & .orderItem {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          row-gap: 12px;
+          margin-bottom: 24px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid rgba(26, 28, 35, 0.6);
+          & .orderItemInfo {
+            width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          }
+          & .orderItemPrice {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            & .orderButtonDelete {
+            min-width: 120px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: red;
+            border-radius: 16px;
+            color: #1a1c23;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            }
+          }
+            & .goodTitle {
+            color: var(--1-a-1-c-23, #1a1c23);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+          }
+          & .orderButton {
+            min-width: 120px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #1a56ff;
+            border-radius: 16px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+          }
+        }
+      }
+}

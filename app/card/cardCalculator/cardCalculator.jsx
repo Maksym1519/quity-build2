@@ -20,8 +20,7 @@ const CardCalculator = () => {
   useEffect(() => {
     if (currency && currency !== null) {
       setBtc(currency[0]);
-      console.log(btc);
-    }
+      }
   }, [currency]);
 
   //date----------------------------------------------

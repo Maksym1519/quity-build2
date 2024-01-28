@@ -7,9 +7,11 @@ import { Pathname } from "react-router-dom";
 //components----------------------------------------------------------------
 import ShopNavigation from "./shopNavigation";
 import Icones from "@/public/Data";
-import { useAppDispatch } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { setFindingGoods } from "@/lib/features/searchGoodsSlice";
 import { usePathname } from "next/navigation";
+import { bucketInfo } from "@/lib/features/card/cardSlice";
+import Bucket from "../bucket/bucket";
 
 const HeaderShop = () => {
   const [catalogMenu, setCatalogMenu] = useState(false);
@@ -40,6 +42,14 @@ const HeaderShop = () => {
   };
   //pathname-change-catalog-button----------------------------
   const pathname = usePathname();
+  //set-data-from-redux-bucket-----------------------------
+  const bucketRedux = useAppSelector(bucketInfo);
+  useEffect(() => {
+    if (bucketRedux && bucketRedux !== null) {
+      console.log(bucketRedux);
+    }
+  }, [bucketRedux]);
+  
   return (
     <div className={hs.headerShop__column}>
       <div className={hs.headerShop__wrapper}>
@@ -126,14 +136,24 @@ const HeaderShop = () => {
           <Image src={Icones.menu} width={24} height={24} alt="icon" />
         </div>
         <div className={hs.bucket}>
-          <Image src={Icones.trolley} width={24} height={24} alt="icon" />
-          <span className={hs.text}>
+          {bucketRedux ? (
+            <Image
+              src={Icones.bucketActive}
+              width={24}
+              height={24}
+              alt="icon"
+            />
+          ) : (
+            <Image src={Icones.trolley} width={24} height={24} alt="icon" />
+          )}
+         <span className={hs.text}>
             В корзине
             <br /> нет товаров
           </span>
-        </div>
+         </div>
       </div>
-    </div>
+      {bucketRedux && <Bucket />}
+     </div>
   );
 };
 
