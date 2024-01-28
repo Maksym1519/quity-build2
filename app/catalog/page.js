@@ -17,25 +17,24 @@ export default function CatalogPage() {
       setCardState(dataCardRedux);
     }
   }, [dataCardRedux]);
-  const currentComponent = useAppSelector((state) => state.card.currentComponent);
+  const currentComponent = useAppSelector(
+    (state) => state.card.currentComponent
+  );
   return (
     <>
       <div className={c.wrapper}>
         <div className="container">
-          {currentComponent === "catalog" && (
-            <div className={c.catalogPage__body}>
-              <h2 className={c.catalogTitle}>
-                Более 120 ASIC-майнеров в каталоге
-                <br /> в наличии и под заказ
-              </h2>
-              <EquipmentNavigation />
-              <main className={c.catalogPage__content}>
-                <Equipment />
-                <Filters />
-              </main>
-            </div>
-          )}
-          {currentComponent === "card" && <CardPresentation />}
+          <div className={c.catalogPage__body}>
+            <h2 className={c.catalogTitle}>
+              Более 120 ASIC-майнеров в каталоге
+              <br /> в наличии и под заказ
+            </h2>
+            <EquipmentNavigation />
+            <main className={c.catalogPage__content}>
+              <Equipment />
+              <Filters />
+            </main>
+          </div>
         </div>
       </div>
       <Test />

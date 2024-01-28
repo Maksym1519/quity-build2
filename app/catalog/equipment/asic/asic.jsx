@@ -192,9 +192,9 @@ const clickCardInfo = (info) => {
             </div>
           </div>
           <div className={e.catalogEquipment}>
-
-            {asicInfoServer &&
+           {asicInfoServer &&
               commonArray[activeIndex]?.map((item, index) => (
+                <Link href={"/card"}>
                 <div className={e.item} key={index} onClick={() => clickCardInfo(item)}>
                   <div className={e.image__wrapper}>
                     <Image
@@ -239,6 +239,7 @@ const clickCardInfo = (info) => {
                     {item.attributes.popularity}
                   </span>
                 </div>
+</Link>
                  ))}
 
             {asicInfoServer && <ProfitLink />}

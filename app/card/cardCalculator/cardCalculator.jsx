@@ -1,6 +1,11 @@
+"use client";
 import c from "./cardCalculator.module.scss";
 import Image from "next/image";
 import MinerImg from "../../../public/cardCatalog.png";
+import Icones from "@/public/Data";
+import { useAppSelector } from "@/lib/hooks";
+import { infoCurrencyCalc } from "@/lib/features/currencySlice";
+import { useEffect, useState } from "react";
 
 const CardCalculator = () => {
   const features = {
@@ -9,6 +14,22 @@ const CardCalculator = () => {
     "Доходность, $/мес.": "71 132,64 $/мес.",
     "Доходность, %/мес.": "6,92%",
   };
+  //get-currency------------------------------------
+  const [btc, setBtc] = useState();
+  const currency = useAppSelector(infoCurrencyCalc);
+  useEffect(() => {
+    if (currency && currency !== null) {
+      setBtc(currency[0]);
+      console.log(btc);
+    }
+  }, [currency]);
+
+  //date----------------------------------------------
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth();
+  const year = date.getFullYear();
+
   return (
     <div className={c.cardCalculator__wrapper}>
       <h3 className={c.mainTitle}>Калькулятор прибыльности</h3>
@@ -62,15 +83,32 @@ const CardCalculator = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={c.course__wrapper}>
-              <div className={c.courseDescription__wrapper}>
-                <p className={c.courseDescriptionText}>
-                  BTC/USD - Биткоин курс на {}
-                </p>
-              </div>
-              <div className={c.courseInfo__wrapper}>
-
+              <div className={c.course__wrapper}>
+                <div className={c.courseDescription__wrapper}>
+                  <p className={c.courseDescriptionText}>
+                    BTC/USD - Биткоин курс на {`${day}-${month}-${year}`}
+                  </p>
+                </div>
+                <div className={c.courseInfo__wrapper}>
+                  <Image
+                    src={Icones.courseState}
+                    width={24}
+                    height={24}
+                    alt="icon"
+                  />
+                  <span className={c.courseInfoNumbers}>
+                    {btc ? btc.price_usd : ""}
+                  </span>
+                  {btc && btc.percent_change_24h.includes("-") ? (
+                    <span className={c.courseInfoChangesRed}>
+                      {btc ? btc.percent_change_24h : ""}
+                    </span>
+                  ) : (
+                    <span className={c.courseInfoChanges}>
+                      {btc ? btc.percent_change_24h : ""}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           </div>

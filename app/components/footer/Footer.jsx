@@ -2,8 +2,9 @@
 import f from "./footer.module.scss";
 import Link from "next/link";
 import { useEffect } from "react";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppSelector,useAppDispatch } from "@/lib/hooks";
 import { infoCurrency } from "@/lib/features/currencySlice";
+import { setCurrencyForCalc } from "@/lib/features/currencySlice";
 import { useState } from "react";
 //components------------------------------------------------
 import Image from "next/image";
@@ -30,6 +31,9 @@ const Footer = () => {
         return targetNames.includes(crypto.symbol);
       })
     : [];
+    //set-data-for-card-calc-----------------
+    const dispatch = useAppDispatch()
+    dispatch(setCurrencyForCalc(selectedCurrency))
   return (
     <div className={f.wrapper}>
       <div className="container">

@@ -119,13 +119,24 @@
           justify-content: center;
           cursor: pointer;
         }
-        & .optionItem:hover {
+        & .optionItemActive {
+          width: 100%;
+          max-width: 87px;
+          height: 32px;
+          max-height: auto;
+          padding: 4px 16px;
+          background: #1a1c23;
           border-radius: 48px;
-          background: var(--1-a-1-c-23, #1a1c23);
+          border: 1px solid #a9a9a94d;
           color: #fff;
           font-size: 16px;
-          font-weight: 500;
+          font-weight: 700;
           line-height: 24px;
+          white-space: nowrap;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
           animation: none;
           opacity: 1;
           animation-duration: 1s;
