@@ -42,15 +42,13 @@ const HeaderShop = () => {
   };
   //pathname-change-catalog-button----------------------------
   const pathname = usePathname();
-  //set-data-from-redux-bucket-----------------------------
+  //bucket-state-----------------------------
   const bucketRedux = useAppSelector(bucketInfo);
-  useEffect(() => {
-    if (bucketRedux && bucketRedux !== null) {
-      console.log(bucketRedux);
-    }
-  }, [bucketRedux]);
-  
-  return (
+  const [bucket,setBucket] = useState(false);
+  const showBucket = () => {
+    setBucket(!bucket)
+  }
+  return ( 
     <div className={hs.headerShop__column}>
       <div className={hs.headerShop__wrapper}>
         <div className={hs.navigation}>
@@ -135,7 +133,7 @@ const HeaderShop = () => {
         <div className={hs.menu}>
           <Image src={Icones.menu} width={24} height={24} alt="icon" />
         </div>
-        <div className={hs.bucket}>
+        <div className={hs.bucket} onClick={() => showBucket()}>
           {bucketRedux ? (
             <Image
               src={Icones.bucketActive}
@@ -152,7 +150,7 @@ const HeaderShop = () => {
           </span>
          </div>
       </div>
-      {bucketRedux && <Bucket />}
+      {bucket && <Bucket />}
      </div>
   );
 };
