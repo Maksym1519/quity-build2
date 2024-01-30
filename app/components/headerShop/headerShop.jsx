@@ -12,6 +12,9 @@ import { setFindingGoods } from "@/lib/features/searchGoodsSlice";
 import { usePathname } from "next/navigation";
 import { bucketInfo } from "@/lib/features/card/cardSlice";
 import Bucket from "../bucket/bucket";
+//info-amount-goods-length--------------------------
+import { bucketLengthInfo } from "@/lib/features/card/cardSlice";
+import { clickBucketInfo } from "@/lib/features/card/cardSlice";
 
 const HeaderShop = () => {
   const [catalogMenu, setCatalogMenu] = useState(false);
@@ -48,6 +51,21 @@ const HeaderShop = () => {
   const showBucket = () => {
     setBucket(!bucket)
   }
+  //set-data-from-bucket-length-------------------
+  const [amountGoods, setAmountGoods] = useState()
+  const bucketData = useAppSelector(bucketLengthInfo)
+  const clickInfo = useAppSelector(clickBucketInfo)
+  console.log(clickInfo)
+  useEffect(() => {
+  if (bucketData && bucketData.length >=0) {
+    setAmountGoods(bucketData.length)
+  }
+  },[bucketData,clickBucketInfo])
+  useEffect(()=> {
+if(clickInfo && clickInfo === true) {
+  setAmountGoods(bucketData.length + 1)
+}
+  },[clickInfo])
   return ( 
     <div className={hs.headerShop__column}>
       <div className={hs.headerShop__wrapper}>
@@ -144,10 +162,14 @@ const HeaderShop = () => {
           ) : (
             <Image src={Icones.trolley} width={24} height={24} alt="icon" />
           )}
-         <span className={hs.text}>
+          {bucketData ? <span className={hs.text}>
+            В корзине
+            <br /> {amountGoods} товар(ов)
+          </span> : <span className={hs.text}>
             В корзине
             <br /> нет товаров
-          </span>
+          </span>}
+         
          </div>
       </div>
       {bucket && <Bucket />}

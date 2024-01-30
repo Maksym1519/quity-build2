@@ -37,6 +37,11 @@ const CardInfo = () => {
  const sendDataBucket = () => {
   dispatch(setClickBucket(true))
  }
+ //buttonStile----------------------------
+ const [styleButton,setButtonStyle] = useState(false);
+ const changeButtonStyle = () => {
+  setButtonStyle(!styleButton)
+ }
   return (
     <div className={c.cardInfo__wrapper}>
       <div className={c.cardInfo__body}>
@@ -208,11 +213,11 @@ const CardInfo = () => {
               </div>
               <div className={c.counter__wrapper}>
                 <div
-                    className={c.bucketButton}
+                    className={styleButton ? c.bucketButtonActive : c.bucketButton}
                     onClick={() => {
-                      toglleBucket();
                       clickReduxBucket();
-                      sendDataBucket()
+                      sendDataBucket();
+                      changeButtonStyle()
                     }}
                   >
                     <Image
