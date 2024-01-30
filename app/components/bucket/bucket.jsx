@@ -5,6 +5,10 @@ import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { cardInfo } from "@/lib/features/card/cardSlice";
 import { addToBucket } from "@/lib/features/card/cardSlice";
+import { removeFromBucket } from "@/lib/features/card/cardSlice";
+import { orderReduxInfo } from "@/lib/features/card/cardSlice";
+import { clickBucketInfo } from "@/lib/features/card/cardSlice";
+import { setClickBucket } from "@/lib/features/card/cardSlice";
 
 const Bucket = () => {
   const [orderBucket, setOrderBucket] = useState(true);
@@ -13,40 +17,83 @@ const Bucket = () => {
   };
   //get-data-from-card-redux----------------------------------
   const [arrayGoods, setArrayGoods] = useState([]);
-  const orderReduxInfo = useAppSelector(cardInfo);
+  const orderReduxInfo = useAppSelector(cardInfo)
+  const clickBucket = useAppSelector(clickBucketInfo);
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    if (orderReduxInfo && orderReduxInfo !== null) {
-      dispatch(addToBucket([orderReduxInfo]));
-    }
-  }, [orderReduxInfo]);
-  //redux-persist----------------------------------------------
-  useEffect(() => {
-    if (arrayGoods && arrayGoods !== null) {
-      dispatch(addToBucket(arrayGoods));
-    }
-  }, [arrayGoods]);
-  const currentArray = useAppSelector((state) => state.card.bucketGoods);
-  console.log(currentArray);
+console.log(orderReduxInfo)
+useEffect(() => {
+  if (clickBucket === true) {
+    const payloadArray = Array.isArray(orderReduxInfo) ? orderReduxInfo : [orderReduxInfo];
+    setArrayGoods(payloadArray);
+    dispatch(setClickBucket(false));
+  }
+}, [orderReduxInfo]);
+
+useEffect(() => {
+  if (arrayGoods.length > 0) {
+    dispatch(addToBucket(arrayGoods));
+  }
+}, [arrayGoods, dispatch]);
+
+const currentArray = useAppSelector((state) => state.card.bucketGoods);
+console.log(currentArray);
+
+// Фильтрация значений null
+const filteredCurrentArray = currentArray.filter(item => item !== null);
+
+const uniqueArray = Array.from(
+  new Set(filteredCurrentArray.map((item) => item.id))
+).map((id) => {
+  return filteredCurrentArray.find((item) => item.id === id);
+});
+
+const filteredArray = uniqueArray.filter(item => item !== null);
+
+filteredArray.map((item, index) => {
+  // Заменил 'id' на 'index' внутри map
+  return filteredArray.find((arrayItem) => arrayItem.id === index);
+});
+
+
+ //delete-good-----------------------------------------------
+  const handleRemoveItem = (item) => {
+    dispatch(removeFromBucket(item));
+  };
+
   return (
     <>
       {orderBucket && (
         <div className={b.bucket__wrapper}>
           <div className={b.bucket__body}>
             <h3 className={b.mainTitle}>Корзина</h3>
-            {currentArray &&
-              currentArray.map((item, index) => (
+            {filteredArray &&
+              filteredArray.map((item, index) => (
                 <div className={b.orderItem} key={index}>
                   <div className={b.orderItemInfo}>
                     <span className={b.goodTitle}>{item.attributes.title}</span>
-                    <div className={b.orderButton}>Оформить</div>
+                    <div
+                      className={b.orderButtonDelete}
+                      onClick={() => handleRemoveItem(item)}
+                    >
+                      Удалить
+                    </div>
                   </div>
                   <div className={b.orderItemPrice}>
-                    <span className={b.price}>
+                   
+                    <div className={b.counterButtons}>
+                    <div className={b.buttonOperation}>-</div>
+                    <div className={b.counterButtonsValue}>
+                      <span>1</span>
+                      <span>шт</span>
+                    </div>
+                    <div className={b.buttonOperation}>+</div>
+                  </div>
+                  <div className={b.orderButton}>Оформить</div>
+                   
+                  </div>
+                  <span className={b.price}>
                       Цена: {item.attributes.price}$
                     </span>
-                    <div className={b.orderButtonDelete}>Удалить</div>
-                  </div>
                 </div>
               ))}
 
@@ -58,6 +105,7 @@ const Bucket = () => {
               onClick={() => clickReduxBucket()}
             />
           </div>
+          {uniqueArray.length === 0 && <div className={b.emptyInfo}>Корзина пуста</div>}
         </div>
       )}
     </>

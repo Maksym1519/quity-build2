@@ -5,7 +5,8 @@ import Icones from "@/public/Data";
 import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { cardInfo } from "@/lib/features/card/cardSlice";
-import { setDataBucket } from "@/lib/features/card/cardSlice";
+import { addToBucket } from "@/lib/features/card/cardSlice";
+import { setClickBucket } from "@/lib/features/card/cardSlice";
 
 const CardInfo = () => {
   //bucket/counter---------------------------------------
@@ -32,11 +33,10 @@ const CardInfo = () => {
   const clickReduxBucket = () => {
     setOrderBucket(true);
   };
-  useEffect(() => {
-    if (orderBucket && orderBucket !== null) {
-      dispatch(setDataBucket(orderBucket));
-    }
-  }, [orderBucket]);
+ //send-data-to-bucket-------------------------------
+ const sendDataBucket = () => {
+  dispatch(setClickBucket(true))
+ }
   return (
     <div className={c.cardInfo__wrapper}>
       <div className={c.cardInfo__body}>
@@ -207,12 +207,12 @@ const CardInfo = () => {
                 </div>
               </div>
               <div className={c.counter__wrapper}>
-                {bucket && (
-                  <div
+                <div
                     className={c.bucketButton}
                     onClick={() => {
                       toglleBucket();
                       clickReduxBucket();
+                      sendDataBucket()
                     }}
                   >
                     <Image
@@ -223,18 +223,7 @@ const CardInfo = () => {
                     />
                     <span>В корзину</span>
                   </div>
-                )}
-                {!bucket && (
-                  <div className={c.counterButtons}>
-                    <div className={c.buttonOperation}>-</div>
-                    <div className={c.counterButtonsValue}>
-                      <span>1</span>
-                      <span>шт</span>
-                    </div>
-                    <div className={c.buttonOperation}>+</div>
-                  </div>
-                )}
-                <div className={c.counterIcones__wrapper}>
+                 <div className={c.counterIcones__wrapper}>
                   <div className={c.iconWrapper}>
                     <Image
                       src={Icones.flag}
