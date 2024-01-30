@@ -10,6 +10,14 @@ import { orderReduxInfo } from "@/lib/features/card/cardSlice";
 import { clickBucketInfo } from "@/lib/features/card/cardSlice";
 import { setClickBucket } from "@/lib/features/card/cardSlice";
 import { setBucketLength } from "@/lib/features/card/cardSlice";
+import { bucketLengthInfo } from "@/lib/features/card/cardSlice";
+import {
+  increaseCounter,
+  decreaseCounter,
+  updateSum,
+  counterInfo,
+  sumInfo,
+ } from "@/lib/features/card/cardSlice";
 
 const Bucket = () => {
   const [orderBucket, setOrderBucket] = useState(true);
@@ -54,49 +62,35 @@ const Bucket = () => {
     return filteredArray.find((arrayItem) => arrayItem.id === index);
   });
 
-   //set-sum-------------------------------------
-  const [sum, setSum] = useState(() => {
-    const initialSum = filteredArray.reduce((acc, item) => {
-      return acc + item.attributes.price * item.quantity;
-    }, 0);
+  //set-sum-------------------------------------
+  const counter = useAppSelector(counterInfo);
+  const sum = useAppSelector(sumInfo);
 
-    return initialSum;
-  });
+const handleIncreaseQuantity = (item) => {
+  dispatch(increaseCounter());
+  dispatch(addToBucket({ ...item, quantity: item.quantity + 1 }));
+};
 
-  const updateSum = () => {
-    const newSum = filteredArray.reduce((acc, item) => {
-      return acc + item.attributes.price * item.quantity;
-    }, 0);
-    setSum(newSum);
-  };
-
-  // Устанавливаем начальное количество товаров в корзине
-  useEffect(() => {
-    updateSum();
-  }, [filteredArray]);
-
-  // Обработчик увеличения количества товара
-  const handleIncreaseQuantity = (item) => {
-    dispatch(addToBucket([{ ...item, quantity: item.quantity + 1 }]));
-    updateSum();
-  };
-
-  // Обработчик уменьшения количества товара
-  const handleDecreaseQuantity = (item) => {
-    if (item.quantity > 1) {
-      dispatch(addToBucket([{ ...item, quantity: item.quantity - 1 }]));
-      updateSum();
-    }
-  };
-
-  //delete-good-----------------------------------------------
+const handleDecreaseQuantity = async (item) => {
+  await dispatch(decreaseCounter()); // Добавим async/await
+  if (item.quantity > 1) {
+    dispatch(addToBucket({ ...item, quantity: item.quantity - 1 }));
+  }
+};
+//remove--------------------------------------------------------
   const handleRemoveItem = (item) => {
     dispatch(removeFromBucket(item));
-    updateSum();
   };
+  //setSum---------------------------------------------------------------
+  useEffect(() => {
+    dispatch(updateSum()); // Обновляем сумму при изменении корзины
+  }, [currentArray]);
 
-  
-  
+const abc = useAppSelector(bucketLengthInfo)
+
+useEffect(() => {
+  console.log(abc)
+},[abc])
   return (
     <>
       {orderBucket && (
@@ -130,14 +124,17 @@ const Bucket = () => {
                       <div
                         className={b.buttonOperation}
                         onClick={() => handleIncreaseQuantity(item)}
-                          >
+                      >
                         +
                       </div>
                     </div>
                     <div className={b.orderButton}>Оформить</div>
                   </div>
                   <span className={b.price}>
-                    Итого: {parseFloat(item.attributes.price) * parseFloat(( item.quantity !== 0 && item.quantity))}$
+                    Итого:{" "}
+                   {item.totalPrice ? item.totalPrice : ""}
+                     
+                    $
                   </span>
                 </div>
               ))}
