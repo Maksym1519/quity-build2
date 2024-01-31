@@ -17,7 +17,9 @@ import {
   updateSum,
   counterInfo,
   sumInfo,
- } from "@/lib/features/card/cardSlice";
+  updateBucket,
+} from "@/lib/features/card/cardSlice";
+import { selectData } from "@/lib/features/getIdSlice";
 
 const Bucket = () => {
   const [orderBucket, setOrderBucket] = useState(true);
@@ -66,18 +68,17 @@ const Bucket = () => {
   const counter = useAppSelector(counterInfo);
   const sum = useAppSelector(sumInfo);
 
-const handleIncreaseQuantity = (item) => {
-  dispatch(increaseCounter());
-  dispatch(addToBucket({ ...item, quantity: item.quantity + 1 }));
-};
+  const handleIncreaseQuantity = (item) => {
+    dispatch(increaseCounter());
+    dispatch(updateBucket({ ...item, quantity: item.quantity + 1 }));
+  };
 
-const handleDecreaseQuantity = async (item) => {
-  await dispatch(decreaseCounter()); // Добавим async/await
-  if (item.quantity > 1) {
-    dispatch(addToBucket({ ...item, quantity: item.quantity - 1 }));
-  }
-};
-//remove--------------------------------------------------------
+  const handleDecreaseQuantity = (item) => {
+    dispatch(decreaseCounter());
+    dispatch(updateBucket({ ...item, quantity: item.quantity - 1 }));
+  };
+
+  //remove--------------------------------------------------------
   const handleRemoveItem = (item) => {
     dispatch(removeFromBucket(item));
   };
@@ -85,12 +86,14 @@ const handleDecreaseQuantity = async (item) => {
   useEffect(() => {
     dispatch(updateSum()); // Обновляем сумму при изменении корзины
   }, [currentArray]);
-
-const abc = useAppSelector(bucketLengthInfo)
-
-useEffect(() => {
-  console.log(abc)
-},[abc])
+  //logic-with-dif-users-----------------------------------
+  function getUserCart(userId) {
+    const userCart = JSON.parse(localStorage.getItem("cart")) || {};
+    return userCart[userId] || [];
+  }
+  const dataStorage = localStorage.getItem("id")
+  console.log(dataStorage)
+  //const userCart = getUserCart(userId);  
   return (
     <>
       {orderBucket && (
@@ -101,7 +104,9 @@ useEffect(() => {
               filteredArray.map((item, index) => (
                 <div className={b.orderItem} key={index}>
                   <div className={b.orderItemInfo}>
-                    <span className={b.goodTitle}>{item.attributes.title}</span>
+                    <span className={b.goodTitle}>
+                      {item.attributes ? item.attributes.title : ""}
+                    </span>
                     <div
                       className={b.orderButtonDelete}
                       onClick={() => handleRemoveItem(item)}
@@ -113,10 +118,13 @@ useEffect(() => {
                     <div className={b.counterButtons}>
                       <div
                         className={b.buttonOperation}
-                        onClick={() => handleDecreaseQuantity(item)}
+                        onClick={() =>
+                          item.quantity >= 2 && handleDecreaseQuantity(item)
+                        }
                       >
                         -
                       </div>
+
                       <div className={b.counterButtonsValue}>
                         <span>{item.quantity}</span>
                         <span>шт</span>
@@ -131,10 +139,7 @@ useEffect(() => {
                     <div className={b.orderButton}>Оформить</div>
                   </div>
                   <span className={b.price}>
-                    Итого:{" "}
-                   {item.totalPrice ? item.totalPrice : ""}
-                     
-                    $
+                    Итого: {parseFloat(item.totalPrice * item.quantity)}$
                   </span>
                 </div>
               ))}

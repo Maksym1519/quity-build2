@@ -53,9 +53,21 @@ const HeaderShop = () => {
   }
   //set-data-from-bucket-length-------------------
   const [amountGoods, setAmountGoods] = useState()
+  const [quantity,setQuantity] = useState()
   const bucketData = useAppSelector(bucketLengthInfo)
   const clickInfo = useAppSelector(clickBucketInfo)
-  console.log(clickInfo)
+  useEffect(() => {
+if(bucketData && bucketData.length > 0) {
+  let totalQuantity = 0;
+ bucketData.forEach((item) => {
+   totalQuantity += item.quantity
+ })
+ setQuantity(totalQuantity)
+ } else if(quantity === 1) {
+  setQuantity(0)
+ }
+  },[bucketData])
+  
   useEffect(() => {
   if (bucketData && bucketData.length >=0) {
     setAmountGoods(bucketData.length)
@@ -164,7 +176,7 @@ if(clickInfo && clickInfo === true) {
           )}
           {bucketData ? <span className={hs.text}>
             В корзине
-            <br /> {amountGoods} товар(ов)
+            <br /> {clickInfo ? quantity + 1 : quantity} товар(ов)
           </span> : <span className={hs.text}>
             В корзине
             <br /> нет товаров
