@@ -57,17 +57,18 @@ const HeaderShop = () => {
   const bucketData = useAppSelector(bucketLengthInfo)
   const dataStorage = localStorage.getItem("id");
   const filteredBucket = bucketData.filter((item) => item.id === dataStorage)
-  console.log(filteredBucket)
+ 
   useEffect(() => {
     if (filteredBucket.length > 0) {
       const userBucket = filteredBucket[0];
       const arrayForQuantity = userBucket.userGoods;
-      setQuantity(arrayForQuantity[0].quantity)
-      console.log(quantity);
-    }
+      const sumQuantity = arrayForQuantity.reduce((sum, item) => sum + item.quantity, 0);
+      setQuantity(sumQuantity)
+      }
   }, [filteredBucket]);
   
   const clickInfo = useAppSelector(clickBucketInfo)
+  console.log(clickInfo)
   useEffect(() => {
 if(filteredBucket.userGoods && filteredBucket.userGoods.length > 0) {
   let totalQuantity = 0;
@@ -85,11 +86,13 @@ if(filteredBucket.userGoods && filteredBucket.userGoods.length > 0) {
     setAmountGoods(filteredBucket.userGoods.length)
   }
   },[filteredBucket,clickBucketInfo])
-  useEffect(()=> {
-if(clickInfo && clickInfo === true) {
-  setAmountGoods(filteredBucket.userGoods.length + 1)
-}
-  },[clickInfo])
+  useEffect(() => {
+    if (clickInfo === true) {
+      setQuantity((prevQuantity) =>
+        clickInfo ? prevQuantity + 1 : Math.max(prevQuantity - 1, 0)
+      );
+    }
+  }, [clickInfo]);
   return ( 
     <div className={hs.headerShop__column}>
       <div className={hs.headerShop__wrapper}>
@@ -188,7 +191,7 @@ if(clickInfo && clickInfo === true) {
           )}
           {bucketData ? <span className={hs.text}>
             В корзине
-            <br /> {clickInfo ? quantity + 1 : quantity} товар(ов)
+            <br /> {quantity} товар(ов)
           </span> : <span className={hs.text}>
             В корзине
             <br /> нет товаров

@@ -49,6 +49,7 @@ const Bucket = () => {
   }, [arrayGoods, dispatch]);
 
   const currentArray = useAppSelector((state) => state.card.bucketGoods);
+  console.log(currentArray)
   const currentUserId = localStorage.getItem("id");
 
   // Фильтрация  null
@@ -72,14 +73,29 @@ const Bucket = () => {
 
   const handleIncreaseQuantity = (item) => {
     dispatch(increaseCounter());
-    dispatch(updateBucket({ ...item, quantity: item.quantity + 1 }));
+    dispatch(
+      updateBucket({
+        userId: currentUserId,
+        itemId: item.id,
+        quantity: item.quantity + 1,
+      })
+    );
+    dispatch(updateSum());
   };
 
   const handleDecreaseQuantity = (item) => {
     dispatch(decreaseCounter());
-    dispatch(updateBucket({ ...item, quantity: item.quantity - 1 }));
+    dispatch(
+      updateBucket({
+        userId: currentUserId,
+        itemId: item.id,
+        quantity: item.quantity - 1,
+      })
+    );
+    dispatch(updateSum());
   };
 
+  
   //remove--------------------------------------------------------
   const handleRemoveItem = (item) => {
     dispatch(removeFromBucket(item));
@@ -98,7 +114,7 @@ const Bucket = () => {
             <h3 className={b.mainTitle}>Корзина</h3>
             {currentUserBucket &&
               currentUserBucket.userGoods.map((item, index) => (
-                <div className={b.orderItem} key={index}>
+                 <div className={b.orderItem} key={index}>
                   <div className={b.orderItemInfo}>
                     <span className={b.goodTitle}>
                       {item.attributes ? item.attributes.title : ""}
@@ -139,8 +155,7 @@ const Bucket = () => {
                   </span>
                 </div>
               ))}
-
-            <Image
+           <Image
               src={Icones.close}
               width={24}
               height={24}
