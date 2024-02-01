@@ -11,6 +11,7 @@ import { clickBucketInfo } from "@/lib/features/card/cardSlice";
 import { setClickBucket } from "@/lib/features/card/cardSlice";
 import { setBucketLength } from "@/lib/features/card/cardSlice";
 import { bucketLengthInfo } from "@/lib/features/card/cardSlice";
+import { getUpdatedCart } from "@/app/card/differentBucket/getUpdatedCart";
 import {
   increaseCounter,
   decreaseCounter,
@@ -48,22 +49,23 @@ const Bucket = () => {
   }, [arrayGoods, dispatch]);
 
   const currentArray = useAppSelector((state) => state.card.bucketGoods);
+  const currentUserId = localStorage.getItem("id");
 
   // Фильтрация  null
   const filteredCurrentArray = currentArray.filter((item) => item !== null);
 
-  const uniqueArray = Array.from(
-    new Set(filteredCurrentArray.map((item) => item.id))
-  ).map((id) => {
-    return filteredCurrentArray.find((item) => item.id === id);
+   // Уникальные корзины для разных пользователей
+   const uniqueUserBuckets = Array.from(
+    new Set(filteredCurrentArray.map((userBucket) => userBucket.id))
+  ).map((userId) => {
+    return filteredCurrentArray.find((userBucket) => userBucket.id === userId);
   });
 
-  const filteredArray = uniqueArray.filter((item) => item !== null);
-
-  filteredArray.map((item, index) => {
-    return filteredArray.find((arrayItem) => arrayItem.id === index);
-  });
-
+  const filteredUserBuckets = uniqueUserBuckets.filter((userBucket) => userBucket !== null);
+  const currentUserBucket = filteredUserBuckets.find(
+    (userBucket) => userBucket.id === currentUserId
+  );
+  console.log(currentUserBucket)
   //set-sum-------------------------------------
   const counter = useAppSelector(counterInfo);
   const sum = useAppSelector(sumInfo);
@@ -86,22 +88,16 @@ const Bucket = () => {
   useEffect(() => {
     dispatch(updateSum()); // Обновляем сумму при изменении корзины
   }, [currentArray]);
-  //logic-with-dif-users-----------------------------------
-  function getUserCart(userId) {
-    const userCart = JSON.parse(localStorage.getItem("cart")) || {};
-    return userCart[userId] || [];
-  }
-  const dataStorage = localStorage.getItem("id")
-  console.log(dataStorage)
-  //const userCart = getUserCart(userId);  
+  
+ 
   return (
     <>
       {orderBucket && (
         <div className={b.bucket__wrapper}>
           <div className={b.bucket__body}>
             <h3 className={b.mainTitle}>Корзина</h3>
-            {filteredArray &&
-              filteredArray.map((item, index) => (
+            {currentUserBucket &&
+              currentUserBucket.userGoods.map((item, index) => (
                 <div className={b.orderItem} key={index}>
                   <div className={b.orderItemInfo}>
                     <span className={b.goodTitle}>
@@ -152,7 +148,7 @@ const Bucket = () => {
               onClick={() => clickReduxBucket()}
             />
           </div>
-          {uniqueArray.length === 0 && (
+          {currentUserBucket && currentUserBucket.userGoods.length === 0 && (
             <div className={b.emptyInfo}>Корзина пуста</div>
           )}
         </div>

@@ -55,11 +55,23 @@ const HeaderShop = () => {
   const [amountGoods, setAmountGoods] = useState()
   const [quantity,setQuantity] = useState()
   const bucketData = useAppSelector(bucketLengthInfo)
+  const dataStorage = localStorage.getItem("id");
+  const filteredBucket = bucketData.filter((item) => item.id === dataStorage)
+  console.log(filteredBucket)
+  useEffect(() => {
+    if (filteredBucket.length > 0) {
+      const userBucket = filteredBucket[0];
+      const arrayForQuantity = userBucket.userGoods;
+      setQuantity(arrayForQuantity[0].quantity)
+      console.log(quantity);
+    }
+  }, [filteredBucket]);
+  
   const clickInfo = useAppSelector(clickBucketInfo)
   useEffect(() => {
-if(bucketData && bucketData.length > 0) {
+if(filteredBucket.userGoods && filteredBucket.userGoods.length > 0) {
   let totalQuantity = 0;
- bucketData.forEach((item) => {
+  filteredBucket.userGoods.forEach((item) => {
    totalQuantity += item.quantity
  })
  setQuantity(totalQuantity)
@@ -69,13 +81,13 @@ if(bucketData && bucketData.length > 0) {
   },[bucketData])
   
   useEffect(() => {
-  if (bucketData && bucketData.length >=0) {
-    setAmountGoods(bucketData.length)
+  if (filteredBucket.userGoods && filteredBucket.userGoods.length >=0) {
+    setAmountGoods(filteredBucket.userGoods.length)
   }
-  },[bucketData,clickBucketInfo])
+  },[filteredBucket,clickBucketInfo])
   useEffect(()=> {
 if(clickInfo && clickInfo === true) {
-  setAmountGoods(bucketData.length + 1)
+  setAmountGoods(filteredBucket.userGoods.length + 1)
 }
   },[clickInfo])
   return ( 
