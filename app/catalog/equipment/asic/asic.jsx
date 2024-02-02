@@ -21,7 +21,6 @@ import { makerInfo } from "@/lib/features/catalog/filtrationSlice";
 import { setInfo } from "@/lib/features/card/cardSlice";
 import { setCard } from "@/lib/features/card/cardSlice";
 
-
 const Asic = () => {
   //is-loading-?----------------------------------------------------
   const [isLoading, setIsLoading] = useState(true);
@@ -99,11 +98,11 @@ const Asic = () => {
   const powerStateRedux = useAppSelector(powerInfo);
   const makerStateRedux = useAppSelector(makerInfo);
   //---------------------------------------------------------
-  const [sortedArrayRedux, setSortedArrayRedux] = useState()
+  const [sortedArrayRedux, setSortedArrayRedux] = useState();
   useEffect(() => {
     if (arrayFromRedux && arrayFromRedux !== null) {
       const sortedArray = [...arrayFromRedux];
-      setSortedArrayRedux(sortedArray)
+      setSortedArrayRedux(sortedArray);
       sortedArray.sort((a, b) => {
         if (
           a.attributes.popularity === "Хит" &&
@@ -121,7 +120,7 @@ const Asic = () => {
       });
     }
   }, [arrayFromRedux]);
-  
+
   const currentArray = arrayFromRedux ? sortedArrayRedux : popularityAsicArray;
 
   //commonArray--------------------------------------------------
@@ -131,12 +130,12 @@ const Asic = () => {
     costAsicArray,
     asicInfoServer,
   ];
-//-get-card-info-----------------------------------------------------
-const dispatch = useAppDispatch()
-const clickCardInfo = (info) => {
-  dispatch(setInfo(info))
-  dispatch(setCard())
-}
+  //-get-card-info-----------------------------------------------------
+  const dispatch = useAppDispatch();
+  const clickCardInfo = (info) => {
+    dispatch(setInfo(info));
+    dispatch(setCard());
+  };
 
   return (
     <div className={e.equipment__wrapper}>
@@ -192,55 +191,63 @@ const clickCardInfo = (info) => {
             </div>
           </div>
           <div className={e.catalogEquipment}>
-           {asicInfoServer &&
+            {asicInfoServer &&
               commonArray[activeIndex]?.map((item, index) => (
-                <Link href={"/card"}>
-                <div className={e.item} key={index} onClick={() => clickCardInfo(item)}>
-                  <div className={e.image__wrapper}>
-                    <Image
-                      src={item.attributes.itemImage.data.attributes.url}
-                      width={182}
-                      height={168}
-                      className={e.minerImage}
-                      alt="icon"
-                    />
-                  </div>
-                  <div className={e.description}>
-                    <span className={e.presence}>
-                      {item.attributes.presence}
-                    </span>
-                    <span className={e.title}>{item.attributes.title}</span>
-                    <div className={e.parameters}>
-                      <div className={e.parameters__item}>
-                        <span className={e.numbers}>{item.attributes.ths}</span>
-                        <span className={e.text}>TH/s</span>
-                      </div>
-                      <div className={e.parameters__item}>
-                        <span className={e.numbers}>{item.attributes.w}</span>
-                        <span className={e.text}>W</span>
-                      </div>
-                      <div className={e.parameters__item}>
-                        <span className={e.numbers}>{item.attributes.jth}</span>
-                        <span className={e.text}>J/TH</span>
-                      </div>
-                    </div>
-                    <div className={e.price__wrapper}>
-                      <span className={e.price}>{item.attributes.price}</span>
-                      <span className={e.priceIcon}>$</span>
-                    </div>
-                  </div>
-                  <span
-                    className={
-                      item.attributes.popularity === "Новинка"
-                        ? e.label
-                        : e.labelHit
-                    }
+                <Link href={"/card"} key={index}>
+                  <div
+                    className={e.item}
+                    key={index}
+                    onClick={() => clickCardInfo(item)}
                   >
-                    {item.attributes.popularity}
-                  </span>
-                </div>
-</Link>
-                 ))}
+                    <div className={e.image__wrapper}>
+                      <Image
+                        src={item.attributes.itemImage.data.attributes.url}
+                        width={182}
+                        height={168}
+                        className={e.minerImage}
+                        alt="icon"
+                      />
+                    </div>
+                    <div className={e.description}>
+                      <span className={e.presence}>
+                        {item.attributes.presence}
+                      </span>
+                      <span className={e.title}>{item.attributes.title}</span>
+                      <div className={e.parameters}>
+                        <div className={e.parameters__item}>
+                          <span className={e.numbers}>
+                            {item.attributes.ths}
+                          </span>
+                          <span className={e.text}>TH/s</span>
+                        </div>
+                        <div className={e.parameters__item}>
+                          <span className={e.numbers}>{item.attributes.w}</span>
+                          <span className={e.text}>W</span>
+                        </div>
+                        <div className={e.parameters__item}>
+                          <span className={e.numbers}>
+                            {item.attributes.jth}
+                          </span>
+                          <span className={e.text}>J/TH</span>
+                        </div>
+                      </div>
+                      <div className={e.price__wrapper}>
+                        <span className={e.price}>{item.attributes.price}</span>
+                        <span className={e.priceIcon}>$</span>
+                      </div>
+                    </div>
+                    <span
+                      className={
+                        item.attributes.popularity === "Новинка"
+                          ? e.label
+                          : e.labelHit
+                      }
+                    >
+                      {item.attributes.popularity}
+                    </span>
+                  </div>
+                </Link>
+              ))}
 
             {asicInfoServer && <ProfitLink />}
           </div>

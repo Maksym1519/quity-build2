@@ -47,45 +47,48 @@ const HeaderShop = () => {
   const pathname = usePathname();
   //bucket-state-----------------------------
   const bucketRedux = useAppSelector(bucketInfo);
-  const [bucket,setBucket] = useState(false);
+  const [bucket, setBucket] = useState(false);
   const showBucket = () => {
-    setBucket(!bucket)
-  }
+    setBucket(!bucket);
+  };
   //set-data-from-bucket-length-------------------
-  const [amountGoods, setAmountGoods] = useState()
-  const [quantity,setQuantity] = useState()
-  const bucketData = useAppSelector(bucketLengthInfo)
+  const [amountGoods, setAmountGoods] = useState();
+  const [quantity, setQuantity] = useState();
+  const bucketData = useAppSelector(bucketLengthInfo);
   const dataStorage = localStorage.getItem("id");
-  const filteredBucket = bucketData.filter((item) => item.id === dataStorage)
- 
+  const filteredBucket = bucketData.filter((item) => item.id === dataStorage);
+  
   useEffect(() => {
     if (filteredBucket.length > 0) {
       const userBucket = filteredBucket[0];
       const arrayForQuantity = userBucket.userGoods;
-      const sumQuantity = arrayForQuantity.reduce((sum, item) => sum + item.quantity, 0);
-      setQuantity(sumQuantity)
-      }
+      const sumQuantity = arrayForQuantity.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+      );
+      setQuantity(sumQuantity);
+    }
   }, [filteredBucket]);
-  
-  const clickInfo = useAppSelector(clickBucketInfo)
-  console.log(clickInfo)
+
+  const clickInfo = useAppSelector(clickBucketInfo);
+ 
   useEffect(() => {
-if(filteredBucket.userGoods && filteredBucket.userGoods.length > 0) {
-  let totalQuantity = 0;
-  filteredBucket.userGoods.forEach((item) => {
-   totalQuantity += item.quantity
- })
- setQuantity(totalQuantity)
- } else if(quantity === 1) {
-  setQuantity(0)
- }
-  },[bucketData])
-  
+    if (filteredBucket.userGoods && filteredBucket.userGoods.length > 0) {
+      let totalQuantity = 0;
+      filteredBucket.userGoods.forEach((item) => {
+        totalQuantity += item.quantity;
+      });
+      setQuantity(totalQuantity);
+    } else if (quantity === 1) {
+      setQuantity(0);
+    }
+  }, [bucketData]);
+
   useEffect(() => {
-  if (filteredBucket.userGoods && filteredBucket.userGoods.length >=0) {
-    setAmountGoods(filteredBucket.userGoods.length)
-  }
-  },[filteredBucket,clickBucketInfo])
+    if (filteredBucket.userGoods && filteredBucket.userGoods.length >= 0) {
+      setAmountGoods(filteredBucket.userGoods.length);
+    }
+  }, [filteredBucket, clickBucketInfo]);
   useEffect(() => {
     if (clickInfo === true) {
       setQuantity((prevQuantity) =>
@@ -93,7 +96,7 @@ if(filteredBucket.userGoods && filteredBucket.userGoods.length > 0) {
       );
     }
   }, [clickInfo]);
-  return ( 
+  return (
     <div className={hs.headerShop__column}>
       <div className={hs.headerShop__wrapper}>
         <div className={hs.navigation}>
@@ -189,18 +192,15 @@ if(filteredBucket.userGoods && filteredBucket.userGoods.length > 0) {
           ) : (
             <Image src={Icones.trolley} width={24} height={24} alt="icon" />
           )}
-          {bucketData ? <span className={hs.text}>
+
+          <span className={hs.text}>
             В корзине
-            <br /> {quantity} товар(ов)
-          </span> : <span className={hs.text}>
-            В корзине
-            <br /> нет товаров
-          </span>}
-         
-         </div>
+            <br /> {clickInfo ? quantity + 1 : quantity} товаров
+          </span>
+        </div>
       </div>
       {bucket && <Bucket />}
-     </div>
+    </div>
   );
 };
 

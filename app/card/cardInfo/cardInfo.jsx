@@ -30,9 +30,7 @@ const CardInfo = () => {
   //set-data-to-redux-for-bucket----------------------------------
   const [orderBucket, setOrderBucket] = useState(false);
   const dispatch = useAppDispatch();
-  const clickReduxBucket = () => {
-    setOrderBucket(true);
-  };
+ 
  //send-data-to-bucket-------------------------------
  const sendDataBucket = () => {
   dispatch(setClickBucket(true))
@@ -215,7 +213,6 @@ const CardInfo = () => {
                 <div
                     className={styleButton ? c.bucketButtonActive : c.bucketButton}
                     onClick={() => {
-                      clickReduxBucket();
                       sendDataBucket();
                       changeButtonStyle()
                     }}

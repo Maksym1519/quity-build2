@@ -224,6 +224,230 @@
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
+  .cardCalculator__wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    & .mainTitle {
+      color: var(--1-a-1-c-23, #1a1c23);
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 48px;
+      margin-bottom: 24px;
+    }
+  }
+  .cardCalculator__body {
+    width: 100%;
+    display: flex;
+    column-gap: 32px;
+  }
+  .calculator {
+    width: 100%;
+    max-width: 45%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0px 32px 24px;
+    background: #fff;
+    fill: #fff;
+    filter: drop-shadow(0px 64px 64px rgba(31, 47, 70, 0.12));
+    & .calculatorTitle {
+      color: var(--1-a-1-c-23, #1a1c23);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 28px;
+      margin-bottom: 16px;
+    }
+    & .inputWrapper {
+      width: 100%;
+      max-width: 411px;
+      height: 56px;
+      max-height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 100px;
+      background: var(--f-4-f-5-f-6, #f4f5f6);
+      position: relative;
+      margin-bottom: 28px;
+      & .calculationInput {
+        width: 100%;
+        height: 100%;
+        border-radius: 100px;
+        background: var(--f-4-f-5-f-6, #f4f5f6);
+        color: var(--1-a-1-c-23, #1a1c23);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        padding: 0 16px 0 24px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      & .inputPlaceholder {
+        color: var(--a-9-a-9-a-9, #a9a9a9);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        white-space: nowrap;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+      }
+    }
+    & .features__wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+      & .features__item {
+        width: 100%;
+        display: grid;
+        grid-template-columns: minmax(auto, 248px) auto;
+        & .features__item_title {
+          color: var(--1-a-1-c-23, #1a1c23);
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+        }
+        & .features__item_value {
+          color: var(--1-a-1-c-23, #1a1c23);
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+  //calc-info--------------------------------
+  .calculationInfo {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0 16px 16px 0;
+    background: rgba(43, 42, 59, 1);
+    padding: 19px 24px 32px 24px;
+  }
+  .calculationInfo__body {
+    width: 100%;
+    display: flex;
+    column-gap: 32px;
+    & .imageWrapper {
+      width: 100%;
+      max-width: 118px;
+       & .minerImg {
+        width: 100%;
+        height: 100%;
+        max-height: 108px;
+        object-fit: contain;
+        border-radius: 6px;
+      }
+    }
+  }
+  .calculationData {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 21px;
+    & .calculationData__title {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 28px;
+      margin-bottom: 6px;
+    }
+    & .calculationPrice__wrapper {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+      margin-bottom: 32px;
+      & .calculationPriceValue {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 32px;
+      }
+      & .calculationPriceMark {
+        color: var(--a-9-a-9-a-9, #a9a9a9);
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 32px;
+      }
+    }
+    & .profit__wrapper {
+      width: 100%;
+      display: flex;
+      column-gap: 46px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #a9a9a9;
+      & .profit__column {
+        display: flex;
+        flex-direction: column;
+        & .profit__column_title {
+          color: #fff;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 28px;
+        }
+        & .profitAmount__wrapper {
+          display: flex;
+          align-items: center;
+          column-gap: 4px;
+          & .profitAmountValue {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 32px;
+          }
+          & .profitAmountText {
+            color: var(--a-9-a-9-a-9, #a9a9a9);
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 32px;
+          }
+        }
+      }
+    }
+  }
+  .course__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    & .courseDescription__wrapper {
+      width: 100%;
+      & .courseDescriptionText {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+      }
+    }
+    & .courseInfo__wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      column-gap: 13px;
+      & .courseInfoNumbers {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 32px;
+      }
+      & .courseInfoChanges {
+        color: var(--3-ed-085, #3ed085);
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+      & .courseInfoChangesRed {
+        color: red;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+    }
+  }
 }
 @media (max-width: 768px) {
 }

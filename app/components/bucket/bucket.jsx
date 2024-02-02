@@ -49,7 +49,6 @@ const Bucket = () => {
   }, [arrayGoods, dispatch]);
 
   const currentArray = useAppSelector((state) => state.card.bucketGoods);
-  console.log(currentArray)
   const currentUserId = localStorage.getItem("id");
 
   // Фильтрация  null
@@ -94,15 +93,13 @@ const Bucket = () => {
     );
     dispatch(updateSum());
   };
-
-  
   //remove--------------------------------------------------------
   const handleRemoveItem = (item) => {
     dispatch(removeFromBucket(item));
   };
   //setSum---------------------------------------------------------------
   useEffect(() => {
-    dispatch(updateSum()); // Обновляем сумму при изменении корзины
+    dispatch(updateSum()); 
   }, [currentArray]);
   
  
