@@ -57,4 +57,31 @@
   }
 }
 @media (max-width: 768px) {
+  .terms__wrapper {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    background: #f4f5f6;
+    margin-bottom: 48px;
+  }
+  .terms__body {
+    width: 100%;
+    max-width: 1280px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 0px;
+    row-gap: 16px;
+    margin: 0 auto;
+    padding: 12px 24px;
+  }
+  .termsItem {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    color: var(--1-a-1-c-23, #1a1c23);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
 }

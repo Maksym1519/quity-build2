@@ -30,6 +30,7 @@ const Bucket = () => {
   //get-data-from-card-redux----------------------------------
   const [arrayGoods, setArrayGoods] = useState([]);
   const orderReduxInfo = useAppSelector(cardInfo);
+  
   const clickBucket = useAppSelector(clickBucketInfo);
   const dispatch = useAppDispatch();
   useEffect(() => {

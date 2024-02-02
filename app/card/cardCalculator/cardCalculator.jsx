@@ -6,8 +6,13 @@ import Icones from "@/public/Data";
 import { useAppSelector } from "@/lib/hooks";
 import { infoCurrencyCalc } from "@/lib/features/currencySlice";
 import { useEffect, useState } from "react";
+import { cardInfo } from "@/lib/features/card/cardSlice";
 
 const CardCalculator = () => {
+  //set-current-card-info--------------------------
+const reduxCardInfo = useAppSelector(cardInfo)
+console.log(reduxCardInfo)
+//---------------------------------------------------
   const features = {
     Хэшрейт: "84 TH/s",
     Потребление: "3150 W",

@@ -150,6 +150,9 @@
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .bucket__wrapper {
+    position: absolute;
+    right: 0;
+    top: 120%;
     width: 100%;
     max-width: 378px;
     padding: 32px;
@@ -157,11 +160,20 @@
     fill: #fff;
     filter: drop-shadow(0px 16px 64px rgba(31, 47, 70, 0.16));
     border-radius: 24px;
+    z-index: 1003;
+    & .emptyInfo {
+      color: var(--1-a-1-c-23, #1a1c23);
+      text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 28px;
+    }
   }
   .bucket__body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
     & .mainTitle {
       color: var(--1-a-1-c-23, #1a1c23);
       font-size: 40px;
@@ -172,19 +184,12 @@
     & .orderItem {
       width: 100%;
       display: flex;
-      align-items: center;
       flex-direction: column;
       row-gap: 12px;
       margin-bottom: 24px;
       padding-bottom: 16px;
       border-bottom: 1px solid rgba(26, 28, 35, 0.6);
       & .orderItemInfo {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      & .orderItemPrice {
         width: 100%;
         display: flex;
         align-items: center;
@@ -202,6 +207,61 @@
           font-size: 14px;
           font-weight: 400;
           line-height: 20px;
+        }
+      }
+      & .orderItemPrice {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+          & .counterButtons {
+          width: 100%;
+          max-width: 178px;
+          display: flex;
+          align-items: center;
+          height: 48px;
+          animation: none;
+          opacity: 1;
+          animation-duration: 1.5s;
+          animation-name: fadeIn;
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+          & .buttonOperation {
+            width: 100%;
+            max-width: 50px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 2px solid #f4f5f6;
+            color: var(--1-a-1-c-23, #1a1c23);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+            cursor: pointer;
+          }
+          & .counterButtonsValue {
+            width: 100%;
+            max-width: 74px;
+            height: 100%;
+            background: #f4f5f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--1-a-1-c-23, #1a1c23);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+          }
         }
       }
       & .goodTitle {
@@ -224,11 +284,25 @@
         font-weight: 400;
         line-height: 20px;
       }
+      & .price {
+        color: var(--1-a-1-c-23, #1a1c23);
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 48px;
+      }
+    }
+    & .close {
+      position: absolute;
+      top: -16px;
+      right: 0;
     }
   }
 }
 @media (max-width: 768px) {
   .bucket__wrapper {
+    position: absolute;
+    right: 0;
+    top: 130%;
     width: 100%;
     max-width: 378px;
     padding: 32px;
@@ -236,11 +310,20 @@
     fill: #fff;
     filter: drop-shadow(0px 16px 64px rgba(31, 47, 70, 0.16));
     border-radius: 24px;
+    z-index: 1003;
+    & .emptyInfo {
+      color: var(--1-a-1-c-23, #1a1c23);
+      text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 28px;
+    }
   }
   .bucket__body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
     & .mainTitle {
       color: var(--1-a-1-c-23, #1a1c23);
       font-size: 40px;
@@ -251,19 +334,12 @@
     & .orderItem {
       width: 100%;
       display: flex;
-      align-items: center;
       flex-direction: column;
       row-gap: 12px;
       margin-bottom: 24px;
       padding-bottom: 16px;
       border-bottom: 1px solid rgba(26, 28, 35, 0.6);
       & .orderItemInfo {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      & .orderItemPrice {
         width: 100%;
         display: flex;
         align-items: center;
@@ -281,6 +357,61 @@
           font-size: 14px;
           font-weight: 400;
           line-height: 20px;
+        }
+      }
+      & .orderItemPrice {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+          & .counterButtons {
+          width: 100%;
+          max-width: 178px;
+          display: flex;
+          align-items: center;
+          height: 48px;
+          animation: none;
+          opacity: 1;
+          animation-duration: 1.5s;
+          animation-name: fadeIn;
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+          & .buttonOperation {
+            width: 100%;
+            max-width: 50px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 2px solid #f4f5f6;
+            color: var(--1-a-1-c-23, #1a1c23);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+            cursor: pointer;
+          }
+          & .counterButtonsValue {
+            width: 100%;
+            max-width: 74px;
+            height: 100%;
+            background: #f4f5f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--1-a-1-c-23, #1a1c23);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+          }
         }
       }
       & .goodTitle {
@@ -303,6 +434,17 @@
         font-weight: 400;
         line-height: 20px;
       }
+      & .price {
+        color: var(--1-a-1-c-23, #1a1c23);
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 48px;
+      }
+    }
+    & .close {
+      position: absolute;
+      top: -16px;
+      right: 0;
     }
   }
 }

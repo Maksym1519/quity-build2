@@ -317,6 +317,7 @@
   .headerShop__column {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
   .headerShop__wrapper {
     width: 100%;
@@ -640,6 +641,7 @@
     flex-direction: column;
     height: auto;
     padding-bottom: 24px;
+    position: relative;
   }
   .headerShop__wrapper {
     max-width: 100%;
@@ -710,7 +712,7 @@
     width: 100%;
     height: 56px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     & .catalog {
       order: 1;
@@ -861,7 +863,7 @@
     }
     & .bucket {
       order: 4;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
       column-gap: 16px;
