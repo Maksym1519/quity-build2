@@ -7,17 +7,37 @@ import { useAppSelector } from "@/lib/hooks";
 import { infoCurrencyCalc } from "@/lib/features/currencySlice";
 import { useEffect, useState } from "react";
 import { cardInfo } from "@/lib/features/card/cardSlice";
+import 'spinkit/spinkit.min.css';
 
 const CardCalculator = () => {
   //set-current-card-info--------------------------
 const reduxCardInfo = useAppSelector(cardInfo)
-console.log(reduxCardInfo)
+
+//get-power-price-----------------------------------
+const [inputPower,setInputPower] = useState();
+
+const getClickPower = (e) => {
+  setInputPower(e)
+}
+//count-profit---------------------------------------
+const price  = reduxCardInfo.attributes.price;
+const priceInt = parseInt(price.replace(/\s/g, ''),10)
+const totalPower = ((24 * (reduxCardInfo.attributes.w/1000)) * 30) * inputPower
+const totalPrice = priceInt && priceInt + totalPower 
+const profitMonth = reduxCardInfo.attributes.profit * 30
+const profitRatio = profitMonth && parseFloat(reduxCardInfo.attributes.price) / parseFloat(profitMonth)
+
+const payback = totalPrice && profitMonth && totalPrice / profitMonth
+
 //---------------------------------------------------
+var Spinner = require('react-spinkit');
+
+
   const features = {
-    Хэшрейт: "84 TH/s",
-    Потребление: "3150 W",
-    "Доходность, $/мес.": "71 132,64 $/мес.",
-    "Доходность, %/мес.": "6,92%",
+    Хэшрейт: reduxCardInfo.attributes.ths,
+    Потребление: reduxCardInfo.attributes.w,
+    "Доходность, $/мес.": profitMonth,
+    "Доходность, %/мес.": profitMonth && (parseFloat(profitMonth) / parseFloat(reduxCardInfo.attributes.price) * 100) / 1000,
   };
   //get-currency------------------------------------
   const [btc, setBtc] = useState();
@@ -41,8 +61,8 @@ console.log(reduxCardInfo)
         <div className={c.calculator}>
           <h4 className={c.calculatorTitle}>Стоимость электроэнергии</h4>
           <div className={c.inputWrapper}>
-            <input type="text" className={c.calculationInput} />
-            <span className={c.inputPlaceholder}> $/Квт</span>
+            <input type="text" className={c.calculationInput} onChange={(e) => getClickPower(e.target.value)}/>
+            <span className={c.inputPlaceholder}> грн./Квт</span>
           </div>
           <div className={c.features__wrapper}>
             {Object.entries(features).map(([key, value], index) => (
@@ -65,24 +85,25 @@ console.log(reduxCardInfo)
             </div>
             <div className={c.calculationData}>
               <h4 className={c.calculationData__title}>
-                ASIC-майнеры Bitmain Antminer T19
+                {reduxCardInfo && reduxCardInfo.attributes.title}
               </h4>
               <div className={c.calculationPrice__wrapper}>
-                <span className={c.calculationPriceValue}>1 970 000</span>
+                <span className={c.calculationPriceValue}>{reduxCardInfo && reduxCardInfo.attributes.price}</span>
                 <span className={c.calculationPriceMark}>$</span>
               </div>
               <div className={c.profit__wrapper}>
                 <div className={c.profit__column}>
                   <h4 className={c.profit__column_title}>Чистая прибыль</h4>
                   <div className={c.profitAmount__wrapper}>
-                    <span className={c.profitAmountValue}>63 644,64</span>
+                  <span className={c.profitAmountValue}>{inputPower ? (profitMonth - totalPower) : <Spinner name='circle' color='blue' />}</span>
+
                     <span className={c.profitAmountText}>$/мес</span>
                   </div>
                 </div>
                 <div className={c.profit__column}>
                   <h4 className={c.profit__column_title}>Окупаемость</h4>
                   <div className={c.profitAmount__wrapper}>
-                    <span className={c.profitAmountValue}>14,46</span>
+                    <span className={c.profitAmountValue}>{inputPower ? payback :  <Spinner name='circle' color='blue' />}</span>
                     <span className={c.profitAmountText}>мес</span>
                   </div>
                 </div>

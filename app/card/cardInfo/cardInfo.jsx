@@ -196,7 +196,7 @@ const CardInfo = () => {
               </div>
               <div className={c.payback__wrapper}>
                 <div className={c.paybackItem}>
-                  <span className={c.paybackItemText}>Окупаемость</span>
+                  <span className={c.paybackItemText}>Средняя окупаемость</span>
                   <Image
                     src={Icones.filterAttention}
                     width={12}
