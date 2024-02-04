@@ -7,6 +7,7 @@ import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { cardInfo } from "@/lib/features/card/cardSlice";
 import { addToBucket } from "@/lib/features/card/cardSlice";
 import { setClickBucket } from "@/lib/features/card/cardSlice";
+import BuyPopUp from "./buyPopUp";
 
 const CardInfo = () => {
   //bucket/counter---------------------------------------
@@ -39,6 +40,11 @@ const CardInfo = () => {
  const [styleButton,setButtonStyle] = useState(false);
  const changeButtonStyle = () => {
   setButtonStyle(!styleButton)
+ }
+ //order-popup-------------------------------------
+ const [popup,setPopup] = useState(false);
+ const togglePopup = () => {
+  setPopup(!popup)
  }
   return (
     <div className={c.cardInfo__wrapper}>
@@ -206,7 +212,7 @@ const CardInfo = () => {
                 </div>
                 <div className={c.paybackItem}>
                   <span className={c.paybackItemNumbers}>{payback}</span>
-                  <span className={c.paybackItemNumbers_text}>месяцев</span>
+                  <span className={c.paybackItemNumbers_text}>месяца(ев)</span>
                 </div>
               </div>
               <div className={c.counter__wrapper}>
@@ -244,7 +250,7 @@ const CardInfo = () => {
                   </div>
                 </div>
               </div>
-              <div className={c.buyButton}>Купить в 1 клик</div>
+              <div className={c.buyButton} onClick={() => togglePopup()}>Купить в 1 клик</div>
               <div className={c.hostingInfoText}>
                 Узнать стоимость размещения <br />
                 на хостинге
@@ -267,7 +273,8 @@ const CardInfo = () => {
           {/* //------------------------------------------------------------------ */}
         </main>
       </div>
-    </div>
+      {popup && <BuyPopUp closePopup={togglePopup}/>}
+     </div>
   );
 };
 export default CardInfo;

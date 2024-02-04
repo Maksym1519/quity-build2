@@ -1,4 +1,5 @@
 import b from "./bucket.module.scss";
+import Link from "next/link";
 import Image from "next/image";
 import Icones from "@/public/Data";
 import { useState, useEffect } from "react";
@@ -21,6 +22,8 @@ import {
   updateBucket,
 } from "@/lib/features/card/cardSlice";
 import { selectData } from "@/lib/features/getIdSlice";
+import { setOrder } from "@/lib/features/order/orderSlice";
+import { setUserId } from "@/lib/features/order/orderSlice";
 
 const Bucket = () => {
   const [orderBucket, setOrderBucket] = useState(true);
@@ -30,7 +33,6 @@ const Bucket = () => {
   //get-data-from-card-redux----------------------------------
   const [arrayGoods, setArrayGoods] = useState([]);
   const orderReduxInfo = useAppSelector(cardInfo);
-  
   const clickBucket = useAppSelector(clickBucketInfo);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -55,18 +57,20 @@ const Bucket = () => {
   // Фильтрация  null
   const filteredCurrentArray = currentArray.filter((item) => item !== null);
 
-   // Уникальные корзины для разных пользователей
-   const uniqueUserBuckets = Array.from(
+  // Уникальные корзины для разных пользователей
+  const uniqueUserBuckets = Array.from(
     new Set(filteredCurrentArray.map((userBucket) => userBucket.id))
   ).map((userId) => {
     return filteredCurrentArray.find((userBucket) => userBucket.id === userId);
   });
 
-  const filteredUserBuckets = uniqueUserBuckets.filter((userBucket) => userBucket !== null);
+  const filteredUserBuckets = uniqueUserBuckets.filter(
+    (userBucket) => userBucket !== null
+  );
   const currentUserBucket = filteredUserBuckets.find(
     (userBucket) => userBucket.id === currentUserId
   );
-  console.log(currentUserBucket)
+  console.log(currentArray);
   //set-sum-------------------------------------
   const counter = useAppSelector(counterInfo);
   const sum = useAppSelector(sumInfo);
@@ -100,10 +104,15 @@ const Bucket = () => {
   };
   //setSum---------------------------------------------------------------
   useEffect(() => {
-    dispatch(updateSum()); 
+    dispatch(updateSum());
   }, [currentArray]);
-  
- 
+  //setOrder---------------------------------------------------------------
+  const clickSetOrder = (userBucket) => {
+    if (userBucket && userBucket !== undefined && currentUserBucket.id !== null)
+      dispatch(setOrder(userBucket.userGoods));
+    dispatch(setUserId(currentUserBucket.id));
+  };
+
   return (
     <>
       {orderBucket && (
@@ -112,7 +121,7 @@ const Bucket = () => {
             <h3 className={b.mainTitle}>Корзина</h3>
             {currentUserBucket &&
               currentUserBucket.userGoods.map((item, index) => (
-                 <div className={b.orderItem} key={index}>
+                <div className={b.orderItem} key={index}>
                   <div className={b.orderItemInfo}>
                     <span className={b.goodTitle}>
                       {item.attributes ? item.attributes.title : ""}
@@ -146,14 +155,21 @@ const Bucket = () => {
                         +
                       </div>
                     </div>
-                    <div className={b.orderButton}>Оформить</div>
+                    <Link href={"/orders"}>
+                      <div
+                        className={b.orderButton}
+                        onClick={() => clickSetOrder(currentUserBucket)}
+                      >
+                        Оформить
+                      </div>
+                    </Link>
                   </div>
                   <span className={b.price}>
                     Итого: {parseFloat(item.totalPrice * item.quantity)}$
                   </span>
                 </div>
               ))}
-           <Image
+            <Image
               src={Icones.close}
               width={24}
               height={24}

@@ -7,37 +7,42 @@ import { useAppSelector } from "@/lib/hooks";
 import { infoCurrencyCalc } from "@/lib/features/currencySlice";
 import { useEffect, useState } from "react";
 import { cardInfo } from "@/lib/features/card/cardSlice";
-import 'spinkit/spinkit.min.css';
+import "spinkit/spinkit.min.css";
 
 const CardCalculator = () => {
   //set-current-card-info--------------------------
-const reduxCardInfo = useAppSelector(cardInfo)
+  const reduxCardInfo = useAppSelector(cardInfo);
 
-//get-power-price-----------------------------------
-const [inputPower,setInputPower] = useState();
+  //get-power-price-----------------------------------
+  const [inputPower, setInputPower] = useState();
 
-const getClickPower = (e) => {
-  setInputPower(e)
-}
-//count-profit---------------------------------------
-const price  = reduxCardInfo.attributes.price;
-const priceInt = parseInt(price.replace(/\s/g, ''),10)
-const totalPower = ((24 * (reduxCardInfo.attributes.w/1000)) * 30) * inputPower
-const totalPrice = priceInt && priceInt + totalPower 
-const profitMonth = reduxCardInfo.attributes.profit * 30
-const profitRatio = profitMonth && parseFloat(reduxCardInfo.attributes.price) / parseFloat(profitMonth)
+  const getClickPower = (e) => {
+    setInputPower(e);
+  };
+  //count-profit---------------------------------------
+  const price = reduxCardInfo.attributes.price;
+  const priceInt = parseInt(price.replace(/\s/g, ""), 10);
+  const totalPower = 24 * (reduxCardInfo.attributes.w / 1000) * 30 * inputPower;
+  const totalPrice = priceInt && priceInt + totalPower;
+  const profitMonth = reduxCardInfo.attributes.profit * 30;
+  const profitRatio =
+    profitMonth &&
+    parseFloat(reduxCardInfo.attributes.price) / parseFloat(profitMonth);
 
-const payback = totalPrice && profitMonth && totalPrice / profitMonth
+  const payback = totalPrice && profitMonth && totalPrice / profitMonth;
 
-//---------------------------------------------------
-var Spinner = require('react-spinkit');
-
+  //---------------------------------------------------
+  var Spinner = require("react-spinkit");
 
   const features = {
     Хэшрейт: reduxCardInfo.attributes.ths,
     Потребление: reduxCardInfo.attributes.w,
     "Доходность, $/мес.": profitMonth,
-    "Доходность, %/мес.": profitMonth && (parseFloat(profitMonth) / parseFloat(reduxCardInfo.attributes.price) * 100) / 1000,
+    "Доходность, %/мес.":
+      profitMonth &&
+      ((parseFloat(profitMonth) / parseFloat(reduxCardInfo.attributes.price)) *
+        100) /
+        1000,
   };
   //get-currency------------------------------------
   const [btc, setBtc] = useState();
@@ -45,13 +50,13 @@ var Spinner = require('react-spinkit');
   useEffect(() => {
     if (currency && currency !== null) {
       setBtc(currency[0]);
-      }
+    }
   }, [currency]);
 
   //date----------------------------------------------
   const date = new Date();
   const day = date.getDate();
-  const month = date.getMonth();
+  const month = "0" + (date.getMonth() + 1);
   const year = date.getFullYear();
 
   return (
@@ -61,8 +66,12 @@ var Spinner = require('react-spinkit');
         <div className={c.calculator}>
           <h4 className={c.calculatorTitle}>Стоимость электроэнергии</h4>
           <div className={c.inputWrapper}>
-            <input type="text" className={c.calculationInput} onChange={(e) => getClickPower(e.target.value)}/>
-            <span className={c.inputPlaceholder}> грн./Квт</span>
+            <input
+              type="text"
+              className={c.calculationInput}
+              onChange={(e) => getClickPower(e.target.value)}
+            />
+            <span className={c.inputPlaceholder}> $/Квт</span>
           </div>
           <div className={c.features__wrapper}>
             {Object.entries(features).map(([key, value], index) => (
@@ -88,14 +97,22 @@ var Spinner = require('react-spinkit');
                 {reduxCardInfo && reduxCardInfo.attributes.title}
               </h4>
               <div className={c.calculationPrice__wrapper}>
-                <span className={c.calculationPriceValue}>{reduxCardInfo && reduxCardInfo.attributes.price}</span>
+                <span className={c.calculationPriceValue}>
+                  {reduxCardInfo && reduxCardInfo.attributes.price}
+                </span>
                 <span className={c.calculationPriceMark}>$</span>
               </div>
               <div className={c.profit__wrapper}>
                 <div className={c.profit__column}>
                   <h4 className={c.profit__column_title}>Чистая прибыль</h4>
                   <div className={c.profitAmount__wrapper}>
-                  <span className={c.profitAmountValue}>{inputPower ? (profitMonth - totalPower) : <Spinner name='circle' color='blue' />}</span>
+                    <span className={c.profitAmountValue}>
+                      {inputPower ? (
+                        profitMonth - totalPower
+                      ) : (
+                        <Spinner name="circle" color="blue" />
+                      )}
+                    </span>
 
                     <span className={c.profitAmountText}>$/мес</span>
                   </div>
@@ -103,7 +120,13 @@ var Spinner = require('react-spinkit');
                 <div className={c.profit__column}>
                   <h4 className={c.profit__column_title}>Окупаемость</h4>
                   <div className={c.profitAmount__wrapper}>
-                    <span className={c.profitAmountValue}>{inputPower ? payback :  <Spinner name='circle' color='blue' />}</span>
+                    <span className={c.profitAmountValue}>
+                      {inputPower ? (
+                        payback.toFixed(3)
+                      ) : (
+                        <Spinner name="circle" color="blue" />
+                      )}
+                    </span>
                     <span className={c.profitAmountText}>мес</span>
                   </div>
                 </div>
@@ -121,9 +144,12 @@ var Spinner = require('react-spinkit');
                     height={24}
                     alt="icon"
                   />
-                  <span className={c.courseInfoNumbers}>
-                    {btc ? btc.price_usd : ""}
-                  </span>
+                  {btc && btc.percent_change_24h.includes("-") ? (
+                    <span className={c.courseInfoNumbers}>{btc && btc.price_usd}</span>
+                  ) : (
+                    <span className={c.courseInfoNumbers}>{btc && btc.price_usd}</span>
+                  )}
+
                   {btc && btc.percent_change_24h.includes("-") ? (
                     <span className={c.courseInfoChangesRed}>
                       {btc ? btc.percent_change_24h : ""}

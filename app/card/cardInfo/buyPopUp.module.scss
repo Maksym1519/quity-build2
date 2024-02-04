@@ -1,0 +1,178 @@
+@media (min-width: 1025px) {
+  .buyPopUp__wrapper {
+    width: 520px;
+    height: 380px;
+    padding: 72px 32px 32px 32px;
+    background: #fff;
+    fill: #fff;
+    filter: drop-shadow(0px 16px 64px rgba(31, 47, 70, 0.16));
+    border-radius: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: none;
+    opacity: 1;
+    animation-duration: 1s;
+    animation-name: fadeIn;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .buyPopUp__body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    row-gap: 32px;
+    position: relative;
+    & .text {
+        color: var(--1-a-1-c-23, #1a1c23);
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 28px;
+      }
+      & .textInfo {
+        color: var(--1-a-1-c-23, #1a1c23);
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 28px;
+        & span {
+          text-decoration: underline;
+          color: rgba(26, 86, 255, 1);
+        }
+      }
+      & .close {
+        position: absolute;
+        top: -32px;
+        right: 24px;
+        cursor: pointer;
+      }
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .buyPopUp__wrapper {
+        width: 520px;
+        height: 380px;
+        padding: 72px 32px 32px 32px;
+        background: #fff;
+        fill: #fff;
+        filter: drop-shadow(0px 16px 64px rgba(31, 47, 70, 0.16));
+        border-radius: 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: none;
+        opacity: 1;
+        animation-duration: 1s;
+        animation-name: fadeIn;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .buyPopUp__body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        row-gap: 32px;
+        position: relative;
+        & .text {
+            color: var(--1-a-1-c-23, #1a1c23);
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 28px;
+          }
+          & .textInfo {
+            color: var(--1-a-1-c-23, #1a1c23);
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 28px;
+            & span {
+              text-decoration: underline;
+              color: rgba(26, 86, 255, 1);
+            }
+          }
+          & .close {
+            position: absolute;
+            top: -32px;
+            right: 24px;
+            cursor: pointer;
+          }
+      }
+}
+@media (max-width: 768px) {
+    .buyPopUp__wrapper {
+        width: 100%;
+        max-width: 80%;
+        height: 380px;
+        padding: 72px 32px 32px 32px;
+        background: #fff;
+        fill: #fff;
+        filter: drop-shadow(0px 16px 64px rgba(31, 47, 70, 0.16));
+        border-radius: 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: none;
+        opacity: 1;
+        animation-duration: 1s;
+        animation-name: fadeIn;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .buyPopUp__body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        row-gap: 32px;
+        position: relative;
+        & .text {
+            color: var(--1-a-1-c-23, #1a1c23);
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 28px;
+          }
+          & .textInfo {
+            color: var(--1-a-1-c-23, #1a1c23);
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 28px;
+            & span {
+              text-decoration: underline;
+              color: rgba(26, 86, 255, 1);
+            }
+          }
+          & .close {
+            position: absolute;
+            top: -32px;
+            right: 24px;
+            cursor: pointer;
+          }
+      }
+}

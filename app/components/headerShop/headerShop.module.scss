@@ -63,6 +63,10 @@
     height: 56px;
     display: flex;
     align-items: center;
+    & .linkCatalog {
+      max-width: 264px;
+      height: 100%;
+    }
     & .catalog {
       max-width: 264px;
       height: 100%;

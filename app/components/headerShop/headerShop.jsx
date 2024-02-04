@@ -57,7 +57,7 @@ const HeaderShop = () => {
   const bucketData = useAppSelector(bucketLengthInfo);
   const dataStorage = localStorage.getItem("id");
   const filteredBucket = bucketData.filter((item) => item.id === dataStorage);
-  
+
   useEffect(() => {
     if (filteredBucket.length > 0) {
       const userBucket = filteredBucket[0];
@@ -71,7 +71,7 @@ const HeaderShop = () => {
   }, [filteredBucket]);
 
   const clickInfo = useAppSelector(clickBucketInfo);
- 
+
   useEffect(() => {
     if (filteredBucket.userGoods && filteredBucket.userGoods.length > 0) {
       let totalQuantity = 0;
@@ -134,16 +134,21 @@ const HeaderShop = () => {
       </div>
       <div className={hs.sorting__wrapper}>
         {pathname === "/catalog" ? (
-          <div className={hs.catalogActive}>
-            <div
-              className={catalogMenu ? hs.burgerClose : hs.burger}
-              onClick={toggleCatalogMenu}
-            >
-              <span className={hs.burger__line}></span>
+         
+            <div className={hs.catalogActive}>
+              
+              <div
+                className={catalogMenu ? hs.burgerClose : hs.burger}
+                onClick={toggleCatalogMenu}
+              >
+                <span className={hs.burger__line}></span>
+              </div>
+              <span className={hs.text}>Каталог оборудования</span>
+        
             </div>
-            <span className={hs.text}>Каталог оборудования</span>
-          </div>
+          
         ) : (
+          <Link href={"/catalog"} className={hs.linkCatalog}>
           <div className={hs.catalog}>
             <div
               className={catalogMenu ? hs.burgerClose : hs.burger}
@@ -153,6 +158,7 @@ const HeaderShop = () => {
             </div>
             <span className={hs.text}>Каталог оборудования</span>
           </div>
+          </Link>
         )}
 
         <div className={hs.search__wrapper}>

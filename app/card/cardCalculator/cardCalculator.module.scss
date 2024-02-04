@@ -173,6 +173,7 @@
             font-size: 20px;
             font-weight: 400;
             line-height: 32px;
+            
           }
           & .profitAmountText {
             color: var(--a-9-a-9-a-9, #a9a9a9);
@@ -208,15 +209,21 @@
         font-weight: 400;
         line-height: 32px;
       }
+      & .courseInfoNumbersRed {
+        color: red;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 32px;
+      }
       & .courseInfoChanges {
         color: var(--3-ed-085, #3ed085);
-        font-size: 13px;
+        font-size: 16px;
         font-weight: 400;
         line-height: 20px;
       }
       & .courseInfoChangesRed {
         color: red;
-        font-size: 13px;
+        font-size: 16px;
         font-weight: 400;
         line-height: 20px;
       }
