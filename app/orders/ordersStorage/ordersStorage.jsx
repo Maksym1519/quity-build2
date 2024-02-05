@@ -2,19 +2,51 @@
 import o from "./orderStorage.module.scss";
 import Image from "next/image";
 import Icones from "@/public/Data";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { orderInfo } from "@/lib/features/order/orderSlice";
+import { useEffect, useState } from "react";
+import OrderPopup from "./orderPopup";
+import { setOverlay } from "@/lib/features/order/orderSlice";
+import { overlayInfo } from "@/lib/features/order/orderSlice";
+import { paidInfo } from "@/lib/features/order/orderSlice";
+import { setPaid } from "@/lib/features/order/orderSlice";
+import { setOrderPaid } from "@/lib/features/order/orderSlice";
 
 const OrdersStorage = () => {
   const currentUserId = localStorage.getItem("id");
   const orderRedux = useAppSelector(orderInfo);
+  console.log(orderRedux)
   const filteredCurrentArray = orderRedux.filter((item) => item !== null);
-  
-  const currentFilteredOrders = filteredCurrentArray.filter((order) => order.userId === currentUserId);
-  
-  console.log(orderRedux);
-  console.log(filteredCurrentArray);
-  console.log(currentFilteredOrders);
+
+  const currentFilteredOrders = filteredCurrentArray.filter(
+    (order) => order.userId === currentUserId
+  );
+  //status---------------------------------------------------
+  const [notPaid, setNotPaid] = useState(true);
+
+  //popup--------------------------------------------------------
+  const [popup, setPopup] = useState(false);
+  const togglePopup = () => {
+    setPopup(!popup);
+  };
+  const dispatch = useAppDispatch();
+  const clickOverlay = () => {
+    dispatch(setOverlay(!overlayInfo));
+  };
+  const clickPaid = (index) => {
+    dispatch(setOrderPaid({ index, paid: false }));
+  };
+  //paid-----------------------------------------------
+  const [paidStyle, setPaidStyle] = useState(false);
+  const pay = useAppSelector(paidInfo);
+    useEffect(() => {
+    if (pay) {
+      setPaidStyle(pay);
+    }
+  }, [pay]);
+  const orderInfoRedux = useAppSelector(orderInfo);
+  const isAnyOrderPaid = orderInfoRedux.some(order => order.paid);
+  console.log(isAnyOrderPaid);
   
   return (
     <div className={o.content__wrapper}>
@@ -35,52 +67,93 @@ const OrdersStorage = () => {
         </div>
       </div>
       <main className={o.orders__wrapper}>
-          <div className={o.ordersHeader}>
-             <div className={o.image}></div>
-             <div className={o.model}>Модель</div>
-             <div className={o.price}>Стоимость</div>
-             <div className={o.status}>Статус</div>
-             <div className={o.pay}></div>
-          </div>
-          {/* //--------------------------------------------------------------------- */}
-          <div className={o.good__wrapper}>
+        <div className={o.ordersHeader}>
           <div className={o.image}></div>
-             <div className={o.model}>
-                <h4 className={o.goodTile}></h4>
+          <div className={o.model}>Модель</div>
+          <div className={o.price}>Стоимость</div>
+          <div className={o.status}>Статус</div>
+          <div className={o.pay}></div>
+        </div>
+        {/* //--------------------------------------------------------------------- */}
+        {currentFilteredOrders &&
+          currentFilteredOrders.map((item, index) => (
+            <div className={o.good__wrapper} key={index}>
+              <div className={o.image}>
+                <Image
+                  src={
+                    currentFilteredOrders &&
+                    item.attributes.itemImage.data.attributes.url
+                  }
+                  width={87}
+                  height={80}
+                />
+              </div>
+              <div className={o.model}>
+                <h4 className={o.goodTile}>
+                  {item.attributes && item.attributes.title}
+                </h4>
                 <div className={o.features__wrapper}>
-                    <div className={o.feature}>
-                        <span className={o.featureNum}></span>
-                        <span className={o.featureDescription}></span>
-                    </div>
-                    <div className={o.feature}>
-                    <span className={o.featureNum}></span>
-                        <span className={o.featureDescription}></span>
-                    </div>
-                    <div className={o.feature}>
-                    <span className={o.featureNum}></span>
-                        <span className={o.featureDescription}></span>
-                    </div>
+                  <div className={o.feature}>
+                    <span className={o.featureNum}>
+                      {item.attributes && item.attributes.ths}
+                    </span>
+                    <span className={o.featureDescription}>TH/s</span>
+                  </div>
+                  <div className={o.feature}>
+                    <span className={o.featureNum}>
+                      {item.attributes && item.attributes.w}
+                    </span>
+                    <span className={o.featureDescription}>W</span>
+                  </div>
+                  <div className={o.feature}>
+                    <span className={o.featureNum}>
+                      {item.attributes && item.attributes.jth}
+                    </span>
+                    <span className={o.featureDescription}>J/TH</span>
+                  </div>
                 </div>
-             </div>
-             <div className={o.price}>
+              </div>
+              <div className={o.price}>
                 <div className={o.numbersWrapper}>
-                    {}
-                    <span className={o.priceSign}></span>
+                  {item.attributes && item.attributes.price}
+                  <span className={o.priceSign}>$</span>
                 </div>
                 <div className={o.totalPrice}>
-                    <span>*</span>
-                    <span>$</span>
+                  {item.attributes && item.quantity}
+                  <span>*</span>
+                  {item.attributes && item.attributes.price}
+                  <span>$</span>
                 </div>
-             </div>
-             <div className={o.status}>
-                {}
-             </div>
-             <div className={o.pay}>
+              </div>
+              <div
+                className={
+                  item.paid ? o.statusPaid : o.statusNotPaid
+                }
+              >
+                {item.paid ? "оплачено" : "не оплачено"}
+              </div>
+              <div
+                className={o.pay}
+                onClick={() => {
+                  togglePopup();
+                  clickOverlay();
+                  clickPaid(index);
+                  }}
+              >
+                {notPaid && "оплатить"}
+              </div>
+            </div>
+          ))}
 
-             </div>
-          </div>
-          {/* //--------------------------------------------------------------------- */}
+        {/* //--------------------------------------------------------------------- */}
       </main>
+      {popup && (
+        <OrderPopup
+          hidePopup={togglePopup}
+          hideOverlay={clickOverlay}
+          clickPaid={clickPaid}
+        />
+      )}
     </div>
   );
 };
