@@ -70,7 +70,7 @@ const Bucket = () => {
   const currentUserBucket = filteredUserBuckets.find(
     (userBucket) => userBucket.id === currentUserId
   );
-  console.log(currentArray);
+ 
   //set-sum-------------------------------------
   const counter = useAppSelector(counterInfo);
   const sum = useAppSelector(sumInfo);
@@ -107,11 +107,17 @@ const Bucket = () => {
     dispatch(updateSum());
   }, [currentArray]);
   //setOrder---------------------------------------------------------------
-  const clickSetOrder = (userBucket) => {
-    if (userBucket && userBucket !== undefined && currentUserBucket.id !== null)
-      dispatch(setOrder(userBucket.userGoods));
-    dispatch(setUserId(currentUserBucket.id));
+  const clickSetOrder = (orderItem) => {
+    if (orderItem) {
+      const orderItemWithPaidFalse = { ...orderItem, paid: false }; // Устанавливаем paid в false для текущего товара
+      dispatch(setOrder([orderItemWithPaidFalse])); // Передаем массив с одним товаром
+      dispatch(setUserId(currentUserBucket.id));
+      console.log(orderItemWithPaidFalse)
+    }
   };
+  
+
+  
 
   return (
     <>
@@ -158,7 +164,7 @@ const Bucket = () => {
                     <Link href={"/orders"}>
                       <div
                         className={b.orderButton}
-                        onClick={() => clickSetOrder(currentUserBucket)}
+                        onClick={() => clickSetOrder(item)}
                       >
                         Оформить
                       </div>

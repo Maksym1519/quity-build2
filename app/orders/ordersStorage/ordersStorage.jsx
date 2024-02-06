@@ -11,16 +11,33 @@ import { overlayInfo } from "@/lib/features/order/orderSlice";
 import { paidInfo } from "@/lib/features/order/orderSlice";
 import { setPaid } from "@/lib/features/order/orderSlice";
 import { setOrderPaid } from "@/lib/features/order/orderSlice";
+import { clearOrders } from "@/lib/features/order/orderSlice";
 
 const OrdersStorage = () => {
   const currentUserId = localStorage.getItem("id");
+  console.log(currentUserId)
+  
+if (currentUserId) {
   const orderRedux = useAppSelector(orderInfo);
   console.log(orderRedux)
+}
+ 
+  
   const filteredCurrentArray = orderRedux.filter((item) => item !== null);
-
-  const currentFilteredOrders = filteredCurrentArray.filter(
-    (order) => order.userId === currentUserId
-  );
+console.log(filteredCurrentArray)
+  const uniqueOrders = (orders) => {
+    const uniqueIds = new Set();
+    return orders.filter((order) => {
+      if (order.id && !uniqueIds.has(order.id)) {
+        uniqueIds.add(order.id);
+        return true;
+      }
+      return false;
+    });
+  };
+  
+  const currentFilteredOrders = uniqueOrders(filteredCurrentArray.filter((order) => order.userId === currentUserId ));
+  console.log(currentFilteredOrders)
   //status---------------------------------------------------
   const [notPaid, setNotPaid] = useState(true);
 
@@ -34,8 +51,8 @@ const OrdersStorage = () => {
     dispatch(setOverlay(!overlayInfo));
   };
   const clickPaid = (index) => {
-    dispatch(setOrderPaid({ index, paid: false }));
-  };
+   dispatch(setOrderPaid({ index, paid: true }));
+};
   //paid-----------------------------------------------
   const [paidStyle, setPaidStyle] = useState(false);
   const pay = useAppSelector(paidInfo);
@@ -46,8 +63,15 @@ const OrdersStorage = () => {
   }, [pay]);
   const orderInfoRedux = useAppSelector(orderInfo);
   const isAnyOrderPaid = orderInfoRedux.some(order => order.paid);
-  console.log(isAnyOrderPaid);
-  
+  //clear--------------------------------------------------------------
+  const clearData = () => {
+    dispatch(clearOrders())
+  }
+  //---------------------------------------------------------------
+  const [selectedItemIndex, setSelectedItemIndex] = useState(null); 
+  const clickPayButton = (index) => {
+    setSelectedItemIndex(index); // 1
+   };
   return (
     <div className={o.content__wrapper}>
       <h3 className={o.mainTitle}>Мои заказы</h3>
@@ -113,7 +137,7 @@ const OrdersStorage = () => {
                   </div>
                 </div>
               </div>
-              <div className={o.price}>
+              <div className={o.price} onClick={clearData}>
                 <div className={o.numbersWrapper}>
                   {item.attributes && item.attributes.price}
                   <span className={o.priceSign}>$</span>
@@ -127,7 +151,7 @@ const OrdersStorage = () => {
               </div>
               <div
                 className={
-                  item.paid ? o.statusPaid : o.statusNotPaid
+                  item.paid === true ? o.statusPaid : o.statusNotPaid
                 }
               >
                 {item.paid ? "оплачено" : "не оплачено"}
@@ -137,7 +161,7 @@ const OrdersStorage = () => {
                 onClick={() => {
                   togglePopup();
                   clickOverlay();
-                  clickPaid(index);
+                  clickPayButton(index)
                   }}
               >
                 {notPaid && "оплатить"}
@@ -151,7 +175,7 @@ const OrdersStorage = () => {
         <OrderPopup
           hidePopup={togglePopup}
           hideOverlay={clickOverlay}
-          clickPaid={clickPaid}
+          clickPaid={() => clickPaid(selectedItemIndex)}
         />
       )}
     </div>

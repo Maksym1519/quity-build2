@@ -134,6 +134,9 @@
         font-weight: 400;
         line-height: 20px;
       }
+      & .orderButton:hover {
+        transform:scale(110%)
+      }
       & .price {
         color: var(--1-a-1-c-23, #1a1c23);
         font-size: 32px;
@@ -284,6 +287,9 @@
         font-weight: 400;
         line-height: 20px;
       }
+      & .orderButton:hover {
+        transform:scale(110%)
+      }
       & .price {
         color: var(--1-a-1-c-23, #1a1c23);
         font-size: 32px;
@@ -433,6 +439,9 @@
         font-size: 14px;
         font-weight: 400;
         line-height: 20px;
+      }
+      & .orderButton:hover {
+        transform:scale(110%)
       }
       & .price {
         color: var(--1-a-1-c-23, #1a1c23);

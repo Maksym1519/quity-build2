@@ -6,8 +6,7 @@ import { overlayInfo } from "@/lib/features/order/orderSlice";
 
 export default function Orders() {
   const overlayRedux = useAppSelector(overlayInfo);
-  console.log(overlayRedux)
-
+  
   return (
     <div className={o.wrapper}>
          <div className="container">
