@@ -12,19 +12,21 @@ import { paidInfo } from "@/lib/features/order/orderSlice";
 import { setPaid } from "@/lib/features/order/orderSlice";
 import { setOrderPaid } from "@/lib/features/order/orderSlice";
 import { clearOrders } from "@/lib/features/order/orderSlice";
+import { setUserId } from "@/lib/features/order/orderSlice";
 
 const OrdersStorage = () => {
   const currentUserId = localStorage.getItem("id");
   console.log(currentUserId)
-  
-if (currentUserId) {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    // Обновить userId в Redux, когда currentUserId изменяется
+    dispatch(setUserId(currentUserId));
+  }, [currentUserId, dispatch]);
+
   const orderRedux = useAppSelector(orderInfo);
-  console.log(orderRedux)
-}
- 
-  
+    
   const filteredCurrentArray = orderRedux.filter((item) => item !== null);
-console.log(filteredCurrentArray)
+
   const uniqueOrders = (orders) => {
     const uniqueIds = new Set();
     return orders.filter((order) => {
@@ -37,7 +39,7 @@ console.log(filteredCurrentArray)
   };
   
   const currentFilteredOrders = uniqueOrders(filteredCurrentArray.filter((order) => order.userId === currentUserId ));
-  console.log(currentFilteredOrders)
+ 
   //status---------------------------------------------------
   const [notPaid, setNotPaid] = useState(true);
 
@@ -46,10 +48,10 @@ console.log(filteredCurrentArray)
   const togglePopup = () => {
     setPopup(!popup);
   };
-  const dispatch = useAppDispatch();
+  
   const clickOverlay = () => {
     dispatch(setOverlay(!overlayInfo));
-  };
+    };
   const clickPaid = (index) => {
    dispatch(setOrderPaid({ index, paid: true }));
 };
@@ -69,8 +71,8 @@ console.log(filteredCurrentArray)
   }
   //---------------------------------------------------------------
   const [selectedItemIndex, setSelectedItemIndex] = useState(null); 
-  const clickPayButton = (index) => {
-    setSelectedItemIndex(index); // 1
+   const clickPayButton = (index) => {
+    setSelectedItemIndex(index); 
    };
   return (
     <div className={o.content__wrapper}>
@@ -99,7 +101,7 @@ console.log(filteredCurrentArray)
           <div className={o.pay}></div>
         </div>
         {/* //--------------------------------------------------------------------- */}
-        {currentFilteredOrders &&
+        {currentFilteredOrders  &&
           currentFilteredOrders.map((item, index) => (
             <div className={o.good__wrapper} key={index}>
               <div className={o.image}>
@@ -151,7 +153,7 @@ console.log(filteredCurrentArray)
               </div>
               <div
                 className={
-                  item.paid === true ? o.statusPaid : o.statusNotPaid
+                 item.paid === true ? o.statusPaid : o.statusNotPaid
                 }
               >
                 {item.paid ? "оплачено" : "не оплачено"}

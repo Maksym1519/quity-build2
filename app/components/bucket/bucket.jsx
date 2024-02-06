@@ -70,7 +70,7 @@ const Bucket = () => {
   const currentUserBucket = filteredUserBuckets.find(
     (userBucket) => userBucket.id === currentUserId
   );
- 
+
   //set-sum-------------------------------------
   const counter = useAppSelector(counterInfo);
   const sum = useAppSelector(sumInfo);
@@ -107,17 +107,25 @@ const Bucket = () => {
     dispatch(updateSum());
   }, [currentArray]);
   //setOrder---------------------------------------------------------------
+  const [userId, setCurrentId] = useState();
+  useEffect(() => {
+    // Обновить userId в Redux, когда currentUserId изменяется
+    dispatch(setUserId(currentUserId));
+  }, [currentUserId, dispatch]);
+
+  useEffect(() => {
+    if (currentUserId && currentUserId !== undefined) {
+      setCurrentId(currentUserId);
+    }
+  }, currentUserId);
   const clickSetOrder = (orderItem) => {
     if (orderItem) {
       const orderItemWithPaidFalse = { ...orderItem, paid: false }; // Устанавливаем paid в false для текущего товара
       dispatch(setOrder([orderItemWithPaidFalse])); // Передаем массив с одним товаром
-      dispatch(setUserId(currentUserBucket.id));
-      console.log(orderItemWithPaidFalse)
+      dispatch(setUserId(userId));
+      console.log(orderItemWithPaidFalse);
     }
   };
-  
-
-  
 
   return (
     <>

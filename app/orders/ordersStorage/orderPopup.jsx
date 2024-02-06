@@ -5,10 +5,10 @@ import Icones from "@/public/Data";
 
 const OrderPopup = (props) => {
   const handleOrderConfirmation = () => {
-    props.hidePopup();
-    props.hideOverlay();
-    props.clickPaid();
-  };
+    props.hidePopup(); // Сначала закрываем попап
+    props.hideOverlay(); // Затем закрываем оверлей
+    props.clickPaid();;
+    };
 
   return (
     <div className={o.popup__wrapper}>
