@@ -16,7 +16,6 @@ import { setUserId } from "@/lib/features/order/orderSlice";
 
 const OrdersStorage = () => {
   const currentUserId = localStorage.getItem("id");
-  console.log(currentUserId)
   const dispatch = useAppDispatch();
   useEffect(() => {
     // Обновить userId в Redux, когда currentUserId изменяется
@@ -39,7 +38,7 @@ const OrdersStorage = () => {
   };
   
   const currentFilteredOrders = uniqueOrders(filteredCurrentArray.filter((order) => order.userId === currentUserId ));
- 
+ console.log(filteredCurrentArray)
   //status---------------------------------------------------
   const [notPaid, setNotPaid] = useState(true);
 
@@ -52,9 +51,8 @@ const OrdersStorage = () => {
   const clickOverlay = () => {
     dispatch(setOverlay(!overlayInfo));
     };
-  const clickPaid = (index) => {
-   dispatch(setOrderPaid({ index, paid: true }));
-};
+   
+
   //paid-----------------------------------------------
   const [paidStyle, setPaidStyle] = useState(false);
   const pay = useAppSelector(paidInfo);
@@ -70,10 +68,21 @@ const OrdersStorage = () => {
     dispatch(clearOrders())
   }
   //---------------------------------------------------------------
-  const [selectedItemIndex, setSelectedItemIndex] = useState(null); 
-   const clickPayButton = (index) => {
-    setSelectedItemIndex(index); 
-   };
+  const [selectedItemId, setSelectedItemId] = useState(null); 
+  console.log(selectedItemId)
+const clickPayButton = (id) => {
+  setSelectedItemId(id); 
+};
+
+const clickPaid = () => {
+  if (selectedItemId !== null) {
+    dispatch(setOrderPaid({ id: selectedItemId, paid: true }));
+  }
+}
+const [selectedItemIndex, setSelectedItemIndex] = useState(null);
+  
+  
+  
   return (
     <div className={o.content__wrapper}>
       <h3 className={o.mainTitle}>Мои заказы</h3>
@@ -101,7 +110,7 @@ const OrdersStorage = () => {
           <div className={o.pay}></div>
         </div>
         {/* //--------------------------------------------------------------------- */}
-        {currentFilteredOrders  &&
+        {currentFilteredOrders  && 
           currentFilteredOrders.map((item, index) => (
             <div className={o.good__wrapper} key={index}>
               <div className={o.image}>
@@ -160,10 +169,10 @@ const OrdersStorage = () => {
               </div>
               <div
                 className={o.pay}
-                onClick={() => {
+                onClick={async () => {
+                 await clickPayButton(item.id)
                   togglePopup();
                   clickOverlay();
-                  clickPayButton(index)
                   }}
               >
                 {notPaid && "оплатить"}
@@ -177,7 +186,7 @@ const OrdersStorage = () => {
         <OrderPopup
           hidePopup={togglePopup}
           hideOverlay={clickOverlay}
-          clickPaid={() => clickPaid(selectedItemIndex)}
+          clickPaid={clickPaid}
         />
       )}
     </div>
