@@ -55,8 +55,8 @@
       padding-left: 21px;
       display: grid;
       grid-template-columns:
-        minmax(auto, 110px) minmax(auto, 528px) minmax(auto, 336px)
-        minmax(auto, 189px) minmax(auto, 112px);
+        minmax(8.35%, 110px) minmax(40%, 528px) minmax(25.93%, 336px)
+        minmax(14.14%, 189px) minmax(8.75%, 112px);
       margin-bottom: 17px;
       & .model .price .status {
         color: rgb(26, 28, 35);
@@ -75,8 +75,8 @@
     border-bottom: 1px solid rgb(235, 236, 242);
     display: grid;
     grid-template-columns:
-      minmax(auto, 110px) minmax(auto, 528px) minmax(auto, 336px)
-      minmax(auto, 189px) minmax(auto, 112px);
+      minmax(8.35%, 110px) minmax(40%, 528px) minmax(25.93%, 336px)
+      minmax(14.14%, 189px) minmax(8.75%, 112px);
     & .image {
       width: 100%;
       height: 80px;
@@ -266,6 +266,554 @@
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
+  .content__wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    margin-bottom: 97px;
+    & .mainTitle {
+      color: rgb(26, 28, 35);
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 48px;
+      margin-bottom: 24px;
+    }
+    & .phone__wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 20px 27px 20px 27px;
+      border-radius: 16px;
+      background: rgb(244, 245, 246);
+      margin-bottom: 72px;
+      column-gap: 24px;
+      & .attentionImg {
+        margin-right: 32px;
+      }
+      & .phone__body {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        & .text {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          color: rgb(26, 28, 35);
+        }
+        & .phoneNumber {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          color: rgb(26, 86, 255);
+          margin-left: 3px;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+  //------------------------------------------------------------
+  .orders__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    & .ordersHeader {
+      width: 100%;
+      padding-left: 21px;
+      display: grid;
+      grid-template-columns:
+        minmax(8.35%, 110px) minmax(30%, 528px) minmax(25.93%, 336px)
+        minmax(14.14%, 189px) minmax(10.75%, 152px);
+      margin-bottom: 17px;
+      column-gap: 12px;
+      & .model .price .status {
+        color: rgb(26, 28, 35);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: left;
+      }
+    }
+  }
+  .good__wrapper {
+    width: 100%;
+    padding: 17px 0 17px 21px;
+    align-items: center;
+    border-top: 1px solid rgb(235, 236, 242);
+    border-bottom: 1px solid rgb(235, 236, 242);
+    column-gap: 12px;
+    display: grid;
+    grid-template-columns:
+      minmax(8.35%, 110px) minmax(30%, 528px) minmax(25.93%, 336px)
+      minmax(14.14%, 189px) minmax(10.75%, 152px);
+    & .image {
+      width: 100%;
+      height: 80px;
+    }
+    & .model {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 4px;
+      & .goodTile {
+        color: rgb(26, 28, 35);
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        text-align: left;
+      }
+      & .features__wrapper {
+        display: flex;
+        align-items: center;
+        column-gap: 16px;
+        & .featureNum {
+          color: rgb(26, 28, 35);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 16px;
+        }
+        & .featureDescription {
+          color: rgb(169, 169, 169);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 16px;
+        }
+      }
+    }
+    & .price {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      & .numbersWrapper {
+        color: rgb(26, 28, 35);
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 32px;
+        text-align: left;
+        & .priceSign {
+          color: rgb(169, 169, 169);
+          font-size: 24px;
+          font-weight: 500;
+          line-height: 32px;
+        }
+      }
+      & .totalPrice {
+        color: rgb(169, 169, 169);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        display: flex;
+        align-items: center;
+        column-gap: 4px;
+      }
+    }
+    & .statusPaid {
+      width: 100%;
+      max-width: 76px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(62, 208, 133);
+      border-radius: 6px;
+      background: rgba(62, 208, 133, 0.2);
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    & .statusNotPaid {
+      width: 100%;
+      max-width: 76px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: rgb(255, 232, 225);
+      color: rgb(255, 111, 113);
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+    }
+    & .pay {
+      width: 100%;
+      max-width: 112px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgb(26, 86, 255);
+      border-radius: 80px;
+      color: rgb(26, 86, 255);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 16px;
+      cursor: pointer;
+    }
+    & .pay:hover {
+      transform: scale(110%);
+      animation: none;
+      opacity: 1;
+      animation-duration: 0.6s;
+      animation-name: fadeIn;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+  //popup---------------------------------------------------
+  .popup__wrapper {
+    width: 100%;
+    max-width: 520px;
+    height: 380px;
+    padding: 32px;
+    background: #fff;
+    fill: #fff;
+    filter: drop-shadow(0px 16px 64px rgba(31, 47, 70, 0.16));
+    border-radius: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: none;
+    opacity: 1;
+    animation-duration: 1s;
+    animation-name: fadeIn;
+    z-index: 2000;
+    & .popup__body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      row-gap: 32px;
+      position: relative;
+      & .text {
+        color:rgb(26, 28, 35);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+      }
+      & .popupButton {
+        width: 100%;
+        max-width: 120px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgb(26, 86, 255);
+        border-radius: 80px;
+        color: rgb(26, 86, 255);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+        cursor: pointer;
+      }
+      & .close {
+        position: absolute;
+        top: -12px;
+        right: 24px;
+        cursor: pointer;
+      }
+      & .close:hover {
+        transform: scale(120%);
+      }
+    }
+  }
 }
 @media (max-width: 768px) {
+  .content__wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    margin-bottom: 97px;
+    & .mainTitle {
+      color: rgb(26, 28, 35);
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 48px;
+      margin-bottom: 24px;
+    }
+    & .phone__wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 24px;
+      align-items: center;
+      padding: 20px 0 20px 27px;
+      border-radius: 16px;
+      background: rgb(244, 245, 246);
+      margin-bottom: 72px;
+      & .attentionImg {
+        order: 1;
+        margin-right: 32px;
+      }
+      & .phone__body {
+        order: 2;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 24px;
+        align-items: center;
+        & .text {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          color: rgb(26, 28, 35);
+        }
+        & .phoneNumber {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          color: rgb(26, 86, 255);
+          margin-left: 3px;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+  //------------------------------------------------------------
+  .orders__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    & .ordersHeader {
+      width: 100%;
+      padding-left: 21px;
+      display: none;
+      flex-direction: column;
+      row-gap: 12px;
+      // grid-template-columns:
+      //   minmax(8.35%, 110px) minmax(30%, 528px) minmax(25.93%, 336px)
+      //   minmax(14.14%, 189px) minmax(10.75%, 152px);
+      margin-bottom: 17px;
+      column-gap: 12px;
+      & .model .price .status {
+        color: rgb(26, 28, 35);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: left;
+      }
+    }
+  }
+  .good__wrapper {
+    width: 100%;
+    padding: 17px 0 17px 21px;
+    align-items: center;
+    border-top: 1px solid rgb(235, 236, 242);
+    border-bottom: 1px solid rgb(235, 236, 242);
+    column-gap: 12px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    align-items: flex-start;
+    // grid-template-columns:
+    //   minmax(8.35%, 110px) minmax(30%, 528px) minmax(25.93%, 336px)
+    //   minmax(14.14%, 189px) minmax(10.75%, 152px);
+    & .image {
+      width: 100%;
+      height: 80px;
+    }
+    & .model {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 4px;
+      & .goodTile {
+        color: rgb(26, 28, 35);
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        text-align: left;
+      }
+      & .features__wrapper {
+        display: flex;
+        align-items: center;
+        column-gap: 16px;
+        & .featureNum {
+          color: rgb(26, 28, 35);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 16px;
+        }
+        & .featureDescription {
+          color: rgb(169, 169, 169);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 16px;
+        }
+      }
+    }
+    & .price {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      & .numbersWrapper {
+        color: rgb(26, 28, 35);
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 32px;
+        text-align: left;
+        & .priceSign {
+          color: rgb(169, 169, 169);
+          font-size: 24px;
+          font-weight: 500;
+          line-height: 32px;
+        }
+      }
+      & .totalPrice {
+        color: rgb(169, 169, 169);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        display: flex;
+        align-items: center;
+        column-gap: 4px;
+      }
+    }
+    & .statusPaid {
+      width: 100%;
+      max-width: 76px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(62, 208, 133);
+      border-radius: 6px;
+      background: rgba(62, 208, 133, 0.2);
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    & .statusNotPaid {
+      width: 100%;
+      max-width: 76px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: rgb(255, 232, 225);
+      color: rgb(255, 111, 113);
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+    }
+    & .pay {
+      width: 100%;
+      max-width: 112px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgb(26, 86, 255);
+      border-radius: 80px;
+      color: rgb(26, 86, 255);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 16px;
+      cursor: pointer;
+    }
+    & .pay:hover {
+      transform: scale(110%);
+      animation: none;
+      opacity: 1;
+      animation-duration: 0.6s;
+      animation-name: fadeIn;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+  //popup---------------------------------------------------
+  .popup__wrapper {
+    width: 100%;
+    max-width: 520px;
+    height: 380px;
+    padding: 32px;
+    background: #fff;
+    fill: #fff;
+    filter: drop-shadow(0px 16px 64px rgba(31, 47, 70, 0.16));
+    border-radius: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: none;
+    opacity: 1;
+    animation-duration: 1s;
+    animation-name: fadeIn;
+    z-index: 2000;
+    & .popup__body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      row-gap: 32px;
+      position: relative;
+      & .text {
+        color:rgb(26, 28, 35);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+      }
+      & .popupButton {
+        width: 100%;
+        max-width: 120px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgb(26, 86, 255);
+        border-radius: 80px;
+        color: rgb(26, 86, 255);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+        cursor: pointer;
+      }
+      & .close {
+        position: absolute;
+        top: -12px;
+        right: 24px;
+        cursor: pointer;
+      }
+      & .close:hover {
+        transform: scale(120%);
+      }
+    }
+  }
 }
