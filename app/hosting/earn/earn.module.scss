@@ -1,0 +1,60 @@
+@media (min-width: 1025px) {
+  .earn__wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+    margin-top: 30px;
+    margin-bottom: 64px;
+  }
+  .title__wrapper {
+    color: rgb(26, 28, 35);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+    position: relative;
+    & .titleEmpty {
+      display: inline-block;
+      min-width: 130px;
+    }
+    & .price {
+      position: absolute;
+      top: 0;
+      left: 25%;
+      transform: rotate(-10deg);
+      width: 120px;
+      height: 46px;
+      border-radius: 50px;
+      background: rgb(127, 220, 190);
+      color: rgb(0, 0, 0);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    & .term {
+      position: absolute;
+      bottom: 0;
+      left: 3%;
+      transform: rotate(10deg);
+      width: 167px;
+      height: 46px;
+      border-radius: 50px;
+      background: rgb(77, 111, 241);
+      color: rgb(0, 0, 0);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+}

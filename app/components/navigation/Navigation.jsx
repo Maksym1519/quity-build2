@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const Navigation = () => {
   const pathname = usePathname();
-  const isActive = pathname === "/profile" || pathname === "/shop" || "/card";
+  const isActive = pathname === "/profile" || pathname === "/shop" || pathname === "/card" || pathname === "/blog";
   const [mobileMenu, setMobileMenu] = useState(false);
   const toggleMobileMenu = () => {
     setMobileMenu(!mobileMenu);
@@ -18,7 +18,7 @@ const Navigation = () => {
       {mobileMenu && (
         <div className="mobileNavigation">
           <Link href="#" style={{ textDecoration: 'none' }}>
-            <span className={isActive ? "active" : "nonActive"}>Магазин</span>
+            <span className={pathname === "/shop" ? "active" : "nonActive"}>Магазин</span>
           </Link>
           <Link href="/hosting" style={{ textDecoration: 'none' }}>
             <span className={pathname === "/hosting" ? "active" : "nonActive"}>
@@ -72,8 +72,8 @@ const Navigation = () => {
       </div>
       <Image src={Icones.logo} width={101} height={31} className="mobileLogo" alt="icon"/>
       <div className="siteNavigation">
-        <Link href="#" style={{ textDecoration: 'none' }}>
-          <span className={isActive ? "active" : "nonActive"}>Магазин</span>
+        <Link href="/shop" style={{ textDecoration: 'none' }}>
+          <span className={pathname === "/shop" ? "active" : "nonActive"}>Магазин</span>
         </Link>
         <Link href="/hosting" style={{ textDecoration: 'none' }}>
           <span className={pathname === "/hosting" ? "active" : "nonActive"}>

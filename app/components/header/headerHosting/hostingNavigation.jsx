@@ -1,48 +1,48 @@
 "use client";
-import sn from "./shopNavigation.module.scss";
+import hn from "./hostingNavigation.module.scss";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const ShopNavigation = () => {
+const HostingNavigation = () => {
     const pathname = usePathname();
   return (
-    <div className={sn.shopNavigation__wrapper}>
-      <div className={sn.shopNavigation__linkContainer}>
+    <div className={hn.shopNavigation__wrapper}>
+      <div className={hn.shopNavigation__linkContainer}>
         <Link href="#"  style={{ textDecoration: 'none' }}>
           <div
             className={
-              pathname === "/myOrders" ? sn.profileActive : sn.profileNonactive
+              pathname === "/myOrders" ? hn.profileActive : hn.profileNonactive
             }
           >
-            Доставка
+            Размещение в дата-центр
           </div>
         </Link>
         <Link href="#"  style={{ textDecoration: 'none' }}>
           <div
             className={
-              pathname === "/profile" ? sn.profileActive : sn.profileNonactive
+              pathname === "/profile" ? hn.profileActive : hn.profileNonactive
             }
           >
-            Оплата
+            Размещение в дата-центр
           </div>
         </Link>
         <Link href="/return" style={{ textDecoration: 'none' }}>
           <div
             className={
-              pathname === "/return" ? sn.profileActive : sn.profileNonactive
+              pathname === "/return" ? hn.profileActive : hn.profileNonactive
             }
           >
-            Возврат
+            Отзывы
           </div>
         </Link>
         <Link href="/orders" style={{ textDecoration: 'none' }}>
           <div
             className={
-              pathname === "/orders" ? sn.profileActive : sn.profileNonactive
+              pathname === "/orders" ? hn.profileActive : hn.profileNonactive
             }
           >
-            Мои заявки
+            FAQ
           </div>
         </Link>
       </div>
@@ -50,4 +50,4 @@ const ShopNavigation = () => {
   );
 };
 
-export default ShopNavigation;
+export default HostingNavigation;

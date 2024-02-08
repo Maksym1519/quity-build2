@@ -1,0 +1,138 @@
+@media (min-width: 1025px) {
+    .headerShop__column {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+      .headerShop__wrapper {
+        width: 100%;
+        padding: 12px 0;
+        height: 73px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navigation {
+        display: flex;
+        align-items: center;
+      }
+      .logo__wrapper {
+        margin-right: 44px;
+      }
+      .miningEquipment {
+        max-width: 50%;
+        white-space: wrap;
+        margin-right: 56px;
+        color: #a9a9a9;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+      }
+      .navigation__item {
+        margin-right: 24px;
+      }
+      .socialMedia__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        column-gap: 8px;
+        & .text {
+          display: block;
+          margin-right: 24px;
+          text-align: right;
+        }
+      }
+   }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .headerShop__column {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+      .headerShop__wrapper {
+        width: 100%;
+        padding: 12px 0;
+        height: 73px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navigation {
+        display: flex;
+        align-items: center;
+      }
+      .logo__wrapper {
+        margin-right: 44px;
+      }
+      .miningEquipment {
+        max-width: 50%;
+        white-space: wrap;
+        margin-right: 56px;
+        color: #a9a9a9;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+      }
+      .navigation__item {
+        margin-right: 24px;
+      }
+      .socialMedia__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        column-gap: 8px;
+        & .text {
+          display: block;
+          margin-right: 24px;
+          text-align: right;
+        }
+      }
+}
+@media (max-width: 768px) {
+    .headerShop__column {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+      .headerShop__wrapper {
+        width: 100%;
+        padding: 12px 0;
+        height: 73px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navigation {
+        display: flex;
+        align-items: center;
+      }
+      .logo__wrapper {
+        margin-right: 44px;
+      }
+      .miningEquipment {
+        max-width: 50%;
+        white-space: wrap;
+        margin-right: 56px;
+        color: #a9a9a9;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+      }
+      .navigation__item {
+        margin-right: 24px;
+      }
+      .socialMedia__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        column-gap: 8px;
+        & .text {
+          display: block;
+          margin-right: 24px;
+          text-align: right;
+        }
+      }
+}
