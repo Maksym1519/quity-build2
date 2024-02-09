@@ -72,8 +72,14 @@ const Header = () => {
           {pathname === "/orders" && <HeaderProfile />}
           {pathname === "/hosting" && <HeaderHosting />}
         </div>
-        <PageNavigation />
-      </div>
+        {pathname === "/shop" &&  <PageNavigation />}
+          {pathname === "/blog" &&  <PageNavigation />}
+          {pathname === "/about" &&  <PageNavigation />}
+          {pathname === "/return" &&  <PageNavigation />}
+          {pathname === "/catalog" &&  <PageNavigation />}
+          {pathname === "/card" &&  <PageNavigation />}
+          {pathname === "/orders" &&  <PageNavigation />}
+        </div>
     </header>
   );
 };

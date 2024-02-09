@@ -3,6 +3,8 @@ import Deploy from "./deploy/deploy";
 import Terms from "./deploy/terms/terms";
 import Earn from "./earn/earn";
 import Cases from "./cases/cases";
+import DeployInfo from "./deployInfo/deployInfo";
+import PickupHosting from "./pickupHosting/pickupHosting";
 
 export default function HostingPage() {
   return (
@@ -13,6 +15,8 @@ export default function HostingPage() {
           <Terms />
           <Earn />
           <Cases />
+          <DeployInfo />
+          <PickupHosting />
         </div>
       </div>
     </>

@@ -135,6 +135,7 @@ export const Hosting = {
     caseImg4: "https://res.cloudinary.com/duk3bewdr/image/upload/v1707418562/case4_0b6f263c16.webp",
     caseImg5: "https://res.cloudinary.com/duk3bewdr/image/upload/v1707418562/case5_a2daf3c61b.webp",
     caseImg6: "https://res.cloudinary.com/duk3bewdr/image/upload/v1707418562/case6_1c5ba12bd9.webp",
+    serviceIcon: "https://res.cloudinary.com/duk3bewdr/image/upload/v1703686684/catalog_9b44efbd42.svg"
 }
 export const currencyLogos = ["https://res.cloudinary.com/duk3bewdr/image/upload/v1702230428/litecoin_ltc_logo_1_063e00a7dc.svg",
 "https://res.cloudinary.com/duk3bewdr/image/upload/v1702231029/bitcoin_cash_circle_1_89ac0af2a2.svg",
