@@ -48,8 +48,7 @@ const PersonalData = () => {
     address: null,
     avatar: null,
   });
-  console.log(formData);
-  const handleChange = (e) => {
+   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };

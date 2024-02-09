@@ -1,6 +1,8 @@
 import p from "./pickupHosting.module.scss";
 import Image from "next/image";
 import { ShopImagesBG } from "@/public/Data";
+import { Hosting } from "@/public/Data";
+import ContactForm from "./contactForm";
 
 const PickupHosting = () => {
   return (
@@ -11,6 +13,7 @@ const PickupHosting = () => {
           <br />и получите прогноз вашего будущего заработка
         </h3>
         <p className={p.bonusText}>+ получите бонусы</p>
+        <Image src={Hosting.deployInfoArrow} width={50} height={50} className={p.arrow}/>
         <div className={p.steps__wrapper}>
           <div className={p.stepsItem}>
             <Image
@@ -35,8 +38,9 @@ const PickupHosting = () => {
             </p>
           </div>
          </div>
+         <ContactForm />
       </div>
-    </div>
+     </div>
   );
 };
 export default PickupHosting;
