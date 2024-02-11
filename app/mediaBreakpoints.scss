@@ -1,0 +1,16 @@
+@import './variables.scss';
+@mixin desctop() {
+    @media (min-width: $breakpoint_1025) {
+        @content
+    }
+};
+@mixin tablet() {
+    @media (min-width: $breakpoint_769) and (max-width: $breakpoint_1024 ) {
+        @content
+    }
+};
+@mixin mobile() {
+    @media (max-width: $breakpoint_768 ) {
+        @content
+    }
+};

@@ -30,6 +30,7 @@
     "react-slider": "^2.0.6",
     "react-spinkit": "^3.0.0",
     "redux-persist": "^6.0.0",
+    "redux-persist-transform-compress": "^4.2.0",
     "sass": "^1.69.5",
     "spinkit": "^2.0.1",
     "swiper": "^11.0.5"

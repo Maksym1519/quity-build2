@@ -2,17 +2,27 @@
 import f from "./footer.module.scss";
 import Link from "next/link";
 import { useEffect } from "react";
-import { useAppSelector,useAppDispatch } from "@/lib/hooks";
+import { useSelector } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { infoCurrency } from "@/lib/features/currencySlice";
 import { setCurrencyForCalc } from "@/lib/features/currencySlice";
 import { useState } from "react";
 //components------------------------------------------------
 import Image from "next/image";
 import Icones from "@/public/Data";
-import { Currency } from "@/lib/features/currencySlice";
+import { getCurrency } from "@/lib/features/currencySlice";
 import { currencyLogos } from "@/public/Data";
 
 const Footer = () => {
+  //call-currencySlice----------------------------------------
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getCurrency());
+  }, [dispatch]);
+  //----------------------------------------------------------
+  const selectedFromApi = useAppSelector(infoCurrency)
+  
+  //----------------------------------------------------------
   const date = new Date();
   const day = date.getDate();
   const month = date.getMonth();
@@ -20,20 +30,15 @@ const Footer = () => {
   const selected = useAppSelector(infoCurrency);
 
   //  select-currencies---------------------------------------
-  const [selectedFromApi, setSelectedFromApi] = useState();
-  useEffect(() => {
-    setSelectedFromApi(selected);
-  }, [selected]);
-
   const selectedCurrency = selectedFromApi
     ? selectedFromApi.filter((crypto) => {
         const targetNames = ["BTC", "XRP", "LTC", "BCH", "ETH"];
         return targetNames.includes(crypto.symbol);
       })
     : [];
-    //set-data-for-card-calc-----------------
-    const dispatch = useAppDispatch()
-    dispatch(setCurrencyForCalc(selectedCurrency))
+  //set-data-for-card-calc-----------------
+  dispatch(setCurrencyForCalc(selectedCurrency));
+ 
   return (
     <div className={f.wrapper}>
       <div className="container">
@@ -50,9 +55,24 @@ const Footer = () => {
               <span className={f.text}>order@gmail.com</span>
             </div>
             <div className={f.socialMedia}>
-              <Image src={Icones.footerWhatsUp} width={40} height={40} alt="icon"/>
-              <Image src={Icones.footerViber} width={40} height={40} alt="icon"/>
-              <Image src={Icones.footerTelegram} width={40} height={40} alt="icon"/>
+              <Image
+                src={Icones.footerWhatsUp}
+                width={40}
+                height={40}
+                alt="icon"
+              />
+              <Image
+                src={Icones.footerViber}
+                width={40}
+                height={40}
+                alt="icon"
+              />
+              <Image
+                src={Icones.footerTelegram}
+                width={40}
+                height={40}
+                alt="icon"
+              />
             </div>
           </div>
           <div className={f.adresses}>
@@ -89,12 +109,22 @@ const Footer = () => {
             <div className={f.column}>
               <span className={f.text}>Офис в Киеве:</span>
               <div className={f.line}>
-                <Image src={Icones.location} width={16} height={16} alt="icon"/>
+                <Image
+                  src={Icones.location}
+                  width={16}
+                  height={16}
+                  alt="icon"
+                />
                 <span className={f.text}>ул. Вивальди, д. 307</span>
               </div>
               <span className={f.text}>Офис в Виннице:</span>
               <div className={f.line}>
-                <Image src={Icones.location} width={16} height={16} alt="icon"/>
+                <Image
+                  src={Icones.location}
+                  width={16}
+                  height={16}
+                  alt="icon"
+                />
                 <span className={f.text}>ул. Вивальди, д. 307</span>
               </div>
             </div>
@@ -152,7 +182,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <Currency />
     </div>
   );
 };

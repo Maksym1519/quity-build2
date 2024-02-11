@@ -1,4 +1,6 @@
-@media (min-width: 1025px) {
+@import '../mediaBreakpoints.scss';
+
+@include desctop {
     .wrapper {
         width: 100%;
         max-width: 100%;
@@ -16,8 +18,10 @@
               opacity: 1;
             }
           }
+        }
+@include tablet {
+
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-}
-@media (max-width: 768px) {
+@include mobile {
+  
 }

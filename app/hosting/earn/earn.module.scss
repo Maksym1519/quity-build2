@@ -1,3 +1,4 @@
+@import '../../variables.scss';
 @media (min-width: 1025px) {
   .earn__wrapper {
     width: 100%;
@@ -9,7 +10,7 @@
     margin-bottom: 64px;
   }
   .title__wrapper {
-    color: rgb(26, 28, 35);
+    color: $primaryColor;
     font-size: 36px;
     font-weight: 600;
     line-height: 48px;
@@ -27,7 +28,7 @@
       height: 46px;
       border-radius: 50px;
       background: rgb(127, 220, 190);
-      color: rgb(0, 0, 0);
+      color: $black;
       font-size: 24px;
       font-weight: 600;
       line-height: 40px;
@@ -44,7 +45,7 @@
       height: 46px;
       border-radius: 50px;
       background: rgb(77, 111, 241);
-      color: rgb(0, 0, 0);
+      color: $black;
       font-size: 24px;
       font-weight: 600;
       line-height: 40px;

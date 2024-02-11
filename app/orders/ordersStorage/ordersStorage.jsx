@@ -167,6 +167,7 @@ const [selectedItemIndex, setSelectedItemIndex] = useState(null);
               >
                 {item.paid ? "оплачено" : "не оплачено"}
               </div>
+{item.paid !== true &&
               <div
                 className={o.pay}
                 onClick={async () => {
@@ -177,6 +178,7 @@ const [selectedItemIndex, setSelectedItemIndex] = useState(null);
               >
                 {notPaid && "оплатить"}
               </div>
+}
             </div>
           ))}
 

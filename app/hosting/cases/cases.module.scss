@@ -1,3 +1,4 @@
+@import '../../variables.scss';
 @media (min-width: 1025px) {
   .cases__wrapper {
     width: 100%;
@@ -7,7 +8,7 @@
     margin-bottom: 120px;
     margin-top: -20px;
     & .cases__title {
-      color: rgb(26, 28, 35);
+      color: $primaryColor;
       font-size: 24px;
       font-weight: 600;
       line-height: 32px;

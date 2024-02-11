@@ -1,3 +1,4 @@
+@import '../../variables.scss';
 @media (min-width: 1025px) {
   .deploy__wrapper {
     width: 100%;
@@ -33,7 +34,7 @@
     max-height: 100%;
     display: flex;
     flex-direction: column;
-    background: rgb(26, 86, 255);
+    background: $blue;
     border-radius: 32px 0 0 32px;
     padding: 50px 0 48px 62px;
     //background-image: url("https://res.cloudinary.com/duk3bewdr/image/upload/v1707393939/Rectangle_1569_bdea68b915.png");
@@ -42,7 +43,7 @@
     background-repeat: no-repeat;
     clip-path: polygon(0 0, 100% 0%, 83% 100%, 0% 100%);
     & .deploy__info_title {
-      color: rgb(255, 255, 255);
+      color: $white;
       font-size: 36px;
       font-weight: 600;
       line-height: 48px;
@@ -53,7 +54,7 @@
       flex-direction: column;
       row-gap: 8px;
       list-style: disc;
-      color: rgb(255, 255, 255);
+      color: $white;
       font-size: 16px;
       font-weight: 400;
       line-height: 24px;
@@ -105,7 +106,7 @@
       transform: scale(120%);
     }
     & .video__text {
-      color: rgb(255, 255, 255);
+      color: $white;
       font-size: 16px;
       font-weight: 400;
       line-height: 24px;
