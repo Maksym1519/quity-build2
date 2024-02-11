@@ -33,7 +33,8 @@
     "redux-persist-transform-compress": "^4.2.0",
     "sass": "^1.69.5",
     "spinkit": "^2.0.1",
-    "swiper": "^11.0.5"
+    "swiper": "^11.0.5",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
