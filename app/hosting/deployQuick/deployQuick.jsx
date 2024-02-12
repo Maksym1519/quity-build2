@@ -1,30 +1,36 @@
-//"use client";
+"use client";
 import d from "./deployQuick.module.scss";
 import useSWR from "swr";
-import { quickDeploy } from "@/lib/features/hosting/quickDeploySlice";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { quickDeployInfo } from "@/lib/features/hosting/quickDeploySlice";
-import { setInfo } from "@/lib/features/hosting/quickDeploySlice";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
-const fetcher = async () => {
-    const response = await fetch("https://api.coinlore.net/api/tickers/")
-}
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const DeployQuick = () => {
-  const { data, error } = useSWR(
-    "quickDeploy",
-    fetcher
+  const { data } = useSWR(
+    "https://quitystrapi.onrender.com/api/quick-deploys?populate=*",
+    fetcher,
+    {
+      revalidateOnMount: true,
+      revalidateOnFocus: true,
+      revalidateOnReconnect: true,
+      dedupingInterval: 10000,
+      refreshInterval: 60000,
+    }
   );
-  if (error) {
-    return <div>Failed to loaded</div>;
-  }
-  if (data) {
-    return <div>Loading...</div>;
-  }
-  const array = data.data.data;
-  // const dispatch = useAppDispatch()
-  // dispatch(setInfo(data))
-  // const dataFromRedux = useAppSelector(quickDeployInfo)
-  console.log(data);
+  //----------------------------------------------------------------------------
+  const [dataArray, setDataArray] = useState();
+  useEffect(() => {
+    if (data) {
+      const dataResponse = data.data;
+      setDataArray(dataResponse);
+      }
+  }, [data]);
+  const sortedData =
+    dataArray &&
+    dataArray.sort((a, b) => {
+      return a.id - b.id;
+    });
+    
   return (
     <div className={d.deployQuick__wrapper}>
       <div className={d.deployQuick__body}>
@@ -33,7 +39,45 @@ const DeployQuick = () => {
           на хостинге за 1 день
         </h3>
         <p className={d.subTitle}>Как работает хостинг Quity?</p>
+        <div className={d.items__wrapper}>
+          {dataArray &&
+            sortedData.map((item, index) => (
+              <div className={d.item} key={index}>
+                <Image
+                  src={dataArray && item.attributes.icon.data.attributes.url}
+                  width={56}
+                  height={56}
+                  className={d.itemImg}
+                  alt="icon"
+                />
+                <h3 className={d.itemTitle}>
+                  {dataArray ? item.attributes.title : ""}
+                </h3>
+                <p className={d.itemText}>
+                  {dataArray ? item.attributes.text : ""}
+                  <span className={d.itemLink}>
+                    {dataArray && item.attributes.link
+                      ? item.attributes.link
+                      : ""}
+                  </span>
+                </p>
+              </div>
+            ))}
+        </div>
       </div>
+      <Image
+        src={
+          dataArray &&
+          dataArray.length > 0 &&
+          dataArray[0].attributes.circleBg.data.attributes.url
+            ? dataArray[0].attributes.circleBg.data.attributes.url
+            : ""
+        }
+        width={200}
+        height={200}
+        className={d.circleBg}
+        alt="bg"
+      />
     </div>
   );
 };
