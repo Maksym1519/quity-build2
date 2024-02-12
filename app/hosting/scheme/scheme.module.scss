@@ -1,4 +1,123 @@
+@import "../../variables.scss";
 @media (min-width: 1025px) {
+  .scheme__wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 125px;
+
+    & .mainTitle {
+      color: $primaryColor;
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 48px;
+      margin-bottom: 104px;
+      max-width: 901px;
+      text-align: center;
+    }
+  }
+
+  .scheme__body {
+    width: 100%;
+    height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    & .image__wrapper {
+      width: 100%;
+      min-width: 672px;
+      height: 100%;
+      z-index: 10;
+
+      & .image__container {
+        width: 100%;
+        min-height: 100%;
+        position: relative;
+
+        & .img__background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+
+        & .img__main {
+          width: 100%;
+          max-width: 300px;
+          min-height: 638px;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, 0%);
+          z-index: 2;
+          object-fit: cover;
+        }
+
+        & .icon_wrapper1 {
+          position: absolute;
+          left: 0px;
+          top: 20%;
+          z-index: 30;
+        }
+
+        & .icon_wrapper2 {
+          position: absolute;
+          right: 0px;
+          top: 20%;
+          z-index: 30;
+        }
+
+        & .icon_wrapper3 {
+          position: absolute;
+          left: 0px;
+          bottom: 20%;
+          z-index: 30;
+        }
+
+        & .icon_wrapper4 {
+          position: absolute;
+          right: 0px;
+          bottom: 20%;
+          z-index: 30;
+        }
+      }
+    }
+
+    & .items__wrapper {
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      row-gap: 248px;
+      z-index: 20;
+
+      & .item {
+        width: 100%;
+        max-width: 304px;
+
+          & .itemText {
+          color: $primaryColor;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 24px;
+          max-width: 80%;
+          text-align: right;
+        }
+
+      }
+    }
+    & .items__wrapper_right {
+      justify-content: flex-end;
+    }
+  }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
 }

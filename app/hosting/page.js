@@ -10,6 +10,7 @@ import Slider from "../shop/slider/slider";
 import Questions from "../shop/questions/questions";
 import Test from "../shop/test/test";
 import DeployQuick from "./deployQuick/deployQuick";
+import Scheme from "./scheme/scheme";
 
 export default function HostingPage() {
   return (
@@ -22,6 +23,7 @@ export default function HostingPage() {
           <Cases />
           <DeployInfo />
           <PickupHosting />
+          <Scheme />
           <DeployQuick />
           <PriceList />
           <Slider />

@@ -16,10 +16,10 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        //align-items: center;
         & .title {
           color: var(--1-a-1-c-23, #1a1c23);
-          text-align: center;
+          text-align: left;
           font-size: 18px;
           font-style: normal;
           font-weight: 700;
