@@ -14,7 +14,7 @@
       font-size: 36px;
       font-weight: 600;
       line-height: 48px;
-      margin-bottom: 104px;
+      margin-bottom: 85px;
       max-width: 901px;
       text-align: center;
     }
@@ -30,7 +30,7 @@
 
     & .image__wrapper {
       width: 100%;
-      min-width: 672px;
+      min-width: 624px;
       height: 100%;
       z-index: 10;
 
@@ -52,9 +52,9 @@
         & .img__main {
           width: 100%;
           max-width: 300px;
-          min-height: 638px;
+          min-height: 636px;
           position: absolute;
-          top: 0;
+          top: 10px;
           left: 50%;
           transform: translate(-50%, 0%);
           z-index: 2;
