@@ -11,6 +11,8 @@ import Questions from "../shop/questions/questions";
 import Test from "../shop/test/test";
 import DeployQuick from "./deployQuick/deployQuick";
 import Scheme from "./scheme/scheme";
+import HostingTerms from "./terms/terms";
+import VideoInfo from "./videoInfo/videoInfo";
 
 export default function HostingPage() {
   return (
@@ -26,16 +28,13 @@ export default function HostingPage() {
           <Scheme />
           <DeployQuick />
           <PriceList />
+          <HostingTerms />
           <Slider />
+          <VideoInfo />
           <Questions />
         </div>
       </div>
       <Test />
-      <div className={h.wrapper}>
-        <div className="container">
-         
-        </div>
-      </div>
-    </>
+     </>
   );
 }

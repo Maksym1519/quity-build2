@@ -31,7 +31,7 @@ const Scheme = () => {
     dataArray.sort((a, b) => {
       return a.id - b.id;
     });
-  console.log(sortedData);
+ 
   return (
     <div className={s.scheme__wrapper}>
       <h3 className={s.mainTitle}>
