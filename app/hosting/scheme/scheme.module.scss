@@ -244,4 +244,107 @@
   }
 }
 @media (max-width: 768px) {
+  .scheme__wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: 555px;
+   
+    & .mainTitle {
+      color: $primaryColor;
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 36px;
+      margin-bottom: 35px;
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+
+  .scheme__body {
+    width: 100%;
+    max-width: 100%;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    & .image__wrapper {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      z-index: 10;
+
+      & .image__container {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100%;
+        position: relative;
+
+        & .img__background {
+          display: none;
+          }
+
+        & .img__main {
+          width: 100%;
+          max-width: 100%;
+          min-height: 300px;
+          position: absolute;
+          top: 0px;
+          left: 50%;
+          transform: translate(-50%, 40%);
+          z-index: 2;
+          object-fit: cover;
+        }
+
+        & .icon_wrapper1 {
+          display: none;
+          }
+
+        & .icon_wrapper2 {
+          display: none;
+          }
+
+        & .icon_wrapper3 {
+          display: none;
+         }
+
+        & .icon_wrapper4 {
+          display: none;
+        }  
+      }
+    }
+
+    & .items__wrapper {
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      row-gap: 248px;
+      z-index: 20;
+
+      & .item {
+        width: 100%;
+        max-width: 304px;
+
+          & .itemText {
+          color: $primaryColor;
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 24px;
+          max-width: 80%;
+          text-align: right;
+        }
+
+      }
+    }
+    & .items__wrapper_right {
+      justify-content: flex-end;
+    }
+  }
 }

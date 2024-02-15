@@ -15,8 +15,8 @@ const HostingNavigation = () => {
               pathname === "/myOrders" ? hn.profileActive : hn.profileNonactive
             }
           >
-            Размещение в дата-центр
-          </div>
+            Панель управления
+         </div>
         </Link>
         <Link href="#"  style={{ textDecoration: 'none' }}>
           <div
@@ -24,7 +24,7 @@ const HostingNavigation = () => {
               pathname === "/profile" ? hn.profileActive : hn.profileNonactive
             }
           >
-            Размещение в дата-центр
+            Мои устройства
           </div>
         </Link>
         <Link href="/return" style={{ textDecoration: 'none' }}>
@@ -33,16 +33,16 @@ const HostingNavigation = () => {
               pathname === "/return" ? hn.profileActive : hn.profileNonactive
             }
           >
-            Отзывы
+            Мои заявки
           </div>
         </Link>
-        <Link href="/orders" style={{ textDecoration: 'none' }}>
+        <Link href="/profile" style={{ textDecoration: 'none' }}>
           <div
             className={
               pathname === "/orders" ? hn.profileActive : hn.profileNonactive
             }
           >
-            FAQ
+            Мои профиль
           </div>
         </Link>
       </div>

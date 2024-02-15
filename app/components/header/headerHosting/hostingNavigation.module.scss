@@ -50,14 +50,15 @@
         max-width: 100%;
         display: flex;
         flex-direction: column;
-      }
+        margin-top: 16px;
+        }
       .shopNavigation__linkContainer {
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: center;
         column-gap: 23px;
         row-gap: 10px;
-      }
+        }
       .profileActive {
         font-size: 15px;
         font-weight: 700;

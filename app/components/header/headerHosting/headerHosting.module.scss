@@ -95,7 +95,7 @@
         display: flex;
         flex-direction: column;
         position: relative;
-      }
+       }
       .headerShop__wrapper {
         width: 100%;
         padding: 12px 0;
@@ -103,13 +103,16 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-      }
+        }
       .navigation {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+        margin-top: 60px
       }
       .logo__wrapper {
         margin-right: 44px;
+        display: none;
       }
       .miningEquipment {
         max-width: 50%;
@@ -125,7 +128,7 @@
         margin-right: 24px;
       }
       .socialMedia__wrapper {
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: flex-end;
         column-gap: 8px;

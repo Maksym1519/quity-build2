@@ -263,4 +263,131 @@
   }
 }
 @media (max-width: 768px) {
+  .deploy__wrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    max-width: 100%;
+    border-radius: 32px;
+    margin-top: 40px;
+    margin-bottom: 38px;
+    }
+  .deploy__body {
+    width: 100%;
+    height: 100%;
+    min-height: 475px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    animation: none;
+    opacity: 1;
+    animation-duration: 2s;
+    animation-name: fadeIn;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+    .deploy__info {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: $blue;
+    border-radius: 32px 32px 0 0;
+    padding: 32px;
+    z-index: 1005;
+    background-size: 100%;
+    background-repeat: no-repeat;
+      & .deploy__info_title {
+      color: $white;
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 42px;
+      margin-bottom: 12px;
+    }
+    & .deploy__info_terms {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+      list-style: disc;
+      color: $white;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      list-style-position: inside;
+      margin-bottom: 40px;
+    }
+    .deploy__info_button {
+      width: 100%;
+      max-width: 100%;
+      min-height: 56px;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 80px;
+      background: rgb(254, 220, 90);
+      color: rgb(26, 28, 35);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 20px;
+      padding: 12px;
+    }
+  }
+  .deploy__video {
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+    border-radius: 0 0 32px 32px;
+    background-image: url("https://res.cloudinary.com/duk3bewdr/image/upload/v1707392444/image_14_cb4418833d.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    row-gap: 16px;
+    z-index: 1004;
+    cursor: pointer;
+    & .playButton {
+      z-index: 1010;
+      margin-top: 3%;
+    }
+    & .playButton:hover {
+      transform: scale(120%);
+    }
+    & .video__text {
+      color: $white;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      z-index: 1010;
+      text-align: center;
+      }
+  }
+  .videoFrame {
+    animation: none;
+    opacity: 1;
+    animation-duration: 2s;
+    animation-name: fadeOut;
+  }
+  @keyframes fadeOut {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
