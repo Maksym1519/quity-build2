@@ -23,14 +23,14 @@ const DeployQuick = () => {
     if (data) {
       const dataResponse = data.data;
       setDataArray(dataResponse);
-      }
+    }
   }, [data]);
   const sortedData =
     dataArray &&
     dataArray.sort((a, b) => {
       return a.id - b.id;
     });
-    
+
   return (
     <div className={d.deployQuick__wrapper}>
       <div className={d.deployQuick__body}>
@@ -64,6 +64,16 @@ const DeployQuick = () => {
               </div>
             ))}
         </div>
+        <div className={d.button__wrapper}>
+        <div className={d.buttonInfo}>
+          <div className={d.buttonInfo__amount}>
+            <span className={d.amount}>432</span>
+            <span className={d.text}>машиноместа</span>
+          </div>
+          <span className={d.buttonInfo__text}>свободно по состоянию на 10 мая</span>
+        </div>
+        <button className={d.button}>Разместить ASIC-майнер на хостинге</button>
+      </div>
       </div>
       <Image
         src={
@@ -78,7 +88,7 @@ const DeployQuick = () => {
         className={d.circleBg}
         alt="bg"
       />
-    </div>
+     </div>
   );
 };
 export default DeployQuick;
