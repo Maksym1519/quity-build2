@@ -2,17 +2,21 @@
 @media (min-width: 1025px) {
   .deploy__wrapper {
     width: 100%;
-    height: auto;
-    display: flex;
+    height: 100%;
+    //min-height: 475px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     max-width: 100%;
     border-radius: 32px;
     margin-bottom: 38px;
     }
   .deploy__body {
     width: 100%;
+    height: 100%;
     min-height: 475px;
-    height: auto;
     display: flex;
+    flex-grow: 1;
     position: relative;
     animation: none;
     opacity: 1;
@@ -28,12 +32,12 @@
     }
   }
     .deploy__info {
-    position: absolute;
-    top: 0;
-    left: 0;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
     width: 100%;
     max-width: 61.95%;
-    max-height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     background: $blue;
@@ -42,7 +46,7 @@
     z-index: 1005;
     background-size: 100%;
     background-repeat: no-repeat;
-    clip-path: polygon(0 0, 100% 0%, 83% 100%, 0% 100%);
+    //clip-path: polygon(0 0, 100% 0%, 83% 100%, 0% 100%);
     & .deploy__info_title {
       color: $white;
       font-size: 36px;
@@ -79,14 +83,13 @@
     }
   }
   .deploy__video {
-    position: absolute;
-    top: 0;
-    right: 0;
+    // position: absolute;
+    // top: 0;
+    // right: 0;
     width: 100%;
     max-width: 100%;
     min-height: 100%;
-    max-height: auto;
-    border-radius: 32px;
+    border-radius: 0 32px 32px 0;
     background-image: url("https://res.cloudinary.com/duk3bewdr/image/upload/v1707392444/image_14_cb4418833d.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -95,12 +98,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
     row-gap: 16px;
     z-index: 1004;
     cursor: pointer;
     & .playButton {
       z-index: 1010;
-      margin-left: 57%;
+      //margin-left: 57%;
       margin-top: 3%;
     }
     & .playButton:hover {
@@ -113,7 +117,7 @@
       line-height: 24px;
       z-index: 1010;
       text-align: center;
-      margin-left: 57%;
+      //margin-left: 57%;
     }
   }
   .videoFrame {
@@ -134,16 +138,21 @@
 @media (min-width: 769px) and (max-width: 1024px) {
   .deploy__wrapper {
     width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     max-width: 100%;
     border-radius: 32px;
     margin-bottom: 38px;
     }
   .deploy__body {
     width: 100%;
+    height: 100%;
     min-height: 475px;
     display: flex;
+    flex-grow: 1;
     position: relative;
-    overflow: hidden;
     animation: none;
     opacity: 1;
     animation-duration: 2s;
@@ -158,22 +167,18 @@
     }
   }
     .deploy__info {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     max-width: 61.95%;
-    max-height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     background: $blue;
     border-radius: 32px 0 0 32px;
-    padding: 50px 0 48px 62px;
+    padding: 50px 32px 48px 62px;
     z-index: 1005;
     background-size: 100%;
     background-repeat: no-repeat;
-    clip-path: polygon(0 0, 100% 0%, 83% 100%, 0% 100%);
-    & .deploy__info_title {
+      & .deploy__info_title {
       color: $white;
       font-size: 36px;
       font-weight: 600;
@@ -206,17 +211,14 @@
       font-size: 18px;
       font-weight: 500;
       line-height: 20px;
+      padding: 12px;
     }
   }
   .deploy__video {
-    position: absolute;
-    top: 0;
-    right: 0;
     width: 100%;
     max-width: 100%;
     min-height: 100%;
-    max-height: 100%;
-    border-radius: 32px;
+    border-radius: 0 32px 32px 0;
     background-image: url("https://res.cloudinary.com/duk3bewdr/image/upload/v1707392444/image_14_cb4418833d.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -225,12 +227,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
     row-gap: 16px;
     z-index: 1004;
     cursor: pointer;
     & .playButton {
       z-index: 1010;
-      margin-left: 57%;
       margin-top: 3%;
     }
     & .playButton:hover {
@@ -243,8 +245,7 @@
       line-height: 24px;
       z-index: 1010;
       text-align: center;
-      margin-left: 57%;
-    }
+      }
   }
   .videoFrame {
     animation: none;
