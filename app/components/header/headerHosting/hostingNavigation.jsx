@@ -27,10 +27,10 @@ const HostingNavigation = () => {
             Мои устройства
           </div>
         </Link>
-        <Link href="/return" style={{ textDecoration: 'none' }}>
+        <Link href="/application" style={{ textDecoration: 'none' }}>
           <div
             className={
-              pathname === "/return" ? hn.profileActive : hn.profileNonactive
+              pathname === "/application" ? hn.profileActive : hn.profileNonactive
             }
           >
             Мои заявки

@@ -1,7 +1,48 @@
-@import '../../mediaBreakpoints.scss';
-@import '../../variables.scss';
+@import "../../mediaBreakpoints.scss";
+@import "../../variables.scss";
 
 @include desctop {
+  .myApplication__wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+
+    & .myApplication__header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+
+      & .mainTitle {
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 133%;
+        color: $primaryColor;
+      }
+
+      & .addApplication {
+        border-radius: 80px;
+        padding: 18px 28px;
+        width: 100%;
+        max-width: 240px;
+        height: auto;
+        background: $blue;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 111%;
+        color: $white;
+        cursor: pointer;
+      }
+
+      & .addApplication:hover {
+        @include blueShadow();
+        transform: scale(105%);
+      }
+    }
+  }
 }
 @include tablet {
 }
