@@ -34,7 +34,8 @@
     "sass": "^1.69.5",
     "spinkit": "^2.0.1",
     "swiper": "^11.0.5",
-    "swr": "^2.2.4"
+    "swr": "^2.2.4",
+    "twilio": "^4.22.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

@@ -5,6 +5,7 @@ import { useAppDispatch } from "@/lib/hooks";
 import { setPopup } from "@/lib/features/hostingApplication/hostingApplicationSlice";
 
 
+
 const Popup = (props) => {
   const mediaIcones = [
     <Image src={Icones.whatsUp} width={40} height={40} />,
@@ -16,7 +17,8 @@ const Popup = (props) => {
  const setPopupState = () => {
     dispatch(setPopup(false))
  }
-
+ //--------------------------------------------------------------------
+ 
   return (
     <div className={p.popup__wrapper}>
       <div className={p.popup__body}>
