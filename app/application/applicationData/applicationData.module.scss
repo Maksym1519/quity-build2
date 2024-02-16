@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 24px;
+    position: relative;
   }
   .applicationData__header {
     width: 100%;
@@ -60,7 +61,7 @@
       height: auto;
       min-height: 125px;
       align-items: flex-start;
-      padding-top: 30px;
+      padding: 30px 0 20px 0;
       border-bottom: 1px solid rgb(244, 245, 246);
       border-top: 1px solid rgb(244, 245, 246);
 

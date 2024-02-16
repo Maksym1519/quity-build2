@@ -5,7 +5,7 @@ import Icones from "@/public/Data";
 import Image from "next/image";
 import Popup from "../popup/popup";
 
-const ApplicationData = () => {
+const ApplicationData = (props) => {
   const birdImg = (
     <Image
       src={Icones.filterBird}
@@ -18,6 +18,7 @@ const ApplicationData = () => {
   const clickAllSelected = () => {
     setAllSelected(!allSellected);
   };
+
   //head-------------------------------------------------------------
   const head = [
     "№",
@@ -34,6 +35,7 @@ const ApplicationData = () => {
     "Оплачено, $задолженность",
     " ",
   ];
+
   //content------------------------------------------------------------
   const status = <div className={a.status}>Не оплачено</div>;
   const sum = "5000" + " " + "$";
@@ -52,6 +54,8 @@ const ApplicationData = () => {
       <div className={a.buttonPay}> Оплатить</div>
     </div>,
   ];
+  
+
   return (
     <div className={a.applicationData__wrapper}>
       <div className={a.applicationData__header}>
@@ -69,8 +73,7 @@ const ApplicationData = () => {
             </div>
           ))}
       </div>
-      <Popup />
-    </div>
+      </div>
   );
 };
 export default ApplicationData;
