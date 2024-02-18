@@ -2,7 +2,7 @@
 import f from "./footer.module.scss";
 import Link from "next/link";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { infoCurrency } from "@/lib/features/currencySlice";
 import { setCurrencyForCalc } from "@/lib/features/currencySlice";
@@ -20,14 +20,14 @@ const Footer = () => {
     dispatch(getCurrency());
   }, [dispatch]);
   //----------------------------------------------------------
-  const selectedFromApi = useAppSelector(infoCurrency)
+  const selectedFromApi = useSelector((state) => state.currency.currency)
   
   //----------------------------------------------------------
   const date = new Date();
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
-  const selected = useAppSelector(infoCurrency);
+  //const selected = useAppSelector(infoCurrency);
 
   //  select-currencies---------------------------------------
   const selectedCurrency = selectedFromApi

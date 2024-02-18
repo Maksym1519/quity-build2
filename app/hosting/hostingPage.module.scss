@@ -1,6 +1,6 @@
 @import '../mediaBreakpoints.scss';
 
-@include desctop {
+
     .wrapper {
         width: 100%;
         max-width: 100%;
@@ -19,7 +19,7 @@
               opacity: 1;
             }
           }
-        }
+       
 @include tablet {
   .wrapper {
     width: 100%;

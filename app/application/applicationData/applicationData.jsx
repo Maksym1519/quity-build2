@@ -1,9 +1,9 @@
 "use client";
 import a from "./applicationData.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icones from "@/public/Data";
 import Image from "next/image";
-import Popup from "../popup/popup";
+
 
 const ApplicationData = (props) => {
   const birdImg = (
@@ -54,7 +54,8 @@ const ApplicationData = (props) => {
       <div className={a.buttonPay}> Оплатить</div>
     </div>,
   ];
-  
+
+ 
 
   return (
     <div className={a.applicationData__wrapper}>

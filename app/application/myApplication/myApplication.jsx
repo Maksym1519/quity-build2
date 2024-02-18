@@ -3,8 +3,9 @@ import m from './myApplication.module.scss';
 import Navigation from '../navigation/navigation';
 import ApplicationData from '../applicationData/applicationData';
 import { useState } from 'react';
-import { useAppDispatch } from '@/lib/hooks';
+import { useDispatch, useSelector } from 'react-redux';
 import { setPopup } from '@/lib/features/hostingApplication/hostingApplicationSlice';
+
 
 const MyApplication = () => {
     //showpopup--------------------------------------------------------
@@ -17,11 +18,12 @@ const MyApplication = () => {
   }
  
   //setPopupState-----------------------------------------------------
-  const dispatch = useAppDispatch()
+  const dispatch = useDispatch()
   const setPopupState = () => {
     dispatch(setPopup(true))
   }
-    return (
+
+     return (
         <div className={m.myApplication__wrapper}>
            <div className={m.myApplication__header}>
               <h2 className={m.mainTitle}>Мои заявки</h2>
