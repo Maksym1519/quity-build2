@@ -7,7 +7,7 @@ import { setPopup } from "@/lib/features/hostingApplication/hostingApplicationSl
 import { setDataMessages } from "@/lib/features/hostingApplication/sendMessagesSlice";
 import { sendSms } from "@/lib/features/hostingApplication/sendMessagesSlice";
 import { useEffect, useState } from "react";
-import { Sonsie_One } from "next/font/google";
+import BuyPopUp from "@/app/card/cardInfo/buyPopUp";
 
 const Popup = (props) => {
   const mediaIcones = [
@@ -67,6 +67,7 @@ const Popup = (props) => {
 
   //set-applications--------------------------------------------------------------
   const currentData = useSelector((state) => state.hostingApplication.appData);
+  console.log(currentData);
   const setApplicationsData = () => {
     const newData = {
       appNum: appNumber,
@@ -79,11 +80,14 @@ const Popup = (props) => {
       paidAmount: null,
       userId: currentUserId,
     };
-    const updatedData = [...currentData, newData];
+    const updatedData = Array.isArray(currentData)
+      ? [...currentData, newData]
+      : [newData];
+    dispatch(setAppData(updatedData));
+
     dispatch(setAppData(updatedData));
   };
 
-  
   return (
     <div className={p.popup__wrapper}>
       <div className={p.popup__body}>
@@ -166,6 +170,7 @@ const Popup = (props) => {
           }}
         />
       </div>
+      {/* {<BuyPopUp />} */}
     </div>
   );
 };
