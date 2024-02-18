@@ -1,7 +1,7 @@
 import p from "./popup.module.scss";
 import Image from "next/image";
 import Icones from "@/public/Data";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAppData } from "@/lib/features/hostingApplication/hostingApplicationSlice";
 import { setPopup } from "@/lib/features/hostingApplication/hostingApplicationSlice";
 import { setDataMessages } from "@/lib/features/hostingApplication/sendMessagesSlice";
@@ -42,42 +42,47 @@ const Popup = (props) => {
       },
     }));
   };
-  const fullPhoneNumber = Object.values(formData.phone).join('');
- 
+  const fullPhoneNumber = Object.values(formData.phone).join("");
+
   //-set-redux-data--------------------------------------------------------
-  dispatch(setDataMessages(fullPhoneNumber))
-  const data = useSelector((state) => state.sendMessages.phone)
+  dispatch(setDataMessages(fullPhoneNumber));
+  const data = useSelector((state) => state.sendMessages.phone);
 
-   //setDate------------------------------------------------------------------------
-   const currentDate = new Date()
-   const year = currentDate.getFullYear()
-   let month = currentDate.getMonth() + 1
-   let day = currentDate.getDate()
-   let fullDate = day + "/" + month + "/" + year
-  
- //get-localstorage-id----------------------------------------------------------
- const currentUserId = localStorage.getItem("id");
- 
- //random-number-----------------------------------------------------------------
- const [appNumber, setAppNumber] = useState()
- useEffect(() => {
-  const randomNumber = Math.floor(Math.random() * 1000);
-  setAppNumber(randomNumber)
-}, []);
-if (appNumber !== undefined) {
-  console.log(appNumber)
-}
+  //setDate------------------------------------------------------------------------
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  let month = currentDate.getMonth() + 1;
+  let day = currentDate.getDate();
+  let fullDate = day + "/" + month + "/" + year;
 
- //set-applications--------------------------------------------------------------
- const currentData = useSelector((state) => state.hostingApplication.appData)
- const setApplicationsData = () => {
-  const newData =  {dateApp: fullDate, dateDeployment: fullDate, userId: currentUserId, appNum: appNumber}
-  const updatedData = [...currentData, newData]
-  dispatch(setAppData(updatedData))
-  }
- const reduxData = useSelector((state) => state.hostingApplication.appData)
- console.log(reduxData)
-  
+  //get-localstorage-id----------------------------------------------------------
+  const currentUserId = localStorage.getItem("id");
+
+  //random-number-----------------------------------------------------------------
+  const [appNumber, setAppNumber] = useState();
+  useEffect(() => {
+    const randomNumber = Math.floor(Math.random() * 1000);
+    setAppNumber(randomNumber);
+  }, []);
+
+  //set-applications--------------------------------------------------------------
+  const currentData = useSelector((state) => state.hostingApplication.appData);
+  const setApplicationsData = () => {
+    const newData = {
+      appNum: appNumber,
+      deployAmount: "10/10",
+      dateApp: fullDate,
+      dateDeployment: fullDate,
+      dateRemove: "-",
+      paid: null,
+      paymentType: "Банковской картой",
+      paidAmount: null,
+      userId: currentUserId,
+    };
+    const updatedData = [...currentData, newData];
+    dispatch(setAppData(updatedData));
+  };
+
   
   return (
     <div className={p.popup__wrapper}>
@@ -140,7 +145,13 @@ if (appNumber !== undefined) {
               </div>
             </div>
           </div>
-          <button type="button" className={p.popupButton} onClick={() => {setApplicationsData()}}>
+          <button
+            type="button"
+            className={p.popupButton}
+            onClick={() => {
+              setApplicationsData();
+            }}
+          >
             Заказать диагностику, оценить стоимость и сроки
           </button>
         </div>

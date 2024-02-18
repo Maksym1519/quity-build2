@@ -3,7 +3,7 @@ import a from "./applicationData.module.scss";
 import { useState, useEffect } from "react";
 import Icones from "@/public/Data";
 import Image from "next/image";
-
+import { useSelector } from "react-redux";
 
 const ApplicationData = (props) => {
   const birdImg = (
@@ -19,6 +19,14 @@ const ApplicationData = (props) => {
     setAllSelected(!allSellected);
   };
 
+  //get-localstorage-data----------------------------------------------
+  const currentUserId = localStorage.getItem("id");
+  //get-data-from-redux-------------------------------------------------
+  const reduxData = useSelector((state) => state.hostingApplication.appData);
+  const filteredData = reduxData.filter(
+    (item) => item.userId === currentUserId
+  );
+console.log(filteredData)
   //head-------------------------------------------------------------
   const head = [
     "№",
@@ -50,12 +58,10 @@ const ApplicationData = (props) => {
     "Банковской картой",
     sum,
     <div className={a.buttonWrapper}>
-        <Image src={Icones.bucket} width={24} height={24} className={a.bucket}/>
+      <Image src={Icones.bucket} width={24} height={24} className={a.bucket} />
       <div className={a.buttonPay}> Оплатить</div>
     </div>,
   ];
-
- 
 
   return (
     <div className={a.applicationData__wrapper}>
@@ -66,15 +72,23 @@ const ApplicationData = (props) => {
         {head.length > 0 &&
           head.map((item, index) => <th className={a.headTitle}>{item}</th>)}
       </div>
-      <div className={a.applicationData__content}>
-        {content.length > 0 &&
-          content.map((item, index) => (
-            <div className={a.contentRow} key={index}>
-              {item}
-            </div>
-          ))}
-      </div>
-      </div>
+      {filteredData &&
+      filteredData.map((item, index) => (
+        <div className={a.applicationData__content} key={index}>
+          <div className={a.contentRow}>
+            <div>{item.appNum}</div>
+            <div>{item.deployAmount}</div>
+            <div>{item.dateApp}</div>
+            <div>{item.dateDeployment}</div>
+            <div>{item.dateRemove}</div>
+            <div>{/* Добавьте отображение статуса */}</div>
+            <div>{item.paymentType}</div>
+            <div>{/* Добавьте отображение оплаченной суммы и задолженности */}</div>
+            <div>{/* Добавьте кнопку оплаты */}</div>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 export default ApplicationData;
