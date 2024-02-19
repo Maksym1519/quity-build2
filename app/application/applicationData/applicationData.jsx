@@ -68,6 +68,30 @@ const ApplicationData = (props) => {
       setNewReduxArray(filteredData);
     }
   }, [reduxData]);
+//get-active-state-------------------------------------
+const activeState = useSelector((state) => state.hostingApplication.activeState)
+const [filteredReduxArray, setFilteredReduxArray] = useState([]);
+
+// Фильтрация массива при изменении активного состояния
+useEffect(() => {
+  let filteredArray = [];
+  if (activeState === "все") {
+    filteredArray = newReduxArray;
+  } else if (activeState === "на рассмотрении") {
+    filteredArray = [];
+  } else if (activeState === "не оплачены") {
+    filteredArray = newReduxArray.filter((item) => !item.paid);
+  } else if (activeState === "оплачены") {
+    filteredArray = newReduxArray.filter((item) => item.paid);
+  } else if (activeState === "просрочены") {
+    filteredArray = [];
+  } else if (activeState === "на снятии") {
+    filteredArray = [];
+  } else if (activeState === "сняты") {
+    filteredArray = [];
+  }
+  setFilteredReduxArray(filteredArray);
+}, [activeState, newReduxArray]);
 
   //head-------------------------------------------------------------
   const head = [
@@ -108,14 +132,15 @@ const clickReportPopup = () => {
     if (dataIndex !== -1) {
       const updatedData = reduxData.map((item, i) => {
         if (i === dataIndex) {
-          return { ...item, paid: true };
+          return { ...item, paid: true, paidAmount: "100%" };
         }
         return item;
       });
       dispatch(setAppData(updatedData));
-      console.log(updatedData);
-    }
+      }
   };
+  
+  
 
   return (
     <div className={a.applicationData__wrapper}>
@@ -126,8 +151,8 @@ const clickReportPopup = () => {
         {head.length > 0 &&
           head.map((item, index) => <th className={a.headTitle}>{item}</th>)}
       </div>
-      {newReduxArray &&
-        newReduxArray.map((item, index) => (
+      {filteredReduxArray &&
+        filteredReduxArray.map((item, index) => (
           <div className={a.applicationData__content} key={index}>
             <div className={a.contentRow}>
               <div
@@ -145,7 +170,7 @@ const clickReportPopup = () => {
                 Не оплачено
               </div>
               <div>{item.paymentType}</div>
-              <div>{item.paid === true ? "100%" : 0 + " " + "$"}</div>
+              <div>{item.paid === true ? "100%" : item.paidAmount + " " + "$"}</div>
               <div>
                 {" "}
                 <div className={a.buttonWrapper}>

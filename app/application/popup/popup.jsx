@@ -77,7 +77,7 @@ const Popup = (props) => {
       dateRemove: "-",
       paid: false,
       paymentType: "Банковской картой",
-      paidAmount: null,
+      paidAmount: 0,
       userId: currentUserId,
       id: currentData.length 
     };

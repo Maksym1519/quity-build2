@@ -23,8 +23,7 @@ const ReportPopup = (props) => {
       ? reduxDataArray.filter((item) => chooseNumbers.includes(item.appNum))
       : [];
 
-  console.log(filteredData);
-
+ 
   return (
     <div className={o.popup__wrapper}>
       <div className={o.popup__body}>
@@ -42,7 +41,7 @@ const ReportPopup = (props) => {
                 </div>
               <div className={o.reportItemCell}>
               <span className={o.title}>Оплачено</span>
-                {item.amount}
+                {item.paidAmount} %
                 </div>
             </div>
           ))}
