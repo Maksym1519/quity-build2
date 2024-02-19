@@ -6,10 +6,12 @@ import { useEffect, useState } from "react";
 import { popupInfo } from "@/lib/features/hostingApplication/hostingApplicationSlice";
 import Popup from "./popup/popup";
 import BuyConfirm from "./buyConfirm/byConfirm";
+import ReportPopup from "./reportPopup/reportPopup";
 
 export default function ApplicationLayout({ children }) {
   const popupData = useSelector(popupInfo)
   const buyPopup = useSelector((state) => state.hostingApplication.buyPopup)
+  const reportPopup = useSelector((state) => state.hostingApplication.reportPopup)
    //showpopup--------------------------------------------------------
    const [showPopup, setShowPopup] = useState(false);
    const clickShowPopup = () => {
@@ -22,13 +24,14 @@ export default function ApplicationLayout({ children }) {
   
   return (
     <>
-      <div className={popupData || buyPopup ? "applicationOpacity" : " "}>
+      <div className={popupData || buyPopup || reportPopup ? "applicationOpacity" : " "}>
         <Header />
         {children}
         <Footer />
       </div>
       {popupData && <Popup  close={clickHidePopup}/>}
       {buyPopup && <BuyConfirm />}
+      {reportPopup && <ReportPopup />}
     </>
   );
 }

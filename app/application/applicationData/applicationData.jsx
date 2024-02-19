@@ -8,6 +8,7 @@ import {
   setAppData,
   setChooseNum,
   setBuyPopup,
+  setReportPopup
 } from "@/lib/features/hostingApplication/hostingApplicationSlice";
 
 const ApplicationData = (props) => {
@@ -36,7 +37,7 @@ const ApplicationData = (props) => {
       setAllNumbers(allNums);
     }
     setAllSelected(!allSelected);
-    dispatch(setChooseNum(allNumbers))
+    dispatch(setChooseNum(allNumbers));
   };
 
   const clickItemSelected = (index) => {
@@ -48,28 +49,25 @@ const ApplicationData = (props) => {
       setSelectedItems([...selectedItems, index]);
       setAllNumbers([...allNumbers, newReduxArray[index].appNum]);
     }
-    dispatch(setChooseNum(allNumbers))
+    dispatch(setChooseNum(allNumbers));
   };
-
-  
 
   //get-localstorage-data----------------------------------------------
   const currentUserId = localStorage.getItem("id");
 
   //get-data-from-redux-------------------------------------------------
-  const [newReduxArray, setNewReduxArray] = useState()
+  const [newReduxArray, setNewReduxArray] = useState();
   const reduxData = useSelector((state) => state.hostingApplication.appData);
-   
+
   useEffect(() => {
-  if (reduxData) {
-  const filteredData =
-  reduxData instanceof Array
-    ? reduxData.filter((item) => item.userId === currentUserId)
-    : [];
-    setNewReduxArray(filteredData)
-}
-  },[reduxData])
-  
+    if (reduxData) {
+      const filteredData =
+        reduxData instanceof Array
+          ? reduxData.filter((item) => item.userId === currentUserId)
+          : [];
+      setNewReduxArray(filteredData);
+    }
+  }, [reduxData]);
 
   //head-------------------------------------------------------------
   const head = [
@@ -99,23 +97,25 @@ const ApplicationData = (props) => {
   const clickBuyPopup = () => {
     dispatch(setBuyPopup(true));
   };
-
-  
-
-const clickPaid = (index) => {
-  const dataIndex = reduxData.findIndex(item => item.id === index);
-  if (dataIndex !== -1) {
-     const updatedData = reduxData.map((item, i) => {
-      if (i === dataIndex) {
-        return { ...item, paid: true };
-      }
-      return item;
-    });
-    dispatch(setAppData(updatedData));
-    console.log(updatedData);
-  }
+//set-report-popup---------------------------------------------------
+const clickReportPopup = () => {
+  dispatch(setReportPopup(true));
+  dispatch(setChooseNum(allNumbers))
 };
 
+  const clickPaid = (index) => {
+    const dataIndex = reduxData.findIndex((item) => item.id === index);
+    if (dataIndex !== -1) {
+      const updatedData = reduxData.map((item, i) => {
+        if (i === dataIndex) {
+          return { ...item, paid: true };
+        }
+        return item;
+      });
+      dispatch(setAppData(updatedData));
+      console.log(updatedData);
+    }
+  };
 
   return (
     <div className={a.applicationData__wrapper}>
@@ -141,20 +141,37 @@ const clickPaid = (index) => {
               <div>{item.dateApp}</div>
               <div>{item.dateDeployment}</div>
               <div>{item.dateRemove}</div>
-              <div className={item.paid === true ? a.statusPaid : a.status}>Не оплачено</div>
+              <div className={item.paid === true ? a.statusPaid : a.status}>
+                Не оплачено
+              </div>
               <div>{item.paymentType}</div>
-              <div>{0 + " " + "$"}</div>
+              <div>{item.paid === true ? "100%" : 0 + " " + "$"}</div>
               <div>
                 {" "}
                 <div className={a.buttonWrapper}>
-                  <Image
-                    src={Icones.bucket}
-                    width={24}
-                    height={24}
-                    className={a.bucket}
-                    onClick={() => getItemDelete(item)}
-                  />
-                  <div className={a.buttonPay} onClick={() => {clickPaid(index);clickBuyPopup()}}>
+                  <div className={a.icones__wrapper}>
+                    <Image
+                      src={Icones.report}
+                      width={24}
+                      height={24}
+                      className={a.buttonIcon}
+                      onClick={() => clickReportPopup()}
+                      />
+                     <Image
+                      src={Icones.lightBucket}
+                      width={24}
+                      height={24}
+                      className={a.buttonIcon}
+                      onClick={() => getItemDelete(item)}
+                    />
+                  </div>
+                  <div
+                    className={a.buttonPay}
+                    onClick={() => {
+                      clickPaid(index);
+                      clickBuyPopup();
+                    }}
+                  >
                     {" "}
                     Оплатить
                   </div>

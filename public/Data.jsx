@@ -124,7 +124,9 @@ const Icones = {
     courseState: "https://res.cloudinary.com/duk3bewdr/image/upload/v1706363584/State_195797353e.svg",
     bucketActive: "https://res.cloudinary.com/duk3bewdr/image/upload/v1706460265/bucket_Active_c85d5bf3f2.png",
     close: "https://res.cloudinary.com/duk3bewdr/image/upload/v1706464831/Close_77996eebe8.svg",
-    attentionTriangle: "https://res.cloudinary.com/duk3bewdr/image/upload/v1707036611/Danger_Triangle_b2894f86e6.svg"
+    attentionTriangle: "https://res.cloudinary.com/duk3bewdr/image/upload/v1707036611/Danger_Triangle_b2894f86e6.svg",
+    lightBucket: "https://res.cloudinary.com/duk3bewdr/image/upload/v1708350293/bucket_Light_Delete_67406bcbfc.svg",
+    report: "https://res.cloudinary.com/duk3bewdr/image/upload/v1708350316/report_Light_Paper_333ba3afe3.svg"
 }
 export const Hosting = {
     deployVideoBg: "https://res.cloudinary.com/duk3bewdr/image/upload/v1707392444/image_14_cb4418833d.png",

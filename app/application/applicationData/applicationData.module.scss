@@ -146,8 +146,14 @@
     flex-direction: column;
     align-items: flex-end;
     row-gap: 20px;
+
+    & .icones__wrapper {
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+    }
     
-    & .bucket {
+    & .buttonIcon {
         cursor: pointer;
     }
   }
