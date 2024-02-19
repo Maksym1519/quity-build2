@@ -67,7 +67,7 @@ const Popup = (props) => {
 
   //set-applications--------------------------------------------------------------
   const currentData = useSelector((state) => state.hostingApplication.appData);
-  console.log(currentData);
+ 
   const setApplicationsData = () => {
     const newData = {
       appNum: appNumber,
@@ -75,18 +75,18 @@ const Popup = (props) => {
       dateApp: fullDate,
       dateDeployment: fullDate,
       dateRemove: "-",
-      paid: null,
+      paid: false,
       paymentType: "Банковской картой",
       paidAmount: null,
       userId: currentUserId,
+      id: currentData.length 
     };
     const updatedData = Array.isArray(currentData)
       ? [...currentData, newData]
       : [newData];
     dispatch(setAppData(updatedData));
 
-    dispatch(setAppData(updatedData));
-  };
+    };
 
   return (
     <div className={p.popup__wrapper}>

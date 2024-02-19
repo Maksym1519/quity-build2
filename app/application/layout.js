@@ -1,13 +1,15 @@
 "use client";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
-import { useAppSelector } from "@/lib/hooks";
-import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { popupInfo } from "@/lib/features/hostingApplication/hostingApplicationSlice";
 import Popup from "./popup/popup";
+import BuyConfirm from "./buyConfirm/byConfirm";
 
 export default function ApplicationLayout({ children }) {
-  const popupData = useAppSelector(popupInfo)
+  const popupData = useSelector(popupInfo)
+  const buyPopup = useSelector((state) => state.hostingApplication.buyPopup)
    //showpopup--------------------------------------------------------
    const [showPopup, setShowPopup] = useState(false);
    const clickShowPopup = () => {
@@ -16,14 +18,17 @@ export default function ApplicationLayout({ children }) {
    const clickHidePopup = () => {
      setShowPopup(false)
    }
+   //close-buypopup
+  
   return (
     <>
-      <div className={popupData ? "applicationOpacity" : " "}>
+      <div className={popupData || buyPopup ? "applicationOpacity" : " "}>
         <Header />
         {children}
         <Footer />
       </div>
       {popupData && <Popup  close={clickHidePopup}/>}
+      {buyPopup && <BuyConfirm />}
     </>
   );
 }

@@ -124,6 +124,23 @@
     padding: 5px 0;
   }
 
+ .statusPaid {
+  width: 100%;
+    max-width: 116px;
+    border-radius: 6px;
+    background: rgba(62, 208, 133, 0.2);
+    color: rgb(62, 208, 133);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+ } 
+
   .buttonWrapper {
     display: flex;
     flex-direction: column;

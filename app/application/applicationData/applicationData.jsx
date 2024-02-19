@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import Icones from "@/public/Data";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
-import { setAppData } from "@/lib/features/hostingApplication/hostingApplicationSlice";
-
+import {
+  setAppData,
+  setChooseNum,
+  setBuyPopup,
+} from "@/lib/features/hostingApplication/hostingApplicationSlice";
 
 const ApplicationData = (props) => {
   const birdImg = (
@@ -18,34 +21,56 @@ const ApplicationData = (props) => {
   );
 
   //---------------------------------------------------------
+  const [allNumbers, setAllNumbers] = useState([]);
   const [allSelected, setAllSelected] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
 
   const clickAllSelected = () => {
     if (allSelected) {
-      setSelectedItems([]); 
+      setSelectedItems([]);
+      setAllNumbers([]);
     } else {
-      setSelectedItems(filteredData.map((_, index) => index)); 
+      const allIndexes = newReduxArray.map((_, index) => index);
+      setSelectedItems(allIndexes);
+      const allNums = newReduxArray.map((item) => item.appNum);
+      setAllNumbers(allNums);
     }
     setAllSelected(!allSelected);
+    dispatch(setChooseNum(allNumbers))
   };
 
   const clickItemSelected = (index) => {
     if (selectedItems.includes(index)) {
       setSelectedItems(selectedItems.filter((item) => item !== index));
+      const valueToRemove = newReduxArray[index].appNum;
+      setAllNumbers(allNumbers.filter((num) => num !== valueToRemove));
     } else {
       setSelectedItems([...selectedItems, index]);
+      setAllNumbers([...allNumbers, newReduxArray[index].appNum]);
     }
+    dispatch(setChooseNum(allNumbers))
   };
+
+  
+
   //get-localstorage-data----------------------------------------------
   const currentUserId = localStorage.getItem("id");
 
   //get-data-from-redux-------------------------------------------------
+  const [newReduxArray, setNewReduxArray] = useState()
   const reduxData = useSelector((state) => state.hostingApplication.appData);
-  const filteredData = reduxData instanceof Array ? reduxData.filter(
-    (item) => item.userId === currentUserId
-  ) :[];
-console.log(filteredData)
+   
+  useEffect(() => {
+  if (reduxData) {
+  const filteredData =
+  reduxData instanceof Array
+    ? reduxData.filter((item) => item.userId === currentUserId)
+    : [];
+    setNewReduxArray(filteredData)
+}
+  },[reduxData])
+  
+
   //head-------------------------------------------------------------
   const head = [
     "№",
@@ -64,24 +89,34 @@ console.log(filteredData)
   ];
 
   //delete------------------------------------------------------------
- const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const getItemDelete = (item) => {
     const value = item.appNum;
-    const newArray = filteredData.filter((item) => item.appNum !== value)
-    dispatch(setAppData(newArray))
+    const newArray = newReduxArray.filter((item) => item.appNum !== value);
+    dispatch(setAppData(newArray));
   };
-  //get-choose-numbers--------------------------------------------------
-  let allNumbers = []
-  console.log(allNumbers)
-  if (allSelected) {
-    allNumbers = filteredData instanceof Array ? filteredData.filter((item) => item.appNum) : []
-  } else {
-    allNumbers = filteredData instanceof Array ? filteredData.filter((item, index) => selectedItems.includes(index)): [];
+  //set-buy-popup----------------------------------------------------
+  const clickBuyPopup = () => {
+    dispatch(setBuyPopup(true));
+  };
+
+  
+
+const clickPaid = (index) => {
+  const dataIndex = reduxData.findIndex(item => item.id === index);
+  if (dataIndex !== -1) {
+     const updatedData = reduxData.map((item, i) => {
+      if (i === dataIndex) {
+        return { ...item, paid: true };
+      }
+      return item;
+    });
+    dispatch(setAppData(updatedData));
+    console.log(updatedData);
   }
-  //set-numbers-to=popup-------------------------------------------------
-  if (allNumbers.length > 0) {
-    dispatch(setAppData({chooseNum: allNumbers}))
-  }
+};
+
+
   return (
     <div className={a.applicationData__wrapper}>
       <div className={a.applicationData__header}>
@@ -91,17 +126,22 @@ console.log(filteredData)
         {head.length > 0 &&
           head.map((item, index) => <th className={a.headTitle}>{item}</th>)}
       </div>
-      {filteredData &&
-        filteredData.map((item, index) => (
+      {newReduxArray &&
+        newReduxArray.map((item, index) => (
           <div className={a.applicationData__content} key={index}>
             <div className={a.contentRow}>
-              <div className={a.selected} onClick={() => clickItemSelected(index)}>{selectedItems.includes(index) ? birdImg : ""}</div>
+              <div
+                className={a.selected}
+                onClick={() => clickItemSelected(index)}
+              >
+                {selectedItems.includes(index) ? birdImg : ""}
+              </div>
               <div>{item.appNum}</div>
               <div>{item.deployAmount}</div>
               <div>{item.dateApp}</div>
               <div>{item.dateDeployment}</div>
               <div>{item.dateRemove}</div>
-              <div className={a.status}>Не оплачено</div>
+              <div className={item.paid === true ? a.statusPaid : a.status}>Не оплачено</div>
               <div>{item.paymentType}</div>
               <div>{0 + " " + "$"}</div>
               <div>
@@ -114,7 +154,10 @@ console.log(filteredData)
                     className={a.bucket}
                     onClick={() => getItemDelete(item)}
                   />
-                  <div className={a.buttonPay}> Оплатить</div>
+                  <div className={a.buttonPay} onClick={() => {clickPaid(index);clickBuyPopup()}}>
+                    {" "}
+                    Оплатить
+                  </div>
                 </div>
               </div>
             </div>
