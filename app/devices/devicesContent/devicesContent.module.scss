@@ -13,7 +13,8 @@
     flex-direction: column;
     text-align: left;
 
-    & .headTitle, .headText {
+    & .headTitle,
+    .headText {
       font-size: 14px;
       font-weight: 600;
       line-height: 20px;
@@ -21,8 +22,8 @@
     }
 
     & .headText {
-     font-weight: 400;
-     color: rgb(169, 169, 169);
+      font-weight: 400;
+      color: rgb(169, 169, 169);
     }
   }
 
@@ -31,14 +32,15 @@
     max-width: 100%;
     display: grid;
     grid-template-columns:
-      minmax(44px, auto) minmax(80px, auto) minmax(149px, auto)
-      minmax(136px, auto) minmax(136px, auto) minmax(102px, auto) minmax(
-        204px,
-        auto
+      minmax(auto, 44px) minmax(auto, 186px) minmax(auto, 143px)
+      minmax(auto, 136px) minmax(auto, 180px) minmax(auto, 245px) minmax(
+        auto,
+        132px
       )
-      minmax(136px, auto) minmax(179px, auto) minmax(112px, auto);
+      minmax(auto, 182px);
     border-bottom: 1px solid rgb(244, 245, 246);
     align-items: flex-start;
+    padding-bottom: 16px;
 
     & .tableSelect {
       width: 24px;
@@ -59,6 +61,103 @@
       line-height: 20px;
       text-align: left;
     }
+  }
+
+  .devicesData__content {
+    width: 100%;
+    max-width: 100%;
+    border-bottom: 1px solid rgb(244, 245, 246);
+    border-top: 1px solid rgb(244, 245, 246);
+
+    & .contentRow {
+      width: 100%;
+      height: auto;
+      min-height: 125px;
+      align-items: flex-start;
+      padding: 30px 0 20px 0;
+      display: grid;
+      grid-template-columns:
+        minmax(auto, 44px) minmax(auto, 186px) minmax(auto, 143px)
+        minmax(auto, 136px) minmax(auto, 180px) minmax(auto, 245px) minmax(
+          auto,
+          132px
+        )
+        minmax(auto, 182px) minmax(24px,24px);
+
+      & .selected {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 3px;
+        border: 2px solid rgb(219, 219, 219);
+        color: rgb(219, 219, 219);
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      & .contentRowCell {
+        display: flex;
+        flex-direction: column;
+        row-gap: 4px;
+
+        & .poolLine {
+          display: flex;
+          align-items: flex-start;
+          column-gap: 6px;
+
+          & .poolInfo {
+            display: flex;
+            flex-direction: column;
+            font-size: 12px;
+          }
+
+          & .dotDark {
+            min-width: 8px;
+            min-height: 8px;
+            border-radius: 100%;
+            background: rgb(62, 208, 133);
+            transform: translateY(6px);
+          }
+
+          & .dotMiddle {
+            min-width: 8px;
+            min-height: 8px;
+            border-radius: 100%;
+            background: rgba(62, 208, 133, 0.5);
+            transform: translateY(6px);
+          }
+
+          & .dotLight {
+            min-width: 8px;
+            min-height: 8px;
+            border-radius: 100%;
+            background: rgba(62, 208, 133, 0.2);
+            transform: translateY(6px);
+          }
+        }
+
+        & .status {
+          border-radius: 6px;
+          background: rgba(62, 208, 133, 0.2);
+          text-transform: uppercase;
+          color: rgb(62, 208, 133);
+          font-size: 10px;
+          font-weight: 500;
+          line-height: 16px;
+          letter-spacing: 0.2px;
+          padding: 8px 10px;
+          max-width: 62px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  //----------------------------------------------------
+  .birdFilter {
+    min-width: 24px;
+    min-height: 24px;
   }
 }
 @include tablet {

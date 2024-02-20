@@ -56,10 +56,8 @@
       min-height: 125px;
       align-items: flex-start;
       padding: 30px 0 20px 0;
-      // border-bottom: 1px solid rgb(244, 245, 246);
-      // border-top: 1px solid rgb(244, 245, 246);
       display: grid;
-    grid-template-columns:
+      grid-template-columns:
       minmax(44px, auto) minmax(80px, auto) minmax(149px, auto)
       minmax(136px, auto) minmax(136px, auto) minmax(102px, auto) minmax(
         204px,

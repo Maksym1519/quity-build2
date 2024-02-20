@@ -14,6 +14,7 @@ import { setOrderPaid } from "@/lib/features/order/orderSlice";
 import { clearOrders } from "@/lib/features/order/orderSlice";
 import { setUserId } from "@/lib/features/order/orderSlice";
 
+
 const OrdersStorage = () => {
   const currentUserId = localStorage.getItem("id");
   const dispatch = useAppDispatch();
@@ -38,7 +39,7 @@ const OrdersStorage = () => {
   };
   
   const currentFilteredOrders = uniqueOrders(filteredCurrentArray.filter((order) => order.userId === currentUserId ));
- console.log(filteredCurrentArray)
+ 
   //status---------------------------------------------------
   const [notPaid, setNotPaid] = useState(true);
 
