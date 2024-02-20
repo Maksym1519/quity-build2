@@ -18,10 +18,10 @@ const HostingNavigation = () => {
             Панель управления
          </div>
         </Link>
-        <Link href="#"  style={{ textDecoration: 'none' }}>
+        <Link href="/devices"  style={{ textDecoration: 'none' }}>
           <div
             className={
-              pathname === "/profile" ? hn.profileActive : hn.profileNonactive
+              pathname === "/devices" ? hn.profileActive : hn.profileNonactive
             }
           >
             Мои устройства

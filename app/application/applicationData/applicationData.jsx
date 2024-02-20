@@ -72,7 +72,7 @@ const ApplicationData = (props) => {
 const activeState = useSelector((state) => state.hostingApplication.activeState)
 const [filteredReduxArray, setFilteredReduxArray] = useState([]);
 
-// Фильтрация массива при изменении активного состояния
+//filtration-array-change-active-status--------------------------
 useEffect(() => {
   let filteredArray = [];
   if (activeState === "все") {

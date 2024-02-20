@@ -1,0 +1,34 @@
+@import "../mediaBreakpoints.scss";
+
+@include desctop {
+    .wrapper {
+      width: 100%;
+      max-width: 100%;
+      padding: 0px 80px 40px 80px;
+      animation: none;
+      opacity: 1;
+      animation-duration: 1s;
+      animation-name: fadeIn;
+    }
+  
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+  @include tablet {
+  }
+  
+  @include mobile {
+  }
+  

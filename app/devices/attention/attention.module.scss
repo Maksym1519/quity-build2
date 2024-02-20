@@ -1,0 +1,41 @@
+@import "../../mediaBreakpoints.scss";
+@import "../../variables.scss";
+
+@include desctop {
+  .wrapper {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    border-radius: 16px;
+    background: rgb(244, 245, 246);
+  }
+
+  .attention__wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+  }
+  .attentionInfo {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+
+    & .attentionInfoTitle,
+    .attentionInfoText {
+      color: rgb(26, 28, 35);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+    }
+
+    & .attentionInfoText {
+      font-weight: 400;
+    }
+  }
+}
+@include tablet {
+}
+@include mobile {
+}

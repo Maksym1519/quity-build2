@@ -1,0 +1,42 @@
+@import "../../mediaBreakpoints.scss";
+@import "../../variables.scss";
+
+@include desctop {
+  .wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+    margin-bottom: 24px;
+  }
+  .mainTitle {
+    color: $primaryColor;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+  }
+  .deviceHeaderButton {
+    width: 100%;
+    max-width: 240px;
+    border-radius: 80px;
+    background: $blue;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 18px 28px;
+    text-align: center;
+  }
+  .deviceHeaderButton:hover {
+    transform: scale(110%);
+    @include blueShadow();
+  }
+}
+
+@include tablet {
+}
+
+@include mobile {
+}

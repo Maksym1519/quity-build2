@@ -1,8 +1,116 @@
-@media (min-width: 1025px) {
-    .wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        //font-family: "Roboto";
-        }
-   }
+@import "../../variables.scss";
+@import "../../mediaBreakpoints.scss";
+
+@include desctop {
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 18px 28px;
+    background: $blue;
+    border-radius: 80px;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 18px 28px;
+    text-align: center;
+  }
+
+  .wrapper:hover {
+    transform: scale(110%);
+    @include blueShadow();
+  }
+  //-------------------------------------------------------
+  .whiteButton__wrapper {
+    border: 1px solid $blue;
+    border-radius: 80px;
+    color: $blue;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    padding: 16px 20px;
+    cursor: pointer;
+  }
+
+  .whiteButton__wrapper:hover {
+    transform: scale(110%);
+  }
+}
+@include tablet {
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 18px 28px;
+    background: $blue;
+    border-radius: 80px;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 18px 28px;
+    text-align: center;
+  }
+
+  .wrapper:hover {
+    transform: scale(110%);
+    @include blueShadow();
+  }
+
+    //-------------------------------------------------------
+    .whiteButton__wrapper {
+        border: 1px solid $blue;
+        border-radius: 80px;
+        color: $blue;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+        padding: 16px 20px;
+        cursor: pointer;
+      }
+    
+      .whiteButton__wrapper:hover {
+        transform: scale(110%);
+      }
+}
+@include mobile {
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 18px 28px;
+    background: $blue;
+    border-radius: 80px;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 18px 28px;
+    text-align: center;
+  }
+
+  .wrapper:hover {
+    transform: scale(110%);
+    @include blueShadow();
+  }
+
+    //-------------------------------------------------------
+    .whiteButton__wrapper {
+        border: 1px solid $blue;
+        border-radius: 80px;
+        color: $blue;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+        padding: 16px 20px;
+        cursor: pointer;
+      }
+    
+      .whiteButton__wrapper:hover {
+        transform: scale(110%);
+      }
+}

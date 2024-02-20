@@ -1,0 +1,68 @@
+@import "../../mediaBreakpoints.scss";
+@import "../../variables.scss";
+
+@include desctop {
+  .wrapper {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+  }
+  .headCell {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    & .headTitle, .headText {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      color: $primaryColor;
+    }
+
+    & .headText {
+     font-weight: 400;
+     color: rgb(169, 169, 169);
+    }
+  }
+
+  .devicesContent__header {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns:
+      minmax(44px, auto) minmax(80px, auto) minmax(149px, auto)
+      minmax(136px, auto) minmax(136px, auto) minmax(102px, auto) minmax(
+        204px,
+        auto
+      )
+      minmax(136px, auto) minmax(179px, auto) minmax(112px, auto);
+    border-bottom: 1px solid rgb(244, 245, 246);
+    align-items: flex-start;
+
+    & .tableSelect {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3px;
+      border: 2px solid rgb(219, 219, 219);
+      color: rgb(219, 219, 219);
+      font-size: 20px;
+      cursor: pointer;
+    }
+    & .headTitle {
+      color: $primaryColor;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+    }
+  }
+}
+@include tablet {
+}
+
+@include mobile {
+}

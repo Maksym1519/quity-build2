@@ -73,10 +73,10 @@ const Navigation = () => {
       <Image src={Icones.logo} width={101} height={31} className="mobileLogo" alt="icon"/>
       <div className="siteNavigation">
         <Link href="/shop" style={{ textDecoration: 'none' }}>
-          <span className={pathname === "/shop" ? "active" : "nonActive"}>Магазин</span>
+          <span className={pathname === "/shop" || pathname === "/catalog" ? "active" : "nonActive"}>Магазин</span>
         </Link>
         <Link href="/hosting" style={{ textDecoration: 'none' }}>
-          <span className={pathname === "/hosting" || pathname === "/application" ? "active" : "nonActive"}>
+          <span className={pathname === "/hosting" || pathname === "/application" || pathname === "/devices" ? "active" : "nonActive"}>
             Хостинг
           </span>
         </Link>
