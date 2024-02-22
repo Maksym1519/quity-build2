@@ -1,13 +1,14 @@
 @import "../../mediaBreakpoints.scss";
 @import "../../variables.scss";
 
-@include desctop {
+@media (min-width: 1025px) {
   .wrapper {
     max-width: 100%;
     display: flex;
     flex-direction: column;
     margin-top: 32px;
-  }
+    }
+
   .headCell {
     display: flex;
     flex-direction: column;
@@ -32,16 +33,16 @@
     max-width: 100%;
     display: grid;
     grid-template-columns:
-      minmax(auto, 44px) minmax(auto, 186px) minmax(auto, 143px)
-      minmax(auto, 136px) minmax(auto, 180px) minmax(auto, 245px) minmax(
+     minmax(auto, 3.43%) minmax(auto, 14.53%) minmax(auto, 11.17%)
+      minmax(auto, 10.62%) minmax(auto, 14.06%) minmax(auto, 19.14%) minmax(
         auto,
-        132px
+        10.31%
       )
-      minmax(auto, 182px);
+      minmax(auto, 14.21%);
     border-bottom: 1px solid rgb(244, 245, 246);
     align-items: flex-start;
     padding-bottom: 16px;
-
+   
     & .tableSelect {
       width: 24px;
       height: 24px;
@@ -82,7 +83,7 @@
           auto,
           132px
         )
-        minmax(auto, 182px) minmax(24px,24px);
+        minmax(auto, 182px) minmax(24px, 24px);
 
       & .selected {
         width: 24px;
@@ -95,6 +96,7 @@
         color: rgb(219, 219, 219);
         font-size: 20px;
         cursor: pointer;
+        position: relative;
       }
 
       & .contentRowCell {
@@ -148,8 +150,36 @@
           line-height: 16px;
           letter-spacing: 0.2px;
           padding: 8px 10px;
-          max-width: 62px;
           text-align: center;
+          max-width: 76px;
+        }
+
+        & .statusNotPaid {
+          border-radius: 6px;
+          background: rgb(255, 232, 225);
+          text-transform: uppercase;
+          color: rgb(255, 111, 113);
+          font-size: 10px;
+          font-weight: 500;
+          line-height: 16px;
+          letter-spacing: 0.2px;
+          padding: 8px 10px;
+          text-align: center;
+          max-width: 120px;
+        }
+
+        & .statusSwitchOff {
+          border-radius: 6px;
+          background: rgb(246, 248, 254);
+          text-transform: uppercase;
+          color: rgb(156, 162, 177);
+          font-size: 10px;
+          font-weight: 500;
+          line-height: 16px;
+          letter-spacing: 0.2px;
+          padding: 8px 10px;
+          text-align: center;
+          max-width: 86px;
         }
       }
     }
@@ -159,7 +189,40 @@
     min-width: 24px;
     min-height: 24px;
   }
+
+  //device-popup---------------------------------------------
+  .popup__wrapper {
+    width: 100%;
+    min-width: 200px;
+    max-width: 200px;
+    background: $white;
+    border-radius: 16px;
+    box-shadow: 0px 6px 40px 0px rgba(99, 109, 137, 0.15);
+    padding: 16px 20px;
+    position: absolute;
+    right: 100%;
+    top: 50px;
+
+    & .popup__body {
+      display: flex;
+      flex-direction: column;
+      row-gap: 12px;
+
+      & .popup__item {
+        color: rgb(20, 28, 64);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+
+      & .popup__item:hover {
+        transform: scale(105%);
+        color: #000;
+      }
+    }
+  }
 }
+
 @include tablet {
 }
 

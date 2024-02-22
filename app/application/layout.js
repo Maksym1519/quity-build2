@@ -8,19 +8,20 @@ import Popup from "./popup/popup";
 import BuyConfirm from "./buyConfirm/byConfirm";
 import ReportPopup from "./reportPopup/reportPopup";
 
+
+
 export default function ApplicationLayout({ children }) {
   const popupData = useSelector(popupInfo)
   const buyPopup = useSelector((state) => state.hostingApplication.buyPopup)
   const reportPopup = useSelector((state) => state.hostingApplication.reportPopup)
    //showpopup--------------------------------------------------------
    const [showPopup, setShowPopup] = useState(false);
-   const clickShowPopup = () => {
-     setShowPopup(true)
-   }
+     
    const clickHidePopup = () => {
      setShowPopup(false)
    }
-   //close-buypopup
+   
+   
   
   return (
     <>

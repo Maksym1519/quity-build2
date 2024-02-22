@@ -3,9 +3,9 @@ import d from "./devicesContent.module.scss";
 import Image from "next/image";
 import Icones from "@/public/Data";
 import HeadContent from "./headContent";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-
+import DevicePopup from "./devicePopup";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 const DevicesContent = () => {
   const birdImg = (
@@ -35,29 +35,84 @@ const DevicesContent = () => {
   const currentFilteredOrders = uniqueOrders(
     filteredCurrentArray.filter((order) => order.userId === currentUserId)
   );
+ //get-active-state-------------------------------------
+const activeState = useSelector((state) => state.order.activeState)
+const [filteredReduxArray, setFilteredReduxArray] = useState([]);
+console.log(activeState)
+//filtration-array-change-active-status--------------------------
+useEffect(() => {
+  let filteredArray = [];
+  if (activeState === "все") {
+    filteredArray = currentFilteredOrders;
+  } else if (activeState === "оплачены") {
+    filteredArray = currentFilteredOrders.filter((item) => item.status === "оплачено");
+  } else if (activeState === "низкий хэш") {
+    filteredArray = currentFilteredOrders;
+  } else if (activeState === "отключены") {
+    filteredArray = currentFilteredOrders.filter((item) => item.status === "отключить")
+  } else if (activeState === "не оплачены") {
+    filteredArray = currentFilteredOrders.filter((item) => item.status !== "отключить" && item.status !== "оплачено");
+  }
+   setFilteredReduxArray(filteredArray);
+}, [activeState, currentFilteredOrders]);
   //clicked-items------------------------------------------------------------
   const [clickedItems, setClickedItems] = useState([]);
+  const [allSelected, setAllSelected] = useState(false);
   const toggleClickItem = (index) => {
     if (clickedItems.includes(index)) {
-      setClickedItems(clickedItems.filter((item) => item !== index))
+      setClickedItems(clickedItems.filter((item) => item !== index));
     } else {
       setClickedItems([...clickedItems, index]);
-      }
-     
+    }
+  };
+  const clickedAllSelected = () => {
+    if (allSelected) {
+      setClickedItems([]);
+    } else {
+      const allIndexes = currentFilteredOrders.map((_, index) => index);
+      setClickedItems(allIndexes);
+    }
+    setAllSelected(!allSelected);
+  };
+  //device-popup-------------------------------------------------
+  const [popup, setPopup] = useState([]);
+  const clickPopup = (index) => {
+    if (popup.includes(index)) {
+      setPopup(popup.filter((item) => item !== index));
+    } else {
+      setPopup([...popup, index]);
+    }
+  };
+  //getStatus-----------------------------------------------------
+  function getStatus(itemStatus) {
+    switch (itemStatus) {
+      case "оплачено":
+        return d.status;
+      case "отключить":
+        return d.statusSwitchOff;
+      default:
+        return d.statusNotPaid;
+    }
   }
-
 
   return (
     <div className={d.wrapper}>
       <div className={d.devicesContent__header}>
-        <th className={d.tableSelect}></th>
+        <th className={d.tableSelect} onClick={clickedAllSelected}>
+          {allSelected ? birdImg : ""}
+        </th>
         <HeadContent />
       </div>
-      {currentFilteredOrders &&
-        currentFilteredOrders.map((item, index) => (
+      {filteredReduxArray &&
+        filteredReduxArray.map((item, index) => (
           <div className={d.devicesData__content} key={index}>
             <div className={d.contentRow}>
-              <div className={d.selected} onClick={() => toggleClickItem(index)}>{clickedItems.includes(index)  ? birdImg : ""}</div>
+              <div
+                className={d.selected}
+                onClick={() => toggleClickItem(index)}
+              >
+                {clickedItems.includes(index) ? birdImg : ""}
+              </div>
               <div className={d.contentRowCell}>{item.attributes.title}</div>
               <div className={d.contentRowCell}>
                 <span>T17-MSC2-00219</span>
@@ -96,9 +151,21 @@ const DevicesContent = () => {
               </div>
               <div className={d.contentRowCell}>14 дней</div>
               <div className={d.contentRowCell}>
-                <div className={d.status}>активен</div>
+                <div className={getStatus(item.status)}>
+                  {item.status === "оплачено" && <span>оплачено</span>}
+                  {item.status === "отключить" && (
+                    <span>отключено</span>
+                  )}
+                  {item.status !== "оплачено" &&
+                    item.status !== "отключить" && (
+                      <span>требуется оплата</span>
+                    )}
+                </div>
               </div>
-              <div className={d.selected}></div>
+              <div className={d.selected} onClick={() => clickPopup(index)}>
+                ...
+                {popup.includes(index) ? <DevicePopup itemId={item.id} /> : ""}
+              </div>
             </div>
           </div>
         ))}

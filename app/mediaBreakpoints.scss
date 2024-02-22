@@ -4,6 +4,11 @@
         @content
     }
 };
+@mixin gridOrder() {
+    @media (min-width: $breakpoint_1025) and (max-width: $breakpoint_1400 ) {
+        @content
+    }
+};
 @mixin tablet() {
     @media (min-width: $breakpoint_769) and (max-width: $breakpoint_1024 ) {
         @content
