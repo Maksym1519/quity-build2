@@ -4,7 +4,7 @@
     .wrapper {
       width: 100%;
       max-width: 100%;
-      padding: 0px 80px 40px 80px;
+      padding: 0px 80px 120px 80px;
       animation: none;
       opacity: 1;
       animation-duration: 1s;
@@ -19,18 +19,26 @@
         opacity: 1;
       }
     }
+
     .content {
       width: 100%;
       display: flex;
       flex-direction: column;
     }
+     
+    .main {
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(auto, 214px) minmax(auto, 1fr);
+      column-gap: 32px;
+      }
   }
   
   @include tablet {
     .wrapper {
       width: 100%;
       max-width: 100%;
-      padding: 0px 80px 40px 80px;
+      padding: 0px 0px 40px 0px;
       animation: none;
       opacity: 1;
       animation-duration: 1s;
@@ -56,7 +64,7 @@
     .wrapper {
       width: 100%;
       max-width: 100%;
-      padding: 0px 80px 40px 80px;
+      padding: 0px 0px 40px 0px;
       animation: none;
       opacity: 1;
       animation-duration: 1s;

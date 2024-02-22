@@ -76,7 +76,7 @@ const Navigation = () => {
           <span className={pathname === "/shop" || pathname === "/catalog" ? "active" : "nonActive"}>Магазин</span>
         </Link>
         <Link href="/hosting" style={{ textDecoration: 'none' }}>
-          <span className={pathname === "/hosting" || pathname === "/application" || pathname === "/devices" ? "active" : "nonActive"}>
+          <span className={pathname === "/hosting" || pathname === "/application" || pathname === "/devices" || pathname === "/controlPanel" ? "active" : "nonActive"}>
             Хостинг
           </span>
         </Link>

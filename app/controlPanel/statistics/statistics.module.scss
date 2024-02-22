@@ -1,0 +1,36 @@
+@import "../../mediaBreakpoints.scss";
+@import "../../variables.scss";
+
+@include desctop {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    border-radius: 16px;
+    box-shadow: 0px 6px 40px 0px rgba(99, 109, 137, 0.15);
+    background: $white;
+    padding: 24px 0 24px 24px;
+    row-gap: 12px;
+
+    & .statisticsItem {
+      display: flex;
+      flex-direction: column;
+      row-gap: 4px;
+
+      & .itemTitle {
+        color: $primaryColor;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+
+    //   & .itemValue {
+
+    //   }
+    }
+  }
+}
+@include tablet {
+}
+@include mobile {
+}

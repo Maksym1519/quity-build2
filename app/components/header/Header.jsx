@@ -73,6 +73,7 @@ const Header = () => {
           {pathname === "/hosting" && <HeaderHosting />}
           {pathname === "/application" && <HeaderHosting />}
           {pathname === "/devices" && <HeaderHosting />}
+          {pathname === "/controlPanel" && <HeaderHosting />}
         </div>
         {pathname === "/shop" &&  <PageNavigation />}
           {pathname === "/blog" &&  <PageNavigation />}

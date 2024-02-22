@@ -71,7 +71,7 @@ const ApplicationData = (props) => {
 //get-active-state-------------------------------------
 const activeState = useSelector((state) => state.hostingApplication.activeState)
 const [filteredReduxArray, setFilteredReduxArray] = useState([]);
-
+console.log(activeState)
 //filtration-array-change-active-status--------------------------
 useEffect(() => {
   let filteredArray = [];

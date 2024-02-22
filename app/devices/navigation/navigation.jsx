@@ -1,6 +1,6 @@
 "use client";
 import n from "./navigation.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveState } from "@/lib/features/order/orderSlice";
 
@@ -21,17 +21,20 @@ const Navigation = () => {
   //get-redux-data------------------------------------------------------
   const reduxData = useSelector((state) => state.order.orders);
   const dispatch = useDispatch()
-  if (activeIndex === 0) {
-    dispatch(setActiveState("все"))
-  } else if (activeIndex === 1) {
-    dispatch(setActiveState("оплачены"))
-  } else if (activeIndex === 2) {
-    dispatch(setActiveState("низкий хэш"))
-  } else if (activeIndex === 3) {
-    dispatch(setActiveState("отключены"))
-  } else if (activeIndex === 4) {
-    dispatch(setActiveState("не оплачены"))
-  }
+  
+    if (activeIndex === 0) {
+      dispatch(setActiveState("все"))
+    } else if (activeIndex === 1) {
+      dispatch(setActiveState("оплачены"))
+    } else if (activeIndex === 2) {
+      dispatch(setActiveState("низкий хэш"))
+    } else if (activeIndex === 3) {
+      dispatch(setActiveState("отключены"))
+    } else if (activeIndex === 4) {
+      dispatch(setActiveState("не оплачены"))
+    }
+  
+  
   
   return (
     <div className={n.navigation__wrapper}>

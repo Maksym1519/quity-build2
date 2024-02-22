@@ -18,43 +18,45 @@ const DevicesContent = () => {
   );
   //--------------------------------------------------------------
   const currentUserId = localStorage.getItem("id");
+  const [newReduxArray, setNewReduxArray] = useState();
   const reduxData = useSelector((state) => state.order.orders);
-  const filteredCurrentArray = reduxData.filter((item) => item !== null);
+  
+  useEffect(() => {
+    if (reduxData) {
+      const filteredData =
+        reduxData instanceof Array
+          ? reduxData.filter((item) => item.userId === currentUserId)
+          : [];
+      setNewReduxArray(filteredData);
+    }
+  }, [reduxData]);
+  
+  //get-active-state-------------------------------------
+  const activeState = useSelector((state) => state.order.activeState);
+  const [filteredReduxArray, setFilteredReduxArray] = useState([]);
 
-  const uniqueOrders = (orders) => {
-    const uniqueIds = new Set();
-    return orders.filter((order) => {
-      if (order.id && !uniqueIds.has(order.id)) {
-        uniqueIds.add(order.id);
-        return true;
-      }
-      return false;
-    });
-  };
-
-  const currentFilteredOrders = uniqueOrders(
-    filteredCurrentArray.filter((order) => order.userId === currentUserId)
-  );
- //get-active-state-------------------------------------
-const activeState = useSelector((state) => state.order.activeState)
-const [filteredReduxArray, setFilteredReduxArray] = useState([]);
-console.log(activeState)
-//filtration-array-change-active-status--------------------------
-useEffect(() => {
-  let filteredArray = [];
-  if (activeState === "все") {
-    filteredArray = currentFilteredOrders;
-  } else if (activeState === "оплачены") {
-    filteredArray = currentFilteredOrders.filter((item) => item.status === "оплачено");
-  } else if (activeState === "низкий хэш") {
-    filteredArray = currentFilteredOrders;
-  } else if (activeState === "отключены") {
-    filteredArray = currentFilteredOrders.filter((item) => item.status === "отключить")
-  } else if (activeState === "не оплачены") {
-    filteredArray = currentFilteredOrders.filter((item) => item.status !== "отключить" && item.status !== "оплачено");
-  }
-   setFilteredReduxArray(filteredArray);
-}, [activeState, currentFilteredOrders]);
+  //filtration-array-change-active-status--------------------------
+  useEffect(() => {
+    let filteredArray = [];
+    if (activeState === "все") {
+      filteredArray = newReduxArray;
+    } else if (activeState === "оплачены") {
+      filteredArray = newReduxArray.filter(
+        (item) => item.status === "оплачено"
+      );
+    } else if (activeState === "низкий хэш") {
+      filteredArray = newReduxArray;
+    } else if (activeState === "отключены") {
+      filteredArray = newReduxArray.filter(
+        (item) => item.status === "отключить"
+      );
+    } else if (activeState === "не оплачены") {
+      filteredArray = newReduxArray.filter(
+        (item) => item.status !== "отключить" && item.status !== "оплачено"
+      );
+    }
+    setFilteredReduxArray(filteredArray);
+  }, [activeState, newReduxArray]);
   //clicked-items------------------------------------------------------------
   const [clickedItems, setClickedItems] = useState([]);
   const [allSelected, setAllSelected] = useState(false);
@@ -153,9 +155,7 @@ useEffect(() => {
               <div className={d.contentRowCell}>
                 <div className={getStatus(item.status)}>
                   {item.status === "оплачено" && <span>оплачено</span>}
-                  {item.status === "отключить" && (
-                    <span>отключено</span>
-                  )}
+                  {item.status === "отключить" && <span>отключено</span>}
                   {item.status !== "оплачено" &&
                     item.status !== "отключить" && (
                       <span>требуется оплата</span>

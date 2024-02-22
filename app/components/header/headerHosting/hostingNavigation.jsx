@@ -9,10 +9,10 @@ const HostingNavigation = () => {
   return (
     <div className={hn.shopNavigation__wrapper}>
       <div className={hn.shopNavigation__linkContainer}>
-        <Link href="#"  style={{ textDecoration: 'none' }}>
+        <Link href="/controlPanel"  style={{ textDecoration: 'none' }}>
           <div
             className={
-              pathname === "/myOrders" ? hn.profileActive : hn.profileNonactive
+              pathname === "/controlPanel" ? hn.profileActive : hn.profileNonactive
             }
           >
             Панель управления
