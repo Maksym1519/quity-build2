@@ -140,7 +140,7 @@
 @include mobile {
   .wrapper {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     border-radius: 16px;
     box-shadow: 0px 6px 40px 0px rgba(99, 109, 137, 0.15);
     background: $white;
@@ -152,6 +152,9 @@
       flex-direction: column;
       row-gap: 4px;
       background: $white;
+      border-bottom: 1px solid rgba(169, 169, 169, 0.3);
+      max-width: 90%;
+      padding-bottom: 12px;
       
       & .titleA {
         color: $primaryColor;

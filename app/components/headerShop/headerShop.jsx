@@ -101,13 +101,15 @@ const HeaderShop = () => {
       <div className={hs.headerShop__wrapper}>
         <div className={hs.navigation}>
           <div className={hs.image__wrapper + " " + hs.logo__wrapper}>
-            <Image
-              src={Icones.logo}
-              width={101}
-              height={31}
-              className={hs.logo}
-              alt="logo"
-            />
+            <Link href={"/shop"}>
+              <Image
+                src={Icones.logo}
+                width={101}
+                height={31}
+                className={hs.logo}
+                alt="logo"
+              />
+            </Link>
           </div>
           <div className={hs.miningEquipment}>
             <Link href="#" style={{ textDecoration: "none" }}>
@@ -134,22 +136,7 @@ const HeaderShop = () => {
       </div>
       <div className={hs.sorting__wrapper}>
         {pathname === "/catalog" ? (
-         
-            <div className={hs.catalogActive}>
-              
-              <div
-                className={catalogMenu ? hs.burgerClose : hs.burger}
-                onClick={toggleCatalogMenu}
-              >
-                <span className={hs.burger__line}></span>
-              </div>
-              <span className={hs.text}>Каталог оборудования</span>
-        
-            </div>
-          
-        ) : (
-          <Link href={"/catalog"} className={hs.linkCatalog}>
-          <div className={hs.catalog}>
+          <div className={hs.catalogActive}>
             <div
               className={catalogMenu ? hs.burgerClose : hs.burger}
               onClick={toggleCatalogMenu}
@@ -158,6 +145,17 @@ const HeaderShop = () => {
             </div>
             <span className={hs.text}>Каталог оборудования</span>
           </div>
+        ) : (
+          <Link href={"/catalog"} className={hs.linkCatalog}>
+            <div className={hs.catalog}>
+              <div
+                className={catalogMenu ? hs.burgerClose : hs.burger}
+                onClick={toggleCatalogMenu}
+              >
+                <span className={hs.burger__line}></span>
+              </div>
+              <span className={hs.text}>Каталог оборудования</span>
+            </div>
           </Link>
         )}
 

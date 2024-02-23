@@ -87,6 +87,10 @@ const Popup = (props) => {
     dispatch(setAppData(updatedData));
 
     };
+    //---------------------------------------------
+    const callSms = (fullPhoneNumber) => {
+      sendSms(fullPhoneNumber)
+    }
 
   return (
     <div className={p.popup__wrapper}>
@@ -153,7 +157,7 @@ const Popup = (props) => {
             type="button"
             className={p.popupButton}
             onClick={() => {
-              setApplicationsData();
+              setApplicationsData();callSms(fullPhoneNumber)
             }}
           >
             Заказать диагностику, оценить стоимость и сроки

@@ -2,6 +2,7 @@ import m from "./miners.module.scss";
 import { ShopImagesBG } from "@/public/Data";
 import { ShopMinersIcones } from "@/public/Data";
 import Image from "next/image";
+import Link from "next/link";
 
 const Miners = () => {
   return (
@@ -30,7 +31,11 @@ const Miners = () => {
                 от 9 месяцев окупаемость;
               </li>
             </ul>
-            <button className={m.minersButton}>В каталог</button>
+            <Link href={"/catalog"} className={m.buttonLink}>
+              <button className={m.minersButton} type="button">
+                В каталог
+              </button>
+            </Link>
           </div>
         </div>
         <div className={m.items__wrapper}>
@@ -42,7 +47,9 @@ const Miners = () => {
               className={m.promoMiner + " " + m.c}
               alt="icon"
             />
-            <button className={m.promoMiner__button}></button>
+            <Link href={"/catalog"}>
+              <button className={m.promoMiner__button}></button>
+            </Link>
           </div>
           <div className={m.item__wrapper}>
             <Image
@@ -52,27 +59,62 @@ const Miners = () => {
               className={m.promoMiner + " " + m.promoMiner2}
               alt="icon"
             />
-            <button className={m.promoMiner__button}></button>
+            <Link href={"/catalog"}>
+              <button className={m.promoMiner__button} type="button"></button>
+            </Link>
           </div>
         </div>
       </div>
       <div className={m.miners__terms}>
         <div className={m.miners__terms__body}>
           <div className={m.item}>
-            <Image src={ShopMinersIcones.sertificate} width={48} height={48} alt="icon"/>
-            <span className={m.text}>Сертификаты <br/>от производителя</span>
+            <Image
+              src={ShopMinersIcones.sertificate}
+              width={48}
+              height={48}
+              alt="icon"
+            />
+            <span className={m.text}>
+              Сертификаты <br />
+              от производителя
+            </span>
           </div>
           <div className={m.item}>
-            <Image src={ShopMinersIcones.custom} width={48} height={48} alt="icon"/>
-            <span className={m.text}>Легальный ввоз <br/>через таможню</span>
+            <Image
+              src={ShopMinersIcones.custom}
+              width={48}
+              height={48}
+              alt="icon"
+            />
+            <span className={m.text}>
+              Легальный ввоз <br />
+              через таможню
+            </span>
           </div>
           <div className={m.item}>
-            <Image src={ShopMinersIcones.coins} width={48} height={48} alt="icon"/>
-            <span className={m.text}>5 способов оплаты.<br/>Даже криптовалютой</span>
+            <Image
+              src={ShopMinersIcones.coins}
+              width={48}
+              height={48}
+              alt="icon"
+            />
+            <span className={m.text}>
+              5 способов оплаты.
+              <br />
+              Даже криптовалютой
+            </span>
           </div>
           <div className={m.item}>
-            <Image src={ShopMinersIcones.checkingLike} width={48} height={48} alt="icon"/>
-            <span className={m.text}>Предпродажная проверка <br/>перед отправкой и в офисе</span>
+            <Image
+              src={ShopMinersIcones.checkingLike}
+              width={48}
+              height={48}
+              alt="icon"
+            />
+            <span className={m.text}>
+              Предпродажная проверка <br />
+              перед отправкой и в офисе
+            </span>
           </div>
         </div>
       </div>

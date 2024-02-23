@@ -18,6 +18,11 @@
   }
   .logo__wrapper {
     margin-right: 44px;
+    cursor: pointer;
+  }
+
+  .logo__wrapper:hover {
+    transform: scale(110%);
   }
   .miningEquipment {
     max-width: 50%;
@@ -222,6 +227,7 @@
       border-right: 1px solid #f4f5f6;
       border-bottom: 1px solid #f4f5f6;
       padding-left: 23px;
+      cursor: pointer;
       & .text {
         color: #a9a9a9;
         font-size: 12px;
@@ -336,6 +342,11 @@
   }
   .logo__wrapper {
     margin-right: 44px;
+    cursor: pointer;
+  }
+
+  .logo__wrapper:hover {
+    transform: scale(110%);
   }
   .miningEquipment {
     max-width: 50%;
@@ -544,6 +555,7 @@
       border-right: 1px solid #f4f5f6;
       border-bottom: 1px solid #f4f5f6;
       padding-left: 23px;
+      cursor: pointer;
       & .text {
         color: #a9a9a9;
         font-size: 12px;
@@ -666,6 +678,11 @@
   .logo__wrapper {
     display: none;
     margin-right: 44px;
+    cursor: pointer;
+  }
+
+  .logo__wrapper:hover {
+    transform: scale(110%);
   }
   .miningEquipment {
     max-width: 50%;
@@ -878,6 +895,7 @@
       border-right: 1px solid #f4f5f6;
       border-bottom: 1px solid #f4f5f6;
       padding-left: 23px;
+      cursor: pointer;
       & .text {
         color: #a9a9a9;
         font-size: 12px;

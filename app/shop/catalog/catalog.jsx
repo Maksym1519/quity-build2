@@ -63,12 +63,13 @@ const Catalog = () => {
       );
       const dataResponse = response.data.data;
       const dataResponseImages = dataResponse.map(
-        (item) => item.attributes.goodImage.data.attributes.url
+        (item) => item.attributes.itemImage.data.attributes.url
       );
       if (dataResponseImages) {
-        setCatalogItems(dataResponse);
         setItemsImages(dataResponseImages);
+        setCatalogItems(dataResponse);
       }
+      
     } catch (error) {
       console.error("get catalog items are failed");
     }
@@ -195,6 +196,7 @@ const Catalog = () => {
   //searching-goods---------------------------------------------------------------------
   const [showFindedGoods, setShowFindedGoods] = useState(false);
   const [allFindedItems, setAllFindedItems] = useState([]);
+ 
   const selectedData = useAppSelector(selectFindingGoods);
   const setAllFindedItemsLength = allFindedItems.length;
   useEffect(() => {
@@ -216,6 +218,7 @@ const Catalog = () => {
         item.attributes.title.toLowerCase().includes(selectedData)
       )
     );
+    console.log(allFindedGoods)
   useEffect(() => {
     setAllFindedItems(allFindedGoods);
   }, [selectedData]);

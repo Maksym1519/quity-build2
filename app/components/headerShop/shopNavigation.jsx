@@ -9,7 +9,7 @@ const ShopNavigation = () => {
   return (
     <div className={sn.shopNavigation__wrapper}>
       <div className={sn.shopNavigation__linkContainer}>
-        <Link href="#"  style={{ textDecoration: 'none' }}>
+        <Link href="/about"  style={{ textDecoration: 'none' }}>
           <div
             className={
               pathname === "/myOrders" ? sn.profileActive : sn.profileNonactive
@@ -18,7 +18,7 @@ const ShopNavigation = () => {
             Доставка
           </div>
         </Link>
-        <Link href="#"  style={{ textDecoration: 'none' }}>
+        <Link href="/requisite"  style={{ textDecoration: 'none' }}>
           <div
             className={
               pathname === "/profile" ? sn.profileActive : sn.profileNonactive

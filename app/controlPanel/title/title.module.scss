@@ -24,7 +24,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-top: 32px;
+        margin-top: 56px;
         margin-bottom: 20px;
     
         & .mainTitle {
@@ -38,15 +38,15 @@
 @include mobile {
   .wrapper {
     max-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, min-max(150px,1fr));
+    row-gap: 32px;
+    margin-top: 80px;
     margin-bottom: 20px;
 
     & .mainTitle {
       color: $primaryColor;
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 600;
       line-height: 48px;
     }
