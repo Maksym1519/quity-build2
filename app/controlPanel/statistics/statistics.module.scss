@@ -17,20 +17,191 @@
       flex-direction: column;
       row-gap: 4px;
 
-      & .itemTitle {
+      & .titleA {
         color: $primaryColor;
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 600;
         line-height: 20px;
       }
 
-    //   & .itemValue {
+      & .titleB {
+        color: rgb(255, 111, 113);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+      }
 
-    //   }
+      & .titleC {
+        color: rgb(169, 169, 169);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+      }
+
+      & .valueA {
+        color: $primaryColor;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 32px;
+        }
+
+      & .valueB, .valueC, .valueD {
+        color: $primaryColor;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 32px;
+        }
+
+      & .valueE, .valueF {
+        color: rgb(255, 111, 113);
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 32px;
+        }
+
+      & .valueG {
+        color: rgb(169, 169, 169);
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 32px;
+        }
+
     }
   }
 }
 @include tablet {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    border-radius: 16px;
+    box-shadow: 0px 6px 40px 0px rgba(99, 109, 137, 0.15);
+    background: $white;
+    padding: 24px 0 24px 24px;
+    row-gap: 12px;
+
+    & .statisticsItem {
+      display: flex;
+      flex-direction: column;
+      row-gap: 4px;
+
+      & .titleA {
+        color: $primaryColor;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+      }
+
+      & .titleB {
+        color: rgb(255, 111, 113);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+      }
+
+      & .titleC {
+        color: rgb(169, 169, 169);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+      }
+
+      & .valueA {
+        color: $primaryColor;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 32px;
+        }
+
+      & .valueB, .valueC, .valueD {
+        color: $primaryColor;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 32px;
+        }
+
+      & .valueE, .valueF {
+        color: rgb(255, 111, 113);
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 32px;
+        }
+
+      & .valueG {
+        color: rgb(169, 169, 169);
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 32px;
+        }
+
+    }
+  }
 }
 @include mobile {
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border-radius: 16px;
+    box-shadow: 0px 6px 40px 0px rgba(99, 109, 137, 0.15);
+    background: $white;
+    padding: 24px 0 24px 24px;
+    row-gap: 48px;
+    
+    & .statisticsItem {
+      display: flex;
+      flex-direction: column;
+      row-gap: 4px;
+      background: $white;
+      
+      & .titleA {
+        color: $primaryColor;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+      }
+
+      & .titleB {
+        color: rgb(255, 111, 113);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+      }
+
+      & .titleC {
+        color: rgb(169, 169, 169);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+      }
+
+      & .valueA {
+        color: $primaryColor;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 32px;
+        }
+
+      & .valueB, .valueC, .valueD {
+        color: $primaryColor;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 32px;
+        }
+
+      & .valueE, .valueF {
+        color: rgb(255, 111, 113);
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 32px;
+        }
+
+      & .valueG {
+        color: rgb(169, 169, 169);
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 32px;
+        }
+
+    }
+  }
 }
