@@ -127,6 +127,7 @@ const Test = () => {
                   handleStateButtonFalse();
                 }}
                 alt="icon"
+                className={t.prevIcon}
               />
               <div
                 className={t.button__wrapper}

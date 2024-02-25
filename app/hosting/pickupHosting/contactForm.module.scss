@@ -1,3 +1,5 @@
+@import '../../mediaBreakpoints.scss';
+
 @media (min-width: 1025px) {
     .wrapper {
         width: 100%;
@@ -120,6 +122,10 @@
           font-style: normal;
           font-weight: 500;
           line-height: 20px;
+        }
+        & .countButton:hover {
+          transform: scale(103%);
+          @include blueShadow();
         }
         & .messengers__wrapper {
           display: flex;
@@ -280,6 +286,11 @@
       font-style: normal;
       font-weight: 500;
       line-height: 20px;
+    }
+
+    & .countButton:hover {
+      transform: scale(103%);
+      @include blueShadow();
     }
 
     & .messengers__wrapper {
@@ -446,6 +457,11 @@
       font-weight: 500;
       line-height: 20px;
       padding: 20px 0;
+    }
+
+    & .countButton:hover {
+      transform: scale(103%);
+      @include blueShadow();
     }
 
     & .messengers__wrapper {

@@ -37,13 +37,16 @@
         background: var(--f-4-f-5-f-6, #f4f5f6);
         cursor: pointer;
       }
+      & .item:hover {
+        background: #b1c4f7;
+      }
       & .itemActive {
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 4px 16px;
         border-radius: 50px;
-        background: var(--1-a-56-ff, #1a56ff);
+        background: #1a56ff;
         color: #fff;
         font-size: 16px;
         font-style: normal;
@@ -92,6 +95,9 @@
             border-radius: 50px;
             background: var(--f-4-f-5-f-6, #f4f5f6);
             cursor: pointer;
+          }
+          & .item:hover {
+            background: #b1c4f7;
           }
           & .itemActive {
             display: flex;
@@ -150,6 +156,9 @@
             border-radius: 50px;
             background: var(--f-4-f-5-f-6, #f4f5f6);
             cursor: pointer;
+          }
+          & .item:hover {
+            background: #b1c4f7;
           }
           & .itemActive {
             display: flex;

@@ -137,6 +137,9 @@
           line-height: 24px;
           cursor: pointer;
         }
+        & .item:hover {
+          background: #e2e1e7;
+        }
         & .clickedItem {
           width: 100%;
           max-width: 360px;
@@ -201,6 +204,10 @@
           display: flex;
           align-items: flex-start;
           column-gap: 24px;
+          & .prevIcon:hover {
+            cursor: pointer;
+            transform: scale(105%);
+          }
           & .button__wrapper {
             display: flex;
             flex-direction: column;
@@ -427,6 +434,9 @@
           line-height: 24px;
           cursor: pointer;
         }
+        & .item:hover {
+          background: #e2e1e7;
+        }
         & .clickedItem {
           width: 100%;
           max-width: 360px;
@@ -491,6 +501,10 @@
           display: flex;
           align-items: flex-start;
           column-gap: 24px;
+          & .prevIcon:hover {
+            cursor: pointer;
+            transform: scale(105%);
+          }
           & .button__wrapper {
             display: flex;
             flex-direction: column;
@@ -719,6 +733,9 @@
           line-height: 24px;
           cursor: pointer;
         }
+        & .item:hover {
+          background: #e2e1e7;
+        }
         & .clickedItem {
           width: 100%;
           max-width: 360px;
@@ -783,6 +800,10 @@
           display: flex;
           align-items: flex-start;
           column-gap: 24px;
+          & .prevIcon:hover {
+            cursor: pointer;
+            transform: scale(105%);
+          }
           & .button__wrapper {
             display: flex;
             flex-direction: column;
@@ -1011,6 +1032,9 @@
           font-weight: 400;
           line-height: 24px;
           cursor: pointer;
+        }
+        & .item:hover {
+          background: #e2e1e7;
         }
         & .clickedItem {
           width: 100%;

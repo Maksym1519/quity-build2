@@ -17,33 +17,33 @@ const Navigation = () => {
     <>
       {mobileMenu && (
         <div className="mobileNavigation">
-          <Link href="#" style={{ textDecoration: 'none' }}>
-            <span className={pathname === "/shop" ? "active" : "nonActive"}>Магазин</span>
+          <Link href="/shop" style={{ textDecoration: 'none' }}>
+            <button type="button" className={pathname === "/shop" ? "active" : "nonActive"}>Магазин</button>
           </Link>
           <Link href="/hosting" style={{ textDecoration: 'none' }}>
-            <span className={pathname === "/hosting" ? "active" : "nonActive"}>
+            <button type="button" className={pathname === "/hosting" ? "active" : "nonActive"}>
               Хостинг
-            </span>
+            </button>
           </Link>
           <Link href="/repair" style={{ textDecoration: 'none' }}>
             <div className="borderRight">
-              <span
+              <button type="button"
                 className={pathname === "/repair" ? "active" : "nonActive"}
                 style={{ paddingRight: "20px" }}
               >
                 Ремонт
-              </span>
+              </button>
             </div>
           </Link>
           <Link href="/about" style={{ textDecoration: 'none' }}>
-            <span className={pathname === "/about" ? "active" : "nonActive"}>
+            <button type="button" className={pathname === "/about" ? "active" : "nonActive"}>
               О компании
-            </span>
+            </button>
           </Link>
           <Link href="/blog" style={{ textDecoration: 'none' }}>
-            <span className={pathname === "/blog" ? "active" : "nonActive"}>
+            <button type="button" className={pathname === "/blog" ? "active" : "nonActive"}>
               Quity-блог
-            </span>
+            </button>
           </Link>
           <div className="socialMedia__wrapperMobile">
             <span className="text">
@@ -73,32 +73,32 @@ const Navigation = () => {
       <Image src={Icones.logo} width={101} height={31} className="mobileLogo" alt="icon"/>
       <div className="siteNavigation">
         <Link href="/shop" style={{ textDecoration: 'none' }}>
-          <span className={pathname === "/shop" || pathname === "/catalog" ? "active" : "nonActive"}>Магазин</span>
+          <button type="button" className={pathname === "/shop" || pathname === "/catalog" ? "active" : "nonActive"}>Магазин</button>
         </Link>
         <Link href="/hosting" style={{ textDecoration: 'none' }}>
-          <span className={pathname === "/hosting" || pathname === "/application" || pathname === "/devices" || pathname === "/controlPanel" ? "active" : "nonActive"}>
+          <button className={pathname === "/hosting" || pathname === "/application" || pathname === "/devices" || pathname === "/controlPanel" ? "active" : "nonActive"}>
             Хостинг
-          </span>
+          </button>
         </Link>
         <Link href="/repair" style={{ textDecoration: 'none' }}>
           <div className="borderRight">
-            <span
+            <button
               className={pathname === "/repair" ? "active" : "nonActive"}
               style={{ paddingRight: "20px" }}
             >
               Ремонт
-            </span>
+            </button>
           </div>
         </Link>
         <Link href="/about" style={{ textDecoration: 'none' }}>
-          <span className={pathname === "/about" ? "active" : "nonActive"}>
+          <button className={pathname === "/about" ? "active" : "nonActive"}>
             О компании
-          </span>
+          </button>
         </Link>
         <Link href="/blog" style={{ textDecoration: 'none' }}>
-          <span className={pathname === "/blog" ? "active" : "nonActive"}>
+          <button className={pathname === "/blog" ? "active" : "nonActive"}>
             Quity-блог
-          </span>
+          </button>
         </Link>
       </div>
     </>

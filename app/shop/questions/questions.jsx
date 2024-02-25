@@ -31,9 +31,9 @@ const Questions = () => {
           <div className={q.question__item}>
             <h4 className={q.question__title}>Вы работаете официально?</h4>
             {!showQuestion1 ? (
-              <Image src={Icones.questionPlus} width={32} height={32} alt="icon"/>
+              <Image src={Icones.questionPlus} width={32} height={32} alt="icon" className={q.questionIcon}/>
             ) : (
-              <Image src={Icones.questionMinus} width={32} height={32} alt="icon"/>
+              <Image src={Icones.questionMinus} width={32} height={32} alt="icon" className={q.questionIcon}/>
             )}
           </div>
           {showQuestion1 && (
@@ -50,9 +50,9 @@ const Questions = () => {
           <div className={q.question__item}>
             <h4 className={q.question__title}>Блок питания входит в стоимость?</h4>
             {!showQuestion2 ? (
-              <Image src={Icones.questionPlus} width={32} height={32} alt="icon"/>
+              <Image src={Icones.questionPlus} width={32} height={32} alt="icon" className={q.questionIcon}/>
             ) : (
-              <Image src={Icones.questionMinus} width={32} height={32} alt="icon"/>
+              <Image src={Icones.questionMinus} width={32} height={32} alt="icon" className={q.questionIcon}/>
             )}
           </div>
           {showQuestion2 && (
@@ -69,9 +69,9 @@ const Questions = () => {
           <div className={q.question__item}>
             <h4 className={q.question__title}>Какие гарантии даёт Ваша компания?</h4>
             {!showQuestion3 ? (
-              <Image src={Icones.questionPlus} width={32} height={32} alt="icon"/>
+              <Image src={Icones.questionPlus} width={32} height={32} alt="icon" className={q.questionIcon}/>
             ) : (
-              <Image src={Icones.questionMinus} width={32} height={32} alt="icon"/>
+              <Image src={Icones.questionMinus} width={32} height={32} alt="icon" className={q.questionIcon}/>
             )}
           </div>
           {showQuestion3 && (
@@ -88,9 +88,9 @@ const Questions = () => {
           <div className={q.question__item}>
             <h4 className={q.question__title}>Вы работаете по договору? </h4>
             {!showQuestion4 ? (
-              <Image src={Icones.questionPlus} width={32} height={32} alt="icon"/>
+              <Image src={Icones.questionPlus} width={32} height={32} alt="icon" className={q.questionIcon}/>
             ) : (
-              <Image src={Icones.questionMinus} width={32} height={32} alt="icon"/>
+              <Image src={Icones.questionMinus} width={32} height={32} alt="icon" className={q.questionIcon}/>
             )}
           </div>
           {showQuestion4 && (

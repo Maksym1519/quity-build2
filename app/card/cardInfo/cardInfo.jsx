@@ -8,6 +8,7 @@ import { cardInfo } from "@/lib/features/card/cardSlice";
 import { addToBucket } from "@/lib/features/card/cardSlice";
 import { setClickBucket } from "@/lib/features/card/cardSlice";
 import BuyPopUp from "./buyPopUp";
+import Link from "next/link";
 
 const CardInfo = () => {
   //bucket/counter---------------------------------------
@@ -31,21 +32,21 @@ const CardInfo = () => {
   //set-data-to-redux-for-bucket----------------------------------
   const [orderBucket, setOrderBucket] = useState(false);
   const dispatch = useAppDispatch();
- 
- //send-data-to-bucket-------------------------------
- const sendDataBucket = () => {
-  dispatch(setClickBucket(true))
- }
- //buttonStile----------------------------
- const [styleButton,setButtonStyle] = useState(false);
- const changeButtonStyle = () => {
-  setButtonStyle(!styleButton)
- }
- //order-popup-------------------------------------
- const [popup,setPopup] = useState(false);
- const togglePopup = () => {
-  setPopup(!popup)
- }
+
+  //send-data-to-bucket-------------------------------
+  const sendDataBucket = () => {
+    dispatch(setClickBucket(true));
+  };
+  //buttonStile----------------------------
+  const [styleButton, setButtonStyle] = useState(false);
+  const changeButtonStyle = () => {
+    setButtonStyle(!styleButton);
+  };
+  //order-popup-------------------------------------
+  const [popup, setPopup] = useState(false);
+  const togglePopup = () => {
+    setPopup(!popup);
+  };
   return (
     <div className={c.cardInfo__wrapper}>
       <div className={c.cardInfo__body}>
@@ -217,21 +218,23 @@ const CardInfo = () => {
               </div>
               <div className={c.counter__wrapper}>
                 <div
-                    className={styleButton ? c.bucketButtonActive : c.bucketButton}
-                    onClick={() => {
-                      sendDataBucket();
-                      changeButtonStyle()
-                    }}
-                  >
-                    <Image
-                      src={Icones.whiteBucket}
-                      width={20}
-                      height={20}
-                      alt="icon"
-                    />
-                    <span>В корзину</span>
-                  </div>
-                 <div className={c.counterIcones__wrapper}>
+                  className={
+                    styleButton ? c.bucketButtonActive : c.bucketButton
+                  }
+                  onClick={() => {
+                    sendDataBucket();
+                    changeButtonStyle();
+                  }}
+                >
+                  <Image
+                    src={Icones.whiteBucket}
+                    width={20}
+                    height={20}
+                    alt="icon"
+                  />
+                  <span>В корзину</span>
+                </div>
+                <div className={c.counterIcones__wrapper}>
                   <div className={c.iconWrapper}>
                     <Image
                       src={Icones.flag}
@@ -250,11 +253,15 @@ const CardInfo = () => {
                   </div>
                 </div>
               </div>
-              <div className={c.buyButton} onClick={() => togglePopup()}>Купить в 1 клик</div>
-              <div className={c.hostingInfoText}>
-                Узнать стоимость размещения <br />
-                на хостинге
+              <div className={c.buyButton} onClick={() => togglePopup()}>
+                Купить в 1 клик
               </div>
+              <Link href={"/hosting"}>
+                <div className={c.hostingInfoText}>
+                  Узнать стоимость размещения <br />
+                  на хостинге
+                </div>
+              </Link>
               <div className={c.location__wrapper}>
                 <div className={c.locationItem}>
                   <Image
@@ -273,8 +280,8 @@ const CardInfo = () => {
           {/* //------------------------------------------------------------------ */}
         </main>
       </div>
-      {popup && <BuyPopUp closePopup={togglePopup}/>}
-     </div>
+      {popup && <BuyPopUp closePopup={togglePopup} />}
+    </div>
   );
 };
 export default CardInfo;

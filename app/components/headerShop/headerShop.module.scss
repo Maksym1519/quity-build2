@@ -47,6 +47,10 @@
       margin-right: 24px;
       text-align: right;
     }
+    & .image__wrapper:hover {
+      cursor: pointer;
+      transform: scale(105%);
+    }
   }
   .profileNavigation__wrapper {
     display: flex;
@@ -370,6 +374,10 @@
       display: none;
       margin-right: 24px;
       text-align: right;
+    }
+    & .image__wrapper:hover {
+      cursor: pointer;
+      transform: scale(105%);
     }
   }
   .profileNavigation__wrapper {
@@ -701,12 +709,15 @@
     display: none;
     flex-direction: column;
     align-items: flex-start;
-    //justify-content: flex-end;
     row-gap: 8px;
     & .text {
       display: none;
       margin-right: 24px;
       text-align: right;
+    }
+    & .image__wrapper:hover {
+      cursor: pointer;
+      transform: scale(105%);
     }
   }
   .profileNavigation__wrapper {

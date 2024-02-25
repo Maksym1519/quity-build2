@@ -48,6 +48,7 @@ const PersonalData = () => {
     address: null,
     avatar: null,
   });
+  
    const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -111,6 +112,7 @@ const PersonalData = () => {
   useEffect(() => {
     if (matchingId && matchingId !== null) getRegistrationInfo();
   }, [matchingId]);
+//------------------------------------------------------------------------
 
   return (
     <div className={pd.wrapper}>
@@ -166,6 +168,7 @@ const PersonalData = () => {
               type="text"
               name="birthday"
               onChange={(e) => handleChange(e)}
+              value={formData.birthday}
             />
             {showCalendarPlaceholder ? (
               <span className={pd.calendarPlaceholder}>Дата рождения</span>
@@ -180,12 +183,13 @@ const PersonalData = () => {
               width={20}
               height={20}
             />
-            <DateTime
-              input={true}
+            {showCalendar && <DateTime
+              input={false}
               timeFormat={false}
               onChange={(e) => handleDateChange(e)}
               className={pd.calendarDate}
-            />
+            />}
+            
           </div>
           {/* //input3-------------------------------------------------------------------- */}
           <div className={pd.input__wrapper}>

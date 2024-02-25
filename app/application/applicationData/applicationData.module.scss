@@ -21,7 +21,8 @@
       )
       minmax(136px, auto) minmax(179px, auto) minmax(112px, auto);
     border-bottom: 1px solid rgb(244, 245, 246);
-    align-items: flex-start;
+    align-items: center;
+    padding-bottom: 24px;
 
     & .tableSelect {
       width: 24px;
@@ -157,6 +158,314 @@
   }
 }
 @include tablet {
+  .applicationData__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    position: relative;
+  }
+  .applicationData__header {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns:
+      minmax(44px, auto) minmax(80px, auto) minmax(149px, auto)
+      minmax(136px, auto) minmax(136px, auto) minmax(102px, auto) minmax(
+        204px,
+        auto
+      )
+      minmax(136px, auto) minmax(179px, auto) minmax(112px, auto);
+    border-bottom: 1px solid rgb(244, 245, 246);
+    align-items: center;
+    padding-bottom: 24px;
+
+    & .tableSelect {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3px;
+      border: 2px solid rgb(219, 219, 219);
+      color: rgb(219, 219, 219);
+      font-size: 20px;
+      cursor: pointer;
+    }
+    & .headTitle {
+      color: $primaryColor;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+    }
+  }
+  //-----------------------------------------------------------------------
+  .applicationData__content {
+    width: 100%;
+    max-width: 100%;
+    border-bottom: 1px solid rgb(244, 245, 246);
+    border-top: 1px solid rgb(244, 245, 246);
+
+    & .contentRow {
+      width: 100%;
+      height: auto;
+      min-height: 125px;
+      align-items: flex-start;
+      padding: 30px 0 20px 0;
+      display: grid;
+      grid-template-columns:
+      minmax(44px, auto) minmax(80px, auto) minmax(149px, auto)
+      minmax(136px, auto) minmax(136px, auto) minmax(102px, auto) minmax(
+        204px,
+        auto
+      )
+      minmax(136px, auto) minmax(179px, auto) minmax(112px, auto);
+
+      & .selected {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 3px;
+        border: 2px solid rgb(219, 219, 219);
+        color: rgb(219, 219, 219);
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      & .buttonPay {
+        width: 100%;
+        max-width: 112px;
+        box-sizing: border-box;
+        min-height: 48px;
+        border: 1px solid $blue;
+        border-radius: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $blue;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+        cursor: pointer;
+      }
+      & .buttonPay:hover {
+         transform: scale(105%);
+         @include blueShadow()
+      }
+    }
+  }
+  //--------------------------------------------------------------------
+  .birdFilter {
+    min-width: 24px;
+    min-height: 24px;
+  }
+  .status {
+    width: 100%;
+    max-width: 116px;
+    border-radius: 6px;
+    background: rgb(255, 232, 225);
+    color: rgb(255, 111, 113);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+  }
+
+ .statusPaid {
+  width: 100%;
+    max-width: 116px;
+    border-radius: 6px;
+    background: rgba(62, 208, 133, 0.2);
+    color: rgb(62, 208, 133);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+ } 
+
+  .buttonWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: 20px;
+
+    & .icones__wrapper {
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+    }
+    
+    & .buttonIcon {
+        cursor: pointer;
+    }
+  }
 }
 @include mobile {
+  .applicationData__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    position: relative;
+  }
+  .applicationData__header {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns:
+      minmax(44px, auto) minmax(80px, auto) minmax(149px, auto)
+      minmax(136px, auto) minmax(136px, auto) minmax(102px, auto) minmax(
+        204px,
+        auto
+      )
+      minmax(136px, auto) minmax(179px, auto) minmax(112px, auto);
+    border-bottom: 1px solid rgb(244, 245, 246);
+    align-items: center;
+    padding-bottom: 24px;
+
+    & .tableSelect {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3px;
+      border: 2px solid rgb(219, 219, 219);
+      color: rgb(219, 219, 219);
+      font-size: 20px;
+      cursor: pointer;
+    }
+    & .headTitle {
+      color: $primaryColor;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+    }
+  }
+  //-----------------------------------------------------------------------
+  .applicationData__content {
+    width: 100%;
+    max-width: 100%;
+    border-bottom: 1px solid rgb(244, 245, 246);
+    border-top: 1px solid rgb(244, 245, 246);
+
+    & .contentRow {
+      width: 100%;
+      height: auto;
+      min-height: 125px;
+      align-items: flex-start;
+      padding: 30px 0 20px 0;
+      display: grid;
+      grid-template-columns:
+      minmax(44px, auto) minmax(80px, auto) minmax(149px, auto)
+      minmax(136px, auto) minmax(136px, auto) minmax(102px, auto) minmax(
+        204px,
+        auto
+      )
+      minmax(136px, auto) minmax(179px, auto) minmax(112px, auto);
+
+      & .selected {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 3px;
+        border: 2px solid rgb(219, 219, 219);
+        color: rgb(219, 219, 219);
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      & .buttonPay {
+        width: 100%;
+        max-width: 112px;
+        box-sizing: border-box;
+        min-height: 48px;
+        border: 1px solid $blue;
+        border-radius: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $blue;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+        cursor: pointer;
+      }
+      & .buttonPay:hover {
+         transform: scale(105%);
+         @include blueShadow()
+      }
+    }
+  }
+  //--------------------------------------------------------------------
+  .birdFilter {
+    min-width: 24px;
+    min-height: 24px;
+  }
+  .status {
+    width: 100%;
+    max-width: 116px;
+    border-radius: 6px;
+    background: rgb(255, 232, 225);
+    color: rgb(255, 111, 113);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+  }
+
+ .statusPaid {
+  width: 100%;
+    max-width: 116px;
+    border-radius: 6px;
+    background: rgba(62, 208, 133, 0.2);
+    color: rgb(62, 208, 133);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+ } 
+
+  .buttonWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: 20px;
+
+    & .icones__wrapper {
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+    }
+    
+    & .buttonIcon {
+        cursor: pointer;
+    }
+  }
 }

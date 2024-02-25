@@ -13,12 +13,18 @@
       border-bottom: 2px solid #1A1C23;
       cursor: pointer;
     }
+    
     & .nonActive {
       font-size: 18px;
       font-style: normal;
       font-weight: 400;
       line-height: 28px;
       cursor: pointer;
+    }
+
+    & .nonActive:hover {
+      transform: scale(105%);
+      color: #4c4e57;
     }
   }
 }
@@ -43,6 +49,10 @@
       font-weight: 400;
       line-height: 28px;
       cursor: pointer;
+    }
+    & .nonActive:hover {
+      transform: scale(105%);
+      color: #4c4e57;
     }
   }
 }
@@ -69,6 +79,10 @@
       line-height: 18px;
       cursor: pointer;
       text-align: center;
+    }
+    & .nonActive:hover {
+      transform: scale(105%);
+      color: #4c4e57;
     }
   }
 }

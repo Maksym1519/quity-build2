@@ -41,7 +41,7 @@
             font-weight: 600;
             line-height: 36px;
           }
-        }
+          }
         & .answer {
           margin-top: 16px;
           color: var(--1-a-1-c-23, #1a1c23);
@@ -65,6 +65,10 @@
         }
       }
     }
+  }
+    .questionIcon:hover {
+    cursor: pointer;
+    transform: scale(105%);
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -135,6 +139,10 @@
       }
     }
   }
+  .questionIcon:hover {
+    cursor: pointer;
+    transform: scale(105%);
+  }
 }
 @media (max-width: 768px) {
   .wrapper {
@@ -204,5 +212,9 @@
         }
       }
     }
+  }
+  .questionIcon:hover {
+    cursor: pointer;
+    transform: scale(105%);
   }
 }

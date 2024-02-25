@@ -10,40 +10,40 @@ const ShopNavigation = () => {
     <div className={sn.shopNavigation__wrapper}>
       <div className={sn.shopNavigation__linkContainer}>
         <Link href="/about"  style={{ textDecoration: 'none' }}>
-          <div
+          <button type="button"
             className={
-              pathname === "/myOrders" ? sn.profileActive : sn.profileNonactive
+              pathname === "/about" ? sn.profileActive : sn.profileNonactive
             }
           >
-            Доставка
-          </div>
+            Доставка и оплата
+          </button>
         </Link>
-        <Link href="/requisite"  style={{ textDecoration: 'none' }}>
-          <div
+        {/* <Link href="/about" style={{ textDecoration: 'none' }}>
+          <button type="button"
             className={
-              pathname === "/profile" ? sn.profileActive : sn.profileNonactive
+              pathname === "/about/requisite" ? sn.profileActive : sn.profileNonactive
             }
           >
             Оплата
-          </div>
-        </Link>
+          </button>
+        </Link> */}
         <Link href="/return" style={{ textDecoration: 'none' }}>
-          <div
+          <button type="button"
             className={
               pathname === "/return" ? sn.profileActive : sn.profileNonactive
             }
           >
             Возврат
-          </div>
+          </button>
         </Link>
         <Link href="/orders" style={{ textDecoration: 'none' }}>
-          <div
+          <button type="button"
             className={
               pathname === "/orders" ? sn.profileActive : sn.profileNonactive
             }
           >
             Мои заявки
-          </div>
+          </button>
         </Link>
       </div>
      </div>

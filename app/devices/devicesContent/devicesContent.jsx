@@ -6,6 +6,7 @@ import HeadContent from "./headContent";
 import DevicePopup from "./devicePopup";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { setCloseAside } from "@/lib/features/devices/devicesSlice";
 
 const DevicesContent = () => {
   const birdImg = (
@@ -20,7 +21,7 @@ const DevicesContent = () => {
   const currentUserId = localStorage.getItem("id");
   const [newReduxArray, setNewReduxArray] = useState();
   const reduxData = useSelector((state) => state.order.orders);
-  
+
   useEffect(() => {
     if (reduxData) {
       const filteredData =
@@ -30,7 +31,7 @@ const DevicesContent = () => {
       setNewReduxArray(filteredData);
     }
   }, [reduxData]);
-  
+
   //get-active-state-------------------------------------
   const activeState = useSelector((state) => state.order.activeState);
   const [filteredReduxArray, setFilteredReduxArray] = useState([]);
@@ -77,14 +78,25 @@ const DevicesContent = () => {
     setAllSelected(!allSelected);
   };
   //device-popup-------------------------------------------------
-  const [popup, setPopup] = useState([]);
+  const [openPopupIndex, setOpenPopupIndex] = useState(null);
   const clickPopup = (index) => {
-    if (popup.includes(index)) {
-      setPopup(popup.filter((item) => item !== index));
-    } else {
-      setPopup([...popup, index]);
-    }
+    setOpenPopupIndex(index === openPopupIndex ? null : index);
   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (openPopupIndex !== null) {
+        const popup = document.getElementById(`popup-${openPopupIndex}`);
+        if (popup && !popup.contains(event.target)) {
+          setOpenPopupIndex(null);
+        }
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [openPopupIndex]);
+
   //getStatus-----------------------------------------------------
   function getStatus(itemStatus) {
     switch (itemStatus) {
@@ -111,7 +123,9 @@ const DevicesContent = () => {
             <div className={d.contentRow}>
               <div
                 className={d.selected}
-                onClick={() => toggleClickItem(index)}
+                onClick={() => {
+                  toggleClickItem(index);
+                }}
               >
                 {clickedItems.includes(index) ? birdImg : ""}
               </div>
@@ -162,9 +176,18 @@ const DevicesContent = () => {
                     )}
                 </div>
               </div>
-              <div className={d.selected} onClick={() => clickPopup(index)}>
+              <div
+                className={d.selected}
+                onClick={() => {
+                  clickPopup(index);
+                }}
+              >
                 ...
-                {popup.includes(index) ? <DevicePopup itemId={item.id} /> : ""}
+                {openPopupIndex === index && (
+                  <div id={`popup-${index}`}>
+                    <DevicePopup itemId={item.id} />
+                  </div>
+                )}
               </div>
             </div>
           </div>

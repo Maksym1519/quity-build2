@@ -13,6 +13,10 @@
   }
   .logo__wrapper {
     margin-right: 44px;
+    cursor: pointer;
+  }
+  .logo__wrapper:hover {
+    transform: scale(110%);
   }
   .miningEquipment {
     max-width: 50%;
@@ -36,6 +40,12 @@
       display: block;
       margin-right: 24px;
       text-align: right;
+    }
+    & .image__wrapper {
+      cursor: pointer;
+    }
+    & .image__wrapper:hover {
+      transform: scale(110%);
     }
   }
   .profileNavigation__wrapper {
@@ -91,6 +101,12 @@
       display: none;
       margin-right: 24px;
       text-align: right;
+    }
+    & .image__wrapper {
+      cursor: pointer;
+    }
+    & .image__wrapper:hover {
+      transform: scale(110%);
     }
   }
   .profileNavigation__wrapper {
@@ -154,6 +170,12 @@
       display: none;
       margin-right: 24px;
       text-align: right;
+    }
+    & .image__wrapper {
+      cursor: pointer;
+    }
+    & .image__wrapper:hover {
+      transform: scale(110%);
     }
   }
   .profileNavigation__wrapper {

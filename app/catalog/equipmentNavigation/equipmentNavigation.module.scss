@@ -10,7 +10,7 @@
           width: auto;
           height: 48px;
           border-radius: 50px;
-          background: var(--1-a-56-ff, #1a56ff);
+          background: #1a56ff;
           color: #fff;
           font-size: 16px;
           font-style: normal;
@@ -22,7 +22,7 @@
           justify-content: center;
           cursor: pointer;
         }
-        & .passiveCatalog {
+          & .passiveCatalog {
           width: auto;
           height: 48px;
           border-radius: 60px;
@@ -37,6 +37,12 @@
           align-items: center;
           justify-content: center;
           cursor: pointer;
+        }
+        & .activeCatalog:hover {
+          background: #cad5f3;
+        }
+        & .passiveCatalog:hover {
+          background: #cad5f3;
         }
       }
   }
@@ -79,6 +85,12 @@
           align-items: center;
           justify-content: center;
           cursor: pointer;
+        }
+        & .activeCatalog:hover {
+          background: #cad5f3;
+        }
+        & .passiveCatalog:hover {
+          background: #cad5f3;
         }
       }
   }
@@ -123,6 +135,12 @@
           justify-content: center;
           text-align: center;
           cursor: pointer;
+        }
+        & .activeCatalog:hover {
+          background: #cad5f3;
+        }
+        & .passiveCatalog:hover {
+          background: #cad5f3;
         }
       }
   }

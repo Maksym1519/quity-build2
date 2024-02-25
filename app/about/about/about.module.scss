@@ -220,6 +220,11 @@
         z-index: 5;
         cursor: pointer;
       }
+      & .button:hover {
+        background: #547dfa;
+        transform: scale(103%);
+        font-size: 18px;
+      }
     }
   }
   .watchDocuments {

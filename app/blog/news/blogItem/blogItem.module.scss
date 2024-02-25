@@ -100,9 +100,12 @@
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
-    //margin-top: 32px;
     margin: 32px auto 0;
-    
+  }
+  .showMoreButton:hover {
+    transform: scale(103%);
+    border: 1.5px solid #041f68;
+    color: #041f68;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -207,9 +210,12 @@
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
-    //margin-top: 32px;
     margin: 32px auto 0;
-    
+   }
+   .showMoreButton:hover {
+    transform: scale(103%);
+    border: 1.5px solid #041f68;
+    color: #041f68;
   }
 }
 @media (max-width: 768px) {
@@ -315,8 +321,11 @@
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
-    //margin-top: 32px;
     margin: 32px auto 0;
-    
+  }
+  .showMoreButton:hover {
+    transform: scale(103%);
+    border: 1.5px solid #041f68;
+    color: #041f68;
   }
 }

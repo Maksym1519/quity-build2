@@ -1,10 +1,11 @@
 "use client";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { popupInfo } from "@/lib/features/hostingApplication/hostingApplicationSlice";
 import Popup from "../application/popup/popup";;
 import BuyConfirm from "../application/buyConfirm/byConfirm";;
-import ReportPopup from "../application/reportPopup/reportPopup";;
+import ReportPopup from "../application/reportPopup/reportPopup";
+import { setCloseAside } from "@/lib/features/devices/devicesSlice";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 
@@ -21,6 +22,11 @@ export default function BlogLayout({ children }) {
   const clickHidePopup = () => {
     setShowPopup(false);
   };
+  //close-popupAside--------------------------------
+  const dispatch = useDispatch();
+  const closePopupAside = () => {
+    dispatch(setCloseAside(false))
+  }
 
 
   return (
@@ -29,9 +35,9 @@ export default function BlogLayout({ children }) {
         className={
           popupData || buyPopup || reportPopup ? "applicationOpacity" : " "
         }
-      >
+       >
         <Header />
-        {children}
+        {children }
         <Footer />
       </div>
       {popupData && <Popup  close={clickHidePopup}/>}

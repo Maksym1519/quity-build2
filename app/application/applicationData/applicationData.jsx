@@ -71,25 +71,38 @@ const ApplicationData = (props) => {
 //get-active-state-------------------------------------
 const activeState = useSelector((state) => state.hostingApplication.activeState)
 const [filteredReduxArray, setFilteredReduxArray] = useState([]);
-
 //filtration-array-change-active-status--------------------------
+// useEffect(() => {
+//   let filteredArray = [];
+//   if (activeState === "все") {
+//     filteredArray = newReduxArray;
+//   } else if (activeState === "на рассмотрении") {
+//     filteredArray = [];
+//   } else if (activeState === "не оплачены") {
+//     filteredArray = newReduxArray.filter((item) => !item.paid);
+//   } else if (activeState === "оплачены") {
+//     filteredArray = newReduxArray.filter((item) => item.paid);
+//   } else if (activeState === "просрочены") {
+//     filteredArray = [];
+//   } else if (activeState === "на снятии") {
+//     filteredArray = [];
+//   } else if (activeState === "сняты") {
+//     filteredArray = [];
+//   }
+//   setFilteredReduxArray(filteredArray);
+// }, [activeState, newReduxArray]);
 useEffect(() => {
-  let filteredArray = [];
-  if (activeState === "все") {
-    filteredArray = newReduxArray;
-  } else if (activeState === "на рассмотрении") {
-    filteredArray = [];
-  } else if (activeState === "не оплачены") {
-    filteredArray = newReduxArray.filter((item) => !item.paid);
-  } else if (activeState === "оплачены") {
-    filteredArray = newReduxArray.filter((item) => item.paid);
-  } else if (activeState === "просрочены") {
-    filteredArray = [];
-  } else if (activeState === "на снятии") {
-    filteredArray = [];
-  } else if (activeState === "сняты") {
-    filteredArray = [];
-  }
+  const filterFunctions = {
+    "все": () => newReduxArray,
+    "на рассмотрении": () => [],
+    "не оплачены": () => newReduxArray.filter(item => !item.paid),
+    "оплачены": () => newReduxArray.filter(item => item.paid),
+    "просрочены": () => [],
+    "на снятии": () => [],
+    "сняты": () => []
+  };
+
+  const filteredArray = filterFunctions[activeState]();
   setFilteredReduxArray(filteredArray);
 }, [activeState, newReduxArray]);
 
@@ -167,7 +180,7 @@ const clickReportPopup = () => {
               <div>{item.dateDeployment}</div>
               <div>{item.dateRemove}</div>
               <div className={item.paid === true ? a.statusPaid : a.status}>
-                Не оплачено
+                {item.paid === true ? "Оплачено" : "Не оплачено"}
               </div>
               <div>{item.paymentType}</div>
               <div>{item.paid === true ? "100%" : item.paidAmount + " " + "$"}</div>

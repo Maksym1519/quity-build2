@@ -16,12 +16,10 @@ const NewsSlider = () => {
   useEffect(() => {
     swiperElRef.current.addEventListener("swiperprogress", (e) => {
       const [swiper, progress] = e.detail;
-      console.log(progress);
-    });
+      });
 
     swiperElRef.current.addEventListener("swiperslidechange", (e) => {
-      console.log("slide changed");
-    });
+      });
   }, []);
   //date-------------------------------------------------------------
   const currentDate = new Date();
@@ -44,8 +42,7 @@ const NewsSlider = () => {
           ref={swiperElRef}
           slides-per-view="1.1"
           speed="500"
-          loop="true"
-        >
+          >
           {blogArray.map((item, index) => (
             <swiper-slide>
               <div className={s.item} key={index}>

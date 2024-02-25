@@ -99,7 +99,7 @@ const RemoteScheme = () => {
             предвосхищаем) потребности — и создаем сервисы для их удовлетворения
             онлайн.{" "}
           </p>
-          <button className={r.quityManageButton}>Стать частью Quity</button>
+          <button type="button" className={r.quityManageButton}>Стать частью Quity</button>
         </div>
       </div>
     </div>

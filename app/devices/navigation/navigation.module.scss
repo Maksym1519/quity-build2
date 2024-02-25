@@ -20,6 +20,7 @@
         column-gap: 5px;
         padding-bottom: 15px;
         cursor: pointer;
+        
         & .itemText {
           font-weight: 400;
           font-size: 18px;
@@ -38,6 +39,11 @@
           color: $blue;
           background: #f4f5f6;
         }
+      }
+
+      & .navigation__item:hover {
+        transform: scale(105%);
+        color: #534848;
       }
         & .navigation__itemActive {
         color: $primaryColor;
@@ -110,6 +116,12 @@
           background: #f4f5f6;
         }
       }
+
+      & .navigation__item:hover {
+        transform: scale(105%);
+        color: #534848;
+      }
+
         & .navigation__itemActive {
         color: $primaryColor;
         font-size: 18px;
@@ -181,6 +193,12 @@
           background: #f4f5f6;
         }
       }
+
+      & .navigation__item:hover {
+        transform: scale(105%);
+        color: #534848;
+      }
+      
         & .navigation__itemActive {
         color: $primaryColor;
         font-size: 18px;

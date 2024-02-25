@@ -50,7 +50,7 @@ const ContactForm = () => {
             </div>
           </div>
         </div>
-        <button className={c.countButton}>
+        <button className={c.countButton} type="button">
           Подобрать и рассчитать окупаемость + получить бонусы{" "}
         </button>
         <div className={c.messengers__wrapper}>

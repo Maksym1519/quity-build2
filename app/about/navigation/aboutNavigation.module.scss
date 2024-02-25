@@ -42,6 +42,9 @@
       line-height: 24px;
       cursor: pointer;
     }
+    & .item:hover {
+      background: #bdc4d6;
+    }
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -87,6 +90,9 @@
       line-height: 24px;
       cursor: pointer;
     }
+    & .item:hover {
+      background: #bdc4d6;
+    }
   }
 }
 @media (max-width: 768px) {
@@ -131,6 +137,9 @@
       font-weight: 500;
       line-height: 24px;
       cursor: pointer;
+    }
+    & .item:hover {
+      background: #bdc4d6;
     }
   }
 }

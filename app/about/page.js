@@ -60,7 +60,7 @@ export default function AboutPage() {
             <div className={a.about__body}>
               <div
                 className={`${a.fixedNavigationContainer} ${
-                  isFixed ? a.fixed : a.absolute
+                  isFixed ? a.fixed : a.fixed
                 }`}
               >
                 <AboutNavigation className={a.aboutNavigationComponent} />
