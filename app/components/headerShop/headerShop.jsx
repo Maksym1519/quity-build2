@@ -8,6 +8,9 @@ import { Pathname } from "react-router-dom";
 import ShopNavigation from "./shopNavigation";
 import Icones from "@/public/Data";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useSelector, useDispatch } from "react-redux";
+import { addTitle } from "@/lib/features/searchHistory/searchTitleSlice";
+import { addToHistory } from "@/lib/features/searchHistory/searchHistorySlice";
 import { setFindingGoods } from "@/lib/features/searchGoodsSlice";
 import { usePathname } from "next/navigation";
 import { bucketInfo } from "@/lib/features/card/cardSlice";
@@ -24,24 +27,32 @@ const HeaderShop = () => {
   //search-goods------------------------------------------------------------------
   const [findGoods, setFindGoods] = useState([]);
   const [inputValue, setInputValue] = useState(null);
+
   async function searchingGoods() {
     try {
       const response = await axios.get(
         "https://quitystrapi.onrender.com/api/catalog-items?populate=*"
       );
       const dataResponse = response.data.data;
-      // console.log(dataResponse.map((item) => item.attributes.title));
       const arrayMatchingGoods = dataResponse.filter((item) =>
         item.attributes.title.toLowerCase().includes(inputValue.toLowerCase())
       );
+      addToSearchHistory(inputValue);
+      setFindGoods(arrayMatchingGoods);
     } catch (error) {
       console.error("fetching data is failed");
     }
   }
+  useEffect(() => {
+    if (inputValue !== null) {
+      searchingGoods();
+    }
+  }, [inputValue]);
   //set-redux-data--------------------------------------------------------------
-  const dispatch = useAppDispatch();
-  const handleSetFindingGoods = () => {
+  const dispatch = useDispatch();
+  const handleSetFindingGoods = (item) => {
     dispatch(setFindingGoods(inputValue));
+    dispatch(addTitle(item))
   };
   //pathname-change-catalog-button----------------------------
   const pathname = usePathname();
@@ -96,6 +107,37 @@ const HeaderShop = () => {
       );
     }
   }, [clickInfo]);
+  //history-search-----------------------------------------------------------
+  const searchHistory = useSelector((state) => state.searchHistory);
+  const addToSearchHistory = (item) => {
+    dispatch(addToHistory(item));
+  };
+  
+  //click-outSide------------------------------------------------------------
+  const [catalogList, setCatalogList] = useState(false)
+  const clickCatalog = () => {
+    setCatalogList(!catalogList)
+  }
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const catalog = document.getElementById(`catalog`);
+      if (catalog && !catalog.contains(event.target)) {
+        setCatalogList(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [catalogList]);
+//setInputValue------------------------------------------------
+const inputValueRedux = useSelector((state) => state.searchTitle); 
+const inputValueTitle = inputValueRedux && inputValueRedux.map((item) => item.attributes.title)
+console.log(inputValueTitle)
+
+
   return (
     <div className={hs.headerShop__column}>
       <div className={hs.headerShop__wrapper}>
@@ -164,20 +206,39 @@ const HeaderShop = () => {
             type="text"
             placeholder="Поиск по товарам или категориям...."
             className={hs.searchInput}
+            value={inputValueTitle ? inputValueTitle[0] : ''}
             onChange={(e) => setInputValue(e.target.value)}
             style={{ border: "none" }}
-          />
+            onClick={() => clickCatalog()}
+             />
           <Image
             src={Icones.search}
             width={24}
             height={24}
             className={hs.searhIcon}
             onClick={() => {
-              searchingGoods();
               handleSetFindingGoods();
             }}
             alt="icon"
           />
+          {/* //------------------------------------------------------------ */}
+          {catalogList && (
+            <div className={hs.history__wrapper} id="catalog">
+              <ul>
+                {findGoods.map((item, index) => (
+                  <li
+                    key={index}
+                    className={hs.historyItem}
+                    onClick={() => handleSetFindingGoods(item)}
+                  >
+                    {item.attributes.title}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* //------------------------------------------------------------------------ */}
         </div>
         <div className={hs.flag}>
           <Image src={Icones.flag} width={24} height={24} alt="icon" />

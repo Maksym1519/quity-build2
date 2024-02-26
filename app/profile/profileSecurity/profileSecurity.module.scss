@@ -21,6 +21,7 @@
       border-radius: 80px;
       text-align: left;
       padding-left: 20px;
+      position: relative;
       & .input__wrapper::placeholder {
         color: var(--a-9-a-9-a-9, #a9a9a9);
         font-size: 14px;
@@ -33,6 +34,13 @@
         width: 100%;
         height: 100%;
         color: #222;
+      }
+      & .eye {
+        position: absolute;
+        top: 50%;
+        right: 24px;
+        transform: translateY(-50%);
+        cursor: pointer;
       }
     }
     .securityButton {
@@ -76,6 +84,7 @@
       border-radius: 80px;
       text-align: left;
       padding-left: 20px;
+      position: relative;
       & .input__wrapper::placeholder {
         color: var(--a-9-a-9-a-9, #a9a9a9);
         font-size: 14px;
@@ -88,6 +97,13 @@
         width: 100%;
         height: 100%;
         color: #222;
+      }
+      & .eye {
+        position: absolute;
+        top: 50%;
+        right: 24px;
+        transform: translateY(-50%);
+        cursor: pointer;
       }
     }
     .securityButton {
@@ -131,6 +147,7 @@
       border-radius: 80px;
       text-align: left;
       padding-left: 20px;
+      position: relative;
       & .input__wrapper::placeholder {
         color: var(--a-9-a-9-a-9, #a9a9a9);
         font-size: 14px;
@@ -143,6 +160,13 @@
         width: 100%;
         height: 100%;
         color: #222;
+      }
+      & .eye {
+        position: absolute;
+        top: 50%;
+        right: 24px;
+        transform: translateY(-50%);
+        cursor: pointer;
       }
     }
     .securityButton {

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useSelector } from "react-redux";
 import { asicInfo } from "@/lib/features/shopCatalogSlice";
 import { AsicData } from "@/lib/features/shopCatalogSlice";
 import Loading from "@/app/components/loading/loading";
@@ -122,21 +123,36 @@ const Asic = () => {
   }, [arrayFromRedux]);
 
   const currentArray = arrayFromRedux ? sortedArrayRedux : popularityAsicArray;
+  //--------------------------------------------------------------
+  const searchRedux = useSelector((state) => state.searchHistory);
+  const searchedArray =
+    currentArray &&
+    currentArray.filter((item) => {
+      const title = item.attributes.title.toLowerCase();
+      const searchQuery =
+        searchRedux !== null && searchRedux[searchRedux.length - 1];
+
+      return title.includes(searchQuery);
+    });
+ 
 
   //commonArray--------------------------------------------------
-  const commonArray = [
+  let commonArray = [
     currentArray,
     cheapAsicArray,
     costAsicArray,
     asicInfoServer,
   ];
+commonArray[0] = searchedArray && searchedArray.length > 0 ? searchedArray : currentArray
   //-get-card-info-----------------------------------------------------
   const dispatch = useAppDispatch();
   const clickCardInfo = (info) => {
     dispatch(setInfo(info));
     dispatch(setCard());
   };
-
+// //----------------------------------------------------
+// const reduxTitle = useSelector((state) => state.searchTitle)
+// console.log(reduxTitle.attributes.title)
   return (
     <div className={e.equipment__wrapper}>
       {isLoading ? (

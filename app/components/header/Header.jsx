@@ -16,19 +16,17 @@ import { ClientsInformation } from "@/lib/features/getClientsInfoSlice";
 import { selectClientsInfo } from "@/lib/features/getClientsInfoSlice";
 import { selectClientsName } from "@/lib/features/getClientsInfoSlice";
 import { useAppSelector } from "@/lib/hooks";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [avatarImage,setAvatarImage] = useState()
   const [clientName, setClientName] = useState()
-  const clientAvatar = useAppSelector(selectClientsInfo)
-  const clientUserName = useAppSelector(selectClientsName)
-   useEffect(() => {
-    setAvatarImage(clientAvatar)
-    setClientName(clientUserName)
-  },[clientAvatar])
- 
+  const clientAvatar = useSelector((state) => state.clientsInfo.clientsInfo)
+  const clientUserName =  useSelector((state) => state.clientsInfo.clientsName)
   //-----------------------------------------------------------------------
   const pathname = usePathname()
+  //-------------------------------------------------------------------
+  const reduxAvatar = useSelector((state) => state.clientsInfo.newAvatar)
   
  return (
     <header className="wrapper">
@@ -49,10 +47,10 @@ const Header = () => {
             </div>
             <div className="backCall">Обратный звонок</div>
             <div className="profile__wrapper">
-              <span className="userName">{clientName}</span>
+              <span className="userName">{clientUserName}</span>
               <div className="avatar__wrapper">
                 <Image
-                  src={avatarImage ? avatarImage : Icones.emptyAvatar}
+                  src={clientAvatar  ? clientAvatar : reduxAvatar || Icones.emptyAvatar}
                   width={30}
                   height={30}
                   alt="avatar"

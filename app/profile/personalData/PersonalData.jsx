@@ -3,6 +3,7 @@ import pd from "./personalData.module.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAppDispatch } from "@/lib/hooks";
+import { useDispatch } from "react-redux";
 import { setRegistrationInfo } from "@/lib/features/registrationSlice";
 //components------------------------------------------------
 import InputNotification from "@/app/components/profile/InputNotification";
@@ -10,6 +11,9 @@ import Image from "next/image";
 import DateTime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import Icones from "@/public/Data";
+import Loading from "@/app/components/loading/loading";
+import { setNewAvatar } from "@/lib/features/getClientsInfoSlice";
+import { ClientsInformation } from "@/lib/features/getClientsInfoSlice";
 
 const PersonalData = () => {
   const [showCalendarPlaceholder, setShowCalendarPlaceholder] = useState(true);
@@ -39,6 +43,7 @@ const PersonalData = () => {
     }
   };
   //post-profile-data--------------------------------------------
+  const [loadingData, setLoadingData] = useState(false);
   const [avatar, setAvatar] = useState();
   const [formData, setFormData] = useState({
     fullName: null,
@@ -48,14 +53,20 @@ const PersonalData = () => {
     address: null,
     avatar: null,
   });
-  
-   const handleChange = (e) => {
+  const dispatch = useDispatch()
+  const [formErrors, setFormErrors] = useState({});
+
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setFormErrors((prevFormErrors) => ({ ...prevFormErrors, [name]: "" }));
   };
+
   async function postProfileData(e) {
     e.preventDefault();
+
     try {
+      setLoadingData(true);
       const avatarDataServer = new FormData();
       avatarDataServer.append("files", avatar[0]);
       const responseAvatar = await axios.post(
@@ -63,6 +74,7 @@ const PersonalData = () => {
         avatarDataServer
       );
       const imageAvatar = responseAvatar.data[0].id;
+            
       const requestData = {
         data: {
           fullName: formData.fullName,
@@ -73,17 +85,22 @@ const PersonalData = () => {
           avatar: imageAvatar,
         },
       };
-      const response = await axios.post(
-        "https://quitystrapi.onrender.com/api/profiles",
+      const response = await axios.put(
+        `https://quitystrapi.onrender.com/api/clients/${matchingId}`,
         requestData
       );
       if (response.status === 200) {
         alert("Данные успешно сохранены !");
       }
+    dispatch(setNewAvatar(true))
     } catch (error) {
       console.error("post-profile-data is failed");
+    } finally {
+      setLoadingData(false);
     }
   }
+       
+  
   //localsrorage----------------------------------------------
   const dataStorage = localStorage.getItem("id");
   //get-profile-id-----------------------------------------------
@@ -91,7 +108,7 @@ const PersonalData = () => {
   async function getProfileId() {
     try {
       const response = await axios.get(
-        "https://quitystrapi.onrender.com/api/profiles"
+        "https://quitystrapi.onrender.com/api/clients"
       );
       const dataResponse = response.data.data;
       const matchingProfile = dataResponse.find(
@@ -112,10 +129,27 @@ const PersonalData = () => {
   useEffect(() => {
     if (matchingId && matchingId !== null) getRegistrationInfo();
   }, [matchingId]);
-//------------------------------------------------------------------------
+  //------------------------------------------------------------------------
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const calendar = document.getElementById(`popup-calendar`);
+      if (calendar && !calendar.contains(event.target)) {
+        setShowCalendar(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [showCalendar]);
 
   return (
     <div className={pd.wrapper}>
+      <ClientsInformation />
+      {loadingData && <Loading />}
       <form className={pd.form} onSubmit={postProfileData}>
         <div className={pd.personalData}>
           <h3 className={pd.title}>Персональные данные</h3>
@@ -131,6 +165,7 @@ const PersonalData = () => {
                   handleChangeAvatar(e);
                 }}
                 placeholder="Фото"
+                className={pd.choosePhoto}
               />
               <Image
                 src={Icones.avaEmpty}
@@ -157,7 +192,13 @@ const PersonalData = () => {
               value={formData.fullName}
               onChange={(e) => handleChange(e)}
               placeholder="ФИО"
+              className={!formData.fullName ? pd.inputError : ""}
             />
+            {!formData.fullName && (
+              <span className={pd.errorMsg}>
+                {"Поле должно быть заполнено"}
+              </span>
+            )}
           </div>
           {/* //input2-------------------------------------------------------------------- */}
           <div
@@ -169,27 +210,40 @@ const PersonalData = () => {
               name="birthday"
               onChange={(e) => handleChange(e)}
               value={formData.birthday}
+              className={!formData.birthday ? pd.inputError : ""}
             />
-            {showCalendarPlaceholder ? (
+            {!formData.birthday ? (
               <span className={pd.calendarPlaceholder}>Дата рождения</span>
             ) : (
-              " "
+              ""
             )}
+
             <Image
               src={Icones.calendar}
               className={pd.calendar}
-              onClick={() => handleIconClick()}
+              onClick={() => {
+                handleIconClick();
+              }}
               alt="calendar"
               width={20}
               height={20}
             />
-            {showCalendar && <DateTime
-              input={false}
-              timeFormat={false}
-              onChange={(e) => handleDateChange(e)}
-              className={pd.calendarDate}
-            />}
-            
+
+            {showCalendar && (
+              <div id="popup-calendar">
+                <DateTime
+                  input={false}
+                  timeFormat={false}
+                  onChange={(e) => handleDateChange(e)}
+                  className={pd.calendarDate}
+                />
+              </div>
+            )}
+            {!formData.birthday && (
+              <span className={pd.errorMsg}>
+                {"Поле должно быть заполнено"}
+              </span>
+            )}
           </div>
           {/* //input3-------------------------------------------------------------------- */}
           <div className={pd.input__wrapper}>
@@ -199,7 +253,13 @@ const PersonalData = () => {
               value={formData.email}
               onChange={(e) => handleChange(e)}
               placeholder="E-mail"
+              className={!formData.email ? pd.inputError : ""}
             />
+            {!formData.email && (
+              <span className={pd.errorMsg}>
+                {"Поле должно быть заполнено"}
+              </span>
+            )}
           </div>
           {/* //input4-------------------------------------------------------------------- */}
           <div className={pd.input__wrapper}>
@@ -209,10 +269,19 @@ const PersonalData = () => {
               value={formData.phone}
               onChange={(e) => handleChange(e)}
               placeholder="Телефон"
+              className={!formData.phone ? pd.inputError : ""}
             />
+            {!formData.phone && (
+              <span className={pd.errorMsg}>
+                {"Поле должно быть заполнено"}
+              </span>
+            )}
           </div>
 
-          <button type="submit" className={pd.saveButton}>
+          <button
+            type="submit"
+            className={pd.saveButton}
+            >
             Сохранить изменения
           </button>
         </div>
