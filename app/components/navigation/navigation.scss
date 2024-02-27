@@ -14,6 +14,10 @@
     font-weight: 500;
     font-size: 14px;
   }
+  .nonActive:hover {
+   transform: scale(103%);
+   color: #1a1c23;
+  }
   .borderRight {
     position: relative;
   }
@@ -54,6 +58,10 @@
     font-weight: 500;
     font-size: 14px;
   }
+  .nonActive:hover {
+    transform: scale(103%);
+    color: #1a1c23;
+   }
   .borderRight {
     position: relative;
   }
@@ -202,6 +210,10 @@
     font-weight: 500;
     font-size: 14px;
   }
+  .nonActive:hover {
+    transform: scale(103%);
+    color: #1a1c23;
+   }
   .socialMedia__wrapperMobile {
     display: flex;
     flex-direction: column;

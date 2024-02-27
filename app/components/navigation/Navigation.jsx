@@ -80,7 +80,7 @@ const Navigation = () => {
             Хостинг
           </button>
         </Link>
-        <Link href="/repair" style={{ textDecoration: 'none' }}>
+        <Link href="/hosting" style={{ textDecoration: 'none' }}>
           <div className="borderRight">
             <button
               className={pathname === "/repair" ? "active" : "nonActive"}

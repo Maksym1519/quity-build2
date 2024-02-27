@@ -15,11 +15,14 @@
       font-weight: 400;
       line-height: 24px;
     }
+    & .pageItem:hover {
+      transform: scale(103%);
+    }
     & .pageItemActive {
       display: flex;
       align-items: center;
       column-gap: 5px;
-      color: var(--a-9-a-9-a-9, #a9a9a9);
+      color: #a9a9a9;
       font-size: 12px;
       font-style: normal;
       font-weight: 400;

@@ -19,6 +19,10 @@
     font-weight: 700;
     color: #1a1c23;
   }
+  .profileNonactive:hover {
+    transform: scale(103%);
+    color: #1a56ff;
+  }
   
 }
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -44,6 +48,10 @@
     font-weight: 700;
     color: #1a1c23;
   }
+  .profileNonactive:hover {
+    transform: scale(103%);
+    color: #1a56ff;
+  }
 }
 @media (max-width: 768px) {
   .shopNavigation__wrapper {
@@ -67,5 +75,9 @@
     font-size: 15px;
     font-weight: 700;
     color: #1a1c23;
+  }
+  .profileNonactive:hover {
+    transform: scale(103%);
+    color: #1a56ff;
   }
 }

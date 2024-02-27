@@ -19,23 +19,23 @@ import { useAppSelector } from "@/lib/hooks";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const [avatarImage,setAvatarImage] = useState()
-  const [clientName, setClientName] = useState()
-  const clientAvatar = useSelector((state) => state.clientsInfo.clientsInfo)
-  const clientUserName =  useSelector((state) => state.clientsInfo.clientsName)
+  const [avatarImage, setAvatarImage] = useState();
+  const [clientName, setClientName] = useState();
+  const clientAvatar = useSelector((state) => state.clientsInfo.clientsInfo);
+  const clientUserName = useSelector((state) => state.clientsInfo.clientsName);
   //-----------------------------------------------------------------------
-  const pathname = usePathname()
+  const pathname = usePathname();
   //-------------------------------------------------------------------
-  const reduxAvatar = useSelector((state) => state.clientsInfo.newAvatar)
-  
- return (
+  const reduxAvatar = useSelector((state) => state.clientsInfo.newAvatar);
+
+  return (
     <header className="wrapper">
       <ClientsInformation />
       <div className="container">
         <div className="navigation__wrapper">
           <Navigation />
           {/* <div className="burgerMenu"></div> */}
-            <div className="contacts">
+          <div className="contacts">
             <div className="phoneNumber__wrapper">
               <span>+38 (097) 123 45 67</span>
               <Image
@@ -46,17 +46,24 @@ const Header = () => {
               />
             </div>
             <div className="backCall">Обратный звонок</div>
-            <div className="profile__wrapper">
-              <span className="userName">{clientUserName}</span>
-              <div className="avatar__wrapper">
-                <Image
-                  src={clientAvatar  ? clientAvatar : reduxAvatar || Icones.emptyAvatar}
-                  width={30}
-                  height={30}
-                  alt="avatar"
-                />
+            <Link href={"/profile"}>
+              {" "}
+              <div className="profile__wrapper">
+                <span className="userName">{clientUserName}</span>
+                <div className="avatar__wrapper">
+                  <Image
+                    src={
+                      clientAvatar
+                        ? clientAvatar
+                        : reduxAvatar || Icones.emptyAvatar
+                    }
+                    width={30}
+                    height={30}
+                    alt="avatar"
+                  />
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
         <div className="headerFunctions__wrapper">
@@ -73,14 +80,14 @@ const Header = () => {
           {pathname === "/devices" && <HeaderHosting />}
           {pathname === "/controlPanel" && <HeaderHosting />}
         </div>
-        {pathname === "/shop" &&  <PageNavigation />}
-          {pathname === "/blog" &&  <PageNavigation />}
-          {pathname === "/about" &&  <PageNavigation />}
-          {pathname === "/return" &&  <PageNavigation />}
-          {pathname === "/catalog" &&  <PageNavigation />}
-          {pathname === "/card" &&  <PageNavigation />}
-          {pathname === "/orders" &&  <PageNavigation />}
-        </div>
+        {pathname === "/shop" && <PageNavigation />}
+        {pathname === "/blog" && <PageNavigation />}
+        {pathname === "/about" && <PageNavigation />}
+        {pathname === "/return" && <PageNavigation />}
+        {pathname === "/catalog" && <PageNavigation />}
+        {pathname === "/card" && <PageNavigation />}
+        {pathname === "/orders" && <PageNavigation />}
+      </div>
     </header>
   );
 };

@@ -134,8 +134,6 @@ const HeaderShop = () => {
   }, [catalogList]);
 //setInputValue------------------------------------------------
 const inputValueRedux = useSelector((state) => state.searchTitle); 
-const inputValueTitle = inputValueRedux && inputValueRedux.map((item) => item.attributes.title)
-console.log(inputValueTitle)
 
 
   return (
@@ -206,10 +204,10 @@ console.log(inputValueTitle)
             type="text"
             placeholder="Поиск по товарам или категориям...."
             className={hs.searchInput}
-            value={inputValueTitle ? inputValueTitle[0] : ''}
+            //value={inputValueTitle ? inputValueTitle[0] : ''}
             onChange={(e) => setInputValue(e.target.value)}
             style={{ border: "none" }}
-            onClick={() => clickCatalog()}
+            onClick={() => {clickCatalog()}}
              />
           <Image
             src={Icones.search}

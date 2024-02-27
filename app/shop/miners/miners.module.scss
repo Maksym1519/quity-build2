@@ -100,7 +100,20 @@
         font-weight: 600;
         line-height: 20px;
         z-index: 2;
+        animation: pulse 1.5s infinite;
       }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
     }
   }
   .miners__terms {
@@ -235,6 +248,18 @@
         font-weight: 600;
         line-height: 20px;
         z-index: 2;
+        animation: pulse 1.5s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
       }
     }
   }
@@ -373,6 +398,18 @@
         line-height: 20px;
         z-index: 2;
         margin-top: 90px;
+        animation: pulse 1.5s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
       }
     }
   }
