@@ -37,11 +37,14 @@ export default function AboutPage() {
       ) : (
           <div className="container">
             <div className={a.about__body}>
-            <div
-                className={typeof window !== 'undefined' ? a.fixed : ''}
-              >
-                <AboutNavigation className={a.aboutNavigationComponent} />
-              </div>
+            {/* Проверяем наличие window перед использованием */}
+            {typeof window !== 'undefined' && (
+              <div
+                  className={a.fixed}
+                >
+                  <AboutNavigation className={a.aboutNavigationComponent} />
+                </div>
+            )}
               {currentComponent === "about" && <About className={a.content} />}
               {currentComponent === "requisite" && (
                 <Requisites className={a.content} />
