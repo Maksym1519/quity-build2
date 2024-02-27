@@ -37,8 +37,8 @@ export default function AboutPage() {
       ) : (
           <div className="container">
             <div className={a.about__body}>
-              <div
-                className={a.fixed}
+            <div
+                className={typeof window !== 'undefined' ? a.fixed : ''}
               >
                 <AboutNavigation className={a.aboutNavigationComponent} />
               </div>
