@@ -30,32 +30,33 @@ export default function AboutPage() {
 
   return (
     <>
-      <AboutData />
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <div className="container">
-          <div className={a.about__body}>
-            {/* Проверяем наличие window перед использованием */}
-            <div className={a.fixed}>
-              <AboutNavigation className={a.aboutNavigationComponent} />
+      <div className={a.wrapper}>
+        <AboutData />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="container">
+            <div className={a.about__body}>
+              <div className={a.fixedd}>
+                <AboutNavigation className={a.aboutNavigationComponent} />
+              </div>
+              {currentComponent === "about" && <About className={a.content} />}
+              {currentComponent === "requisite" && (
+                <Requisites className={a.content} />
+              )}
+              {currentComponent === "contacts" && (
+                <Contacts className={a.content} />
+              )}
+              {currentComponent === "publicOffer" && (
+                <PublicOffer className={a.content} />
+              )}
+              {currentComponent === "agreement" && (
+                <Agreement className={a.content} />
+              )}
             </div>
-            {currentComponent === "about" && <About className={a.content} />}
-            {currentComponent === "requisite" && (
-              <Requisites className={a.content} />
-            )}
-            {currentComponent === "contacts" && (
-              <Contacts className={a.content} />
-            )}
-            {currentComponent === "publicOffer" && (
-              <PublicOffer className={a.content} />
-            )}
-            {currentComponent === "agreement" && (
-              <Agreement className={a.content} />
-            )}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 }

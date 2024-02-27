@@ -14,29 +14,38 @@ const Contacts = () => {
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState();
   const dataFromRedux = useAppSelector(contactsInfo);
+  
   useEffect(() => {
     setDataFromServer(dataFromRedux);
   }, [dataFromRedux]);
+  
   useEffect(() => {
     if (dataFromServer && dataFromServer !== null) {
       setOfficeAddress(dataFromServer[0].attributes.officeAddress);
       setPhone(dataFromServer[0].attributes.phone);
       setEmail(dataFromServer[0].attributes.email);
     }
-  }, dataFromServer);
-  //map-data------------------------------------------
+  }, [dataFromServer]);
+
+  // Проверяем доступность window только на клиентской стороне
+  const isWindowAvailable = typeof window !== 'undefined';
+
+  // Map data
   const location = {
-   latitude: 46.431904506217656, 
-   longitude: 30.72604491308508, 
- };
+    latitude: 46.431904506217656, 
+    longitude: 30.72604491308508
+  };
   const position = [location.latitude, location.longitude];
-//change-map-icon---------------------------------------
-const customMarker = new L.Icon({
-  iconUrl: Icones.geotag, 
-  iconSize: [32, 52], 
-  iconAnchor: [16, 32], 
-  popupAnchor: [0, -32], 
-});
+
+  // Change map icon
+  // let customMarker;
+  //   customMarker = new L.Icon({
+  //     iconUrl: Icones.geotag, 
+  //     iconSize: [32, 52], 
+  //     iconAnchor: [16, 32], 
+  //     popupAnchor: [0, -32]
+  //   });
+  
 
   return (
     <div className={c.contacts__wrapper}>
@@ -86,22 +95,29 @@ const customMarker = new L.Icon({
             </div>
           </div>
           <div className={c.map__wrapper}>
-            <MapContainer
-              center={position}
-              zoom={17}
-              style={{ height: "100%", width: "100%" }}
-              zoomControl={false} 
-              attributionControl={false} 
-              className={c.map}
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              />
-              <Marker position={position} icon={customMarker}>
-                <Popup>Your Location</Popup>
-              </Marker>
-            </MapContainer>
+            {/* {isWindowAvailable && (
+              <MapContainer
+                center={position}
+                zoom={17}
+                style={{ height: "100%", width: "100%" }}
+                zoomControl={false} 
+                attributionControl={false} 
+                className={c.map}
+              >
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                <Marker position={position} icon={customMarker}>
+                  <Popup>Your Location</Popup>
+                </Marker>
+              </MapContainer>
+            )}
+            {!isWindowAvailable && (
+              <div className={c.map__error}>
+                Map cannot be rendered because window is not available.
+              </div>
+            )} */}
           </div>
         </div>
         <SignInTelegram />
@@ -109,4 +125,5 @@ const customMarker = new L.Icon({
     </div>
   );
 };
+
 export default Contacts;
