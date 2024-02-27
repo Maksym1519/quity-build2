@@ -17,9 +17,7 @@ export default function AboutPage() {
     (state) => state.about.currentComponent
   );
   //-----------------------------------------------------------------------
-  const [isFixed, setIsFixed] = useState(true);
-
- 
+   
   //isLoading---------------------------------------------------
   const [isLoading, setIsLoading] = useState(true);
   //render-content-if-value----------------------------------------
@@ -40,9 +38,7 @@ export default function AboutPage() {
           <div className="container">
             <div className={a.about__body}>
               <div
-                className={`${a.fixedNavigationContainer} ${
-                  isFixed ? a.fixed : a.fixed
-                }`}
+                className={a.fixedNavigationContainer}
               >
                 <AboutNavigation className={a.aboutNavigationComponent} />
               </div>
