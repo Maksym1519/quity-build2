@@ -13,6 +13,10 @@ import { AboutData } from "@/lib/features/about/aboutSlice";
 import Loading from "../components/loading/loading";
 
 export default function AboutPage() {
+  const [isBrowser, setIsBrowser] = useState(false);
+  useEffect(() => {
+    setIsBrowser(typeof window !== 'undefined');
+  }, []);
   const currentComponent = useAppSelector(
     (state) => state.about.currentComponent
   );
@@ -30,7 +34,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <div className={a.wrapper}>
+    {isBrowser &&  <div className={a.wrapper}>
         <AboutData />
         {isLoading ? (
           <Loading />
@@ -61,7 +65,8 @@ export default function AboutPage() {
             </div>
           </div>
         )}
-      </div>
+      </div>}
+     
     </>
   );
 }

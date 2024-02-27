@@ -1,4 +1,3 @@
-"use client";
 import c from "./contacts.module.scss";
 import Icones from "@/public/Data";
 import Image from "next/image";
