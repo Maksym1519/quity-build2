@@ -22,8 +22,7 @@ export default function CatalogPage() {
     (state) => state.card.currentComponent
   );
   const currentUserId = useSelector((state) => state.localStorage.value)
-  console.log(currentUserId)
-  
+   
   
   return (
     <>
