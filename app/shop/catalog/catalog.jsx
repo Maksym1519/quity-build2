@@ -134,27 +134,27 @@ const Catalog = () => {
   useEffect(() => {
     setDisplayAmount(7);
   }, []);
-  useEffect(() => {
-    if (selectedMiners) {
-      setFindedMiners(selectedMiners);
-      window.scrollTo({
-        top: 800,
-        behavior: "smooth", // добавляет плавный скроллинг
-      });
-    }
-  }, [selectedMiners]);
+  // useEffect(() => {
+  //   if (selectedMiners) {
+  //     setFindedMiners(selectedMiners);
+  //     window.scrollTo({
+  //       top: 800,
+  //       behavior: "smooth", // добавляет плавный скроллинг
+  //     });
+  //   }
+  // }, [selectedMiners]);
   const filteredMiners = catalogItems.filter((item) =>
     item.attributes.title.toLowerCase().includes(selectedMiners)
   );
-  useEffect(() => {
-    if (filteredMiners.length === 0 && selectedMiners !== null) {
-      alert("Товар не найден");
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth", // добавляет плавный скроллинг
-      });
-    }
-  }, [selectedMiners]);
+  // useEffect(() => {
+  //   if (filteredMiners.length === 0 && selectedMiners !== null) {
+  //     alert("Товар не найден");
+  //     window.scrollTo({
+  //       top: 0,
+  //       behavior: "smooth", // добавляет плавный скроллинг
+  //     });
+  //   }
+  // }, [selectedMiners]);
   const displayMiners =
     findedMiners && currentComponent === "asicCatalog"
       ? filteredMiners
