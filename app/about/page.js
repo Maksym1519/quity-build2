@@ -10,7 +10,7 @@ import { useAppSelector } from "@/lib/hooks";
 import { useState, useEffect } from "react";
 import { aboutInfo } from "@/lib/features/about/aboutSlice";
 import { AboutData } from "@/lib/features/about/aboutSlice";
-//import Loading from "../components/loading/loading";
+import Loading from "../components/loading/loading";
 
 export default function AboutPage() {
   const currentComponent = useAppSelector(
@@ -33,12 +33,12 @@ export default function AboutPage() {
       <div className={a.wrapper}>
         <AboutData />
         {isLoading ? (
-          // <Loading />
-      "" ) : (
+          <Loading />
+      ) : (
           <div className="container">
             <div className={a.about__body}>
               <div
-                className={a.fixedNavigationContainer}
+                className={a.fixed}
               >
                 <AboutNavigation className={a.aboutNavigationComponent} />
               </div>

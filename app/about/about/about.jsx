@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import a from "./about.module.scss";
 import { AboutData } from "@/lib/features/about/aboutSlice";
