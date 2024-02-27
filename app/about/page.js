@@ -19,26 +19,7 @@ export default function AboutPage() {
   //-----------------------------------------------------------------------
   const [isFixed, setIsFixed] = useState(true);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const totalHeight = document.documentElement.scrollHeight;
-      const windowHeight = window.innerHeight;
-      const footerHeight = 585;
-
-      if (scrollPosition + windowHeight > totalHeight - footerHeight) {
-        setIsFixed(false);
-      } else {
-        setIsFixed(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+ 
   //isLoading---------------------------------------------------
   const [isLoading, setIsLoading] = useState(true);
   //render-content-if-value----------------------------------------

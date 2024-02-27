@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAppDispatch } from "@/lib/hooks";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { setRegistrationInfo } from "@/lib/features/registrationSlice";
 //components------------------------------------------------
 import InputNotification from "@/app/components/profile/InputNotification";

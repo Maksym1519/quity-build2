@@ -1,7 +1,7 @@
 "use client";
 import c from "./cardPresentation.module.scss";
 import Image from "next/image";
-import { useAppSelector } from "@/lib/hooks";
+import { useSelector } from "react-redux";
 import { cardInfo } from "@/lib/features/card/cardSlice";
 import Icones from "@/public/Data";
 //slider------------------------------------------------
@@ -12,7 +12,15 @@ register();
 
 const CardPresentation = () => {
   //get-info-from-catalog-redux------------------------
-  const reduxInfo = useAppSelector(cardInfo);
+  const [reduxInfo,setReduxInfo] = useState()
+  
+  const reduxData = useSelector((state) => state.card.cardState);
+  useEffect(() => {
+   if (reduxData && reduxData !== undefined) {
+    setReduxInfo(reduxData)
+   }
+   },[reduxData])
+   console.log(reduxInfo)
   //slider----------------------------------------------
   const swiperElRef = useRef(null);
   useEffect(() => {
@@ -29,18 +37,20 @@ const CardPresentation = () => {
     setCurrentImg(index)
   }
   return (
-    <div className={c.cardPresentation__wrapper}>
+    <>
+    {reduxInfo !== null && <div className={c.cardPresentation__wrapper}>
       <div className={c.cardPresentation__body}>
-        <div className={c.cardImageWrapper}>
+        {reduxInfo !== undefined && <div className={c.cardImageWrapper}>
           <Image
-            src={reduxInfo && currentImg === -1 ? reduxInfo.attributes.itemImage.data.attributes.url : reduxInfo.attributes.sliderMiniatur.data[currentImg].attributes.url}
+            src={reduxInfo && currentImg === -1 ? reduxInfo.attributes.itemImage.data.attributes.url  && reduxInfo.attributes.itemImage.data.attributes.url : reduxInfo.attributes.sliderMiniatur.data[currentImg].attributes.url && reduxInfo.attributes.sliderMiniatur.data[currentImg].attributes.url}
             width={412}
             height={380}
             className={c.cardImage}
             alt="minerImage"
           />
           <div className={c.cardLabel}>{reduxInfo ? reduxInfo.attributes.popularity : ""}</div>
-        </div>
+        </div>}
+       
         <div className={c.slider__wrapper}>
         <swiper-container
           ref={swiperElRef}
@@ -49,7 +59,7 @@ const CardPresentation = () => {
           loop="true"
           navigation="true"
         >
-         {reduxInfo &&
+            {reduxInfo !== undefined &&
               reduxInfo.attributes.sliderMiniatur.data.map((item, index) => (
                 <swiper-slide key={index}>
                   <div className={c.slideWrapper} onClick={() => changeImg(index)}>
@@ -62,7 +72,9 @@ const CardPresentation = () => {
           <Image src={Icones.sliderNext} width={52} height={52} className={c.sliderNext} alt="minerImage"/>
         </div>
       </div>
-    </div>
+    </div>}
+    
+    </>
   );
 };
 

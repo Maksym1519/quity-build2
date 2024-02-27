@@ -3,6 +3,7 @@ import o from "./orderStorage.module.scss";
 import Image from "next/image";
 import Icones from "@/public/Data";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
+import { useSelector } from "react-redux";
 import { orderInfo } from "@/lib/features/order/orderSlice";
 import { useEffect, useState } from "react";
 import OrderPopup from "./orderPopup";

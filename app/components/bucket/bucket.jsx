@@ -4,6 +4,7 @@ import Image from "next/image";
 import Icones from "@/public/Data";
 import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useSelector } from "react-redux";
 import { cardInfo } from "@/lib/features/card/cardSlice";
 import { addToBucket } from "@/lib/features/card/cardSlice";
 import { removeFromBucket } from "@/lib/features/card/cardSlice";

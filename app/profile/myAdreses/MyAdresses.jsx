@@ -7,6 +7,7 @@ import addressesSlice from "@/lib/features/addressesSlice";
 import axios from "axios";
 import { getId } from "@/lib/features/getIdSlice";
 import { useAppSelector } from "@/lib/hooks";
+import { useSelector } from "react-redux";
 import { selectData } from "@/lib/features/getIdSlice";
 import { selectRegistartionInfo } from "@/lib/features/registrationSlice";
 
