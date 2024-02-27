@@ -56,7 +56,7 @@ const Popup = (props) => {
   let fullDate = day + "/" + month + "/" + year;
 
   //get-localstorage-id----------------------------------------------------------
-  const currentUserId = localStorage.getItem("id");
+  const currentUserId = useSelector((state) => state.localStorage.value)
 
   //random-number-----------------------------------------------------------------
   const [appNumber, setAppNumber] = useState();

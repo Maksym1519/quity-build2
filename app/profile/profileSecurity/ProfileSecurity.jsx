@@ -1,12 +1,14 @@
 import ps from "./profileSecurity.module.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Icones from "@/public/Data";
 import Image from "next/image";
 
 const ProfileSecurity = () => {
   //data-storage----------------------------------------------------------
-  const dataStorage = localStorage.getItem("id");
+  const dataStorage = useSelector((state) => state.localStorage.value)
+  
   //get-clients----------------------------------------------------------
   const [id, setId] = useState();
   const [password, setPassword] = useState();

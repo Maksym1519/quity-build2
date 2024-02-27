@@ -21,7 +21,8 @@ const MyAdresses = () => {
     setAddresses(updatedAddresses);
   };
   //localsrorage----------------------------------------------
-  const dataStorage = localStorage.getItem("id");
+  const dataStorage = useSelector((state) => state.localStorage.value)
+  
   //get-id-from-redux---------------------------------------------------------
   const profileId = useAppSelector(selectRegistartionInfo)
   console.log(profileId)

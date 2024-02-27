@@ -7,6 +7,7 @@ import Filters from "./filters/filters";
 import { useAppSelector } from "@/lib/hooks";
 import { cardInfo } from "@/lib/features/card/cardSlice";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import CardPresentation from "../card/cardPresentation/cardPresentation";
 
 export default function CatalogPage() {
@@ -20,6 +21,10 @@ export default function CatalogPage() {
   const currentComponent = useAppSelector(
     (state) => state.card.currentComponent
   );
+  const currentUserId = useSelector((state) => state.localStorage.value)
+  console.log(currentUserId)
+  
+  
   return (
     <>
       <div className={c.wrapper}>

@@ -102,7 +102,8 @@ const PersonalData = () => {
        
   
   //localsrorage----------------------------------------------
-  const dataStorage = localStorage.getItem("id");
+  const dataStorage = useSelector((state) => state.localStorage.value)
+  
   //get-profile-id-----------------------------------------------
   const [matchingId, setMatchingId] = useState();
   async function getProfileId() {

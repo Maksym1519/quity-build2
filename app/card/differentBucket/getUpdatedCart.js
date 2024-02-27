@@ -24,9 +24,11 @@ const getUpdatedCart = (storedCart, newItems) => {
   });
 
   // Сохраняем обновленную корзину в localStorage
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  // Возвращаем обновленную корзину
+  if (typeof window !== 'undefined') {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+  
+   // Возвращаем обновленную корзину
   return cart;
 };
 

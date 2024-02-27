@@ -18,15 +18,19 @@ import { selectClientsInfo } from "@/lib/features/getClientsInfoSlice";
 const Registration = () => {
   //localStorage-----------------------------------------------------
   const [id, setId] = useState("");
-  useEffect(() => {
-    localStorage.setItem("id", id);
-  }, [id]);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(getId({ payload: id }));
-  }, [dispatch, id]);
+  if (typeof window !== 'undefined') {
+    useEffect(() => {
+      localStorage.setItem("id", id);
+    }, [id]);
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+      dispatch(getId(id));
+    }, [dispatch, id]);
+  }
+  
+  
   const data = useAppSelector(selectData);
-  console.log(id);
+  
   //change-active-component---------------------------------------------
   const [activeComponent, setActiveComponent] = useState(true);
   useEffect(() => {

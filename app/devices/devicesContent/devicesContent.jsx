@@ -18,7 +18,7 @@ const DevicesContent = () => {
     />
   );
   //--------------------------------------------------------------
-  const currentUserId = localStorage.getItem("id");
+  const currentUserId = useSelector((state) => state.localStorage.value)
   const [newReduxArray, setNewReduxArray] = useState();
   const reduxData = useSelector((state) => state.order.orders);
 

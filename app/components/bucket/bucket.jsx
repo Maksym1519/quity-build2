@@ -52,8 +52,8 @@ const Bucket = () => {
   }, [arrayGoods, dispatch]);
 
   const currentArray = useAppSelector((state) => state.card.bucketGoods);
-  const currentUserId = localStorage.getItem("id");
-
+  const currentUserId = useSelector((state) => state.localStorage.value)
+  
   // Фильтрация  null
   const filteredCurrentArray = currentArray.filter((item) => item !== null);
 

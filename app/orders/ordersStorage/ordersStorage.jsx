@@ -16,7 +16,7 @@ import { setUserId } from "@/lib/features/order/orderSlice";
 
 
 const OrdersStorage = () => {
-  const currentUserId = localStorage.getItem("id");
+  const currentUserId = useSelector((state) => state.localStorage.value)
   const dispatch = useAppDispatch();
   useEffect(() => {
     // Обновить userId в Redux, когда currentUserId изменяется
