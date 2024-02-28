@@ -35,3 +35,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 /quityNextStorybook
+
+#pages
+/.vscode
+/app
+/lib
+/public
+/quityNextStorybook
+/webpack
