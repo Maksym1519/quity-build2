@@ -1,7 +1,7 @@
 "use client";
 import Asic from "./asic/asic";
 import Gpu from "./gpu/gpu";
-import HardDisc from "./hardisc/harddisc";
+import HardDisc from "./hardisc/hardDisc";;
 import Farm from "./farm/farm";
 import Spare from "./spare/spare";
 import { useAppSelector } from "@/lib/hooks";
